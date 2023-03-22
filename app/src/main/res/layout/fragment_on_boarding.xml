@@ -19,7 +19,6 @@
         android:layout_height="wrap_content"
         android:layout_marginStart="@dimen/margin_meduim"
         android:layout_marginTop="@dimen/margin_xxlarge"
-        android:alpha="0"
         android:text="@string/skip"
         android:textColor="@color/text_skip_color"
         android:textSize="@dimen/txt_size_meduim"
@@ -35,6 +34,7 @@
         android:layout_marginEnd="@dimen/margin_meduim"
         android:text="@string/next"
         android:textColor="@color/md_theme_light_onBackground"
+        android:visibility="invisible"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/onBoarding_desc_1" />
 
@@ -55,9 +55,9 @@
         style="@style/OnboardingScreenImageStyle"
         android:layout_width="match_parent"
         android:layout_height="@dimen/height_onboarding_image"
-        android:alpha="0"
         android:contentDescription="@string/onboarding_slide_image_two"
         android:src="@drawable/onboarding_slide_2"
+        android:visibility="invisible"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
@@ -67,9 +67,9 @@
         style="@style/OnboardingScreenImageStyle"
         android:layout_width="match_parent"
         android:layout_height="@dimen/height_onboarding_image"
-        android:alpha="0"
         android:contentDescription="@string/onboarding_slide_image_three"
         android:src="@drawable/onboarding_slide_3"
+        android:visibility="invisible"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
@@ -90,8 +90,8 @@
         style="@style/OnboardingTitleTextStyle"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:alpha="0"
         android:text="@string/customize_your_dish"
+        android:visibility="invisible"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/onBoarding_slide_2" />
@@ -101,8 +101,8 @@
         style="@style/OnboardingTitleTextStyle"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:alpha="0"
         android:text="@string/fast_quick"
+        android:visibility="invisible"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/onBoarding_slide_3" />
@@ -121,8 +121,8 @@
         style="@style/OnboardingDescTextStyle"
         android:layout_width="match_parent"
         android:layout_height="@dimen/onboarding_desc_height"
-        android:alpha="0"
         android:text="@string/cook_with_confidence_using_our_step_by_step_instructions_and_helpful_tips_for_perfect_results_every_time"
+        android:visibility="invisible"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/onBoarding_title_2" />
 
@@ -131,11 +131,41 @@
         style="@style/OnboardingDescTextStyle"
         android:layout_width="match_parent"
         android:layout_height="@dimen/onboarding_desc_height"
-        android:alpha="0"
         android:text="@string/from_classic_curries_to_modern_dishes_we_ve_got_you_covered_with_our_extensive_collection_of_indian_recipes"
+        android:visibility="invisible"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/onBoarding_title_3" />
 
+    <LinearLayout
+        android:id="@+id/indecater"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        app:layout_constraintEnd_toStartOf="@+id/btn_next"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="@id/btn_next">
+
+        <View
+            android:id="@+id/first_cercle"
+            android:layout_width="24dp"
+            android:layout_height="16dp"
+            android:layout_marginEnd="8dp"
+            android:background="@drawable/cercal" />
+
+        <View
+            android:id="@+id/second_cercle"
+            android:layout_width="24dp"
+            android:layout_height="16dp"
+            android:layout_marginEnd="8dp"
+            android:background="@drawable/cercal" />
+
+        <View
+            android:id="@+id/thierd_cercle"
+            android:layout_width="24dp"
+            android:layout_height="16dp"
+            android:background="@drawable/cercal" />
+
+    </LinearLayout>
 
 </androidx.constraintlayout.motion.widget.MotionLayout>
 
