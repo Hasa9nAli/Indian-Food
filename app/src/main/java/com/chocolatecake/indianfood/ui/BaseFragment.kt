@@ -15,7 +15,6 @@ abstract class BaseFragment<VB : ViewBinding> : Fragment() {
     protected val binding: VB
         get() = _binding as VB
 
-
     override fun onCreateView(
         inflater: LayoutInflater,
         container: ViewGroup?,
@@ -29,6 +28,7 @@ abstract class BaseFragment<VB : ViewBinding> : Fragment() {
         super.onViewCreated(view, savedInstanceState)
         addCallBacks()
     }
+
 
     abstract fun addCallBacks()
 
