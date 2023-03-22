@@ -121,4 +121,5 @@
     <color name="md_theme_dark_outlineVariant">#49454F</color>
 
     <color name="md_theme_dark_scrim">#000000</color>
+    <color name="text_skip_color">#992D2D2D</color>
 </resources>
