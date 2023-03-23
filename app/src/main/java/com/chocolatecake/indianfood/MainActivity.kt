@@ -28,7 +28,7 @@ class MainActivity : BaseActivity<ActivityMainBinding>() {
     private fun setUpSubFragment() {
 
         val transction = supportFragmentManager.beginTransaction()
-        transction.add(_binding.fragmentContainer.id, onBoardingFragment)
+        transction.add(binding.fragmentContainer.id, onBoardingFragment)
         transction.commit()
 
     }
