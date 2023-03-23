@@ -26,12 +26,15 @@ class RecipeDetailsFragment : BaseFragment<FragmentRecipeDetailsBinding>() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-        recipe = arguments?.getParcelable<Recipe>("recipe")
+//        recipe = arguments?.getParcelable<Recipe>("recipe")
         ingredientsFragment = IngredientsFragment()
         instructionsFragment = InstructionsFragment()
         initInnerFragmentsBundles()
         setDefaultInnerFragment()
         updateRecipeDetails()
+    }
+
+    override fun setUp() {
     }
 
     private fun updateRecipeDetails() {
