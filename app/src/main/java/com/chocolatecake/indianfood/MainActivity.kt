@@ -1,4 +1,5 @@
 package com.chocolatecake.indianfood
+
 import android.view.LayoutInflater
 import androidx.core.splashscreen.SplashScreen.Companion.installSplashScreen
 import com.chocolatecake.indianfood.databinding.ActivityMainBinding
