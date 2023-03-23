@@ -13,16 +13,23 @@ class MainActivity : BaseActivity<ActivityMainBinding>() {
 
     override val LOG_TAG: String = MAIN_ACTIVITY
     override val bindingInflater: (LayoutInflater) -> ActivityMainBinding = ActivityMainBinding::inflate
+    private val onBoardingFragment = OnBoardingFragment()
 
     override fun setUp() {
         installSplashScreen()
     }
 
-    override fun addCallbacks() {}
+    override fun addCallbacks() {
+        setUpSubFragment()
+    }
 
-    override fun onCreate(savedInstanceState: Bundle?) {
-        super.onCreate(savedInstanceState)
-        setContentView(R.layout.activity_main)
+
+
+    private fun setUpSubFragment() {
+
+        val transction = supportFragmentManager.beginTransaction()
+        transction.add(binding.fragmentContainer.id, onBoardingFragment)
+        transction.commit()
 
     }
 }
