@@ -1,25 +1,45 @@
 package com.chocolatecake.indianfood
 
 import android.os.Bundle
-import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import com.chocolatecake.indianfood.R
+import androidx.fragment.app.Fragment
+import com.chocolatecake.indianfood.databinding.FragmentOnBoardingBinding
+import com.chocolatecake.indianfood.util.createOnBoardingDataList
 
 class OnBoardingFragment : Fragment() {
 
+    private lateinit var onBoardingPagerAdapter: OnBoardingPagerAdapter
+    private lateinit var _binding: FragmentOnBoardingBinding
 
-    override fun onCreate(savedInstanceState: Bundle?) {
-        super.onCreate(savedInstanceState)
-
-    }
     override fun onCreateView(
-        inflater: LayoutInflater, container: ViewGroup?,
-        savedInstanceState: Bundle?
+        inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?
     ): View? {
-        // Inflate the layout for this fragment
-        return inflater.inflate(R.layout.fragment_on_boarding, container, false)
+        _binding = FragmentOnBoardingBinding.inflate(inflater)
+        return _binding.root
     }
 
+    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
+        super.onViewCreated(view, savedInstanceState)
+        setupOnBoardingViewPager()
+        setupNextButton()
+
+    }
+
+    private fun setupOnBoardingViewPager() {
+        val onBoardingData = requireContext().createOnBoardingDataList()
+        onBoardingPagerAdapter = OnBoardingPagerAdapter(onBoardingData)
+        _binding.onBoardingVB.adapter = onBoardingPagerAdapter
+    }
+
+    private fun setupNextButton() {
+        _binding.btnNext.setOnClickListener {
+            if (getCurrentItemIndex(0) < 3) {
+                _binding.onBoardingVB.setCurrentItem(getCurrentItemIndex(1), true)
+            }
+        }
+    }
+
+    private fun getCurrentItemIndex(index: Int) = _binding.onBoardingVB.currentItem + index
 }

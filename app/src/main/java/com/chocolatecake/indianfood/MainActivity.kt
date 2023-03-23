@@ -2,17 +2,27 @@ package com.chocolatecake.indianfood
 
 import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity
+import com.chocolatecake.indianfood.databinding.ActivityMainBinding
 
 
 class MainActivity : AppCompatActivity() {
 
-    val onBaording = OnBoardingFragment()
+    private val onBoardingFragment = OnBoardingFragment()
+    private lateinit var _binding: ActivityMainBinding
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setContentView(R.layout.activity_main)
-        val trans = supportFragmentManager.beginTransaction()
-        trans.add(R.id.container_fragment, onBaording)
-        trans.commit()
+        _binding = ActivityMainBinding.inflate(layoutInflater)
+        setContentView(_binding.root)
+        setUpSubFragment()
+
+    }
+
+    private fun setUpSubFragment() {
+
+        val transction = supportFragmentManager.beginTransaction()
+        transction.add(_binding.fragmentContainer.id, onBoardingFragment)
+        transction.commit()
+
     }
 }

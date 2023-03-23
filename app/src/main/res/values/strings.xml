@@ -1,11 +1,11 @@
 <resources>
     <string name="app_name">Indian Food</string>
-    <string name="welcome_to_our_indian_recipe">welcome to our Indian recipe</string>
-    <string name="welcome_to_our_indian_recipe_app_let_s_explore_the_vibrant_world_of_indian_cuisine_together">Welcome to our Indian recipe app. Let\'s explore the\n vibrant world of Indian cuisine together</string>
-    <string name="customize_your_dish">Customize your Dish</string>
-    <string name="cook_with_confidence_using_our_step_by_step_instructions_and_helpful_tips_for_perfect_results_every_time">Cook with confidence using our step-by-step\n instructions and helpful tips for perfect results\n every time</string>
-    <string name="fast_quick"><![CDATA[Fast & Quick]]></string>
-    <string name="from_classic_curries_to_modern_dishes_we_ve_got_you_covered_with_our_extensive_collection_of_indian_recipes">From classic curries to modern\n dishes, we\'ve got you covered with our extensive\n collection of Indian recipes.</string>
+    <string name="onBoarding_title_1">welcome to our Indian recipe</string>
+    <string name="onBoarding_desc_1">Welcome to our Indian recipe app. Let\'s explore the\n vibrant world of Indian cuisine together</string>
+    <string name="onBoarding_title_2">Customize your Dish</string>
+    <string name="onBoarding_desc_2">Cook with confidence using our step-by-step\n instructions and helpful tips for perfect results\n every time</string>
+    <string name="onBoarding_title_3"><![CDATA[Fast & Quick]]></string>
+    <string name="onBoarding_desc_3">From classic curries to modern\n dishes, we\'ve got you covered with our extensive\n collection of Indian recipes.</string>
     <string name="next">Next</string>
     <string name="skip">Skip</string>
     <string name="onboarding_slide_image_one">OnBoarding Slide Image One</string>

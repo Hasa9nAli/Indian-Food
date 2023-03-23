@@ -42,7 +42,7 @@
             android:layout_marginStart="16dp"
             android:layout_marginEnd="16dp"
             android:alpha="0"
-            motion:layout_constraintBottom_toTopOf="@+id/onBoarding_title_1"
+            motion:layout_constraintBottom_toTopOf="@+id/head"
             motion:layout_constraintEnd_toEndOf="parent"
             motion:layout_constraintStart_toStartOf="parent"
             motion:layout_constraintTop_toBottomOf="@+id/onBoarding_slide_3" />
@@ -51,7 +51,7 @@
 
     <ConstraintSet android:id="@+id/mid_animation">
         <Constraint
-            android:id="@+id/onBoarding_slide_1"
+            android:id="@+id/image_slider"
             style="@style/OnboardingScreenImageStyle"
             android:layout_width="match_parent"
             android:layout_height="@dimen/height_onboarding_image"
@@ -81,14 +81,14 @@
 
 
         <Constraint
-            android:id="@+id/onBoarding_title_1"
+            android:id="@+id/head"
             style="@style/OnboardingTitleTextStyle"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:visibility="invisible"
             motion:layout_constraintEnd_toEndOf="parent"
             motion:layout_constraintStart_toStartOf="parent"
-            motion:layout_constraintTop_toBottomOf="@+id/onBoarding_slide_1" />
+            motion:layout_constraintTop_toBottomOf="@+id/image_slider" />
 
         <Constraint
             android:id="@+id/onBoarding_title_2"
@@ -98,17 +98,17 @@
             android:visibility="visible"
             motion:layout_constraintEnd_toEndOf="parent"
             motion:layout_constraintStart_toStartOf="parent"
-            motion:layout_constraintTop_toBottomOf="@+id/onBoarding_slide_1" />
+            motion:layout_constraintTop_toBottomOf="@+id/image_slider" />
 
 
         <Constraint
-            android:id="@+id/onBoarding_desc_1"
+            android:id="@+id/desc"
             style="@style/OnboardingDescTextStyle"
             android:layout_width="match_parent"
             android:layout_height="@dimen/onboarding_desc_height"
             android:visibility="invisible"
             motion:layout_constraintStart_toStartOf="parent"
-            motion:layout_constraintTop_toBottomOf="@+id/onBoarding_title_1" />
+            motion:layout_constraintTop_toBottomOf="@+id/head" />
 
         <Constraint
             android:id="@+id/onBoarding_desc_2"
@@ -117,7 +117,7 @@
             android:layout_height="@dimen/onboarding_desc_height"
             android:visibility="visible"
             motion:layout_constraintStart_toStartOf="parent"
-            motion:layout_constraintTop_toBottomOf="@+id/onBoarding_title_1" />
+            motion:layout_constraintTop_toBottomOf="@+id/head" />
         <Constraint
             android:id="@+id/btn_next"
             style="@style/ClickableTextStyle"
@@ -139,7 +139,7 @@
 
 
         <Constraint
-            android:id="@+id/onBoarding_slide_1"
+            android:id="@+id/image_slider"
             style="@style/OnboardingScreenImageStyle"
             android:layout_width="match_parent"
             android:layout_height="@dimen/height_onboarding_image"
@@ -149,24 +149,24 @@
             motion:layout_constraintTop_toTopOf="parent" />
 
         <Constraint
-            android:id="@+id/onBoarding_title_1"
+            android:id="@+id/head"
             style="@style/OnboardingTitleTextStyle"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:visibility="invisible"
             motion:layout_constraintEnd_toEndOf="parent"
             motion:layout_constraintStart_toStartOf="parent"
-            motion:layout_constraintTop_toBottomOf="@+id/onBoarding_slide_1" />
+            motion:layout_constraintTop_toBottomOf="@+id/image_slider" />
 
 
         <Constraint
-            android:id="@+id/onBoarding_desc_1"
+            android:id="@+id/desc"
             style="@style/OnboardingDescTextStyle"
             android:layout_width="match_parent"
             android:layout_height="@dimen/onboarding_desc_height"
             android:visibility="invisible"
             motion:layout_constraintStart_toStartOf="parent"
-            motion:layout_constraintTop_toBottomOf="@+id/onBoarding_title_1" />
+            motion:layout_constraintTop_toBottomOf="@+id/head" />
 
 
         <Constraint
@@ -207,7 +207,7 @@
             android:visibility="invisible"
             motion:layout_constraintEnd_toEndOf="parent"
             motion:layout_constraintStart_toStartOf="parent"
-            motion:layout_constraintTop_toBottomOf="@+id/onBoarding_slide_1" />
+            motion:layout_constraintTop_toBottomOf="@+id/image_slider" />
 
 
         <Constraint
@@ -218,7 +218,7 @@
             android:visibility="visible"
             motion:layout_constraintEnd_toEndOf="parent"
             motion:layout_constraintStart_toStartOf="parent"
-            motion:layout_constraintTop_toBottomOf="@+id/onBoarding_slide_1" />
+            motion:layout_constraintTop_toBottomOf="@+id/image_slider" />
 
 
         <Constraint
@@ -228,7 +228,7 @@
             android:layout_height="@dimen/onboarding_desc_height"
             android:visibility="invisible"
             motion:layout_constraintStart_toStartOf="parent"
-            motion:layout_constraintTop_toBottomOf="@+id/onBoarding_title_1" />
+            motion:layout_constraintTop_toBottomOf="@+id/head" />
 
 
         <Constraint
@@ -238,7 +238,7 @@
             android:layout_height="@dimen/onboarding_desc_height"
             android:visibility="visible"
             motion:layout_constraintStart_toStartOf="parent"
-            motion:layout_constraintTop_toBottomOf="@+id/onBoarding_title_1" />
+            motion:layout_constraintTop_toBottomOf="@+id/head" />
         <Constraint
             android:id="@+id/btn_next"
             style="@style/ClickableTextStyle"
@@ -253,7 +253,7 @@
             app:layout_constraintTop_toBottomOf="@+id/onBoarding_desc_1"
             motion:layout_constraintBottom_toBottomOf="parent"
             motion:layout_constraintEnd_toEndOf="parent"
-            motion:layout_constraintTop_toBottomOf="@+id/onBoarding_desc_1" />
+            motion:layout_constraintTop_toBottomOf="@+id/desc" />
 
     </ConstraintSet>
 
