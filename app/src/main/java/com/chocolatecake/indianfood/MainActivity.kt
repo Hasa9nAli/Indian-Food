@@ -2,6 +2,7 @@ package com.chocolatecake.indianfood
 
 import FindRecipesByIngredientInteractor
 import android.os.Bundle
+
 import android.view.LayoutInflater
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.splashscreen.SplashScreen.Companion.installSplashScreen
@@ -31,6 +32,7 @@ class MainActivity : BaseActivity<ActivityMainBinding>() {
         val transction = supportFragmentManager.beginTransaction()
         transction.add(binding.fragmentContainer.id, onBoardingFragment)
         transction.commit()
+
 
     }
 }
