@@ -5,6 +5,7 @@ import android.view.LayoutInflater
 import androidx.appcompat.app.AppCompatActivity
 import com.chocolatecake.indianfood.databinding.ActivityMainBinding
 import com.chocolatecake.indianfood.ui.BaseActivity
+import com.chocolatecake.indianfood.ui.HomeFragment
 import com.chocolatecake.indianfood.util.Constants.MAIN_ACTIVITY
 
 
@@ -20,6 +21,8 @@ class MainActivity : BaseActivity<ActivityMainBinding>() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
-
+        supportFragmentManager.beginTransaction()
+            .add(R.id.fragment_container, HomeFragment())
+            .commit()
     }
 }
