@@ -34,6 +34,10 @@ class RecipeDetailsFragment : BaseFragment<FragmentRecipeDetailsBinding>() {
         updateRecipeDetails()
     }
 
+    override fun setUp() {
+        TODO("Not yet implemented")
+    }
+
     private fun updateRecipeDetails() {
         updateTextViews()
         updateRecipeImageView()
