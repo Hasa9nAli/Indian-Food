@@ -1,11 +1,13 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <dimen name="margin_xxxlarge">130dp</dimen>
+    <dimen name="margin_xxxlarge">110dp</dimen>
     <dimen name="height_onboarding_image">297dp</dimen>
     <dimen name="margin_large">32dp</dimen>
     <dimen name="margin_meduim">20dp</dimen>
-    <dimen name="txt_size_meduim">16sp</dimen>
     <dimen name="onboarding_desc_height">60dp</dimen>
-    <dimen name="margin_xlarge">64dp</dimen>
     <dimen name="margin_xxlarge">24dp</dimen>
+    <dimen name="margin_onboarding_btn">50dp</dimen>
+    <dimen name="txt_size_meduim">16sp</dimen>
+    <dimen name="txt_size_large">22sp</dimen>
+    <dimen name="txt_size_xsmall">14sp</dimen>
 </resources>
