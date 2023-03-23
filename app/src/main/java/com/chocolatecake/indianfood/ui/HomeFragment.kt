@@ -26,6 +26,10 @@ class HomeFragment : BaseFragment<FragmentHomeBinding>() {
         setupDatasource()
     }
 
+    override fun setUp() {
+
+    }
+
     override fun addCallBacks() {
         Log.i("TAG", "Quick Recipes: ${getQuickRecipesInteractor(10).map { it.name }}")
     }

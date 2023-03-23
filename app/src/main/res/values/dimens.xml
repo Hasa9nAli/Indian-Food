@@ -1,5 +1,10 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
+    <dimen name="normalSpace">16dp</dimen>
+    <dimen name="smallSpace">4dp</dimen>
+    <dimen name="largeSpace">24dp</dimen>
+    <dimen name="imageHeight">284dp</dimen>
+    <dimen name="cardHeight">92dp</dimen>
     <dimen name="margin_xxxlarge">110dp</dimen>
     <dimen name="height_onboarding_image">297dp</dimen>
     <dimen name="margin_large">32dp</dimen>
