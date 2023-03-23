@@ -53,7 +53,6 @@
         <item name="colorOnSurfaceInverse">@color/md_theme_dark_inverseOnSurface</item>
 
         <item name="colorPrimaryInverse">@color/md_theme_dark_inversePrimary</item>
-
     </style>
     <style name="RoundedCorner">
         <item name="cornerFamily">rounded</item>
