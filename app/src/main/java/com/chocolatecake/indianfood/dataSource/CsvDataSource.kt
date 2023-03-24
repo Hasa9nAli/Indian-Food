@@ -21,12 +21,6 @@ class CsvDataSource(
                 parser.parseLine(it)
             }
 
-//        context
-//            .assets
-//            .open(fileName)
-//            .bufferedReader()
-//            .use(BufferedReader::readText)
-
     }
 
     private fun getCsvFile(): InputStream {

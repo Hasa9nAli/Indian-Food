@@ -1,4 +1,4 @@
-package com.chocolatecake.indianfood.util
+package com.chocolatecake.indianfood.dataSource.utils
 
 fun String.splitByDots(): List<String> = split(".")
 
