@@ -1,11 +1,10 @@
 package com.chocolatecake.indianfood
 
-import android.os.Bundle
 import android.view.LayoutInflater
-import androidx.appcompat.app.AppCompatActivity
 import androidx.core.splashscreen.SplashScreen.Companion.installSplashScreen
 import com.chocolatecake.indianfood.databinding.ActivityMainBinding
 import com.chocolatecake.indianfood.ui.BaseActivity
+import com.chocolatecake.indianfood.ui.OnBoardingFragment
 import com.chocolatecake.indianfood.util.Constants.MAIN_ACTIVITY
 
 

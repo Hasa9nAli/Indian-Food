@@ -1,10 +1,11 @@
-package com.chocolatecake.indianfood
+package com.chocolatecake.indianfood.ui
 
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
+import com.chocolatecake.indianfood.OnBoardingPagerAdapter
 import com.chocolatecake.indianfood.databinding.FragmentOnBoardingBinding
 import com.chocolatecake.indianfood.util.createOnBoardingDataList
 
