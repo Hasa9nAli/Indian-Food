@@ -53,8 +53,7 @@ class RecipeDetailsFragment : BaseFragment<FragmentRecipeDetailsBinding>(), OnTa
     }
 
     private fun initRecipeObjectFromParameter() {
-//        recipe = arguments?.getParcelable(Constants.RECIPE_OBJECT_PASSING_CODE)
-       recipe = GetRandomMealIntractor(CsvDataSource(CsvParser(),requireContext())).invoke()
+       recipe = arguments?.getParcelable(Constants.RECIPE_OBJECT_PASSING_CODE)
     }
 
     private fun updateRecipeDetailsViews() {
