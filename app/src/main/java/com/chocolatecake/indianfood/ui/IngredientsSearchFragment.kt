@@ -9,18 +9,10 @@ import com.chocolatecake.indianfood.R
 import com.chocolatecake.indianfood.dataSource.CsvDataSource
 import com.chocolatecake.indianfood.dataSource.utils.CsvParser
 import com.chocolatecake.indianfood.databinding.FragmentIngredientsSearchBinding
-import com.chocolatecake.indianfood.interactor.FindRecipesByAnyIngredientsInteractor
 import com.chocolatecake.indianfood.interactor.FindRecipesContainsSpecifiedIngredientInteractor
-import com.chocolatecake.indianfood.interactor.GetRandomMealIntractor
 import com.chocolatecake.indianfood.interactor.IndianFoodDataSource
 
-private const val ARG_PARAM1 = "param1"
-private const val ARG_PARAM2 = "param2"
-
-
 class IngredientsSearchFragment : BaseFragment<FragmentIngredientsSearchBinding>() {
-    private var param1: String? = null
-    private var param2: String? = null
 
     lateinit var dataSource: IndianFoodDataSource
     lateinit var searchRecipesByIngredient: FindRecipesContainsSpecifiedIngredientInteractor
@@ -32,10 +24,7 @@ class IngredientsSearchFragment : BaseFragment<FragmentIngredientsSearchBinding>
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        arguments?.let {
-            param1 = it.getString(ARG_PARAM1)
-            param2 = it.getString(ARG_PARAM2)
-        }
+
     }
 
 
