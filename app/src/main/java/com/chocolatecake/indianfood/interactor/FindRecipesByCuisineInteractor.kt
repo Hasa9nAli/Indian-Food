@@ -9,7 +9,7 @@ class FindRecipesByCuisineInteractor(private val dataSource: IndianFoodDataSourc
     fun getRecipesBuyCuisineName(cuisine: String): List<Recipe>{
         return dataSource
             .getAllRecipesData()
-            .ifEmpty { throw IllegalAccessException("the Recipe is not found")}
+            .ifEmpty { throw IllegalStateException("Something went wrong") }
             .filter { recipe -> recipe.cuisine.lowercase().trim() == cuisine.lowercase().trim()  }
     }
 
