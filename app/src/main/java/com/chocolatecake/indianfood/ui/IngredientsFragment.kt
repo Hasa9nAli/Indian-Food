@@ -6,7 +6,6 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import com.chocolatecake.indianfood.databinding.FragmentIngredientsBinding
-import com.chocolatecake.indianfood.model.Recipe
 import com.chocolatecake.indianfood.util.Constants
 
 class IngredientsFragment : BaseFragment<FragmentIngredientsBinding>() {
@@ -21,12 +20,16 @@ class IngredientsFragment : BaseFragment<FragmentIngredientsBinding>() {
         Log.i(TAG, recipeIngredients.toString())
     }
 
+    override fun setUp() {
+        TODO("Not yet implemented")
+    }
+
     override fun addCallBacks() {
 
     }
 
-    companion object{
-        const val TAG="IngredientsFragment"
+    companion object {
+        const val TAG = "IngredientsFragment"
     }
 
 }

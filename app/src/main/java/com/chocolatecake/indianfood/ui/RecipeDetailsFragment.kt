@@ -35,6 +35,7 @@ class RecipeDetailsFragment : BaseFragment<FragmentRecipeDetailsBinding>() {
     }
 
     override fun setUp() {
+
     }
 
     private fun updateRecipeDetails() {
