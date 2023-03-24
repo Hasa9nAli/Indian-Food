@@ -8,7 +8,10 @@ import androidx.fragment.app.Fragment
 import androidx.fragment.app.FragmentActivity
 import com.bumptech.glide.Glide
 import com.chocolatecake.indianfood.R
+import com.chocolatecake.indianfood.dataSource.CsvDataSource
+import com.chocolatecake.indianfood.dataSource.utils.CsvParser
 import com.chocolatecake.indianfood.databinding.FragmentRecipeDetailsBinding
+import com.chocolatecake.indianfood.interactor.GetRandomMealIntractor
 import com.chocolatecake.indianfood.model.Recipe
 import com.chocolatecake.indianfood.util.Constants
 import com.google.android.material.tabs.TabLayout
@@ -26,11 +29,11 @@ class RecipeDetailsFragment : BaseFragment<FragmentRecipeDetailsBinding>(), OnTa
 
     override fun setUp() {
         initRecipeObjectFromParameter()
+        initIngredientsAndInstructionsFragmentsObjects()
         if (recipe == null) {
             showErrorMessageToUser()
             return
         }
-        initIngredientsAndInstructionsFragmentsObjects()
         initIngredientsAndInstructionsFragmentsBundles()
         setDefaultInnerFragment()
         updateRecipeDetailsViews()
@@ -50,7 +53,7 @@ class RecipeDetailsFragment : BaseFragment<FragmentRecipeDetailsBinding>(), OnTa
     }
 
     private fun initRecipeObjectFromParameter() {
-        recipe = arguments?.getParcelable(Constants.RECIPE_OBJECT_PASSING_CODE)
+       recipe = arguments?.getParcelable(Constants.RECIPE_OBJECT_PASSING_CODE)
     }
 
     private fun updateRecipeDetailsViews() {
@@ -112,19 +115,17 @@ class RecipeDetailsFragment : BaseFragment<FragmentRecipeDetailsBinding>(), OnTa
 
     private fun changeBetweenInstructionsAndIngredientsFragments(fragment: Fragment) {
         val transaction = (activity as FragmentActivity).supportFragmentManager.beginTransaction()
-        transaction.replace(R.id.fragment_container, fragment)
+        transaction.replace(R.id.fragment_container_instructions_ingredients, fragment)
         transaction.commit()
     }
 
     override fun onTabSelected(tab: TabLayout.Tab?) {
         binding.apply {
             when (tab) {
-                tabLayoutIngredientsInstructions.getTabAt(INGREDIENTS_TAB_INDEX) -> changeBetweenInstructionsAndIngredientsFragments(
-                    ingredientsFragment
-                )
-                tabLayoutIngredientsInstructions.getTabAt(INSTRUCTIONS_TAB_INDEX) -> changeBetweenInstructionsAndIngredientsFragments(
-                    instructionsFragment
-                )
+                tabLayoutIngredientsInstructions.getTabAt(INGREDIENTS_TAB_INDEX) ->
+                    changeBetweenInstructionsAndIngredientsFragments(ingredientsFragment)
+                tabLayoutIngredientsInstructions.getTabAt(INSTRUCTIONS_TAB_INDEX) ->
+                    changeBetweenInstructionsAndIngredientsFragments(instructionsFragment)
             }
         }
     }
