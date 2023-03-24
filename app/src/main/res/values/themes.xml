@@ -58,4 +58,8 @@
         <item name="android:windowLightStatusBar">true</item>
 
     </style>
+
+    <style name="reduceImage">
+        <item name="cornerSize">28dp</item>
+    </style>
 </resources>

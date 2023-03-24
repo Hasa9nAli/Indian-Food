@@ -54,4 +54,8 @@
 
         <item name="colorPrimaryInverse">@color/md_theme_dark_inversePrimary</item>
     </style>
+
+    <style name="reduceImage">
+        <item name="cornerSize">28dp</item>
+    </style>
 </resources>
