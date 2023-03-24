@@ -1,5 +1,23 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
+    <dimen name="back_button_size">34dp</dimen>
+    <dimen name="margin_medium">16dp</dimen>
+    <dimen name="padding_small">5dp</dimen>
+    <dimen name="text_title">16sp</dimen>
+    <dimen name="padding_large">35dp</dimen>
+    <dimen name="overlay_margin_large">-35dp</dimen>
+    <dimen name="padding_medium">18dp</dimen>
+    <dimen name="margin_medium_plus">18dp</dimen>
+    <dimen name="font_sub_title">14sp</dimen>
+    <dimen name="margin_small">4dp</dimen>
+    <dimen name="margin_huge">80dp</dimen>
+    <dimen name="margin_less_medium">12dp</dimen>
+    <dimen name="small_text">12sp</dimen>
+    <dimen name="normalSpace">16dp</dimen>
+    <dimen name="smallSpace">4dp</dimen>
+    <dimen name="largeSpace">24dp</dimen>
+    <dimen name="imageHeight">284dp</dimen>
+    <dimen name="cardHeight">92dp</dimen>
     <dimen name="margin_xxxlarge">110dp</dimen>
     <dimen name="height_onboarding_image">297dp</dimen>
     <dimen name="margin_large">32dp</dimen>
