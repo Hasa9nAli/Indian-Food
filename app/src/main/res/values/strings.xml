@@ -1,5 +1,63 @@
 <resources>
     <string name="app_name">Indian Food</string>
+    <string name="onBoarding_title_1">welcome to our Indian recipe</string>
+    <string name="onBoarding_desc_1">Welcome to our Indian recipe app. Let\'s explore the\n vibrant world of Indian cuisine together</string>
+    <string name="onBoarding_title_2">Customize your Dish</string>
+    <string name="onBoarding_desc_2">Cook with confidence using our step-by-step\n instructions and helpful tips for perfect results\n every time</string>
+    <string name="onBoarding_title_3"><![CDATA[Fast & Quick]]></string>
+    <string name="onBoarding_desc_3">From classic curries to modern\n dishes, we\'ve got you covered with our extensive\n collection of Indian recipes.</string>
+    <string name="next">Next</string>
+    <string name="skip">Skip</string>
+    <string name="onboarding_slide_image_one">OnBoarding Slide Image One</string>
+    <string name="onboarding_slide_image_two">OnBoarding Slide Image Two</string>
+    <string name="onboarding_slide_image_three">OnBoarding Slide Image Three</string>
     <!-- TODO: Remove or change this placeholder text -->
     <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="back_button">back button</string>
+    <string name="masala_karela_recipe">Masala Karela Recipe</string>
+    <string name="india">India</string>
+    <string name="_25_min">25 min</string>
+    <string name="_10_ingredients">10 ingredients</string>
+    <string name="easy">Easy</string>
+    <string name="instructions_example">
+        To begin making the Masala Karela Recipe
+        \n 1- de-seed the karela and slice.Do not remove the skin as the skin has all the nutrients.\n
+        2- Add the karela to the pressure cooker with 3 tablespoon of water; \n 3- salt and turmeric powder and pressure cook for three whistles.\n
+     To begin making the Masala Karela Recipe
+        \n 1- de-seed the karela and slice.Do not remove the skin as the skin has all the nutrients.\n
+        2- Add the karela to the pressure cooker with 3 tablespoon of water; \n 3- salt and turmeric powder and pressure cook for three whistles.\n
+         To begin making the Masala Karela Recipe
+        \n 1- de-seed the karela and slice.Do not remove the skin as the skin has all the nutrients.\n
+        2- Add the karela to the pressure cooker with 3 tablespoon of water; \n 3- salt and turmeric powder and pressure cook for three whistles.\n
+         To begin making the Masala Karela Recipe
+        \n 1- de-seed the karela and slice.Do not remove the skin as the skin has all the nutrients.\n
+        2- Add the karela to the pressure cooker with 3 tablespoon of water; \n 3- salt and turmeric powder and pressure cook for three whistles.\n
+         To begin making the Masala Karela Recipe
+        \n 1- de-seed the karela and slice.Do not remove the skin as the skin has all the nutrients.\n
+        2- Add the karela to the pressure cooker with 3 tablespoon of water; \n 3- salt and turmeric powder and pressure cook for three whistles.\n
+         To begin making the Masala Karela Recipe
+        \n 1- de-seed the karela and slice.Do not remove the skin as the skin has all the nutrients.\n
+        2- Add the karela to the pressure cooker with 3 tablespoon of water; \n 3- salt and turmeric powder and pressure cook for three whistles.\n
+         To begin making the Masala Karela Recipe
+        \n 1- de-seed the karela and slice.Do not remove the skin as the skin has all the nutrients.\n
+        2- Add the karela to the pressure cooker with 3 tablespoon of water; \n 3- salt and turmeric powder and pressure cook for three whistles.\n
+         To begin making the Masala Karela Recipe
+        \n 1- de-seed the karela and slice.Do not remove the skin as the skin has all the nutrients.\n
+        2- Add the karela to the pressure cooker with 3 tablespoon of water; \n 3- salt and turmeric powder and pressure cook for three whistles.\n
+         To begin making the Masala Karela Recipe
+        \n 1- de-seed the karela and slice.Do not remove the skin as the skin has all the nutrients.\n
+        2- Add the karela to the pressure cooker with 3 tablespoon of water; \n 3- salt and turmeric powder and pressure cook for three whistles.\n
+         To begin making the Masala Karela Recipe
+        \n 1- de-seed the karela and slice.Do not remove the skin as the skin has all the nutrients.\n
+        2- Add the karela to the pressure cooker with 3 tablespoon of water; \n 3- salt and turmeric powder and pressure cook for three whistles.\n
+         To begin making the Masala Karela Recipe
+        \n 1- de-seed the karela and slice.Do not remove the skin as the skin has all the nutrients.\n
+        2- Add the karela to the pressure cooker with 3 tablespoon of water; \n 3- salt and turmeric powder and pressure cook for three whistles.\n
+        
+    </string>
+    <string name="ingredients">Ingredients</string>
+    <string name="instructions">instructions</string>
+    <string name="not_implemented_yet">Not implemented yet</string>
+    <string name="min">min</string>
+    <string name="the_recipe_doesnt_exist">The recipe doesn\'t exist</string>
 </resources>
