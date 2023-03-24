@@ -3,9 +3,7 @@ package com.chocolatecake.indianfood
 import android.view.LayoutInflater
 import androidx.core.splashscreen.SplashScreen.Companion.installSplashScreen
 import com.chocolatecake.indianfood.databinding.ActivityMainBinding
-import com.chocolatecake.indianfood.interactor.FindIngredientsInteractor
 import com.chocolatecake.indianfood.ui.BaseActivity
-import com.chocolatecake.indianfood.ui.HomeFragment
 import com.chocolatecake.indianfood.util.Constants.MAIN_ACTIVITY
 
 
@@ -26,15 +24,8 @@ class MainActivity : BaseActivity<ActivityMainBinding>() {
 
 
     private fun setUpSubFragment() {
-
         val transction = supportFragmentManager.beginTransaction()
         transction.add(binding.fragmentContainer.id, onBoardingFragment)
         transction.commit()
-
-    override fun onCreate(savedInstanceState: Bundle?) {
-        super.onCreate(savedInstanceState)
-        setContentView(R.layout.activity_main)
-
-
     }
 }
