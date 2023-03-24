@@ -10,21 +10,21 @@ fun Context.createOnBoardingDataList(): MutableList<OnBoardingItem> {
         OnBoardingItem(
             getString(R.string.onBoarding_title_1),
             getString(R.string.onBoarding_desc_1),
-            R.drawable.onboarding_slide_1
+            R.drawable.chef
         )
     )
     onBoardingData.add(
         OnBoardingItem(
             getString(R.string.onBoarding_title_2),
             getString(R.string.onBoarding_desc_2),
-            R.drawable.onboarding_slide_2
+            R.drawable.shawarma
         )
     )
     onBoardingData.add(
         OnBoardingItem(
             getString(R.string.onBoarding_title_3),
             getString(R.string.onBoarding_desc_3),
-            R.drawable.onboarding_slide_3
+            R.drawable.recipe
         )
     )
 
