@@ -121,4 +121,9 @@
     <color name="md_theme_dark_outlineVariant">#49454F</color>
 
     <color name="md_theme_dark_scrim">#000000</color>
+    <color name="white">#FFFFFF</color>
+    <color name="color_Card">#99EADDFF</color>
+    <color name="color_Text">#991C1B1F</color>
+    <color name="text_One">#DE1C1B1F</color>
+    <color name="background">#FCFCFC</color>
 </resources>
