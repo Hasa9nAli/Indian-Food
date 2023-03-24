@@ -1,5 +1,10 @@
 <resources>
     <string name="app_name">Indian Food</string>
+    <string name="largetitleDescription">Indian eating habits are diverse and influenced by cultural and geographical factors</string>
+    <string name="sectionOne">Butter Chicken: This is a classic North Indian dish, which is made with marinated chicken cooked in a creamy tomato-based sauce. </string>
+    <string name="sectionTow">Biryani is a popular rice dish made with spices, meat or vegetables, and saffron. It is a specialty of the Hyderabad region in South India.</string>
+    <string name="sectionThree">Indian food is known for its use of a variety of spices, Some of the commonly used spices include cumin, coriander and turmeric</string>
+    <string name="sectionFour">India has a diverse range of regional cuisines, each with its unique flavors and dishes. The eating habits vary accordingly.</string>
     <string name="onBoarding_title_1">welcome to our Indian recipe</string>
     <string name="onBoarding_desc_1">Welcome to our Indian recipe app. Let\'s explore the\n vibrant world of Indian cuisine together</string>
     <string name="onBoarding_title_2">Customize your Dish</string>
@@ -60,4 +65,6 @@
     <string name="not_implemented_yet">Not implemented yet</string>
     <string name="min">min</string>
     <string name="the_recipe_doesnt_exist">The recipe doesn\'t exist</string>
+    <string name="blank" />
+
 </resources>
