@@ -4,13 +4,13 @@ class FindIngredientsInteractor(
     private val dataSource: IndianFoodDataSource,
 ) {
 
-    operator fun invoke(item : String , limit: Int): List<String> {
+    operator fun invoke(input: String, limit: Int): List<String> {
         return dataSource
             .getAllRecipesData()
             .ifEmpty { throw IllegalAccessException("Something went wrong") }
-            .map {
-                it.ingredients
-                    .find { ingredient -> ingredient.contains(item, ignoreCase = true) }.toString()
-            }.take(limit)
+            .flatMap { it.cleanedIngredients }
+            .filter { it.contains(input, ignoreCase = true) }
+            .distinct()
+            .take(limit)
     }
 }
