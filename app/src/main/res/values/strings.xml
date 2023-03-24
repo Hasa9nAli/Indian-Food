@@ -64,4 +64,5 @@
     <string name="instructions">instructions</string>
     <string name="not_implemented_yet">Not implemented yet</string>
     <string name="min">min</string>
+    <string name="the_recipe_doesnt_exist">The recipe Doesn\'t exist</string>
 </resources>
