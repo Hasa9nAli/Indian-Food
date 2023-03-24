@@ -24,7 +24,6 @@ class RecipeDetailsFragment : BaseFragment<FragmentRecipeDetailsBinding>(), OnTa
     private lateinit var ingredientsFragment: IngredientsFragment
     private lateinit var instructionsFragment: InstructionsFragment
 
-
     override fun setUp() {
         initRecipeObjectFromParameter()
         if (recipe == null) {
