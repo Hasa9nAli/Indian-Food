@@ -10,6 +10,8 @@ import com.chocolatecake.indianfood.dataSource.CsvDataSource
 import com.chocolatecake.indianfood.dataSource.utils.CsvParser
 import com.chocolatecake.indianfood.databinding.FragmentIngredientsSearchBinding
 import com.chocolatecake.indianfood.interactor.FindRecipesByAnyIngredientsInteractor
+import com.chocolatecake.indianfood.interactor.FindRecipesContainsSpecifiedIngredientInteractor
+import com.chocolatecake.indianfood.interactor.GetRandomMealIntractor
 import com.chocolatecake.indianfood.interactor.IndianFoodDataSource
 
 private const val ARG_PARAM1 = "param1"
@@ -19,9 +21,9 @@ private const val ARG_PARAM2 = "param2"
 class IngredientsSearchFragment : BaseFragment<FragmentIngredientsSearchBinding>() {
     private var param1: String? = null
     private var param2: String? = null
-    lateinit var dataSource: IndianFoodDataSource
 
-    lateinit var searchRecipesByIngredient: FindRecipesByAnyIngredientsInteractor
+    lateinit var dataSource: IndianFoodDataSource
+    lateinit var searchRecipesByIngredient: FindRecipesContainsSpecifiedIngredientInteractor
     private lateinit var csvParser: CsvParser
 
 
@@ -49,7 +51,7 @@ class IngredientsSearchFragment : BaseFragment<FragmentIngredientsSearchBinding>
     private fun setupDatasource() {
         csvParser = CsvParser()
         dataSource = CsvDataSource(csvParser, requireContext())
-        searchRecipesByIngredient = FindRecipesByAnyIngredientsInteractor(dataSource)    }
+        searchRecipesByIngredient = FindRecipesContainsSpecifiedIngredientInteractor(dataSource)    }
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
