@@ -2,7 +2,10 @@ package com.chocolatecake.indianfood.ui
 
 import android.view.LayoutInflater
 import androidx.core.splashscreen.SplashScreen.Companion.installSplashScreen
+import com.chocolatecake.indianfood.dataSource.CsvDataSource
+import com.chocolatecake.indianfood.dataSource.utils.CsvParser
 import com.chocolatecake.indianfood.databinding.ActivityMainBinding
+import com.chocolatecake.indianfood.interactor.GetRandomMealIntractor
 import com.chocolatecake.indianfood.util.Constants.MAIN_ACTIVITY
 
 
@@ -12,10 +15,17 @@ class MainActivity : BaseActivity<ActivityMainBinding>() {
 
     override val bindingInflater: (LayoutInflater) -> ActivityMainBinding =
         ActivityMainBinding::inflate
-    private val onBoardingFragment = OnBoardingFragment()
+    private var onBoardingFragment: RecipeDetailsFragment? = null
 
     override fun setUp() {
         installSplashScreen()
+        onBoardingFragment = RecipeDetailsFragment.newInstance(
+            GetRandomMealIntractor(
+                CsvDataSource(
+                    CsvParser(), this
+                )
+            ).invoke()
+        )
     }
 
     override fun addCallbacks() {
@@ -25,7 +35,7 @@ class MainActivity : BaseActivity<ActivityMainBinding>() {
 
     private fun setUpSubFragment() {
         val transction = supportFragmentManager.beginTransaction()
-        transction.add(binding.fragmentContainer.id, onBoardingFragment)
+        transction.add(binding.fragmentContainer.id, onBoardingFragment!!)
         transction.commit()
     }
 }
