@@ -1,0 +1,99 @@
+<?xml version="1.0" encoding="utf-8"?>
+<com.google.android.material.card.MaterialCardView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:layout_margin="16dp">
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <com.google.android.material.imageview.ShapeableImageView
+            android:id="@+id/dishOfTheDayImage"
+            android:layout_width="match_parent"
+            android:layout_height="201dp"
+            android:scaleType="centerCrop"
+            android:src="@drawable/dishday"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:shapeAppearanceOverlay="@style/RoundedCorner" />
+
+        <View
+            android:layout_width="0dp"
+            android:layout_height="0dp"
+            android:background="@drawable/overlay_for_card"
+            android:foreground="?attr/selectableItemBackground"
+            app:layout_constraintBottom_toBottomOf="@id/dishOfTheDayImage"
+            app:layout_constraintEnd_toEndOf="@id/dishOfTheDayImage"
+            app:layout_constraintStart_toStartOf="@id/dishOfTheDayImage"
+            app:layout_constraintTop_toTopOf="@id/dishOfTheDayImage" />
+
+        <LinearLayout
+            android:id="@+id/RecipeTime"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="16dp"
+            android:layout_marginEnd="16dp"
+            android:orientation="horizontal"
+            app:layout_constraintEnd_toEndOf="@id/dishOfTheDayImage"
+            app:layout_constraintTop_toTopOf="@id/dishOfTheDayImage">
+
+            <ImageView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:layout_marginRight="4dp"
+                android:src="@drawable/clock" />
+
+            <TextView
+                android:id="@+id/RecipeCookingTime"
+                style="@style/TextAppearance.Material3.BodyMedium"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="25 min"
+                android:textColor="#DEFFFFFF" />
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:id="@+id/RecipeTitle"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="16dp"
+            android:layout_marginEnd="16dp"
+            android:layout_marginBottom="16dp"
+            android:ellipsize="end"
+            android:orientation="vertical"
+            app:layout_constraintBottom_toBottomOf="@id/dishOfTheDayImage"
+            app:layout_constraintStart_toStartOf="@id/dishOfTheDayImage">
+
+
+            <TextView
+                android:id="@+id/RecipeName"
+                style="@style/TextAppearance.Material3.TitleLarge"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:ellipsize="end"
+                android:maxLines="2"
+                android:paddingStart="16dp"
+                android:text="Black Bean Burrito"
+                android:textColor="#DEFFFFFF" />
+
+            <TextView
+                android:id="@+id/RecipeCuisine"
+                style="@style/TextAppearance.Material3.BodyMedium"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="4dp"
+                android:paddingStart="16dp"
+                android:text="Mexican"
+                android:textColor="#DEFFFFFF" />
+
+        </LinearLayout>
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+
+</com.google.android.material.card.MaterialCardView>
