@@ -13,5 +13,8 @@ class GetQuickRecipesInteractor(
             .sortedBy { it.totalTimeInMinutes }
             .take(limit)
     }
+    companion object{
+        const val QUICK_RECIPES = "quick recipes"
+    }
 
 }
