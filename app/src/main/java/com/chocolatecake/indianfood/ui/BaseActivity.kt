@@ -3,6 +3,7 @@ import android.os.Bundle
 import android.util.Log
 import android.view.LayoutInflater
 import androidx.appcompat.app.AppCompatActivity
+import androidx.core.splashscreen.SplashScreen.Companion.installSplashScreen
 import androidx.viewbinding.ViewBinding
 
 abstract class BaseActivity<VB: ViewBinding> : AppCompatActivity() {
@@ -15,6 +16,7 @@ abstract class BaseActivity<VB: ViewBinding> : AppCompatActivity() {
         get() = _binding as VB
 
     override fun onCreate(savedInstanceState: Bundle?) {
+        installSplashScreen()
         super.onCreate(savedInstanceState)
         _binding = bindingInflater(layoutInflater)
         setUp()
