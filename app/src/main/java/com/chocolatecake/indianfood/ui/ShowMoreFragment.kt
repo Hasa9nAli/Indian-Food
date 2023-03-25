@@ -1,16 +1,11 @@
-package com.chocolatecake.indianfood
+package com.chocolatecake.indianfood.ui
 
 import android.os.Bundle
-import android.view.Gravity
 import android.view.LayoutInflater
-import android.view.View
 import android.view.ViewGroup
-import android.widget.GridLayout
 import com.chocolatecake.indianfood.databinding.ShowMoreBinding
-import com.chocolatecake.indianfood.model.Recipe
-import com.chocolatecake.indianfood.ui.BaseFragment
 
-class ShowMoreFragment() : BaseFragment<ShowMoreBinding>() {
+class ShowMoreFragment : BaseFragment<ShowMoreBinding>() {
     override val inflater: (LayoutInflater, ViewGroup?, Boolean) -> ShowMoreBinding =
         ShowMoreBinding::inflate
 
@@ -20,7 +15,6 @@ class ShowMoreFragment() : BaseFragment<ShowMoreBinding>() {
     }
 
     private fun goBack() {
-
         val arrowBackButton = binding.arrowBack.setOnClickListener {
             parentFragmentManager.beginTransaction().remove(this).commit()
         }
@@ -30,6 +24,15 @@ class ShowMoreFragment() : BaseFragment<ShowMoreBinding>() {
 
     }
 
+    companion object {
+        const val RECIPES_CATEGORY = "RECIPE"
 
+        fun newInstance(categoryType: String) =
+            RecipeDetailsFragment().apply {
+                arguments = Bundle().apply {
+                    putString(RECIPES_CATEGORY, categoryType)
+                }
+            }
+    }
 
 }
