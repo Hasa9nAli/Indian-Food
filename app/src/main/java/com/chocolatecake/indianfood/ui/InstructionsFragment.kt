@@ -2,10 +2,8 @@ package com.chocolatecake.indianfood.ui
 
 import android.os.Bundle
 import android.view.LayoutInflater
-import android.view.View
 import android.view.ViewGroup
 import com.chocolatecake.indianfood.databinding.FragmentInstructionsBinding
-import com.chocolatecake.indianfood.util.Constants
 
 class InstructionsFragment : BaseFragment<FragmentInstructionsBinding>() {
 
@@ -17,19 +15,27 @@ class InstructionsFragment : BaseFragment<FragmentInstructionsBinding>() {
 
     }
 
-    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
-        super.onViewCreated(view, savedInstanceState)
-        recipeInstructions = arguments?.getStringArrayList(Constants.INSTRUCTIONS_LIST)!!.toList()
-        setIngredientsTextValue()
-    }
-
     override fun setUp() {
-        TODO("Not yet implemented")
+        recipeInstructions = arguments?.getStringArrayList(INSTRUCTIONS)!!.toList()
+        setIngredientsTextValue()
     }
 
     private fun setIngredientsTextValue() {
         val text = recipeInstructions.joinToString(separator = "\n")
         binding.textViewIngredientsShow.text = text
+    }
+
+    companion object {
+        const val TAG = "IngredientsFragment"
+
+        const val INSTRUCTIONS = "instructions"
+
+        fun newInstance(instructions: ArrayList<String>) =
+            InstructionsFragment().apply {
+                arguments = Bundle().apply {
+                    putStringArrayList(INSTRUCTIONS, instructions)
+                }
+            }
     }
 
 

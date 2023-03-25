@@ -3,10 +3,8 @@ package com.chocolatecake.indianfood.ui
 import android.os.Bundle
 import android.util.Log
 import android.view.LayoutInflater
-import android.view.View
 import android.view.ViewGroup
 import com.chocolatecake.indianfood.databinding.FragmentIngredientsBinding
-import com.chocolatecake.indianfood.util.Constants
 
 class IngredientsFragment : BaseFragment<FragmentIngredientsBinding>() {
 
@@ -14,14 +12,11 @@ class IngredientsFragment : BaseFragment<FragmentIngredientsBinding>() {
         FragmentIngredientsBinding::inflate
 
     private lateinit var recipeIngredients: List<String>
-    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
-        super.onViewCreated(view, savedInstanceState)
-        recipeIngredients = arguments?.getStringArrayList(Constants.INSTRUCTIONS_LIST)!!.toList()
-        Log.i(TAG, recipeIngredients.toString())
-    }
 
     override fun setUp() {
-        TODO("Not yet implemented")
+        recipeIngredients =
+            arguments?.getStringArrayList(INGREDIENTS)!!.toList()
+        Log.i(TAG, recipeIngredients.toString())
     }
 
     override fun addCallBacks() {
@@ -30,6 +25,14 @@ class IngredientsFragment : BaseFragment<FragmentIngredientsBinding>() {
 
     companion object {
         const val TAG = "IngredientsFragment"
-    }
 
+        const val INGREDIENTS = "ingredients"
+
+        fun newInstance(ingredients: ArrayList<String>) =
+            IngredientsFragment().apply {
+                arguments = Bundle().apply {
+                    putStringArrayList(INGREDIENTS, ingredients)
+                }
+            }
+    }
 }
