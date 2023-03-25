@@ -1,14 +1,9 @@
 package com.chocolatecake.indianfood.ui
 
-import android.os.Bundle
 import android.util.Log
 import android.view.LayoutInflater
-import android.view.View
 import android.view.ViewGroup
-import android.widget.ImageView
-import android.widget.TextView
 import com.bumptech.glide.Glide
-import com.chocolatecake.indianfood.R
 import com.chocolatecake.indianfood.dataSource.CsvDataSource
 import com.chocolatecake.indianfood.dataSource.utils.CsvParser
 import com.chocolatecake.indianfood.databinding.FragmentHomeBinding
@@ -27,15 +22,10 @@ class HomeFragment : BaseFragment<FragmentHomeBinding>() {
     override val inflater: (LayoutInflater, ViewGroup?, Boolean) -> FragmentHomeBinding
         get() = FragmentHomeBinding::inflate
 
-    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
-        super.onViewCreated(view, savedInstanceState)
+    override fun setUp() {
         setupDatasource()
         getRandomRecipe()
         Log.i("TAG", "Quick Recipes: ${getQuickRecipesInteractor(3).map { it.name }}")
-    }
-
-    override fun setUp() {
-
     }
 
     override fun addCallBacks() {

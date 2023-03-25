@@ -1,45 +1,37 @@
 package com.chocolatecake.indianfood.ui
 
-import android.os.Bundle
 import android.view.LayoutInflater
-import android.view.View
 import android.view.ViewGroup
-import androidx.fragment.app.Fragment
 import com.chocolatecake.indianfood.databinding.FragmentOnBoardingBinding
 import com.chocolatecake.indianfood.util.createOnBoardingDataList
 
-class OnBoardingFragment : Fragment() {
+class OnBoardingFragment : BaseFragment<FragmentOnBoardingBinding>() {
 
     private lateinit var onBoardingPagerAdapter: OnBoardingPagerAdapter
-    private lateinit var _binding: FragmentOnBoardingBinding
+    override val inflater: (LayoutInflater, ViewGroup?, Boolean) -> FragmentOnBoardingBinding
+        get() = FragmentOnBoardingBinding::inflate
 
-    override fun onCreateView(
-        inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?
-    ): View {
-        _binding = FragmentOnBoardingBinding.inflate(inflater)
-        return _binding.root
-    }
-
-    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
-        super.onViewCreated(view, savedInstanceState)
+    override fun setUp() {
         setupOnBoardingViewPager()
         setupNextButton()
+    }
 
+    override fun addCallBacks() {
     }
 
     private fun setupOnBoardingViewPager() {
         val onBoardingData = requireContext().createOnBoardingDataList()
         onBoardingPagerAdapter = OnBoardingPagerAdapter(onBoardingData)
-        _binding.onBoardingVB.adapter = onBoardingPagerAdapter
+        binding.onBoardingVB.adapter = onBoardingPagerAdapter
     }
 
     private fun setupNextButton() {
-        _binding.btnNext.setOnClickListener {
+        binding.btnNext.setOnClickListener {
             if (getCurrentItemIndex(0) < 3) {
-                _binding.onBoardingVB.setCurrentItem(getCurrentItemIndex(1), true)
+                binding.onBoardingVB.setCurrentItem(getCurrentItemIndex(1), true)
             }
         }
     }
 
-    private fun getCurrentItemIndex(index: Int) = _binding.onBoardingVB.currentItem + index
+    private fun getCurrentItemIndex(index: Int) = binding.onBoardingVB.currentItem + index
 }

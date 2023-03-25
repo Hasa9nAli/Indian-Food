@@ -22,21 +22,10 @@ class IngredientsSearchFragment : BaseFragment<FragmentIngredientsSearchBinding>
     override val inflater: (LayoutInflater, ViewGroup?, Boolean) -> FragmentIngredientsSearchBinding
         get() = FragmentIngredientsSearchBinding::inflate
 
-    override fun onCreate(savedInstanceState: Bundle?) {
-        super.onCreate(savedInstanceState)
-
-    }
-
-
     override fun addCallBacks() {
 
         Log.i("TAG", "Recipe: ${searchRecipesByIngredient(listOf("oil","rice")).map { it.name }}")
     }
-    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
-        super.onViewCreated(view, savedInstanceState)
-        setupDatasource()
-    }
-
     private fun setupDatasource() {
         csvParser = CsvParser()
         dataSource = CsvDataSource(csvParser, requireContext())
@@ -50,5 +39,8 @@ class IngredientsSearchFragment : BaseFragment<FragmentIngredientsSearchBinding>
     }
 
     override fun setUp() {
+
+        setupDatasource()
+
     }
 }
