@@ -1,0 +1,71 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.cardview.widget.CardView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:id="@+id/card_food"
+    android:layout_width="match_parent"
+    android:layout_height="90dp"
+    android:layout_marginVertical="@dimen/smallSpace"
+    app:cardBackgroundColor="@color/color_Card"
+    app:cardCornerRadius="12dp">
+
+    <androidx.constraintlayout.widget.Constraints
+        android:id="@+id/card"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <ImageView
+            android:id="@+id/meal_pic"
+            android:layout_width="99dp"
+            android:layout_height="90dp"
+            android:scaleType="centerCrop"
+            android:src="@drawable/food_image" />
+
+        <TextView
+            android:id="@+id/food_name"
+            style="@style/TextAppearance.Material3.LabelLarge"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="12dp"
+            android:layout_marginTop="12dp"
+            android:ellipsize="marquee"
+            android:fontFamily="@font/roboto"
+            android:text="Masala Karela"
+            android:textSize="12sp" />
+
+        <com.google.android.material.chip.ChipGroup
+            android:id="@+id/chipGroup"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="12dp"
+            android:layout_marginTop="16dp"
+            app:chipSpacingHorizontal="8dp"
+            app:chipSpacingVertical="8dp">
+
+            <com.google.android.material.chip.Chip
+                style="@style/Widget.Material3.Chip.Assist"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:fontFamily="@font/roboto"
+                android:text="45 min"
+                android:textColor="@color/color_Text"
+                android:textSize="12sp"
+                app:chipCornerRadius="100dp"
+                app:chipIcon="@drawable/clock_circle"
+                app:textStartPadding="4dp" />
+
+            <com.google.android.material.chip.Chip
+                style="@style/Widget.Material3.Chip.Assist"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:fontFamily="@font/roboto"
+                android:text="10 ingredients"
+                android:textColor="@color/color_Text"
+                android:textSize="@dimen/small_text"
+                app:chipCornerRadius="100dp"
+                app:chipIcon="@drawable/eggs"
+                app:textStartPadding="4dp" />
+
+        </com.google.android.material.chip.ChipGroup>
+
+    </androidx.constraintlayout.widget.Constraints>
+</androidx.cardview.widget.CardView>
