@@ -1,10 +1,18 @@
 <resources>
     <string name="app_name">Indian Food</string>
-    <string name="largetitleDescription">Food in India is an identity marker of caste, class, family, kinship, tribe affiliation, lineage, religiosity, and ethnicity.</string>
-    <string name="sectionOne">Indian food is much more than just a collection of flavors and ingredients. It is an integral part of the country\'s history, traditions, and way of life.</string>
-    <string name="sectionTow">Indian cuisine is known for its complex and varied use of spices, herbs, and seasonings, which have been cultivated and traded across the subcontinent for thousands of years. The food in each region of India is influenced by local ingredients, customs, and beliefs, making it a truly diverse and fascinating culinary landscape.</string>
-    <string name="sectionThree">At the heart of Indian food culture is the concept of hospitality and sharing. Food is seen as a way to bring people together, whether it\'s through elaborate feasts during festivals and celebrations or simple meals shared with family and friends. In Indian culture, the act of cooking and feeding others is considered a labor of love, and great care is taken to ensure that guests feel welcome and well-fed.</string>
-    <string name="sectionFour">Our app aims to honor this rich culinary heritage by bringing you authentic Indian recipes, along with insights into the cultural and historical context behind each dish. We hope that our app will inspire you to not only cook and enjoy delicious Indian food but also to appreciate the culture and traditions that make it so special.</string>
+    <string name="largetitleDescription">Indian eating habits are diverse and influenced by cultural and geographical factors</string>
+    <string name="sectionOne">Butter Chicken: This is a classic North Indian dish, which is made with marinated chicken cooked in a creamy tomato-based sauce. </string>
+    <string name="sectionTow">Biryani is a popular rice dish made with spices, meat or vegetables, and saffron. It is a specialty of the Hyderabad region in South India.</string>
+    <string name="sectionThree">Indian food is known for its use of a variety of spices, Some of the commonly used spices include cumin, coriander and turmeric</string>
+    <string name="sectionFour">India has a diverse range of regional cuisines, each with its unique flavors and dishes. The eating habits vary accordingly.</string>
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="choose_your_meal">Choose Your Meal</string>
+    <string name="masala_karela">Masala Karela</string>
+    <string name="_50_min">50 Min</string>
+    <string name="breakfast">Breakfast</string>
+    <string name="Lunch">Lunch</string>
+    <string name="Dinner">Dinner</string>
+    <string name="Choose_your_meal">Choose Your Meal</string>
     <string name="onBoarding_title_1">welcome to our Indian recipe</string>
     <string name="onBoarding_desc_1">Welcome to our Indian recipe app. Let\'s explore the\n vibrant world of Indian cuisine together</string>
     <string name="onBoarding_title_2">Customize your Dish</string>
@@ -58,10 +66,14 @@
          To begin making the Masala Karela Recipe
         \n 1- de-seed the karela and slice.Do not remove the skin as the skin has all the nutrients.\n
         2- Add the karela to the pressure cooker with 3 tablespoon of water; \n 3- salt and turmeric powder and pressure cook for three whistles.\n
-        
+
     </string>
     <string name="ingredients">Ingredients</string>
     <string name="instructions">instructions</string>
     <string name="not_implemented_yet">Not implemented yet</string>
     <string name="min">min</string>
+    <string name="the_famous_indian_dishes">The Famous Indian dishes</string>
+    <string name="the_recipe_doesnt_exist">The recipe doesn\'t exist</string>
+    <string name="blank" />
+
 </resources>

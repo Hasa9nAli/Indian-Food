@@ -3,7 +3,6 @@ package com.chocolatecake.indianfood.interactor
 import com.chocolatecake.indianfood.model.Recipe
 
 
-
 class GetHealthyMealsInteractor(
     private val dataSource: IndianFoodDataSource,
 ){
@@ -12,9 +11,8 @@ class GetHealthyMealsInteractor(
         const val HEALTHY = "healthy"
     }
 
-    operator fun invoke(
-        item: String,
-    ): List<Recipe> =
+
+    operator fun invoke(): List<Recipe> =
         dataSource
             .getAllRecipesData()
             .ifEmpty { throw IllegalStateException("Something went wrong") }

@@ -1,61 +1,77 @@
 <?xml version="1.0" encoding="utf-8"?>
 
-<ScrollView
-    xmlns:android="http://schemas.android.com/apk/res/android"
-     xmlns:app="http://schemas.android.com/apk/res-auto"
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
     android:orientation="vertical"
     android:scrollbars="none"
     android:layout_height="match_parent">
 
 
-<androidx.constraintlayout.widget.ConstraintLayout
-    android:layout_width="match_parent"
-    android:layout_height="match_parent">
-
-
-    <ImageView
-        android:id="@+id/recipeImage"
+    <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
-        android:layout_height="@dimen/imageHeight"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        android:scaleY="1.1"
-        android:src="@drawable/recipe"/>
+        android:layout_height="match_parent">
 
 
-    <LinearLayout
-        android:id="@+id/description"
-        android:layout_width="match_parent"
-        android:layout_height="@dimen/cardHeight"
-        android:layout_margin="@dimen/normalSpace"
-        android:background="@drawable/container_background"
-        android:padding="@dimen/normalSpace"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.334">
+        <ImageView
+            android:id="@+id/recipeImage"
+            android:layout_width="match_parent"
+            android:layout_height="199dp"
+            android:scaleX="1.3"
+            android:src="@drawable/recipe"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <View
+            android:layout_width="0dp"
+            android:layout_height="0dp"
+            android:background="#80000000"
+            app:layout_constraintBottom_toBottomOf="@id/recipeImage"
+            app:layout_constraintEnd_toEndOf="@id/recipeImage"
+            app:layout_constraintStart_toStartOf="@id/recipeImage"
+            app:layout_constraintTop_toTopOf="@id/recipeImage" />
 
         <TextView
-            style="@style/TextAppearance.Material3.TitleSmall"
-            android:layout_width="wrap_content"
+            style="@style/TextAppearance.Material3.TitleMedium"
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_gravity="center"
+            android:layout_margin="@dimen/normalSpace"
             android:gravity="center"
-            android:text="@string/largetitleDescription" />
-    </LinearLayout>
+            android:padding="@dimen/normalSpace"
+            android:text="@string/largetitleDescription"
+            android:textColor="@color/white"
+            app:layout_constraintBottom_toBottomOf="@id/recipeImage"
+            app:layout_constraintEnd_toEndOf="@id/recipeImage"
+            app:layout_constraintStart_toStartOf="@id/recipeImage"
+            app:layout_constraintTop_toTopOf="@id/recipeImage" />
 
-    <include
+
+        <TextView
+            android:id="@+id/titleTextView"
+            style="@style/TextAppearance.Material3.TitleMedium"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:layout_marginStart="@dimen/normalSpace"
+            android:layout_marginTop="@dimen/largeSpace"
+            android:layout_marginEnd="@dimen/normalSpace"
+            android:gravity="start"
+            android:text="@string/the_famous_indian_dishes"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/recipeImage" />
+
+        <include
             layout="@layout/fragment_content_about_meals"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginTop="@dimen/largeSpace"
-            app:layout_constraintStart_toStartOf="parent"
+            android:layout_margin="@dimen/normalSpace"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintTop_toBottomOf="@id/description"/>
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/titleTextView" />
 
- </androidx.constraintlayout.widget.ConstraintLayout>
+    </androidx.constraintlayout.widget.ConstraintLayout>
 
 </ScrollView>
