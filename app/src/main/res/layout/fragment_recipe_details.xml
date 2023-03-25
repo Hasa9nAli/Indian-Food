@@ -31,7 +31,7 @@
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent"
-            android:contentDescription="TODO" />
+           />
 
         <ImageButton
             android:id="@+id/image_button_return_back"
@@ -88,7 +88,7 @@
             app:layout_constraintHorizontal_chainStyle="packed"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/text_view_native_country"
-            android:contentDescription="TODO" />
+             />
 
 
         <ImageButton
@@ -104,7 +104,7 @@
             app:layout_constraintHorizontal_bias="0.5"
             app:layout_constraintStart_toEndOf="@+id/image_button_time_required"
             app:layout_constraintTop_toTopOf="@+id/image_button_time_required"
-            android:contentDescription="TODO" />
+           />
 
         <ImageButton
             android:id="@+id/image_button_ease_of_prepare"
@@ -118,7 +118,7 @@
             app:layout_constraintHorizontal_bias="0.5"
             app:layout_constraintStart_toEndOf="@+id/image_button_ingredients"
             app:layout_constraintTop_toTopOf="@+id/image_button_time_required"
-            android:contentDescription="TODO" />
+            />
 
 
         <TextView
@@ -195,7 +195,7 @@
         </com.google.android.material.tabs.TabLayout>
 
         <androidx.fragment.app.FragmentContainerView
-            android:id="@+id/fragment_container"
+            android:id="@+id/fragment_container_instructions_ingredients"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginHorizontal="@dimen/margin_medium"

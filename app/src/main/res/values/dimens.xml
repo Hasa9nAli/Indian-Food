@@ -1,5 +1,9 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
+
+    <dimen name="card_Radius">12dp</dimen>
+    <dimen name="size_Text">14sp</dimen>
+    <dimen name="sizeText">12sp</dimen>
     <dimen name="back_button_size">34dp</dimen>
     <dimen name="margin_medium">16dp</dimen>
     <dimen name="padding_small">5dp</dimen>

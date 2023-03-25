@@ -3,7 +3,6 @@ package com.chocolatecake.indianfood
 import android.view.LayoutInflater
 import androidx.core.splashscreen.SplashScreen.Companion.installSplashScreen
 import com.chocolatecake.indianfood.databinding.ActivityMainBinding
-import com.chocolatecake.indianfood.interactor.FindIngredientsInteractor
 import com.chocolatecake.indianfood.ui.BaseActivity
 import com.chocolatecake.indianfood.ui.OnBoardingFragment
 import com.chocolatecake.indianfood.util.Constants.MAIN_ACTIVITY

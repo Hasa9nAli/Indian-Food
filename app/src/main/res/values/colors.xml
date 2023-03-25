@@ -139,4 +139,8 @@
     <color name="tab_item_background_color">#2D2D2D</color>
 
     <color name="tab_selected_item_color">#2D2D2D</color>
+    <color name="color_Card">#99EADDFF</color>
+    <color name="color_Text">#991C1B1F</color>
+    <color name="text_One">#DE1C1B1F</color>
+    <color name="background">#FCFCFC</color>
 </resources>

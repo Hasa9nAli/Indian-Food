@@ -14,7 +14,10 @@ class IngredientsFragment : BaseFragment<FragmentIngredientsBinding>() {
     private lateinit var recipeIngredients: List<String>
 
     override fun setUp() {
-        recipeIngredients = arguments?.getStringArrayList(Constants.INSTRUCTIONS_LIST)!!.toList()
+        recipeIngredients =
+            arguments?.
+            getStringArrayList(Constants.INGREDIENTS_LIST)!!.
+            toList()
         Log.i(TAG, recipeIngredients.toString())
     }
 
