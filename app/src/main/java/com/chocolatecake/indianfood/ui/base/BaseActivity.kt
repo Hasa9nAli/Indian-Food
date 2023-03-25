@@ -1,4 +1,4 @@
-package com.chocolatecake.indianfood.ui
+package com.chocolatecake.indianfood.ui.base
 import android.os.Bundle
 import android.util.Log
 import android.view.LayoutInflater

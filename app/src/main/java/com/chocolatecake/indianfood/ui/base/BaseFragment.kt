@@ -1,4 +1,4 @@
-package com.chocolatecake.indianfood.ui
+package com.chocolatecake.indianfood.ui.base
 
 import android.os.Bundle
 import android.view.LayoutInflater
@@ -33,6 +33,5 @@ abstract class BaseFragment<VB : ViewBinding> : Fragment() {
     abstract fun setUp()
 
     abstract fun addCallBacks()
-
 
 }

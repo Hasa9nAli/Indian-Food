@@ -3,6 +3,7 @@ package com.chocolatecake.indianfood.ui
 import android.view.LayoutInflater
 import android.view.ViewGroup
 import com.chocolatecake.indianfood.databinding.FragmentOnBoardingBinding
+import com.chocolatecake.indianfood.ui.base.BaseFragment
 import com.chocolatecake.indianfood.util.createOnBoardingDataList
 
 class OnBoardingFragment : BaseFragment<FragmentOnBoardingBinding>() {

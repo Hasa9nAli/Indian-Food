@@ -10,6 +10,7 @@ import com.chocolatecake.indianfood.databinding.FragmentHomeBinding
 import com.chocolatecake.indianfood.interactor.GetQuickRecipesInteractor
 import com.chocolatecake.indianfood.interactor.GetRandomMealIntractor
 import com.chocolatecake.indianfood.interactor.IndianFoodDataSource
+import com.chocolatecake.indianfood.ui.base.BaseFragment
 
 class HomeFragment : BaseFragment<FragmentHomeBinding>() {
 

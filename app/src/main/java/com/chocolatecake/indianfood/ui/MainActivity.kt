@@ -1,13 +1,9 @@
 package com.chocolatecake.indianfood.ui
 
-import android.os.Bundle
 import android.view.LayoutInflater
 import androidx.core.splashscreen.SplashScreen.Companion.installSplashScreen
-import com.chocolatecake.indianfood.R
-import com.chocolatecake.indianfood.dataSource.CsvDataSource
-import com.chocolatecake.indianfood.dataSource.utils.CsvParser
 import com.chocolatecake.indianfood.databinding.ActivityMainBinding
-import com.chocolatecake.indianfood.interactor.GetRandomMealIntractor
+import com.chocolatecake.indianfood.ui.base.BaseActivity
 import com.chocolatecake.indianfood.util.Constants.MAIN_ACTIVITY
 
 

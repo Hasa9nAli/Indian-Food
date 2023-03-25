@@ -3,15 +3,15 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
-    android:layout_height="match_parent">
+    android:layout_height="match_parent"
+    android:layout_marginStart="@dimen/normalSpace"
+    android:layout_marginTop="@dimen/normalSpace"
+    android:layout_marginEnd="@dimen/normalSpace">
 
     <androidx.appcompat.widget.Toolbar
         android:id="@+id/search_toolbar"
         android:layout_width="match_parent"
-        android:layout_height="52dp"
-        android:layout_marginTop="48dp"
-        android:layout_marginEnd="16dp"
-        android:layout_marginBottom="@dimen/normalSpace"
+        android:layout_height="56dp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent">
@@ -24,12 +24,12 @@
 
             <ImageButton
                 android:id="@+id/back_button"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
+                android:layout_width="24dp"
+                android:layout_height="24dp"
                 android:layout_gravity="center"
                 android:background="?attr/selectableItemBackgroundBorderless"
                 android:contentDescription="@string/blank"
-                android:padding="8dp"
+                android:layout_marginEnd="@dimen/smallMargin"
                 android:src="@drawable/left_arrow" />
 
             <SearchView
@@ -40,10 +40,30 @@
                 android:queryHint="Search..."
                 app:iconifiedByDefault="false" />
 
-
         </LinearLayout>
     </androidx.appcompat.widget.Toolbar>
 
+    <include
+        android:id="@+id/noDataFound"
+        layout="@layout/no_data_found"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:visibility="gone"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/search_toolbar" />
+
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/searchRecyclerView"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:clipToPadding="false"
+        android:orientation="vertical"
+        android:paddingBottom="64dp"
+        app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/search_toolbar"
+        tools:listitem="@layout/card_search_item" />
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>

@@ -2,6 +2,7 @@ package com.chocolatecake.indianfood.ui
 import android.view.LayoutInflater
 import android.view.ViewGroup
 import com.chocolatecake.indianfood.databinding.FragmentAboutMealsBinding
+import com.chocolatecake.indianfood.ui.base.BaseFragment
 
 
 class AboutMealsFragment : BaseFragment<FragmentAboutMealsBinding>() {

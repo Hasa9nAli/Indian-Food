@@ -10,6 +10,7 @@ import com.chocolatecake.indianfood.interactor.GetBreakfastRecipesInteractor
 import com.chocolatecake.indianfood.interactor.GetDinnerRecipesInteractor
 import com.chocolatecake.indianfood.interactor.GetLunchRecipesInteractor
 import com.chocolatecake.indianfood.model.Recipe
+import com.chocolatecake.indianfood.ui.base.BaseFragment
 
 
 class CategoriesRecipesFragment : BaseFragment<FragmentCategoriesRecipesBinding>() {
