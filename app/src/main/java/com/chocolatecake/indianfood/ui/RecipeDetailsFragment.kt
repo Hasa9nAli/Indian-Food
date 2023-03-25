@@ -3,14 +3,12 @@ package com.chocolatecake.indianfood.ui
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.ViewGroup
-import android.widget.Toast
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.FragmentActivity
 import com.bumptech.glide.Glide
 import com.chocolatecake.indianfood.R
 import com.chocolatecake.indianfood.databinding.FragmentRecipeDetailsBinding
 import com.chocolatecake.indianfood.model.Recipe
-import com.chocolatecake.indianfood.util.Constants
 import com.google.android.material.tabs.TabLayout
 import com.google.android.material.tabs.TabLayout.OnTabSelectedListener
 
@@ -26,31 +24,24 @@ class RecipeDetailsFragment : BaseFragment<FragmentRecipeDetailsBinding>(), OnTa
 
     override fun setUp() {
         initRecipeObjectFromParameter()
-        if (recipe == null) {
-            showErrorMessageToUser()
-            return
-        }
-        initIngredientsAndInstructionsFragmentsObjects()
-        initIngredientsAndInstructionsFragmentsBundles()
+        initIngredientsAndInstructionsFragmentsObjects(
+            ArrayList(recipe!!.ingredients),
+            ArrayList(recipe!!.instruction)
+        )
         setDefaultInnerFragment()
         updateRecipeDetailsViews()
     }
 
-    private fun showErrorMessageToUser() {
-        Toast.makeText(
-            requireContext(),
-            getString(R.string.the_recipe_doesnt_exist),
-            Toast.LENGTH_SHORT
-        ).show()
-    }
-
-    private fun initIngredientsAndInstructionsFragmentsObjects() {
-        ingredientsFragment = IngredientsFragment()
-        instructionsFragment = InstructionsFragment()
+    private fun initIngredientsAndInstructionsFragmentsObjects(
+        ingredients: ArrayList<String>,
+        instructions: ArrayList<String>
+    ) {
+        ingredientsFragment = IngredientsFragment.newInstance(ingredients)
+        instructionsFragment = InstructionsFragment.newInstance(instructions)
     }
 
     private fun initRecipeObjectFromParameter() {
-        recipe = arguments?.getParcelable(Constants.RECIPE_OBJECT_PASSING_CODE)
+        recipe = arguments?.getParcelable(RECIPE_OBJECT_PASSING_CODE)
     }
 
     private fun updateRecipeDetailsViews() {
@@ -83,20 +74,6 @@ class RecipeDetailsFragment : BaseFragment<FragmentRecipeDetailsBinding>(), OnTa
         changeBetweenInstructionsAndIngredientsFragments(ingredientsFragment)
     }
 
-    private fun initIngredientsAndInstructionsFragmentsBundles() {
-        val ingredientsFragmentBundle = Bundle().apply {
-            putStringArrayList(Constants.INGREDIENTS_LIST, ArrayList(recipe!!.ingredients))
-        }
-
-        ingredientsFragment.arguments = ingredientsFragmentBundle
-
-        val instructionsFragmentBundle = Bundle().apply {
-            putStringArrayList(Constants.INSTRUCTIONS_LIST, ArrayList(recipe!!.instruction))
-        }
-
-        instructionsFragment.arguments = instructionsFragmentBundle
-    }
-
     override fun addCallBacks() {
         binding.tabLayoutIngredientsInstructions.addOnTabSelectedListener(this)
         binding.imageButtonReturnBack.setOnClickListener {
@@ -112,19 +89,18 @@ class RecipeDetailsFragment : BaseFragment<FragmentRecipeDetailsBinding>(), OnTa
 
     private fun changeBetweenInstructionsAndIngredientsFragments(fragment: Fragment) {
         val transaction = (activity as FragmentActivity).supportFragmentManager.beginTransaction()
-        transaction.replace(R.id.fragment_container, fragment)
+        transaction.replace(R.id.fragment_container_instructions_ingredients, fragment)
         transaction.commit()
     }
 
     override fun onTabSelected(tab: TabLayout.Tab?) {
         binding.apply {
             when (tab) {
-                tabLayoutIngredientsInstructions.getTabAt(INGREDIENTS_TAB_INDEX) -> changeBetweenInstructionsAndIngredientsFragments(
-                    ingredientsFragment
-                )
-                tabLayoutIngredientsInstructions.getTabAt(INSTRUCTIONS_TAB_INDEX) -> changeBetweenInstructionsAndIngredientsFragments(
-                    instructionsFragment
-                )
+                tabLayoutIngredientsInstructions.getTabAt(INGREDIENTS_TAB_INDEX) ->
+                    changeBetweenInstructionsAndIngredientsFragments(ingredientsFragment)
+
+                tabLayoutIngredientsInstructions.getTabAt(INSTRUCTIONS_TAB_INDEX) ->
+                    changeBetweenInstructionsAndIngredientsFragments(instructionsFragment)
             }
         }
     }
@@ -137,7 +113,17 @@ class RecipeDetailsFragment : BaseFragment<FragmentRecipeDetailsBinding>(), OnTa
         private const val INGREDIENTS_TAB_INDEX = 0
         private const val INSTRUCTIONS_TAB_INDEX = 1
         private const val EMPTY_SPACE = " "
+        const val RECIPE_OBJECT_PASSING_CODE = "RECIPE"
+
+        fun newInstance(recipe: Recipe) =
+            RecipeDetailsFragment().apply {
+                arguments = Bundle().apply {
+                    putParcelable(RECIPE_OBJECT_PASSING_CODE, recipe)
+                }
+            }
     }
+
 }
+
 
 
