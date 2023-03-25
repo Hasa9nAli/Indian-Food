@@ -123,4 +123,8 @@
     <color name="md_theme_dark_scrim">#000000</color>
 
     <color name="text_skip_color">#992D2D2D</color>
+    <color name="color_Card">#99EADDFF</color>
+    <color name="color_Text">#991C1B1F</color>
+    <color name="text_One">#DE1C1B1F</color>
+    <color name="background">#FCFCFC</color>
 </resources>
