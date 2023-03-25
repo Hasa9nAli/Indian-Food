@@ -9,7 +9,10 @@ import com.chocolatecake.indianfood.R
 import com.chocolatecake.indianfood.databinding.ItemRecipeBinding
 import com.chocolatecake.indianfood.model.Recipe
 
-class RecipeAdapter(private val recipes: List<Recipe>, private val recipeListener: OnClickRecipe) :
+class RecipeAdapter(
+    private val recipes: List<Recipe>,
+    private val recipeListener: OnClickRecipe,
+) :
     RecyclerView.Adapter<RecipeAdapter.RecipeViewHolder>() {
 
 
