@@ -1,4 +1,5 @@
 package com.chocolatecake.indianfood.interactor
+
 import com.chocolatecake.indianfood.model.Recipe
 
 
@@ -9,6 +10,7 @@ class GetHealthyMealsInteractor(
     companion object {
         const val HEALTHY = "healthy"
     }
+
 
     operator fun invoke(): List<Recipe> =
         dataSource
