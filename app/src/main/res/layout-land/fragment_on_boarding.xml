@@ -13,17 +13,17 @@
         app:layout_constraintGuide_percent="0.07" />
 
     <androidx.viewpager.widget.ViewPager
-        android:id="@+id/on_boardingVB"
+        android:id="@+id/on_boarding_view_pager"
         android:layout_width="match_parent"
         android:layout_height="0dp"
-        app:layout_constraintBottom_toTopOf="@+id/btn_next"
+        app:layout_constraintBottom_toTopOf="@+id/button_next"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHeight_default="wrap"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/top_guideline" />
 
     <TextView
-        android:id="@+id/btn_skip"
+        android:id="@+id/button_skip"
         style="@style/ClickableTextStyle"
         android:layout_width="wrap_content"
         android:layout_height="0dp"
@@ -35,7 +35,7 @@
         app:layout_constraintStart_toStartOf="parent" />
 
     <TextView
-        android:id="@+id/btn_next"
+        android:id="@+id/button_next"
         style="@style/ClickableTextStyle"
         android:layout_width="wrap_content"
         android:layout_height="0dp"
