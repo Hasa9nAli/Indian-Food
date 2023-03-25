@@ -1,6 +1,5 @@
 package com.chocolatecake.indianfood.ui
 
-import android.util.Log
 import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
@@ -33,7 +32,6 @@ class OnBoardingFragment : BaseFragment<FragmentOnBoardingBinding>() {
         binding.buttonNext.setOnClickListener {
             val currentItemIndex = getCurrentItemIndex()
             val lastItemIndex = getLastItemIndex()
-            Log.i("batata", "setupNextButton: $lastItemIndex ")
             if (currentItemIndex < lastItemIndex) {
                 binding.onBoardingViewPager.setCurrentItem(currentItemIndex + 1, true)
             } else {
@@ -55,5 +53,4 @@ class OnBoardingFragment : BaseFragment<FragmentOnBoardingBinding>() {
 
     private fun getLastItemIndex() = binding.onBoardingViewPager.adapter?.count?.minus(1) ?: -1
     private fun getCurrentItemIndex() = binding.onBoardingViewPager.currentItem
-//    private fun getCurrentItemIndex(index: Int) = binding.onBoardingViewPager.currentItem + index
 }
