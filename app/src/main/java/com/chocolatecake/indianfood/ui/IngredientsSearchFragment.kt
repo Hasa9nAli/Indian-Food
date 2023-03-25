@@ -11,6 +11,7 @@ import com.chocolatecake.indianfood.dataSource.utils.CsvParser
 import com.chocolatecake.indianfood.databinding.FragmentIngredientsSearchBinding
 import com.chocolatecake.indianfood.interactor.FindRecipesContainsSpecifiedIngredientInteractor
 import com.chocolatecake.indianfood.interactor.IndianFoodDataSource
+import com.chocolatecake.indianfood.model.Recipe
 
 class IngredientsSearchFragment : BaseFragment<FragmentIngredientsSearchBinding>() {
 
@@ -43,4 +44,18 @@ class IngredientsSearchFragment : BaseFragment<FragmentIngredientsSearchBinding>
         setupDatasource()
 
     }
+
+//    companion object {
+//        private const val INGREDIENTS_TAB_INDEX = 0
+//        private const val INSTRUCTIONS_TAB_INDEX = 1
+//        private const val EMPTY_SPACE = " "
+//        const val RECIPE_OBJECT_PASSING_CODE = "SEARCH"
+
+//        fun newInstance(recipe: Recipe) =
+//            RecipeDetailsFragment().apply {
+//                arguments = Bundle().apply {
+//                    putParcelable(RECIPE_OBJECT_PASSING_CODE, recipe)
+//                }
+////            }
+//    }
 }
