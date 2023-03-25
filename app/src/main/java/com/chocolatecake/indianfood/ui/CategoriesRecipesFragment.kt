@@ -1,12 +1,11 @@
 package com.chocolatecake.indianfood.ui
 
 import android.os.Bundle
-import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.fragment.app.Fragment
 import com.chocolatecake.indianfood.R
-import com.chocolatecake.indianfood.databinding.FragmentCategoriesBinding
 import com.chocolatecake.indianfood.databinding.FragmentCategoriesRecpecBinding
 import com.chocolatecake.indianfood.interactor.GetBreakfastRecipesInteractor
 import com.chocolatecake.indianfood.interactor.GetDinnerRecipesInteractor
@@ -61,10 +60,6 @@ class CategoriesRecipesFragment :BaseFragment<FragmentCategoriesRecpecBinding>()
     }
 
     override fun addCallBacks() {
-        TODO("Not yet implemented")
-    }
-
-    override fun GetBreakfastRecipesInteractor() {
         TODO("Not yet implemented")
     }
 

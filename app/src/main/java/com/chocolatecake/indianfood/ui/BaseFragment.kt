@@ -33,7 +33,6 @@ abstract class BaseFragment<VB : ViewBinding> : Fragment() {
     abstract fun setUp()
 
     abstract fun addCallBacks()
-    abstract fun GetBreakfastRecipesInteractor()
 
 
 }
