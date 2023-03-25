@@ -24,5 +24,6 @@ class ShowMoreAdapter(val recipies: List<Recipe>) :
 
     class ShowMoreViewHolder(view: View) : RecyclerView.ViewHolder(view) {
         val binding = ShowMoreBinding.bind(view)
+
     }
 }
