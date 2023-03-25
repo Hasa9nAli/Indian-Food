@@ -5,7 +5,6 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
-import com.chocolatecake.indianfood.OnBoardingPagerAdapter
 import com.chocolatecake.indianfood.databinding.FragmentOnBoardingBinding
 import com.chocolatecake.indianfood.util.createOnBoardingDataList
 
@@ -16,7 +15,7 @@ class OnBoardingFragment : Fragment() {
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?
-    ): View? {
+    ): View {
         _binding = FragmentOnBoardingBinding.inflate(inflater)
         return _binding.root
     }

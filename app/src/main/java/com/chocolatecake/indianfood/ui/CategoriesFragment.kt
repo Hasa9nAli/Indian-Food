@@ -1,15 +1,14 @@
-package com.chocolatecake.indianfood
+package com.chocolatecake.indianfood.ui
 
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import com.chocolatecake.indianfood.R
 import com.chocolatecake.indianfood.databinding.FragmentCategoriesBinding
 import com.chocolatecake.indianfood.interactor.GetBreakfastRecipesInteractor
 import com.chocolatecake.indianfood.interactor.GetDinnerRecipesInteractor
 import com.chocolatecake.indianfood.interactor.GetLunchRecipesInteractor
-import com.chocolatecake.indianfood.ui.BaseFragment
-import com.chocolatecake.indianfood.ui.CategoriesRecipesFragment
 
 
 class CategoriesFragment :BaseFragment<FragmentCategoriesBinding>(){
