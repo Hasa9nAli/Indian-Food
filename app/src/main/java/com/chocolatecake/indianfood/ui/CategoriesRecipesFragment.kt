@@ -12,8 +12,6 @@ import com.chocolatecake.indianfood.interactor.GetLunchRecipesInteractor
 import com.chocolatecake.indianfood.model.Recipe
 
 
-private const val ARG_PARAM1 = "param1"
-
 class CategoriesRecipesFragment : BaseFragment<FragmentCategoriesRecipesBinding>() {
 
     private var param1: String? = null
@@ -23,7 +21,7 @@ class CategoriesRecipesFragment : BaseFragment<FragmentCategoriesRecipesBinding>
     override fun setUp() {
 
         arguments?.let {
-            param1 = it.getString(ARG_PARAM1)
+            param1 = it.getString(MEAL_TYPE)
         }
 
 
@@ -56,15 +54,17 @@ class CategoriesRecipesFragment : BaseFragment<FragmentCategoriesRecipesBinding>
     }
 
     override fun addCallBacks() {
-        TODO("Not yet implemented")
     }
 
 
     companion object {
-        fun newInstance(param1: String) =
+
+        const val MEAL_TYPE = "meal"
+
+        fun newInstance(mealType: String) =
             CategoriesRecipesFragment().apply {
                 arguments = Bundle().apply {
-                    putString(ARG_PARAM1, param1)
+                    putString(MEAL_TYPE, mealType)
                 }
             }
     }
