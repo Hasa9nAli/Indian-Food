@@ -1,6 +1,7 @@
 package com.chocolatecake.indianfood.ui
 
 import android.view.LayoutInflater
+import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.FragmentActivity
@@ -43,6 +44,12 @@ class OnBoardingFragment : BaseFragment<FragmentOnBoardingBinding>() {
             replaceFragment(HomeFragment())
         }
 
+    }
+
+    override fun onDetach() {
+        super.onDetach()
+        val binding = (activity as MainActivity?)!!.binding
+        binding.mainBottomNavigation.visibility = View.VISIBLE
     }
 
     private fun replaceFragment(fragment: Fragment) {
