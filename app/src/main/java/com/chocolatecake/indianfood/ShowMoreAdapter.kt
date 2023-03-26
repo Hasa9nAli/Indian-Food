@@ -1,5 +1,6 @@
 package com.chocolatecake.indianfood
 
+import android.annotation.SuppressLint
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -20,16 +21,27 @@ class ShowMoreAdapter(val recipies: List<Recipe>) :
 
     override fun getItemCount(): Int = recipies.size
 
+
     override fun onBindViewHolder(holder: ShowMoreViewHolder, position: Int) {
         val currentCardMeal = recipies[position]
+        setContentOfCard(holder, currentCardMeal)
+    }
+
+    private fun setContentOfCard(holder : ShowMoreViewHolder, currentCardMeal : Recipe) {
         holder.binding.apply {
-          recipeName.text = currentCardMeal.name
-          timeInMinute.text = "${currentCardMeal.totalTimeInMinutes.toString()} min"
-          Glide.with(recipeImage.context).load(currentCardMeal.imageUrl)
-
-
+            recipeName.text = currentCardMeal.name
+            setTotalTimeOfCard(currentCardMeal, holder)
+            Glide.with(recipeImage).load(currentCardMeal.imageUrl).into(recipeImage)
         }
     }
+    private fun setTotalTimeOfCard(currentCardMeal : Recipe, holder : ShowMoreViewHolder){
+        holder.binding.timeInMinute.text =
+            checkValidTime(currentCardMeal.totalTimeInMinutes.toString())
+    }
+
+    private fun checkValidTime(time : String): String =
+        if(time.trim() == "0") "instant" else "$time min"
+
 
     class ShowMoreViewHolder(view: View) : RecyclerView.ViewHolder(view) {
         val binding = ItemMealBinding.bind(view)

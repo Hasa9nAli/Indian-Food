@@ -16,14 +16,17 @@ class ShowMoreFragment : BaseFragment<ShowMoreBinding>() {
 
 
     override fun setUp() {
-        lateinit var adapter : ShowMoreAdapter
+        lateinit var adapter: ShowMoreAdapter
         val csvData = CsvDataSource(CsvParser(), requireContext())
-        val title : String? = arguments?.getString(RECIPES_CATEGORY).toString().lowercase()
-        if(title == GetHealthyMealsInteractor.HEALTHY) adapter = ShowMoreAdapter(GetHealthyMealsInteractor(csvData).invoke())
-
-        else(title == GetQuickRecipesInteractor.QUICK_RECIPES)
-            adapter = ShowMoreAdapter(GetQuickRecipesInteractor(csvData).invoke(8))
-
+        val title: String? = arguments?.getString(RECIPES_CATEGORY).toString().lowercase()
+        if (title!! == GetHealthyMealsInteractor.HEALTHY) {
+            adapter = ShowMoreAdapter(GetHealthyMealsInteractor(csvData).invoke())
+            binding.title.text = GetHealthyMealsInteractor.HEALTHY
+        }
+        else if(title!! == GetQuickRecipesInteractor.QUICK_RECIPES){
+        adapter = ShowMoreAdapter(GetQuickRecipesInteractor(csvData).invoke(100))
+        binding.title.text = GetQuickRecipesInteractor.QUICK_RECIPES
+        }
         binding.mealsGrid.adapter = adapter
         goBack()
     }
