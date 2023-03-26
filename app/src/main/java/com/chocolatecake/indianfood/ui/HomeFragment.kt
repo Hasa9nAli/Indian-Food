@@ -15,8 +15,7 @@ import com.chocolatecake.indianfood.model.Recipe
 import com.chocolatecake.indianfood.util.HomeItemType
 import com.chocolatecake.indianfood.util.navigateTo
 
-class HomeFragment : BaseFragment<FragmentHomeBinding>(), OnClickShowMore, OnClickRecipe,
-    OnClickRandomRecipe {
+class HomeFragment : BaseFragment<FragmentHomeBinding>() {
 
     private lateinit var dataSource: IndianFoodDataSource
     private lateinit var getQuickRecipes: GetQuickRecipesInteractor
@@ -30,12 +29,12 @@ class HomeFragment : BaseFragment<FragmentHomeBinding>(), OnClickShowMore, OnCli
         get() = FragmentHomeBinding::inflate
 
     override fun setUp() {
-
+        setupDatasource()
+        setupHomeAdapter()
     }
 
     override fun addCallBacks() {
-        setupDatasource()
-        setupHomeAdapter()
+
     }
 
     private fun setupDatasource() {
@@ -59,23 +58,19 @@ class HomeFragment : BaseFragment<FragmentHomeBinding>(), OnClickShowMore, OnCli
         itemsList.add(HomeItem(HEALTHY_MEALS, HomeItemType.TYPE_TEXT))
         itemsList.add(HomeItem(getHealthyRecipes.invoke(10), HomeItemType.TYPE_RECIPE))
 
-//        itemsList.add(HomeItem(BREAKFAST, HomeItemType.TYPE_TEXT))
-//        itemsList.add(HomeItem(getBreakfastRecipes.invoke(), HomeItemType.TYPE_RECIPE))
-
-        binding.recipiesRecyclerView.adapter = HomeAdapter(itemsList, this, this, this)
+        binding.recipiesRecyclerView.adapter = HomeAdapter(
+            itemsList,
+            ::onClickShowMore,
+            ::onClickRecipe,
+        )
     }
 
-    override fun onClickShowMore(categoryType: String) {
+    private fun onClickShowMore(categoryType: String) {
         val showMoreFragment = ShowMoreFragment.newInstance(categoryType)
         requireActivity().navigateTo(showMoreFragment)
     }
 
-    override fun onClickRandomRecipe(recipe: Recipe) {
-        val detailsFragment = RecipeDetailsFragment.newInstance(recipe)
-        requireActivity().navigateTo(detailsFragment)
-    }
-
-    override fun onClickRecipe(recipe: Recipe) {
+    private fun onClickRecipe(recipe: Recipe) {
         val detailsFragment = RecipeDetailsFragment.newInstance(recipe)
         requireActivity().navigateTo(detailsFragment)
     }
@@ -83,8 +78,5 @@ class HomeFragment : BaseFragment<FragmentHomeBinding>(), OnClickShowMore, OnCli
     companion object {
         const val HEALTHY_MEALS = "Healthy meals"
         const val QUICK_RECIPES = "Quick recipes"
-        const val BREAKFAST = "Breakfast"
     }
-
-
 }

@@ -1,21 +1,22 @@
 package com.chocolatecake.indianfood.ui
 
-import android.annotation.SuppressLint
-import android.content.Context
 import android.view.LayoutInflater
+import android.view.View
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
-import com.chocolatecake.indianfood.databinding.ItemRecipeFragmentBinding
+import com.chocolatecake.indianfood.R
+import com.chocolatecake.indianfood.databinding.ItemRecipeCategoryBinding
 import com.chocolatecake.indianfood.model.Recipe
 
-class CategoryRecipesAdapter(val context: Context, val recipeList: List<Recipe>) :
+class CategoryRecipesAdapter(private val recipeList: List<Recipe>) :
     RecyclerView.Adapter<CategoryRecipesAdapter.CategoryRecipeViewHolder>() {
 
-
-    override fun onCreateViewHolder(parent: ViewGroup, p1: Int) = CategoryRecipeViewHolder(
-        ItemRecipeFragmentBinding.inflate(LayoutInflater.from(parent.context), parent, false)
-    )
+    override fun onCreateViewHolder(parent: ViewGroup, p1: Int): CategoryRecipeViewHolder {
+        val view = LayoutInflater.from(parent.context)
+            .inflate(R.layout.item_recipe_category, parent, false)
+        return CategoryRecipeViewHolder(view)
+    }
 
     override fun getItemCount(): Int {
         return recipeList.size
@@ -23,23 +24,19 @@ class CategoryRecipesAdapter(val context: Context, val recipeList: List<Recipe>)
 
     override fun onBindViewHolder(holder: CategoryRecipeViewHolder, position: Int) {
         val recipe = recipeList[position]
-        holder.apply {
-            txtIngredint.text = recipe.ingredients.size.toString()+" ingredients"
-            txtRecipeName.text = recipe.name.split("-")[0]
-            txtTotalTime.text = recipe.totalTimeInMinutes.toString() + " Min"
-            Glide.with(context).apply {
-                load(recipe.imageUrl).into(imgRecipeCard)
-            }
+        holder.binding.apply {
+            txtIngredint.text = root.context.getString(
+                R.string.ingredients_label, recipe.ingredients.size.toString()
+            )
+            txtRecipeName.text = recipe.name
+            txtTotalTime.text =
+                root.context.getString(R.string.minutes_label, recipe.totalTimeInMinutes.toString())
+            Glide.with(root.context).load(recipe.imageUrl).into(imageViewImgRecipe)
         }
     }
 
-    class CategoryRecipeViewHolder(binding: ItemRecipeFragmentBinding) :
-        RecyclerView.ViewHolder(binding.root) {
-        val imgRecipeCard = binding.imgRecipeCard
-        val txtRecipeName = binding.txtRecipeName
-        val txtIngredint = binding.txtIngredint
-        val txtTotalTime = binding.txtTotalTime
+    class CategoryRecipeViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
+        val binding = ItemRecipeCategoryBinding.bind(itemView)
     }
-
 
 }

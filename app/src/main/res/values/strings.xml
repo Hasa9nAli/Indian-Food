@@ -83,4 +83,6 @@
     <string name="search">search</string>
     <string name="categories">categories</string>
     <string name="about">about</string>
+    <string name="ingredients_label">%1$s Ingredients</string>
+    <string name="minutes_label">%1$s Min</string>
 </resources>

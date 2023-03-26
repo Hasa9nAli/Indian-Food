@@ -19,7 +19,6 @@ class CategoryRecipesFragment : BaseFragment<FragmentCategoryRecipesBinding>() {
         binding.textViewAppBarTitle.text = getMealType()
         setUpRecipesRecyclerView(
             CategoryRecipesAdapter(
-                requireContext(),
                 getMealRecipes(getMealType())
             )
         )

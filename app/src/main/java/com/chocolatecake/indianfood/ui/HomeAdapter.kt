@@ -15,12 +15,10 @@ import com.chocolatecake.indianfood.util.HomeItemType
 
 class HomeAdapter(
     private val items: List<HomeItem<Any>>,
-    private val showMoreListener: OnClickShowMore,
-    private val recipeListener: OnClickRecipe,
-    private val randomRecipes: OnClickRandomRecipe
+    private val onClickShowMore: (categoryType: String) -> Unit,
+    private val onClickRecipe: (recipe: Recipe) -> Unit,
 ) :
     RecyclerView.Adapter<HomeAdapter.BasicViewHolder>() {
-
 
     sealed class BasicViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView)
 
@@ -49,34 +47,34 @@ class HomeAdapter(
 
     override fun onBindViewHolder(holder: BasicViewHolder, position: Int) {
         when (holder) {
-            is RandomRecipeViewHolder -> bindRandomRecipes(holder, position)
+            is RandomRecipeViewHolder -> bindRandomRecipe(holder, position)
             is TextViewHolder -> bindTitleSection(holder, position)
             is RecipesViewHolder -> bindRecipes(holder, position)
         }
     }
 
     private fun bindRecipes(holder: RecipesViewHolder, position: Int) {
-        val recipes = items[position].item as List<Recipe>
-        val adapter = RecipeAdapter(recipes, recipeListener)
+        val currentRecipes = items[position].item as List<Recipe>
+        val adapter = RecipeAdapter(currentRecipes, onClickRecipe)
         holder.binding.recipiesRecyclerView.adapter = adapter
     }
 
     private fun bindTitleSection(holder: TextViewHolder, position: Int) {
-        val currentItems = items[position].item as String
+        val currentSection = items[position].item as String
         holder.binding.apply {
-            textTitle.text = currentItems
-            showMore.setOnClickListener { showMoreListener.onClickShowMore(currentItems) }
+            textTitle.text = currentSection
+            showMore.setOnClickListener { onClickShowMore(currentSection) }
         }
     }
 
-    private fun bindRandomRecipes(holder: RandomRecipeViewHolder, position: Int) {
-        val currentItems = items[position].item as Recipe
+    private fun bindRandomRecipe(holder: RandomRecipeViewHolder, position: Int) {
+        val currentRandomRecipe = items[position].item as Recipe
         holder.binding.apply {
-            recipeCookingTime.text = currentItems.totalTimeInMinutes.toString()
-            RecipeCuisine.text = currentItems.cuisine
-            RecipeName.text = currentItems.name
-            Glide.with(this.root.context).load(currentItems.imageUrl).into(dishOfTheDayImage)
-            root.setOnClickListener { randomRecipes.onClickRandomRecipe(currentItems) }
+            recipeCookingTime.text = currentRandomRecipe.totalTimeInMinutes.toString()
+            RecipeCuisine.text = currentRandomRecipe.cuisine
+            RecipeName.text = currentRandomRecipe.name
+            Glide.with(this.root.context).load(currentRandomRecipe.imageUrl).into(dishOfTheDayImage)
+            root.setOnClickListener { onClickRecipe(currentRandomRecipe) }
         }
     }
 
@@ -108,12 +106,3 @@ class HomeAdapter(
         const val ITEM_TYPE_RECIPES = 3
     }
 }
-
-interface OnClickShowMore {
-    fun onClickShowMore(categoryType: String)
-}
-
-interface OnClickRandomRecipe {
-    fun onClickRandomRecipe(recipe: Recipe)
-}
-

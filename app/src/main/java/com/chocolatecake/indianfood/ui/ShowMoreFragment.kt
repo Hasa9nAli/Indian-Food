@@ -13,7 +13,6 @@ class ShowMoreFragment : BaseFragment<FragmentShowMoreBinding>() {
 
     override fun setUp() {
         titleCategory = arguments?.getString(RECIPES_CATEGORY)
-
     }
 
 

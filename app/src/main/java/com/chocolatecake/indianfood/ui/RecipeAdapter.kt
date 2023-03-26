@@ -11,10 +11,9 @@ import com.chocolatecake.indianfood.model.Recipe
 
 class RecipeAdapter(
     private val recipes: List<Recipe>,
-    private val recipeListener: OnClickRecipe,
+    private val onClickRecipe: (recipe: Recipe) -> Unit,
 ) :
     RecyclerView.Adapter<RecipeAdapter.RecipeViewHolder>() {
-
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): RecipeViewHolder {
         val view = LayoutInflater.from(parent.context).inflate(R.layout.item_recipe, parent, false)
@@ -27,7 +26,7 @@ class RecipeAdapter(
             quickRecipesName.text = currentItem.name
             recipeCookingTime.text = currentItem.totalTimeInMinutes.toString()
             Glide.with(this.root.context).load(currentItem.imageUrl).into(quickRecipesImage)
-            root.setOnClickListener { recipeListener.onClickRecipe(currentItem) }
+            root.setOnClickListener { onClickRecipe(currentItem) }
         }
     }
 
@@ -38,8 +37,4 @@ class RecipeAdapter(
         val binding = ItemRecipeBinding.bind(itemView)
     }
 
-}
-
-interface OnClickRecipe {
-    fun onClickRecipe(recipe: Recipe)
 }
