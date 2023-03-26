@@ -25,7 +25,6 @@
             app:chipCornerRadius="100dp"
             android:textColor="#DE1C1B1F"
             app:chipEndPadding="8dp"
-            app:closeIconEnabled="true"
             app:chipMinTouchTargetSize="0dp"
             app:chipStartPadding="8dp"
             app:ensureMinTouchTargetSize="true" />
@@ -39,7 +38,6 @@
             android:text="Oil"
             android:textColor="#DE1C1B1F"
             app:chipCornerRadius="100dp"
-            app:closeIconEnabled="true"
             app:chipMinTouchTargetSize="0dp"
             app:chipStartPadding="0dp"
             app:ensureMinTouchTargetSize="true"
@@ -54,11 +52,9 @@
             android:text="Salt"
             app:chipCornerRadius="100dp"
             android:textColor="#DE1C1B1F"
-            app:closeIconEnabled="true"
             app:chipMinTouchTargetSize="0dp"
             app:chipStartPadding="0dp"
-            app:ensureMinTouchTargetSize="true"
-            app:iconStartPadding="8dp" />
+            app:ensureMinTouchTargetSize="true" />
 
         <com.google.android.material.chip.Chip
             android:id="@+id/chip_4"
@@ -68,95 +64,93 @@
             android:text="Rice"
             app:chipCornerRadius="100dp"
             android:textColor="#DE1C1B1F"
-            app:closeIconEnabled="true"
             app:chipMinTouchTargetSize="0dp"
             app:chipStartPadding="0dp"
-            app:ensureMinTouchTargetSize="true"
-            app:iconStartPadding="8dp" />
+            app:ensureMinTouchTargetSize="true" />
 
-        <com.google.android.material.chip.Chip
-            android:id="@+id/chip_5"
-            style="@style/Widget.Material3.Chip.Assist"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="Bread"
-            android:textColor="#DE1C1B1F"
-            app:chipCornerRadius="100dp"
-            app:closeIconEnabled="true"
-            app:chipMinTouchTargetSize="0dp"
-            app:ensureMinTouchTargetSize="true"
-            app:iconStartPadding="8dp" />
+<!--        <com.google.android.material.chip.Chip-->
+<!--            android:id="@+id/chip_5"-->
+<!--            style="@style/Widget.Material3.Chip.Assist"-->
+<!--            android:layout_width="wrap_content"-->
+<!--            android:layout_height="wrap_content"-->
+<!--            android:text="Bread"-->
+<!--            android:textColor="#DE1C1B1F"-->
+<!--            app:chipCornerRadius="100dp"-->
+<!--            app:closeIconEnabled="true"-->
+<!--            app:chipMinTouchTargetSize="0dp"-->
+<!--            app:ensureMinTouchTargetSize="true"-->
+<!--            app:iconStartPadding="8dp" />-->
 
-        <com.google.android.material.chip.Chip
-            android:id="@+id/chip_6"
-            style="@style/Widget.Material3.Chip.Assist"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:elevation="0dp"
-            android:textColor="#DE1C1B1F"
-            android:text="Fish"
-            app:chipCornerRadius="100dp"
-            app:chipEndPadding="8dp"
-            app:closeIconEnabled="true"
-            app:chipMinTouchTargetSize="0dp"
-            app:ensureMinTouchTargetSize="true"
-            app:iconStartPadding="8dp" />
+<!--        <com.google.android.material.chip.Chip-->
+<!--            android:id="@+id/chip_6"-->
+<!--            style="@style/Widget.Material3.Chip.Assist"-->
+<!--            android:layout_width="wrap_content"-->
+<!--            android:layout_height="wrap_content"-->
+<!--            android:elevation="0dp"-->
+<!--            android:textColor="#DE1C1B1F"-->
+<!--            android:text="Fish"-->
+<!--            app:chipCornerRadius="100dp"-->
+<!--            app:chipEndPadding="8dp"-->
+<!--            app:closeIconEnabled="true"-->
+<!--            app:chipMinTouchTargetSize="0dp"-->
+<!--            app:ensureMinTouchTargetSize="true"-->
+<!--            app:iconStartPadding="8dp" />-->
 
-        <com.google.android.material.chip.Chip
-            android:id="@+id/chip_7"
-            style="@style/Widget.Material3.Chip.Assist"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:elevation="0dp"
-            android:text="Lemon"
-            app:chipCornerRadius="100dp"
-            android:textColor="#DE1C1B1F"
-            app:closeIconEnabled="true"
-            app:chipMinHeight="32dp"
-            app:chipMinTouchTargetSize="0dp"
-            app:chipStartPadding="0dp"
-            app:ensureMinTouchTargetSize="true"
-            app:iconStartPadding="8dp" />
+<!--        <com.google.android.material.chip.Chip-->
+<!--            android:id="@+id/chip_7"-->
+<!--            style="@style/Widget.Material3.Chip.Assist"-->
+<!--            android:layout_width="wrap_content"-->
+<!--            android:layout_height="wrap_content"-->
+<!--            android:elevation="0dp"-->
+<!--            android:text="Lemon"-->
+<!--            app:chipCornerRadius="100dp"-->
+<!--            android:textColor="#DE1C1B1F"-->
+<!--            app:closeIconEnabled="true"-->
+<!--            app:chipMinHeight="32dp"-->
+<!--            app:chipMinTouchTargetSize="0dp"-->
+<!--            app:chipStartPadding="0dp"-->
+<!--            app:ensureMinTouchTargetSize="true"-->
+<!--            app:iconStartPadding="8dp" />-->
 
-        <com.google.android.material.chip.Chip
-            android:id="@+id/chip_8"
-            style="@style/Widget.Material3.Chip.Assist"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="Rice"
-            app:chipCornerRadius="100dp"
-            android:textColor="#DE1C1B1F"
-            app:closeIconEnabled="true"
-            app:chipMinTouchTargetSize="0dp"
-            app:chipStartPadding="0dp"
-            app:ensureMinTouchTargetSize="true"
-            app:iconStartPadding="8dp" />
+<!--        <com.google.android.material.chip.Chip-->
+<!--            android:id="@+id/chip_8"-->
+<!--            style="@style/Widget.Material3.Chip.Assist"-->
+<!--            android:layout_width="wrap_content"-->
+<!--            android:layout_height="wrap_content"-->
+<!--            android:text="Rice"-->
+<!--            app:chipCornerRadius="100dp"-->
+<!--            android:textColor="#DE1C1B1F"-->
+<!--            app:closeIconEnabled="true"-->
+<!--            app:chipMinTouchTargetSize="0dp"-->
+<!--            app:chipStartPadding="0dp"-->
+<!--            app:ensureMinTouchTargetSize="true"-->
+<!--            app:iconStartPadding="8dp" />-->
 
-        <com.google.android.material.chip.Chip
-            android:id="@+id/chip_9"
-            style="@style/Widget.Material3.Chip.Assist"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="Milk"
-            app:chipCornerRadius="100dp"
-            android:textColor="#DE1C1B1F"
-            app:closeIconEnabled="true"
-            app:chipMinTouchTargetSize="0dp"
-            app:ensureMinTouchTargetSize="true"
-            app:iconStartPadding="8dp" />
+<!--        <com.google.android.material.chip.Chip-->
+<!--            android:id="@+id/chip_9"-->
+<!--            style="@style/Widget.Material3.Chip.Assist"-->
+<!--            android:layout_width="wrap_content"-->
+<!--            android:layout_height="wrap_content"-->
+<!--            android:text="Milk"-->
+<!--            app:chipCornerRadius="100dp"-->
+<!--            android:textColor="#DE1C1B1F"-->
+<!--            app:closeIconEnabled="true"-->
+<!--            app:chipMinTouchTargetSize="0dp"-->
+<!--            app:ensureMinTouchTargetSize="true"-->
+<!--            app:iconStartPadding="8dp" />-->
 
-        <com.google.android.material.chip.Chip
-            android:id="@+id/chip_10"
-            style="@style/Widget.Material3.Chip.Assist"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="flour"
-            android:textColor="#DE1C1B1F"
-            app:chipCornerRadius="100dp"
-            app:closeIconEnabled="true"
-            app:chipMinTouchTargetSize="0dp"
-            app:ensureMinTouchTargetSize="true"
-            app:iconStartPadding="8dp" />
+<!--        <com.google.android.material.chip.Chip-->
+<!--            android:id="@+id/chip_10"-->
+<!--            style="@style/Widget.Material3.Chip.Assist"-->
+<!--            android:layout_width="wrap_content"-->
+<!--            android:layout_height="wrap_content"-->
+<!--            android:text="flour"-->
+<!--            android:textColor="#DE1C1B1F"-->
+<!--            app:chipCornerRadius="100dp"-->
+<!--            app:closeIconEnabled="true"-->
+<!--            app:chipMinTouchTargetSize="0dp"-->
+<!--            app:ensureMinTouchTargetSize="true"-->
+<!--            app:iconStartPadding="8dp" />-->
 
 
     </com.google.android.material.chip.ChipGroup>

@@ -62,8 +62,14 @@
         app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/search_toolbar"
+        app:layout_constraintTop_toBottomOf="@id/chipsgroup"
         tools:listitem="@layout/card_search_item" />
 
-
+<include
+    android:id="@+id/chipsgroup"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    layout="@layout/chips"
+    app:layout_constraintTop_toBottomOf="@id/search_toolbar"
+    app:layout_constraintBottom_toTopOf="@id/searchRecyclerView"/>
 </androidx.constraintlayout.widget.ConstraintLayout>
