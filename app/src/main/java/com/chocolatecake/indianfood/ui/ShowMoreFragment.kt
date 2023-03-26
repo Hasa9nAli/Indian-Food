@@ -1,6 +1,7 @@
 package com.chocolatecake.indianfood.ui
 
 import android.os.Bundle
+import android.util.Log
 import android.view.LayoutInflater
 import android.view.ViewGroup
 import com.chocolatecake.indianfood.ShowMoreAdapter
@@ -16,15 +17,27 @@ class ShowMoreFragment : BaseFragment<ShowMoreBinding>() {
 
 
     override fun setUp() {
-        lateinit var adapter : ShowMoreAdapter
+        lateinit var adapter: ShowMoreAdapter
         val csvData = CsvDataSource(CsvParser(), requireContext())
-        val title : String? = arguments?.getString(RECIPES_CATEGORY).toString().lowercase()
-        if(title == GetHealthyMealsInteractor.HEALTHY) adapter = ShowMoreAdapter(GetHealthyMealsInteractor(csvData).invoke())
+        val title: String = requireArguments().getString(RECIPES_CATEGORY)!!
 
-        else(title == GetQuickRecipesInteractor.QUICK_RECIPES)
-            adapter = ShowMoreAdapter(GetQuickRecipesInteractor(csvData).invoke(8))
+        Log.d("TAG", "setUp: $title")
 
+        adapter = when (title) {
+            GetHealthyMealsInteractor.HEALTHY -> ShowMoreAdapter(GetHealthyMealsInteractor(csvData).invoke())
+
+            GetQuickRecipesInteractor.QUICK_RECIPES -> ShowMoreAdapter(
+                GetQuickRecipesInteractor(
+                    csvData
+                ).invoke()
+            )
+
+            else -> {
+                throw IllegalArgumentException()
+            }
+        }
         binding.mealsGrid.adapter = adapter
+        binding.title.text = title
         goBack()
     }
 

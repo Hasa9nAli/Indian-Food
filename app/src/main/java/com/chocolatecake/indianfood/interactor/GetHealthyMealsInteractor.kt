@@ -8,7 +8,7 @@ class GetHealthyMealsInteractor(
 ){
 
     companion object {
-        const val HEALTHY = "healthy"
+        const val HEALTHY = "Healthy recipes"
     }
 
 
