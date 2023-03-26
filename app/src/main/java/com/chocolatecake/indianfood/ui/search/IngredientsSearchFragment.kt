@@ -11,10 +11,7 @@ import com.chocolatecake.indianfood.R
 import com.chocolatecake.indianfood.dataSource.CsvDataSource
 import com.chocolatecake.indianfood.dataSource.utils.CsvParser
 import com.chocolatecake.indianfood.databinding.FragmentIngredientsSearchBinding
-import com.chocolatecake.indianfood.interactor.FindRecipesByNameInteractor
-import com.chocolatecake.indianfood.interactor.FindRecipesContainsSpecifiedIngredientInteractor
-import com.chocolatecake.indianfood.interactor.GetRandomMealIntractor
-import com.chocolatecake.indianfood.interactor.IndianFoodDataSource
+import com.chocolatecake.indianfood.interactor.*
 import com.chocolatecake.indianfood.model.Recipe
 import com.chocolatecake.indianfood.ui.RecipeDetailsFragment
 import com.chocolatecake.indianfood.ui.base.BaseFragment
@@ -26,13 +23,14 @@ import com.google.android.material.chip.Chip
 
 class IngredientsSearchFragment : BaseFragment<FragmentIngredientsSearchBinding>(), ItemListener {
     private lateinit var dataSource: IndianFoodDataSource
-    private lateinit var searchIngredient: FindRecipesContainsSpecifiedIngredientInteractor
-    private lateinit var searchRecipes: FindRecipesByNameInteractor
+    private lateinit var findRecipesContainsSpecifiedIngredient: FindRecipesContainsSpecifiedIngredientInteractor
+    private lateinit var findRecipesByName: FindRecipesByNameInteractor
     private lateinit var csvParser: CsvParser
     private var ingredientsList = mutableListOf("oil")
-    private var recipeName = "Ragi"
-    private lateinit var getRandomMeal : GetRandomMealIntractor
-    private val randomRecipesList = mutableListOf<String>()
+    private var recipeName  = ""
+    private lateinit var getRandomMeals : GetRandomMealsIntractor
+    private var chipNext = ""
+    var tap = 3
 
 
     override val inflater: (LayoutInflater, ViewGroup?, Boolean) -> FragmentIngredientsSearchBinding
@@ -41,40 +39,38 @@ class IngredientsSearchFragment : BaseFragment<FragmentIngredientsSearchBinding>
 
     override fun setUp() {
         setupDatasource()
-        checkIfRecipeOrIngredientToSearch()
-        setChipOnClickListener()
+        setSearchOnClickListener()
+        checkIfRecipeOrIngredient()
+       // setChipOnClickListener()
     }
 
-    private fun setChipOnClickListener() {
-        binding.chipsgroup.chipGroup.setOnClickListener() { view ->
-            recipeName = (view.parent as Chip).text.toString()
-            getRecipes(recipeName)
-            binding.searchView.setQuery(recipeName, false)
-        }
-    }
-
-    private fun checkIfRecipeOrIngredientToSearch() {
-        when (3.toString()) {
-            RECIPE_TAB_INDEX -> {
-                getRecipes(recipeName)
-            }
-            INSTRUCTIONS_TAB_INDEX -> {
-                getInstructions()
-            }
-        }
-    }
     private fun setupDatasource() {
         csvParser = CsvParser()
         dataSource = CsvDataSource(csvParser, requireContext())
-        searchIngredient = FindRecipesContainsSpecifiedIngredientInteractor(dataSource)
-        searchRecipes = FindRecipesByNameInteractor(dataSource)
+        findRecipesContainsSpecifiedIngredient = FindRecipesContainsSpecifiedIngredientInteractor(dataSource)
+        findRecipesByName = FindRecipesByNameInteractor(dataSource)
+        getRandomMeals = GetRandomMealsIntractor(dataSource)
 
     }
 
-    private fun getInstructions() {
-        try {
+    private fun checkIfRecipeOrIngredient() {
+        when (tap.toString()) {
+            RECIPE_TAB_INDEX -> {
+                setRandomMeals()
+                getRecipes(recipeName)
+              //  binding.noDataFound.error.visibility = View.VISIBLE
+            }
+            INSTRUCTIONS_TAB_INDEX -> {
+                getInstructions(ingredientsList)
+            }
+        }
+    }
 
-            val ingredients = searchIngredient.invoke(ingredientsList)
+
+
+    private fun getInstructions( ingredientsList: List<String>) {
+        try {
+            val ingredients = findRecipesContainsSpecifiedIngredient.invoke(ingredientsList.distinct())
 
             if (ingredients.isNotEmpty()) {
                 setUpAdapter(ingredients)
@@ -88,9 +84,9 @@ class IngredientsSearchFragment : BaseFragment<FragmentIngredientsSearchBinding>
 
     private fun getRecipes(searchText: String) {
         try {
-            val recipes = searchRecipes.invoke(searchName = searchText)
+            val recipes = findRecipesByName.invoke(searchName = searchText)
 
-            if (recipes.isNotEmpty()) {
+            if (recipes.isNotEmpty() || recipeName != "") {
                 setUpAdapter(recipes)
             } else {
                 binding.noDataFound.error.visibility = View.VISIBLE
@@ -98,6 +94,21 @@ class IngredientsSearchFragment : BaseFragment<FragmentIngredientsSearchBinding>
         } catch (e: IllegalAccessException) {
             showToast(message = e.message.toString())
         }
+    }
+
+
+    private fun setRandomMeals() {
+        try {
+            val randomMeals = getRandomMeals.invoke().take(4)
+            if ( randomMeals.isNotEmpty()) {
+                createChips(randomMeals)
+            } else {
+                binding.noDataFound.error.visibility = View.VISIBLE
+            }
+        } catch (e: IllegalAccessException) {
+            showToast(message = e.message.toString())
+        }
+
     }
 
 
@@ -111,61 +122,99 @@ class IngredientsSearchFragment : BaseFragment<FragmentIngredientsSearchBinding>
         requireActivity().navigateTo(RecipeDetailsFragment.newInstance(recipe))
     }
 
-    override fun addCallBacks() {
-        searchIngredientScreen()
-        searchRecipesScreen()
-    }
-    fun createChip(name: String, context: Context) {
-        val chip = Chip(context)
-        chip.apply {
 
-            text = name
-            chipIcon = ContextCompat.getDrawable(
-                context,
-                R.drawable.ic_launcher_background
-            )
-            isChipIconVisible = false
-            isCloseIconVisible = true
-            isCheckable = true
-            isClickable = true
-            binding.apply {
-                chipsgroup.chipGroup.addView(chip as View)
-                chip.setOnCloseIconClickListener {
-                    chipsgroup.chipGroup.removeView(it)
-                    ingredientsList.remove(it.toString())
-                }
+    override fun addCallBacks() {
+        when (tap.toString()) {
+            RECIPE_TAB_INDEX -> {
+                onChoiceChip()
+            }
+            INSTRUCTIONS_TAB_INDEX -> {
+                onChoiceChips()
             }
         }
     }
 
-    private fun searchIngredientScreen() {
+
+    private fun onChoiceChip(){
+        binding.chipsgroup.chipGroup.setOnCheckedStateChangeListener {
+            group , checkedId ->
+            val  chip:Chip = group.findViewById(checkedId[checkedId.lastIndex])
+
+            chip.let {
+                recipeName = it.text.toString()
+                showToast(message = it.text.toString())
+                getRecipes(recipeName)
+            }
+        }
+
+    }
+
+    private fun onChoiceChips(){
+        binding.chipsgroup.chipGroup.setOnCheckedStateChangeListener {
+                group , checkedId ->
+            val  chip:Chip = group.findViewById(checkedId[checkedId.lastIndex])
+
+            chip.let {
+                ingredientsList.add(it.text.toString())
+                showToast(message = it.text.toString())
+                getInstructions(ingredientsList)
+            }
+            chip.setOnCloseIconClickListener {
+                 binding.chipsgroup.chipGroup.removeView(it)
+                 ingredientsList.remove(it.toString())
+                }
+        }
+
+    }
+
+
+    private fun setSearchOnClickListener() {
 
         binding.searchView.setOnQueryTextListener(object : SearchView.OnQueryTextListener {
-            override fun onQueryTextSubmit(query: String?): Boolean {
-                ingredientsList.add(query!!)
-                recipeName = query
-                context?.let { createChip(query, it) }
+            override fun onQueryTextSubmit( query: String?): Boolean {
+
+                when (tap.toString()) {
+                    RECIPE_TAB_INDEX -> {
+                        recipeName = query!!
+                        getRecipes(query)
+                    }
+                    INSTRUCTIONS_TAB_INDEX -> {
+                        ingredientsList.add(query!!)
+                        createChip(query)
+                        getInstructions(ingredientsList)
+                    }
+                }
+
+                binding.searchView.clearFocus()
+
                 return false
 
             }
-
             override fun onQueryTextChange(p0: String?): Boolean {
                 return false
             }
         })
     }
+//
+    private fun createChips(items: List<String> ) {
 
-    private fun searchRecipesScreen() {
-        binding.searchView.setOnQueryTextListener(object : SearchView.OnQueryTextListener {
-            override fun onQueryTextSubmit(query: String?): Boolean {
-                query?.let { getRecipes(it) }
-                return false
-            }
+        for (chipText in items) {
+            val chip = Chip(context)
+            chip.text = chipText
+            chip.isClickable = true
+            chip.isCheckable = true
+            binding.chipsgroup.chipGroup.addView(chip)
+        }
+    }
 
-            override fun onQueryTextChange(newText: String?): Boolean {
-                return false
-            }
-        })
+    private fun createChip(chipNext: String ) {
+            val chip = Chip(context)
+            chip.text = chipNext
+            chip.isClickable = true
+            chip.isCheckable = true
+            chip.isChipIconVisible = false
+            chip.isCloseIconVisible = true
+            binding.chipsgroup.chipGroup.addView(chip)
     }
 
 
@@ -187,3 +236,64 @@ class IngredientsSearchFragment : BaseFragment<FragmentIngredientsSearchBinding>
         ).show()
     }
 }
+
+
+
+
+
+//    fun createChip(name: String) {
+//        val chip = Chip(context)
+//        chip.apply {
+//            text = name
+//            chipIcon = ContextCompat.getDrawable(
+//                context,
+//                R.drawable.ic_launcher_background
+//            )
+//            isChipIconVisible = false
+//            isCloseIconVisible = true
+//            isCheckable = true
+//            isClickable = true
+//            binding.apply {
+//                chipsgroup.chipGroup.addView(chip as View)
+//                chip.setOnCloseIconClickListener {
+//                    chipsgroup.chipGroup.removeView(it)
+//                    ingredientsList.remove(it.toString())
+//                }
+//            }
+//        }
+//    }
+
+
+//    chipGroup.setOnCheckedChangeListener { group, checkedId ->
+//        val selectedChips = group.checkedChipIds
+//        for (chipId in selectedChips) {
+//            val chip = findViewById<Chip>(chipId)
+//            // Do something with the selected chip
+//        }
+//    }
+
+
+
+//    private fun findRecipesByNameInteractorScreen() {
+//        binding.searchView.setOnQueryTextListener(object : SearchView.OnQueryTextListener {
+//            override fun onQueryTextSubmit(query: String?): Boolean {
+//                query?.let { getRecipes(it) }
+//                return false
+//            }
+//
+//            override fun onQueryTextChange(newText: String?): Boolean {
+//                return false
+//            }
+//        })
+//    }
+
+//    private fun setChipOnClickListener() {
+//        binding.chipsgroup.chipGroup.setOnClickListener() { view ->
+//            recipeName = (view.parent as Chip).text.toString()
+//            showToast(message = recipeName)
+//            ingredientsList.add((view.parent as Chip).text.toString())
+//            checkIfRecipeOrIngredient()
+////            getRecipes(recipeName)
+//            // binding.searchView.setQuery(recipeName, false)
+//        }
+//    }

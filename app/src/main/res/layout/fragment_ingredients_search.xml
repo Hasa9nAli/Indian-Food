@@ -22,20 +22,21 @@
             android:layout_height="wrap_content"
             android:orientation="horizontal">
 
-            <ImageButton
-                android:id="@+id/back_button"
-                android:layout_width="24dp"
-                android:layout_height="24dp"
-                android:layout_gravity="center"
-                android:background="?attr/selectableItemBackgroundBorderless"
-                android:contentDescription="@string/blank"
-                android:layout_marginEnd="@dimen/smallMargin"
-                android:src="@drawable/left_arrow" />
+<!--            <ImageButton-->
+<!--                android:id="@+id/back_button"-->
+<!--                android:layout_width="24dp"-->
+<!--                android:layout_height="24dp"-->
+<!--                android:layout_gravity="center"-->
+<!--                android:background="?attr/selectableItemBackgroundBorderless"-->
+<!--                android:contentDescription="@string/blank"-->
+<!--                android:layout_marginEnd="@dimen/smallMargin"-->
+<!--                android:src="@drawable/left_arrow" />-->
 
             <SearchView
                 android:id="@+id/search_view"
                 android:layout_width="match_parent"
                 android:layout_height="48dp"
+                android:clipToOutline="false"
                 android:background="@drawable/shape_search"
                 android:queryHint="Search..."
                 app:iconifiedByDefault="false" />
@@ -47,10 +48,11 @@
         android:id="@+id/noDataFound"
         layout="@layout/no_data_found"
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:visibility="gone"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/largeSpace"
         app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/search_toolbar" />
+        app:layout_constraintTop_toTopOf="parent"
+        android:visibility="gone"/>
 
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/searchRecyclerView"
@@ -69,7 +71,18 @@
     android:id="@+id/chipsgroup"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
-    layout="@layout/chips"
+    layout="@layout/chips_recipe"
     app:layout_constraintTop_toBottomOf="@id/search_toolbar"
     app:layout_constraintBottom_toTopOf="@id/searchRecyclerView"/>
+
+
+<!--    <include-->
+<!--        android:id="@+id/chipsgroup"-->
+<!--        android:layout_width="match_parent"-->
+<!--        android:layout_height="wrap_content"-->
+<!--        layout="@layout/chips_ingredients"-->
+<!--        android:visibility="gone"-->
+<!--        app:layout_constraintTop_toBottomOf="@id/search_toolbar"-->
+<!--        app:layout_constraintBottom_toTopOf="@id/searchRecyclerView"/>-->
+<!--    -->
 </androidx.constraintlayout.widget.ConstraintLayout>
