@@ -15,7 +15,7 @@ import com.chocolatecake.indianfood.ui.base.BaseFragment
 import com.chocolatecake.indianfood.util.navigateTo
 import com.google.android.material.chip.Chip
 
-class IngredientsSearchFragment : BaseFragment<FragmentIngredientsSearchBinding>() {
+class SearchFragment : BaseFragment<FragmentIngredientsSearchBinding>() {
     private lateinit var dataSource: IndianFoodDataSource
     private lateinit var findRecipesContainsSpecifiedIngredient: FindRecipesContainsSpecifiedIngredientInteractor
     private lateinit var findRecipesByName: FindRecipesByNameInteractor
