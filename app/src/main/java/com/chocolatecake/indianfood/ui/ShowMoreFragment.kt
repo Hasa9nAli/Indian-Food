@@ -3,32 +3,35 @@ package com.chocolatecake.indianfood.ui
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.ViewGroup
-import com.chocolatecake.indianfood.databinding.ShowMoreBinding
+import com.chocolatecake.indianfood.databinding.FragmentShowMoreBinding
 
-class ShowMoreFragment : BaseFragment<ShowMoreBinding>() {
-    override val inflater: (LayoutInflater, ViewGroup?, Boolean) -> ShowMoreBinding =
-        ShowMoreBinding::inflate
+class ShowMoreFragment : BaseFragment<FragmentShowMoreBinding>() {
+    override val inflater: (LayoutInflater, ViewGroup?, Boolean) -> FragmentShowMoreBinding =
+        FragmentShowMoreBinding::inflate
 
+    private var titleCategory: String? = null
 
     override fun setUp() {
-        goBack()
+        titleCategory = arguments?.getString(RECIPES_CATEGORY)
+
     }
 
-    private fun goBack() {
-        val arrowBackButton = binding.arrowBack.setOnClickListener {
-            parentFragmentManager.beginTransaction().remove(this).commit()
+
+    override fun addCallBacks() {
+        binding.apply {
+            title.text = titleCategory
+
+            arrowBack.setOnClickListener {
+                parentFragmentManager.popBackStack()
+            }
         }
     }
 
-    override fun addCallBacks() {
-
-    }
-
     companion object {
-        const val RECIPES_CATEGORY = "RECIPE"
+        private const val RECIPES_CATEGORY = "Recipes Category"
 
         fun newInstance(categoryType: String) =
-            RecipeDetailsFragment().apply {
+            ShowMoreFragment().apply {
                 arguments = Bundle().apply {
                     putString(RECIPES_CATEGORY, categoryType)
                 }

@@ -1,11 +1,9 @@
 package com.chocolatecake.indianfood.ui
 
 import android.view.LayoutInflater
-import androidx.core.splashscreen.SplashScreen.Companion.installSplashScreen
-import com.chocolatecake.indianfood.dataSource.CsvDataSource
-import com.chocolatecake.indianfood.dataSource.utils.CsvParser
+import androidx.fragment.app.Fragment
+import com.chocolatecake.indianfood.R
 import com.chocolatecake.indianfood.databinding.ActivityMainBinding
-import com.chocolatecake.indianfood.interactor.GetRandomMealIntractor
 import com.chocolatecake.indianfood.util.Constants.MAIN_ACTIVITY
 
 
@@ -15,27 +13,59 @@ class MainActivity : BaseActivity<ActivityMainBinding>() {
 
     override val bindingInflater: (LayoutInflater) -> ActivityMainBinding =
         ActivityMainBinding::inflate
-    private var onBoardingFragment: RecipeDetailsFragment? = null
+    private lateinit var onBoardingFragment: OnBoardingFragment
+
+    private lateinit var homeFragment: HomeFragment
+    private lateinit var searchFragment: IngredientsSearchFragment
+    private lateinit var categoriesFragment: CategoriesFragment
+    private lateinit var ingredientsSearchFragment: IngredientsSearchFragment
+    private lateinit var aboutMealsFragment: AboutMealsFragment
 
     override fun setUp() {
-        installSplashScreen()
-        onBoardingFragment = RecipeDetailsFragment.newInstance(
-            GetRandomMealIntractor(
-                CsvDataSource(
-                    CsvParser(), this
-                )
-            ).invoke()
-        )
+        onBoardingFragment = OnBoardingFragment()
+        homeFragment = HomeFragment()
+        searchFragment = IngredientsSearchFragment()
+        categoriesFragment = CategoriesFragment()
+        ingredientsSearchFragment = IngredientsSearchFragment()
+        aboutMealsFragment = AboutMealsFragment()
+        setOnBoardingFragment()
     }
 
     override fun addCallbacks() {
-        setUpSubFragment()
+        binding.mainBottomNavigation.setOnItemSelectedListener {
+            when (it.itemId) {
+                R.id.action_home -> {
+                    replaceFragment(homeFragment)
+                    true
+                }
+                R.id.action_search -> {
+                    replaceFragment(searchFragment)
+                    true
+                }
+                R.id.action_categories -> {
+                    replaceFragment(categoriesFragment)
+                    true
+                }
+                R.id.action_ingredients -> {
+                    replaceFragment(ingredientsSearchFragment)
+                    true
+                }
+                R.id.action_about -> {
+                    replaceFragment(aboutMealsFragment)
+                    true
+                }
+                else -> false
+            }
+        }
     }
 
+    private fun setOnBoardingFragment() {
+        replaceFragment(onBoardingFragment)
+    }
 
-    private fun setUpSubFragment() {
-        val transction = supportFragmentManager.beginTransaction()
-        transction.add(binding.fragmentContainer.id, onBoardingFragment!!)
-        transction.commit()
+    private fun replaceFragment(fragment: Fragment) {
+        val transaction = supportFragmentManager.beginTransaction()
+        transaction.replace(R.id.main_fragment_container, fragment)
+        transaction.commit()
     }
 }
