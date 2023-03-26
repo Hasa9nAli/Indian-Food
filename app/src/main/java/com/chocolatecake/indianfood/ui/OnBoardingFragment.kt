@@ -8,6 +8,7 @@ import androidx.fragment.app.FragmentActivity
 import com.chocolatecake.indianfood.R
 import com.chocolatecake.indianfood.databinding.FragmentOnBoardingBinding
 import com.chocolatecake.indianfood.util.createOnBoardingDataList
+import com.google.android.material.bottomnavigation.BottomNavigationView
 
 class OnBoardingFragment : BaseFragment<FragmentOnBoardingBinding>() {
 
@@ -48,8 +49,9 @@ class OnBoardingFragment : BaseFragment<FragmentOnBoardingBinding>() {
 
     override fun onDetach() {
         super.onDetach()
-        val binding = (activity as MainActivity?)!!.binding
-        binding.mainBottomNavigation.visibility = View.VISIBLE
+        val bottomNavigationBar =
+            requireActivity().findViewById<BottomNavigationView>(R.id.main_bottom_navigation)
+        bottomNavigationBar.visibility = View.VISIBLE
     }
 
     private fun replaceFragment(fragment: Fragment) {
