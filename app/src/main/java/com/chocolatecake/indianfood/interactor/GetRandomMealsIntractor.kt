@@ -8,7 +8,7 @@ class GetRandomMealsIntractor(
     fun invoke(): List<String> =
         dataSource.getAllRecipesData()
             .ifEmpty{ throw IllegalStateException("Something went wrong") }
-            .map { it.name.substring(it.name.length/2) }
+            .map { it.name.substring(it.name.length/2 ,it.name.length) }
             .shuffled()
             .distinct()
 }
