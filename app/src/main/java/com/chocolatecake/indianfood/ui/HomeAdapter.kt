@@ -1,6 +1,5 @@
 package com.chocolatecake.indianfood.ui
 
-import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -58,7 +57,6 @@ class HomeAdapter(
 
     private fun bindRecipes(holder: RecipesViewHolder, position: Int) {
         val recipes = items[position].item as List<Recipe>
-        Log.e("TAG", "bindRecipes: $recipes")
         val adapter = RecipeAdapter(recipes, recipeListener)
         holder.binding.recipiesRecyclerView.adapter = adapter
     }
@@ -67,20 +65,18 @@ class HomeAdapter(
         val currentItems = items[position].item as String
         holder.binding.apply {
             textTitle.text = currentItems
-            showMore.setOnClickListener {
-                showMoreListener.onClickShowMore()
-            }
+            showMore.setOnClickListener { showMoreListener.onClickShowMore(currentItems) }
         }
     }
 
     private fun bindRandomRecipes(holder: RandomRecipesViewHolder, position: Int) {
         val currentItems = items[position].item as Recipe
         holder.binding.apply {
-            RecipeCookingTime.text = currentItems.totalTimeInMinutes.toString()
+            recipeCookingTime.text = currentItems.totalTimeInMinutes.toString()
             RecipeCuisine.text = currentItems.cuisine
             RecipeName.text = currentItems.name
             Glide.with(this.root.context).load(currentItems.imageUrl).into(dishOfTheDayImage)
-            root.setOnClickListener { randomRecipes.onClickRandomRecipe() }
+            root.setOnClickListener { randomRecipes.onClickRandomRecipe(currentItems) }
         }
     }
 
@@ -99,9 +95,9 @@ class HomeAdapter(
 
     override fun getItemViewType(position: Int): Int {
         return when (items[position].type) {
-            HomeItemType.RANDOM_RECIPES -> ITEM_TYPE_RANDOM_RECIPES
-            HomeItemType.TEXT -> ITEM_TYPE_TEXT
-            HomeItemType.RECIPE -> ITEM_TYPE_RECIPES
+            HomeItemType.TYPE_RANDOM_RECIPES -> ITEM_TYPE_RANDOM_RECIPES
+            HomeItemType.TYPE_TEXT -> ITEM_TYPE_TEXT
+            HomeItemType.TYPE_RECIPE -> ITEM_TYPE_RECIPES
         }
     }
 
@@ -114,10 +110,10 @@ class HomeAdapter(
 }
 
 interface OnClickShowMore {
-    fun onClickShowMore()
+    fun onClickShowMore(categoryType: String)
 }
 
 interface OnClickRandomRecipe {
-    fun onClickRandomRecipe()
+    fun onClickRandomRecipe(recipe: Recipe)
 }
 

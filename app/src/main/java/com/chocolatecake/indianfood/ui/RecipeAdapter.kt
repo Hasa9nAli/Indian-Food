@@ -25,9 +25,9 @@ class RecipeAdapter(
         val currentItem = recipes[position]
         holder.binding.apply {
             quickRecipesName.text = currentItem.name
-            quickRecipesTime.text = currentItem.totalTimeInMinutes.toString()
+            recipeCookingTime.text = currentItem.totalTimeInMinutes.toString()
             Glide.with(this.root.context).load(currentItem.imageUrl).into(quickRecipesImage)
-            root.setOnClickListener { recipeListener.onClickRecipe() }
+            root.setOnClickListener { recipeListener.onClickRecipe(currentItem) }
         }
     }
 
@@ -41,5 +41,5 @@ class RecipeAdapter(
 }
 
 interface OnClickRecipe {
-    fun onClickRecipe()
+    fun onClickRecipe(recipe: Recipe)
 }

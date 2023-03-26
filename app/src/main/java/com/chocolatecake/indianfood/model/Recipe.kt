@@ -15,8 +15,10 @@ data class Recipe(
     val sourceUrl: String,
     val cleanedIngredients: List<String>,
     val imageUrl: String,
-) : Parcelable
-
-fun Recipe.toHomeItem(): HomeItem<Any> {
-    return HomeItem(this, HomeItemType.RECIPE)
+) : Parcelable {
+    fun toHomeItem(): HomeItem<Any> {
+        return HomeItem(this, HomeItemType.TYPE_RECIPE)
+    }
 }
+
+

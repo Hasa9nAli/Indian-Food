@@ -1,5 +1,5 @@
 package com.chocolatecake.indianfood.util
 
 enum class HomeItemType {
-    RECIPE, RANDOM_RECIPES, TEXT
+    TYPE_RECIPE, TYPE_RANDOM_RECIPES, TYPE_TEXT
 }
