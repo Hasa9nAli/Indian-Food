@@ -6,7 +6,7 @@ import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
 import com.chocolatecake.indianfood.R
-import com.chocolatecake.indianfood.databinding.ItemRandomRecipesBinding
+import com.chocolatecake.indianfood.databinding.ItemRandomRecipeBinding
 import com.chocolatecake.indianfood.databinding.LayoutRecipesBinding
 import com.chocolatecake.indianfood.databinding.LayoutTextInHomeBinding
 import com.chocolatecake.indianfood.model.HomeItem
@@ -28,8 +28,8 @@ class HomeAdapter(
         return when (viewType) {
             ITEM_TYPE_RANDOM_RECIPES -> {
                 val view = LayoutInflater.from(parent.context)
-                    .inflate(R.layout.item_random_recipes, parent, false)
-                RandomRecipesViewHolder(view)
+                    .inflate(R.layout.item_random_recipe, parent, false)
+                RandomRecipeViewHolder(view)
             }
             ITEM_TYPE_TEXT -> {
                 val view = LayoutInflater.from(parent.context)
@@ -49,7 +49,7 @@ class HomeAdapter(
 
     override fun onBindViewHolder(holder: BasicViewHolder, position: Int) {
         when (holder) {
-            is RandomRecipesViewHolder -> bindRandomRecipes(holder, position)
+            is RandomRecipeViewHolder -> bindRandomRecipes(holder, position)
             is TextViewHolder -> bindTitleSection(holder, position)
             is RecipesViewHolder -> bindRecipes(holder, position)
         }
@@ -69,7 +69,7 @@ class HomeAdapter(
         }
     }
 
-    private fun bindRandomRecipes(holder: RandomRecipesViewHolder, position: Int) {
+    private fun bindRandomRecipes(holder: RandomRecipeViewHolder, position: Int) {
         val currentItems = items[position].item as Recipe
         holder.binding.apply {
             recipeCookingTime.text = currentItems.totalTimeInMinutes.toString()
@@ -81,8 +81,8 @@ class HomeAdapter(
     }
 
 
-    class RandomRecipesViewHolder(itemView: View) : BasicViewHolder(itemView) {
-        val binding = ItemRandomRecipesBinding.bind(itemView)
+    class RandomRecipeViewHolder(itemView: View) : BasicViewHolder(itemView) {
+        val binding = ItemRandomRecipeBinding.bind(itemView)
     }
 
     class RecipesViewHolder(itemView: View) : BasicViewHolder(itemView) {
