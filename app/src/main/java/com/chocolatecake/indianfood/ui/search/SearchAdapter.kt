@@ -8,10 +8,11 @@ import com.bumptech.glide.Glide
 import com.chocolatecake.indianfood.R
 import com.chocolatecake.indianfood.databinding.CardSearchItemBinding
 import com.chocolatecake.indianfood.model.Recipe
-import com.chocolatecake.indianfood.util.ItemListener
 
-class SearchAdapter(private val recipes: List<Recipe>, private val itemListener: ItemListener) :
-    RecyclerView.Adapter<SearchAdapter.RecipeViewHolder>() {
+class SearchAdapter(
+    private val recipes: List<Recipe>,
+    private val onClickItem: (recipe: Recipe) -> Unit ,
+    ) : RecyclerView.Adapter<SearchAdapter.RecipeViewHolder>() {
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): RecipeViewHolder {
         return RecipeViewHolder(
@@ -32,7 +33,7 @@ class SearchAdapter(private val recipes: List<Recipe>, private val itemListener:
             Glide.with(root).load(recipe.imageUrl).into(recipeImage)
 
             recipeItem.setOnClickListener {
-                itemListener.onClickItem(recipe = recipes[position])
+                onClickItem(recipes[position])
             }
         }
     }

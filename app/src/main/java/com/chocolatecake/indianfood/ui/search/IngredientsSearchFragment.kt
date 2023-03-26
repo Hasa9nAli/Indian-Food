@@ -1,13 +1,10 @@
 package com.chocolatecake.indianfood.ui.search
-import android.content.Context
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.SearchView
 import android.widget.Toast
-import androidx.core.content.ContextCompat
-import com.chocolatecake.indianfood.R
 import com.chocolatecake.indianfood.dataSource.CsvDataSource
 import com.chocolatecake.indianfood.dataSource.utils.CsvParser
 import com.chocolatecake.indianfood.databinding.FragmentIngredientsSearchBinding
@@ -17,11 +14,10 @@ import com.chocolatecake.indianfood.ui.RecipeDetailsFragment
 import com.chocolatecake.indianfood.ui.base.BaseFragment
 import com.chocolatecake.indianfood.util.Constants.INSTRUCTIONS_TAB_INDEX
 import com.chocolatecake.indianfood.util.Constants.RECIPE_TAB_INDEX
-import com.chocolatecake.indianfood.util.ItemListener
 import com.chocolatecake.indianfood.util.navigateTo
 import com.google.android.material.chip.Chip
 
-class IngredientsSearchFragment : BaseFragment<FragmentIngredientsSearchBinding>(), ItemListener {
+class IngredientsSearchFragment : BaseFragment<FragmentIngredientsSearchBinding>() {
     private lateinit var dataSource: IndianFoodDataSource
     private lateinit var findRecipesContainsSpecifiedIngredient: FindRecipesContainsSpecifiedIngredientInteractor
     private lateinit var findRecipesByName: FindRecipesByNameInteractor
@@ -29,7 +25,6 @@ class IngredientsSearchFragment : BaseFragment<FragmentIngredientsSearchBinding>
     private var ingredientsList = mutableListOf("oil")
     private var recipeName  = ""
     private lateinit var getRandomMeals : GetRandomMealsIntractor
-    private var chipNext = ""
     var tap = 3
 
 
@@ -113,12 +108,12 @@ class IngredientsSearchFragment : BaseFragment<FragmentIngredientsSearchBinding>
 
 
     private fun setUpAdapter(recipe: List<Recipe>) {
-        val searchAdapter = SearchAdapter(recipe, this)
+        val searchAdapter = SearchAdapter(recipe, onClickItem = ::onClickRecipe)
         binding.searchRecyclerView.adapter = searchAdapter
     }
 
 
-    override fun onClickItem(recipe: Recipe) {
+     private fun onClickRecipe(recipe: Recipe) {
         requireActivity().navigateTo(RecipeDetailsFragment.newInstance(recipe))
     }
 
@@ -162,6 +157,7 @@ class IngredientsSearchFragment : BaseFragment<FragmentIngredientsSearchBinding>
             chip.setOnCloseIconClickListener {
                  binding.chipsgroup.chipGroup.removeView(it)
                  ingredientsList.remove(it.toString())
+                 getInstructions(ingredientsList)
                 }
         }
 
