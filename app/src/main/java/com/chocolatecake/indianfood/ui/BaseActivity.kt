@@ -12,7 +12,7 @@ abstract class BaseActivity<VB: ViewBinding> : AppCompatActivity() {
     abstract val bindingInflater: (LayoutInflater) -> VB
     private var _binding: VB? = null
 
-    val binding: VB
+    protected val binding: VB
         get() = _binding as VB
 
     override fun onCreate(savedInstanceState: Bundle?) {
