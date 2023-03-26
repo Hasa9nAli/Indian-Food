@@ -5,7 +5,11 @@ import android.view.ViewGroup
 import com.chocolatecake.indianfood.dataSource.CsvDataSource
 import com.chocolatecake.indianfood.dataSource.utils.CsvParser
 import com.chocolatecake.indianfood.databinding.FragmentHomeBinding
-import com.chocolatecake.indianfood.interactor.*
+import com.chocolatecake.indianfood.interactor.GetBreakfastRecipesInteractor
+import com.chocolatecake.indianfood.interactor.GetHealthyRecipesInteractor
+import com.chocolatecake.indianfood.interactor.GetQuickRecipesInteractor
+import com.chocolatecake.indianfood.interactor.GetRandomMealIntractor
+import com.chocolatecake.indianfood.interactor.IndianFoodDataSource
 import com.chocolatecake.indianfood.model.HomeItem
 import com.chocolatecake.indianfood.model.Recipe
 import com.chocolatecake.indianfood.util.HomeItemType
@@ -55,8 +59,8 @@ class HomeFragment : BaseFragment<FragmentHomeBinding>(), OnClickShowMore, OnCli
         itemsList.add(HomeItem(HEALTHY_MEALS, HomeItemType.TYPE_TEXT))
         itemsList.add(HomeItem(getHealthyRecipes.invoke(10), HomeItemType.TYPE_RECIPE))
 
-        itemsList.add(HomeItem(BREAKFAST, HomeItemType.TYPE_TEXT))
-        itemsList.add(HomeItem(getBreakfastRecipes.invoke(), HomeItemType.TYPE_RECIPE))
+//        itemsList.add(HomeItem(BREAKFAST, HomeItemType.TYPE_TEXT))
+//        itemsList.add(HomeItem(getBreakfastRecipes.invoke(), HomeItemType.TYPE_RECIPE))
 
         binding.recipiesRecyclerView.adapter = HomeAdapter(itemsList, this, this, this)
     }

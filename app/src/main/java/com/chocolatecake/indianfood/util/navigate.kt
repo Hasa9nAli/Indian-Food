@@ -32,11 +32,12 @@ private fun changeNavigation(activity: FragmentActivity, state: NavigationState,
     )
     when (state) {
         NavigationState.ADD -> {
-            transaction.add(R.id.fragment_container, to)
+            transaction.add(R.id.main_fragment_container, to)
             transaction.addToBackStack("fragment")
         }
+
         NavigationState.REMOVE -> transaction.remove(to)
-        NavigationState.REPLACE -> transaction.replace(R.id.fragment_container, to)
+        NavigationState.REPLACE -> transaction.replace(R.id.main_fragment_container, to)
     }
     transaction.addToBackStack(null).commit()
 }
