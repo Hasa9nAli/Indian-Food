@@ -37,7 +37,7 @@ class ShowMoreFragment : BaseFragment<ShowMoreBinding>() {
             }
         }
         binding.mealsGrid.adapter = adapter
-        binding.title.text = title
+        binding.title.text = title.makeTitle()
         goBack()
     }
 
@@ -50,6 +50,9 @@ class ShowMoreFragment : BaseFragment<ShowMoreBinding>() {
     override fun addCallBacks() {
 
     }
+
+    private fun String.makeTitle() =
+        this.split(" ").joinToString(" ") { it.replaceFirstChar(Char::titlecase) }
 
     companion object {
         const val RECIPES_CATEGORY = "RECIPE"

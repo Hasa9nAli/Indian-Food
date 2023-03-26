@@ -13,6 +13,9 @@ import com.chocolatecake.indianfood.model.Recipe
 class ShowMoreAdapter(val recipies: List<Recipe>) :
     RecyclerView.Adapter<ShowMoreAdapter.ShowMoreViewHolder>() {
 
+    companion object{
+        const val UNIT_OF_TIME = "min"
+    }
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ShowMoreViewHolder {
         val view = LayoutInflater.from(parent.context).inflate(R.layout.item_meal, parent, false)
@@ -40,7 +43,7 @@ class ShowMoreAdapter(val recipies: List<Recipe>) :
     }
 
     private fun checkValidTime(time : String): String =
-        if(time.trim() == "0") "instant" else "$time min"
+        if(time.trim() == "0") "instant" else "$time $UNIT_OF_TIME"
 
 
     class ShowMoreViewHolder(view: View) : RecyclerView.ViewHolder(view) {
