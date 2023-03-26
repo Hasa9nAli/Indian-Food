@@ -42,57 +42,7 @@ class IngredientsSearchFragment : BaseFragment<FragmentIngredientsSearchBinding>
     override fun setUp() {
         setupDatasource()
         checkIfRecipeOrIngredientToSearch()
-        getRandomRecipes()
     }
-
-    private fun getRandomRecipes() {
-        try {
-            val randomRecipes = getRandomMeal.invoke()
-            for (recipe in randomRecipes) {
-                randomRecipesList.add(recipe.name)
-                createChip(recipe.name, requireContext())
-            }
-        } catch (e: IllegalAccessException) {
-            showToast(message = e.message.toString())
-        }
-    }
-    private fun searchRandomRecipesScreen() {
-        binding.chipsgroup.chipGroup.setOnCheckedChangeListener { group, checkedId ->
-            if (checkedId != View.NO_ID) {
-                val chip = group.findViewById<Chip>(checkedId)
-                getRecipes(chip.text.toString())
-            }
-        }
-    }
-
-    fun createChip(name: String, context: Context, isRandom: Boolean = false) {
-        val chip = Chip(context)
-        chip.apply {
-            text = name
-            chipIcon = ContextCompat.getDrawable(
-                context,
-                R.drawable.ic_launcher_background
-            )
-            isChipIconVisible = false
-            isCloseIconVisible = !isRandom
-            isCheckable = !isRandom
-            isClickable = true
-            binding.apply {
-                if (isRandom) {
-                    binding.chipsgroup.chipGroup.addView(chip as View)
-                } else {
-                    chipsgroup.chipGroup.addView(chip as View)
-                }
-                chip.setOnCloseIconClickListener {
-                    if (!isRandom) {
-                        chipsgroup.chipGroup.removeView(it)
-                        ingredientsList.remove(it.text.toString())
-                    }
-                }
-            }
-        }
-    }
-
 
     private fun checkIfRecipeOrIngredientToSearch() {
         when (arguments?.toString()) {
@@ -104,7 +54,6 @@ class IngredientsSearchFragment : BaseFragment<FragmentIngredientsSearchBinding>
             }
         }
     }
-
     private fun setupDatasource() {
         csvParser = CsvParser()
         dataSource = CsvDataSource(csvParser, requireContext())
@@ -156,7 +105,6 @@ class IngredientsSearchFragment : BaseFragment<FragmentIngredientsSearchBinding>
     override fun addCallBacks() {
         searchIngredientScreen()
         searchRecipesScreen()
-        searchRandomRecipesScreen()
     }
     fun createChip(name: String, context: Context) {
         val chip = Chip(context)
@@ -210,6 +158,7 @@ class IngredientsSearchFragment : BaseFragment<FragmentIngredientsSearchBinding>
             }
         })
     }
+
 
     companion object {
         fun newInstance(index: Int) =
