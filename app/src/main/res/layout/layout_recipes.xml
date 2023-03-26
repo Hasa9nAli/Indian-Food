@@ -11,10 +11,9 @@
         android:id="@+id/recipies_recycler_view"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:clipToPadding="true"
+        android:clipToPadding="false"
+        android:paddingStart="12dp"
         android:orientation="horizontal"
-        android:paddingHorizontal="8dp"
-        android:paddingBottom="8dp"
         app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
         tools:listitem="@layout/item_recipe" />
 
