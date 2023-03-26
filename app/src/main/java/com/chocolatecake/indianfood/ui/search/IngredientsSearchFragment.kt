@@ -24,7 +24,7 @@ class IngredientsSearchFragment : BaseFragment<FragmentIngredientsSearchBinding>
     private lateinit var getRandomMeals : GetRandomMealsIntractor
     private lateinit var csvParser: CsvParser
     private var ingredientsList = mutableListOf("oil")
-    private var recipeName  = ""
+    private var recipeName  = "no data"
     var tap = 1
 
 
@@ -73,6 +73,33 @@ class IngredientsSearchFragment : BaseFragment<FragmentIngredientsSearchBinding>
     }
 
 
+    private fun setSearchOnClickListener() {
+        binding.searchView.setOnQueryTextListener(object : SearchView.OnQueryTextListener {
+            override fun onQueryTextSubmit( query: String?): Boolean {
+
+                when (tap.toString()) {
+                    RECIPE_TAB_INDEX -> {
+                        recipeName = query!!
+                        getRecipes(query)
+                    }
+                    INSTRUCTIONS_TAB_INDEX -> {
+                        ingredientsList.add(query!!)
+                        getInstructions(ingredientsList)
+                        createChip(query)
+                    }
+                }
+
+                binding.searchView.clearFocus()
+                return false
+
+            }
+            override fun onQueryTextChange(p0: String?): Boolean {
+                return false
+            }
+        })
+    }
+
+
 
     private fun getInstructions( ingredientsList: List<String>) {
         try {
@@ -92,10 +119,13 @@ class IngredientsSearchFragment : BaseFragment<FragmentIngredientsSearchBinding>
         try {
             val recipes = findRecipesByName.invoke(searchName = searchText)
 
-            if (recipes.isNotEmpty() || recipeName != "") {
+            if (recipes.isNotEmpty() ) {
                 setUpAdapter(recipes)
+                binding.searchRecyclerView.visibility = View.VISIBLE
+                binding.noDataFound.error.visibility = View.GONE
             } else {
                 binding.noDataFound.error.visibility = View.VISIBLE
+                binding.searchRecyclerView.visibility = View.GONE
             }
         } catch (e: IllegalAccessException) {
             showToast(message = e.message.toString())
@@ -119,8 +149,7 @@ class IngredientsSearchFragment : BaseFragment<FragmentIngredientsSearchBinding>
 
 
     private fun setUpAdapter(recipe: List<Recipe>) {
-        val searchAdapter = SearchAdapter(recipe, onClickItem = ::onClickRecipe)
-        binding.searchRecyclerView.adapter = searchAdapter
+        binding.searchRecyclerView.adapter = SearchAdapter(recipe, onClickItem = ::onClickRecipe)
     }
 
 
@@ -163,32 +192,6 @@ class IngredientsSearchFragment : BaseFragment<FragmentIngredientsSearchBinding>
 
     }
 
-
-    private fun setSearchOnClickListener() {
-        binding.searchView.setOnQueryTextListener(object : SearchView.OnQueryTextListener {
-            override fun onQueryTextSubmit( query: String?): Boolean {
-
-                when (tap.toString()) {
-                    RECIPE_TAB_INDEX -> {
-                        recipeName = query!!
-                        getRecipes(query)
-                    }
-                    INSTRUCTIONS_TAB_INDEX -> {
-                        ingredientsList.add(query!!)
-                        getInstructions(ingredientsList)
-                        createChip(query)
-                    }
-                }
-
-                binding.searchView.clearFocus()
-                return false
-
-            }
-            override fun onQueryTextChange(p0: String?): Boolean {
-                return false
-            }
-        })
-    }
 
 
     private fun createChips(items: List<String> ) {
