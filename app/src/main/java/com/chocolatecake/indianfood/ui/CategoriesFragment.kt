@@ -16,7 +16,7 @@ class CategoriesFragment : BaseFragment<FragmentCategoriesBinding>() {
 
     private fun navigateToCategoriesRecipes(mealType: String) {
         val transaction = parentFragmentManager.beginTransaction()
-        transaction.add(R.id.fragment_container, CategoriesRecipesFragment.newInstance(mealType))
+        transaction.add(R.id.main_fragment_container, CategoriesRecipesFragment.newInstance(mealType))
         transaction.commit()
     }
 

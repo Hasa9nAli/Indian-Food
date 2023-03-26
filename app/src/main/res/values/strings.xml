@@ -75,5 +75,9 @@
     <string name="the_famous_indian_dishes">The Famous Indian dishes</string>
     <string name="the_recipe_doesnt_exist">The recipe doesn\'t exist</string>
     <string name="blank" />
+    <string name="home">Home</string>
+    <string name="search">search</string>
+    <string name="categories">categories</string>
+    <string name="about">about</string>
 
 </resources>
