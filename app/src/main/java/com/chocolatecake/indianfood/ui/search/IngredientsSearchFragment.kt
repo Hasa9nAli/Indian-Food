@@ -23,9 +23,9 @@ class IngredientsSearchFragment : BaseFragment<FragmentIngredientsSearchBinding>
     private lateinit var findRecipesByName: FindRecipesByNameInteractor
     private lateinit var getRandomMeals : GetRandomMealsIntractor
     private lateinit var csvParser: CsvParser
-    private var ingredientsList = mutableListOf("oil")
+    private var ingredientsList = mutableListOf("")
     private var recipeName  = "no data"
-    var tap = 1
+    var tap = 3
 
 
     override val inflater: (LayoutInflater, ViewGroup?, Boolean) -> FragmentIngredientsSearchBinding
@@ -84,7 +84,7 @@ class IngredientsSearchFragment : BaseFragment<FragmentIngredientsSearchBinding>
                     }
                     INSTRUCTIONS_TAB_INDEX -> {
                         ingredientsList.add(query!!)
-                        getInstructions(ingredientsList)
+                        getInstructions(mutableListOf(query))
                         createChip(query)
                     }
                 }
@@ -101,14 +101,17 @@ class IngredientsSearchFragment : BaseFragment<FragmentIngredientsSearchBinding>
 
 
 
-    private fun getInstructions( ingredientsList: List<String>) {
+    private fun getInstructions( ingredients: MutableList<String>) {
         try {
-            val ingredients = findRecipesContainsSpecifiedIngredient.invoke(ingredientsList.distinct())
+            val ingredients = findRecipesContainsSpecifiedIngredient.invoke(ingredients.distinct())
 
             if (ingredients.isNotEmpty()) {
                 setUpAdapter(ingredients)
+                binding.searchRecyclerView.visibility = View.VISIBLE
+                binding.noDataFound.error.visibility = View.GONE
             } else {
                 binding.noDataFound.error.visibility = View.VISIBLE
+                binding.searchRecyclerView.visibility = View.GONE
             }
         } catch (e: IllegalAccessException) {
             showToast(message = e.message.toString())
@@ -180,8 +183,9 @@ class IngredientsSearchFragment : BaseFragment<FragmentIngredientsSearchBinding>
 
             chip.let {
                 ingredientsList.add(it.text.toString())
+                getInstructions(mutableListOf(it.text.toString()))
+               // getInstructions(ingredientsList)
                 showToast(message = it.text.toString())
-                getInstructions(ingredientsList)
             }
             chip.setOnCloseIconClickListener {
                  binding.chipsgroup.chipGroup.removeView(it)
