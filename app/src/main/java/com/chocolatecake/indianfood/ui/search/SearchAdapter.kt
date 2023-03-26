@@ -24,7 +24,7 @@ class SearchAdapter(private val recipes: List<Recipe>, private val itemListener:
     override fun onBindViewHolder(holder: RecipeViewHolder, position: Int) {
         val recipe = recipes[position]
         holder.binding.apply {
-            recipeName.text = recipe.name.substring(recipe.name.length / 2)
+            recipeName.text = recipe.name
             recipeTime.text = "${recipe.totalTimeInMinutes} min"
             recipeIngredientsCount.text = "${recipe.ingredients.size} ingredients"
 
