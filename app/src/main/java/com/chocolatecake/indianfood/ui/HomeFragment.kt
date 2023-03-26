@@ -1,21 +1,24 @@
 package com.chocolatecake.indianfood.ui
 
-import android.util.Log
 import android.view.LayoutInflater
 import android.view.ViewGroup
-import com.bumptech.glide.Glide
 import com.chocolatecake.indianfood.dataSource.CsvDataSource
 import com.chocolatecake.indianfood.dataSource.utils.CsvParser
 import com.chocolatecake.indianfood.databinding.FragmentHomeBinding
-import com.chocolatecake.indianfood.interactor.GetQuickRecipesInteractor
-import com.chocolatecake.indianfood.interactor.GetRandomMealIntractor
-import com.chocolatecake.indianfood.interactor.IndianFoodDataSource
+import com.chocolatecake.indianfood.interactor.*
+import com.chocolatecake.indianfood.model.HomeItem
+import com.chocolatecake.indianfood.model.Recipe
+import com.chocolatecake.indianfood.util.HomeItemType
+import com.chocolatecake.indianfood.util.navigateTo
 
-class HomeFragment : BaseFragment<FragmentHomeBinding>() {
+class HomeFragment : BaseFragment<FragmentHomeBinding>(), OnClickShowMore, OnClickRecipe,
+    OnClickRandomRecipe {
 
     private lateinit var dataSource: IndianFoodDataSource
-    private lateinit var getQuickRecipesInteractor: GetQuickRecipesInteractor
-    private lateinit var getRandomMealIntractor: GetRandomMealIntractor
+    private lateinit var getQuickRecipes: GetQuickRecipesInteractor
+    private lateinit var getRandomRecipes: GetRandomMealIntractor
+    private lateinit var getHealthyRecipes: GetHealthyRecipesInteractor
+    private lateinit var getBreakfastRecipes: GetBreakfastRecipesInteractor
     private lateinit var csvParser: CsvParser
 
 
@@ -23,29 +26,61 @@ class HomeFragment : BaseFragment<FragmentHomeBinding>() {
         get() = FragmentHomeBinding::inflate
 
     override fun setUp() {
-        setupDatasource()
-        getRandomRecipe()
-        Log.i("TAG", "Quick Recipes: ${getQuickRecipesInteractor(3).map { it.name }}")
+
     }
 
     override fun addCallBacks() {
+        setupDatasource()
+        setupHomeAdapter()
     }
 
     private fun setupDatasource() {
         csvParser = CsvParser()
         dataSource = CsvDataSource(csvParser, requireContext())
-        getQuickRecipesInteractor = GetQuickRecipesInteractor(dataSource)
-        getRandomMealIntractor = GetRandomMealIntractor(dataSource)
+        getQuickRecipes = GetQuickRecipesInteractor(dataSource)
+        getRandomRecipes = GetRandomMealIntractor(dataSource)
+        getHealthyRecipes = GetHealthyRecipesInteractor(dataSource)
+        getBreakfastRecipes = GetBreakfastRecipesInteractor(dataSource)
+
     }
 
-    private fun getRandomRecipe() {
-        val randomRecipe = getRandomMealIntractor.invoke()
+    private fun setupHomeAdapter() {
+        val itemsList: MutableList<HomeItem<Any>> = mutableListOf()
 
-        Glide.with(this).load(randomRecipe.imageUrl).into(binding.dishOfTheDayImage)
+        itemsList.add(HomeItem(getRandomRecipes.invoke(), HomeItemType.TYPE_RANDOM_RECIPES))
 
-        binding.RecipeName.text = randomRecipe.name
-        binding.RecipeCookingTime.text = "${randomRecipe.totalTimeInMinutes} min"
-        binding.RecipeCuisine.text = randomRecipe.cuisine
+        itemsList.add(HomeItem(QUICK_RECIPES, HomeItemType.TYPE_TEXT))
+        itemsList.add(HomeItem(getQuickRecipes.invoke(10), HomeItemType.TYPE_RECIPE))
+
+        itemsList.add(HomeItem(HEALTHY_MEALS, HomeItemType.TYPE_TEXT))
+        itemsList.add(HomeItem(getHealthyRecipes.invoke(10), HomeItemType.TYPE_RECIPE))
+
+        itemsList.add(HomeItem(BREAKFAST, HomeItemType.TYPE_TEXT))
+        itemsList.add(HomeItem(getBreakfastRecipes.invoke(), HomeItemType.TYPE_RECIPE))
+
+        binding.recipiesRecyclerView.adapter = HomeAdapter(itemsList, this, this, this)
     }
+
+    override fun onClickShowMore(categoryType: String) {
+        val showMoreFragment = ShowMoreFragment.newInstance(categoryType)
+        requireActivity().navigateTo(showMoreFragment)
+    }
+
+    override fun onClickRandomRecipe(recipe: Recipe) {
+        val detailsFragment = RecipeDetailsFragment.newInstance(recipe)
+        requireActivity().navigateTo(detailsFragment)
+    }
+
+    override fun onClickRecipe(recipe: Recipe) {
+        val detailsFragment = RecipeDetailsFragment.newInstance(recipe)
+        requireActivity().navigateTo(detailsFragment)
+    }
+
+    companion object {
+        const val HEALTHY_MEALS = "Healthy meals"
+        const val QUICK_RECIPES = "Quick recipes"
+        const val BREAKFAST = "Breakfast"
+    }
+
 
 }
