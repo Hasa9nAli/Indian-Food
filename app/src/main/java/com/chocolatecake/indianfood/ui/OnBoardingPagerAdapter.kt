@@ -31,9 +31,7 @@ class OnBoardingPagerAdapter(
         binding.imageSlider.setImageResource(onBoardingData.imageResource)
         binding.head.text = onBoardingData.titleText
         binding.desc.text = onBoardingData.descriptionText
-
         container.addView(binding.root)
-
         return binding.root
     }
 }

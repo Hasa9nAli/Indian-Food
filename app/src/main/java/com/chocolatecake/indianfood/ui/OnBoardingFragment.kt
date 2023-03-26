@@ -1,9 +1,14 @@
 package com.chocolatecake.indianfood.ui
 
 import android.view.LayoutInflater
+import android.view.View
 import android.view.ViewGroup
+import androidx.fragment.app.Fragment
+import androidx.fragment.app.FragmentActivity
+import com.chocolatecake.indianfood.R
 import com.chocolatecake.indianfood.databinding.FragmentOnBoardingBinding
 import com.chocolatecake.indianfood.util.createOnBoardingDataList
+import com.google.android.material.bottomnavigation.BottomNavigationView
 
 class OnBoardingFragment : BaseFragment<FragmentOnBoardingBinding>() {
 
@@ -22,16 +27,39 @@ class OnBoardingFragment : BaseFragment<FragmentOnBoardingBinding>() {
     private fun setupOnBoardingViewPager() {
         val onBoardingData = requireContext().createOnBoardingDataList()
         onBoardingPagerAdapter = OnBoardingPagerAdapter(onBoardingData)
-        binding.onBoardingVB.adapter = onBoardingPagerAdapter
+        binding.onBoardingViewPager.adapter = onBoardingPagerAdapter
     }
 
     private fun setupNextButton() {
-        binding.btnNext.setOnClickListener {
-            if (getCurrentItemIndex(0) < 3) {
-                binding.onBoardingVB.setCurrentItem(getCurrentItemIndex(1), true)
+        binding.buttonNext.setOnClickListener {
+            val currentItemIndex = getCurrentItemIndex()
+            val lastItemIndex = getLastItemIndex()
+            if (currentItemIndex < lastItemIndex) {
+                binding.onBoardingViewPager.setCurrentItem(currentItemIndex + 1, true)
+            } else {
+                replaceFragment(HomeFragment())
             }
         }
+
+        binding.buttonSkip.setOnClickListener {
+            replaceFragment(HomeFragment())
+        }
+
     }
 
-    private fun getCurrentItemIndex(index: Int) = binding.onBoardingVB.currentItem + index
+    override fun onDetach() {
+        super.onDetach()
+        val bottomNavigationBar =
+            requireActivity().findViewById<BottomNavigationView>(R.id.main_bottom_navigation)
+        bottomNavigationBar.visibility = View.VISIBLE
+    }
+
+    private fun replaceFragment(fragment: Fragment) {
+        val transaction = (activity as FragmentActivity).supportFragmentManager.beginTransaction()
+        transaction.replace(R.id.main_fragment_container, fragment)
+        transaction.commit()
+    }
+
+    private fun getLastItemIndex() = binding.onBoardingViewPager.adapter?.count?.minus(1) ?: -1
+    private fun getCurrentItemIndex() = binding.onBoardingViewPager.currentItem
 }
