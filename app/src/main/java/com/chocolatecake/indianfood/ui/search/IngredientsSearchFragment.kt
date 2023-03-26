@@ -42,12 +42,20 @@ class IngredientsSearchFragment : BaseFragment<FragmentIngredientsSearchBinding>
     override fun setUp() {
         setupDatasource()
         checkIfRecipeOrIngredientToSearch()
+        setChipOnClickListener()
+    }
+
+    private fun setChipOnClickListener() {
+        binding.chipsgroup.chipGroup.setOnClickListener() { view ->
+            val chipText = (view.parent as Chip).text.toString()
+            binding.searchView.setQuery(chipText, false)
+        }
     }
 
     private fun checkIfRecipeOrIngredientToSearch() {
-        when (arguments?.toString()) {
+        when (3.toString()) {
             RECIPE_TAB_INDEX -> {
-                getRecipes(recipeName)
+                searchIngredient(ingredientsList)
             }
             INSTRUCTIONS_TAB_INDEX -> {
                 getInstructions()

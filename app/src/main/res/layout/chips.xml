@@ -20,7 +20,7 @@
             style="@style/Widget.Material3.Chip.Assist"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Mustard"
+            android:text="Spicy Tomato Rice"
             app:chipCornerRadius="100dp"
             android:textColor="#DE1C1B1F"
             app:chipEndPadding="8dp"
@@ -34,7 +34,7 @@
             style="@style/Widget.Material3.Chip.Assist"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Oil"
+            android:text="Gongura Chicken Curry"
             android:textColor="#DE1C1B1F"
             app:chipCornerRadius="100dp"
             app:chipMinTouchTargetSize="0dp"
@@ -48,7 +48,7 @@
             style="@style/Widget.Material3.Chip.Assist"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Salt"
+            android:text="Ragi Semiya Upma"
             app:chipCornerRadius="100dp"
             android:textColor="#DE1C1B1F"
             app:chipMinTouchTargetSize="0dp"
@@ -60,70 +60,66 @@
             style="@style/Widget.Material3.Chip.Assist"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Rice"
+            android:text="Andhra Style Alam Pachadi "
             app:chipCornerRadius="100dp"
             android:textColor="#DE1C1B1F"
             app:chipMinTouchTargetSize="0dp"
             app:chipStartPadding="0dp"
             app:ensureMinTouchTargetSize="true" />
 
-<!--        <com.google.android.material.chip.Chip-->
-<!--            android:id="@+id/chip_5"-->
-<!--            style="@style/Widget.Material3.Chip.Assist"-->
-<!--            android:layout_width="wrap_content"-->
-<!--            android:layout_height="wrap_content"-->
-<!--            android:text="Bread"-->
-<!--            android:textColor="#DE1C1B1F"-->
-<!--            app:chipCornerRadius="100dp"-->
-<!--            app:closeIconEnabled="true"-->
-<!--            app:chipMinTouchTargetSize="0dp"-->
-<!--            app:ensureMinTouchTargetSize="true"-->
-<!--            app:iconStartPadding="8dp" />-->
+        <com.google.android.material.chip.Chip
+            android:id="@+id/chip_5"
+            style="@style/Widget.Material3.Chip.Assist"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Homemade Baked Beans Recipe"
+            android:textColor="#DE1C1B1F"
+            app:chipCornerRadius="100dp"
+            app:chipMinTouchTargetSize="0dp"
+            app:ensureMinTouchTargetSize="true"
+            app:iconStartPadding="8dp" />
 
-<!--        <com.google.android.material.chip.Chip-->
-<!--            android:id="@+id/chip_6"-->
-<!--            style="@style/Widget.Material3.Chip.Assist"-->
-<!--            android:layout_width="wrap_content"-->
-<!--            android:layout_height="wrap_content"-->
-<!--            android:elevation="0dp"-->
-<!--            android:textColor="#DE1C1B1F"-->
-<!--            android:text="Fish"-->
-<!--            app:chipCornerRadius="100dp"-->
-<!--            app:chipEndPadding="8dp"-->
-<!--            app:closeIconEnabled="true"-->
-<!--            app:chipMinTouchTargetSize="0dp"-->
-<!--            app:ensureMinTouchTargetSize="true"-->
-<!--            app:iconStartPadding="8dp" />-->
+        <com.google.android.material.chip.Chip
+            android:id="@+id/chip_6"
+            style="@style/Widget.Material3.Chip.Assist"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:elevation="0dp"
+            android:textColor="#DE1C1B1F"
+            android:text="Cauliflower Leaves Chutney"
+            app:chipCornerRadius="100dp"
+            app:chipEndPadding="8dp"
+            app:chipMinTouchTargetSize="0dp"
+            app:ensureMinTouchTargetSize="true"
+            app:iconStartPadding="8dp" />
 
-<!--        <com.google.android.material.chip.Chip-->
-<!--            android:id="@+id/chip_7"-->
-<!--            style="@style/Widget.Material3.Chip.Assist"-->
-<!--            android:layout_width="wrap_content"-->
-<!--            android:layout_height="wrap_content"-->
-<!--            android:elevation="0dp"-->
-<!--            android:text="Lemon"-->
-<!--            app:chipCornerRadius="100dp"-->
-<!--            android:textColor="#DE1C1B1F"-->
-<!--            app:closeIconEnabled="true"-->
-<!--            app:chipMinHeight="32dp"-->
-<!--            app:chipMinTouchTargetSize="0dp"-->
-<!--            app:chipStartPadding="0dp"-->
-<!--            app:ensureMinTouchTargetSize="true"-->
-<!--            app:iconStartPadding="8dp" />-->
+        <com.google.android.material.chip.Chip
+            android:id="@+id/chip_7"
+            style="@style/Widget.Material3.Chip.Assist"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:elevation="0dp"
+            android:text="Mini Dal Mature Chat"
+            app:chipCornerRadius="100dp"
+            android:textColor="#DE1C1B1F"
+            app:chipMinHeight="32dp"
+            app:chipMinTouchTargetSize="0dp"
+            app:chipStartPadding="0dp"
+            app:ensureMinTouchTargetSize="true"
+            app:iconStartPadding="8dp" />
 
-<!--        <com.google.android.material.chip.Chip-->
-<!--            android:id="@+id/chip_8"-->
-<!--            style="@style/Widget.Material3.Chip.Assist"-->
-<!--            android:layout_width="wrap_content"-->
-<!--            android:layout_height="wrap_content"-->
-<!--            android:text="Rice"-->
-<!--            app:chipCornerRadius="100dp"-->
-<!--            android:textColor="#DE1C1B1F"-->
-<!--            app:closeIconEnabled="true"-->
-<!--            app:chipMinTouchTargetSize="0dp"-->
-<!--            app:chipStartPadding="0dp"-->
-<!--            app:ensureMinTouchTargetSize="true"-->
-<!--            app:iconStartPadding="8dp" />-->
+        <com.google.android.material.chip.Chip
+            android:id="@+id/chip_8"
+            style="@style/Widget.Material3.Chip.Assist"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Chinese Darsaan"
+            app:chipCornerRadius="100dp"
+            android:textColor="#DE1C1B1F"
+            app:chipMinTouchTargetSize="0dp"
+            app:chipStartPadding="0dp"
+            app:ensureMinTouchTargetSize="true"
+            app:iconStartPadding="8dp" />
 
 <!--        <com.google.android.material.chip.Chip-->
 <!--            android:id="@+id/chip_9"-->
