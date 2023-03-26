@@ -17,6 +17,6 @@ class GetDinnerRecipesInteractor(private val dataSource: IndianFoodDataSource) {
     }
 
     companion object{
-        const val DINNER = "dinner"
+        const val DINNER = "Dinner"
     }
 }

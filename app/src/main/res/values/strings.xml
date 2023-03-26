@@ -75,5 +75,12 @@
     <string name="the_famous_indian_dishes">The Famous Indian dishes</string>
     <string name="the_recipe_doesnt_exist">The recipe doesn\'t exist</string>
     <string name="blank" />
-
+    <string name="breakfast_card">Breakfast Card</string>
+    <string name="lunch_card">Lunch Card</string>
+    <string name="dinner_card">Dinner Card</string>
+    <string name="back_buton">Back Button</string>
+    <string name="home">Home</string>
+    <string name="search">search</string>
+    <string name="categories">categories</string>
+    <string name="about">about</string>
 </resources>

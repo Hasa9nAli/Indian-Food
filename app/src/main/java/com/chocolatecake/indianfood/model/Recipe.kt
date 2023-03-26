@@ -1,6 +1,7 @@
 package com.chocolatecake.indianfood.model
 
 import android.os.Parcelable
+import com.chocolatecake.indianfood.util.HomeItemType
 import kotlinx.parcelize.Parcelize
 
 
@@ -14,4 +15,10 @@ data class Recipe(
     val sourceUrl: String,
     val cleanedIngredients: List<String>,
     val imageUrl: String,
-) : Parcelable
+) : Parcelable {
+    fun toHomeItem(): HomeItem<Any> {
+        return HomeItem(this, HomeItemType.TYPE_RECIPE)
+    }
+}
+
+
