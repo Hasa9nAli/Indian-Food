@@ -3,6 +3,7 @@ package com.chocolatecake.indianfood.ui
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.ViewGroup
+import com.chocolatecake.indianfood.R
 import com.chocolatecake.indianfood.dataSource.CsvDataSource
 import com.chocolatecake.indianfood.dataSource.utils.CsvParser
 import com.chocolatecake.indianfood.databinding.FragmentCategoriesRecipesBinding
@@ -14,6 +15,9 @@ import com.chocolatecake.indianfood.model.Recipe
 
 class CategoriesRecipesFragment : BaseFragment<FragmentCategoriesRecipesBinding>() {
 
+
+    private lateinit var categoryRecipesAdapter: CategoryRecipesAdapter
+    private lateinit var recipes: List<Recipe>
     private var param1: String? = null
     override val inflater: (LayoutInflater, ViewGroup?, Boolean) -> FragmentCategoriesRecipesBinding
         get() = FragmentCategoriesRecipesBinding::inflate
@@ -24,8 +28,7 @@ class CategoriesRecipesFragment : BaseFragment<FragmentCategoriesRecipesBinding>
             param1 = it.getString(MEAL_TYPE)
         }
 
-
-        var recipe: List<Recipe>? = when (param1) {
+        recipes = when (param1) {
             GetBreakfastRecipesInteractor.BREAKFAST ->
                 GetBreakfastRecipesInteractor(
                     CsvDataSource(
@@ -51,9 +54,14 @@ class CategoriesRecipesFragment : BaseFragment<FragmentCategoriesRecipesBinding>
                 throw NoSuchElementException()
             }
         }
+
+
     }
 
     override fun addCallBacks() {
+        setUpRecyclerView()
+        navigateBackToCategoryFragment()
+        binding.textMeals.text = param1
     }
 
 
@@ -67,5 +75,25 @@ class CategoriesRecipesFragment : BaseFragment<FragmentCategoriesRecipesBinding>
                     putString(MEAL_TYPE, mealType)
                 }
             }
+    }
+
+    private fun setUpRecyclerView() {
+        categoryRecipesAdapter = CategoryRecipesAdapter(requireContext(), recipes)
+        binding.recyclerRecipe.adapter = categoryRecipesAdapter
+    }
+
+    private fun navigateBackToCategoryFragment() {
+        binding.imgBack.setOnClickListener {
+            onBackButtonClicked()
+        }
+
+    }
+
+    private fun onBackButtonClicked() {
+        val categoriesFragment = CategoriesFragment()
+        val transaction = parentFragmentManager.beginTransaction().apply {
+            replace(R.id.fragment_container, categoriesFragment)
+            commit()
+        }
     }
 }

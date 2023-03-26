@@ -143,4 +143,5 @@
     <color name="color_Text">#991C1B1F</color>
     <color name="text_One">#DE1C1B1F</color>
     <color name="background">#FCFCFC</color>
+    <color name="icon_item_recipe_color">#991C1B1F</color>
 </resources>
