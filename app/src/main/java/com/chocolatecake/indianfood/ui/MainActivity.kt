@@ -1,10 +1,10 @@
 package com.chocolatecake.indianfood.ui
 
 import android.view.LayoutInflater
-import androidx.fragment.app.Fragment
 import com.chocolatecake.indianfood.R
 import com.chocolatecake.indianfood.databinding.ActivityMainBinding
 import com.chocolatecake.indianfood.util.Constants.MAIN_ACTIVITY
+import com.chocolatecake.indianfood.util.navigateExclusive
 
 
 class MainActivity : BaseActivity<ActivityMainBinding>() {
@@ -13,8 +13,8 @@ class MainActivity : BaseActivity<ActivityMainBinding>() {
 
     override val bindingInflater: (LayoutInflater) -> ActivityMainBinding =
         ActivityMainBinding::inflate
-    private lateinit var onBoardingFragment: OnBoardingFragment
 
+    private lateinit var onBoardingFragment: OnBoardingFragment
     private lateinit var homeFragment: HomeFragment
     private lateinit var searchFragment: IngredientsSearchFragment
     private lateinit var categoriesFragment: CategoriesFragment
@@ -33,39 +33,43 @@ class MainActivity : BaseActivity<ActivityMainBinding>() {
 
     override fun addCallbacks() {
         binding.mainBottomNavigation.setOnItemSelectedListener {
-            when (it.itemId) {
-                R.id.action_home -> {
-                    replaceFragment(homeFragment)
-                    true
-                }
-                R.id.action_search -> {
-                    replaceFragment(searchFragment)
-                    true
-                }
-                R.id.action_categories -> {
-                    replaceFragment(categoriesFragment)
-                    true
-                }
-                R.id.action_ingredients -> {
-                    replaceFragment(ingredientsSearchFragment)
-                    true
-                }
-                R.id.action_about -> {
-                    replaceFragment(aboutMealsFragment)
-                    true
-                }
-                else -> false
+            val destinationFragment = getDestinationFragment(it.itemId)
+            destinationFragment?.let {
+                navigateExclusive(destinationFragment)
+                return@setOnItemSelectedListener true
             }
+            return@setOnItemSelectedListener false
         }
     }
 
-    private fun setOnBoardingFragment() {
-        replaceFragment(onBoardingFragment)
-    }
+    private fun getDestinationFragment(bottomNavigationBarItemId: Int) =
+        when (bottomNavigationBarItemId) {
+            R.id.action_home -> {
+                homeFragment
+            }
 
-    private fun replaceFragment(fragment: Fragment) {
-        val transaction = supportFragmentManager.beginTransaction()
-        transaction.replace(R.id.main_fragment_container, fragment)
-        transaction.commit()
+            R.id.action_search -> {
+                searchFragment
+            }
+
+            R.id.action_categories -> {
+                categoriesFragment
+            }
+
+            R.id.action_ingredients -> {
+                ingredientsSearchFragment
+            }
+
+            R.id.action_about -> {
+                aboutMealsFragment
+            }
+
+            else -> {
+                null
+            }
+        }
+
+    private fun setOnBoardingFragment() {
+        navigateExclusive(onBoardingFragment)
     }
 }

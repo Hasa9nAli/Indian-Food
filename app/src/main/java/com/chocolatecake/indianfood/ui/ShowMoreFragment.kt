@@ -1,34 +1,34 @@
 package com.chocolatecake.indianfood.ui
 
 import android.os.Bundle
-import android.util.Log
 import android.view.LayoutInflater
 import android.view.ViewGroup
-import com.chocolatecake.indianfood.ShowMoreAdapter
 import com.chocolatecake.indianfood.dataSource.CsvDataSource
 import com.chocolatecake.indianfood.dataSource.utils.CsvParser
-import com.chocolatecake.indianfood.databinding.ShowMoreBinding
-import com.chocolatecake.indianfood.interactor.GetHealthyMealsInteractor
-import com.chocolatecake.indianfood.interactor.GetQuickRecipesInteractor
 import com.chocolatecake.indianfood.databinding.FragmentShowMoreBinding
+import com.chocolatecake.indianfood.interactor.GetHealthyRecipesInteractor
+import com.chocolatecake.indianfood.interactor.GetQuickRecipesInteractor
 
 class ShowMoreFragment : BaseFragment<FragmentShowMoreBinding>() {
     override val inflater: (LayoutInflater, ViewGroup?, Boolean) -> FragmentShowMoreBinding =
         FragmentShowMoreBinding::inflate
 
-    private var titleCategory: String? = null
 
     override fun setUp() {
-        lateinit var adapter: ShowMoreAdapter
+        setUpAdapter(getCategoryType())
+        binding.title.text = getCategoryType()
+    }
+
+    private fun setUpAdapter(categoryType: String) {
         val csvData = CsvDataSource(CsvParser(), requireContext())
-        val title: String = requireArguments().getString(RECIPES_CATEGORY)!!
+        binding.mealsGrid.adapter = when (categoryType) {
+            GetHealthyRecipesInteractor.HEALTHY_TYPE -> ShowMoreAdapter(
+                GetHealthyRecipesInteractor(
+                    csvData
+                ).invoke()
+            )
 
-        Log.d("TAG", "setUp: $title")
-
-        adapter = when (title) {
-            GetHealthyMealsInteractor.HEALTHY -> ShowMoreAdapter(GetHealthyMealsInteractor(csvData).invoke())
-
-            GetQuickRecipesInteractor.QUICK_RECIPES -> ShowMoreAdapter(
+            GetQuickRecipesInteractor.QUICK_RECIPES_TYPE -> ShowMoreAdapter(
                 GetQuickRecipesInteractor(
                     csvData
                 ).invoke()
@@ -38,16 +38,12 @@ class ShowMoreFragment : BaseFragment<FragmentShowMoreBinding>() {
                 throw IllegalArgumentException()
             }
         }
-        binding.mealsGrid.adapter = adapter
-        binding.title.text = title.makeTitle()
     }
-        titleCategory = arguments?.getString(RECIPES_CATEGORY)
-    }
+
+    private fun getCategoryType() = arguments?.getString(RECIPES_CATEGORY)!!
 
     override fun addCallBacks() {
         binding.apply {
-            title.text = titleCategory
-
             arrowBack.setOnClickListener {
                 parentFragmentManager.popBackStack()
             }

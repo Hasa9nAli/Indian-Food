@@ -9,6 +9,7 @@ import com.chocolatecake.indianfood.databinding.FragmentCategoryRecipesBinding
 import com.chocolatecake.indianfood.interactor.GetBreakfastRecipesInteractor
 import com.chocolatecake.indianfood.interactor.GetDinnerRecipesInteractor
 import com.chocolatecake.indianfood.interactor.GetLunchRecipesInteractor
+import com.chocolatecake.indianfood.util.navigateBack
 
 
 class CategoryRecipesFragment : BaseFragment<FragmentCategoryRecipesBinding>() {
@@ -70,7 +71,7 @@ class CategoryRecipesFragment : BaseFragment<FragmentCategoryRecipesBinding>() {
     }
 
     private fun onBackButtonClicked() {
-        parentFragmentManager.popBackStack()
+        requireActivity().navigateBack()
     }
 
     companion object {

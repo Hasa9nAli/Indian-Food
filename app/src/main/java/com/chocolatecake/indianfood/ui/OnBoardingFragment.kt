@@ -4,10 +4,12 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
-import androidx.fragment.app.FragmentActivity
 import com.chocolatecake.indianfood.R
+import com.chocolatecake.indianfood.dataSource.CsvDataSource
+import com.chocolatecake.indianfood.dataSource.utils.CsvParser
 import com.chocolatecake.indianfood.databinding.FragmentOnBoardingBinding
-import com.chocolatecake.indianfood.util.createOnBoardingDataList
+import com.chocolatecake.indianfood.interactor.GetOnBoardingDataInteractor
+import com.chocolatecake.indianfood.util.navigateExclusive
 import com.google.android.material.bottomnavigation.BottomNavigationView
 
 class OnBoardingFragment : BaseFragment<FragmentOnBoardingBinding>() {
@@ -17,15 +19,16 @@ class OnBoardingFragment : BaseFragment<FragmentOnBoardingBinding>() {
         get() = FragmentOnBoardingBinding::inflate
 
     override fun setUp() {
-        setupOnBoardingViewPager()
+        setupOnBoardingViewPagerAdapter()
         setupNextButton()
     }
 
     override fun addCallBacks() {
     }
 
-    private fun setupOnBoardingViewPager() {
-        val onBoardingData = requireContext().createOnBoardingDataList()
+    private fun setupOnBoardingViewPagerAdapter() {
+        val onBoardingData =
+            GetOnBoardingDataInteractor(CsvDataSource(CsvParser(), requireContext())).invoke()
         onBoardingPagerAdapter = OnBoardingPagerAdapter(onBoardingData)
         binding.onBoardingViewPager.adapter = onBoardingPagerAdapter
     }
@@ -55,9 +58,7 @@ class OnBoardingFragment : BaseFragment<FragmentOnBoardingBinding>() {
     }
 
     private fun replaceFragment(fragment: Fragment) {
-        val transaction = (activity as FragmentActivity).supportFragmentManager.beginTransaction()
-        transaction.replace(R.id.main_fragment_container, fragment)
-        transaction.commit()
+        requireActivity().navigateExclusive(fragment)
     }
 
     private fun getLastItemIndex() = binding.onBoardingViewPager.adapter?.count?.minus(1) ?: -1
