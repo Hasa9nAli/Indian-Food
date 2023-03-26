@@ -30,7 +30,4 @@
         app:layout_constraintBottom_toTopOf="@id/main_bottom_navigation"
         tools:layout="@layout/fragment_home" />
 
-
-
-
 </androidx.constraintlayout.widget.ConstraintLayout>

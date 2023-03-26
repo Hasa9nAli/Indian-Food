@@ -16,12 +16,14 @@ class CategoriesFragment : BaseFragment<FragmentCategoriesBinding>() {
 
     private fun navigateToCategoriesRecipes(mealType: String) {
         val transaction = parentFragmentManager.beginTransaction()
-        transaction.add(R.id.main_fragment_container, CategoriesRecipesFragment.newInstance(mealType))
+        transaction.add(R.id.fragment_container, CategoryRecipesFragment.newInstance(mealType))
         transaction.commit()
     }
 
-
     override fun setUp() {
+    }
+
+    override fun addCallBacks() {
         binding.cardViewBreakfast.setOnClickListener {
             navigateToCategoriesRecipes(GetBreakfastRecipesInteractor.BREAKFAST)
         }
@@ -31,9 +33,6 @@ class CategoriesFragment : BaseFragment<FragmentCategoriesBinding>() {
         binding.cardViewDinner.setOnClickListener {
             navigateToCategoriesRecipes(GetDinnerRecipesInteractor.DINNER)
         }
-    }
-
-    override fun addCallBacks() {
     }
 
 }

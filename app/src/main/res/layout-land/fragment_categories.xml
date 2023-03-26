@@ -2,21 +2,23 @@
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    android:orientation="vertical"
-    android:paddingHorizontal="@dimen/margin_meduim">
+    android:layout_height="wrap_content"
+    android:orientation="horizontal"
+    android:paddingHorizontal="@dimen/margin_medium"
+    android:paddingVertical="@dimen/margin_medium">
 
 
     <androidx.cardview.widget.CardView
         android:id="@+id/card_view_breakfast"
         style="@style/CategoryCardStyle"
-        android:layout_width="match_parent"
-        android:layout_height="0dp"
-        android:layout_marginTop="@dimen/margin_medium"
+        android:layout_width="0dp"
+        android:layout_height="match_parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent">
 
+
         <androidx.constraintlayout.widget.ConstraintLayout
+            android:id="@+id/image_card1"
             android:layout_width="match_parent"
             android:layout_height="match_parent">
 
@@ -31,7 +33,6 @@
                 android:id="@+id/image_breakfast"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
-                android:contentDescription="@string/breakfast_card"
                 android:scaleType="centerCrop"
                 android:src="@drawable/imagepost"
                 app:layout_constraintBottom_toBottomOf="parent"
@@ -56,14 +57,15 @@
     <androidx.cardview.widget.CardView
         android:id="@+id/card_view_lunch"
         style="@style/CategoryCardStyle"
-        android:layout_width="match_parent"
-        android:layout_height="0dp"
-        android:layout_marginTop="@dimen/smallMargin"
+        android:layout_width="0dp"
+        android:layout_height="match_parent"
+        android:layout_marginHorizontal="@dimen/smallMargin"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent">
 
 
         <androidx.constraintlayout.widget.ConstraintLayout
+            android:id="@+id/image_card2"
             android:layout_width="match_parent"
             android:layout_height="match_parent">
 
@@ -79,8 +81,7 @@
                 android:id="@+id/imageView2"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
-                android:contentDescription="@string/lunch_card"
-                android:scaleType="centerCrop"
+                android:scaleType="fitXY"
                 android:src="@drawable/lunch"
                 app:layout_constraintTop_toTopOf="parent" />
 
@@ -103,13 +104,14 @@
     <androidx.cardview.widget.CardView
         android:id="@+id/card_view_dinner"
         style="@style/CategoryCardStyle"
-        android:layout_width="match_parent"
-        android:layout_height="0dp"
-        android:layout_marginTop="@dimen/smallMargin"
+        android:layout_width="0dp"
+        android:layout_height="match_parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent">
 
+
         <androidx.constraintlayout.widget.ConstraintLayout
+            android:id="@+id/image_card3"
             android:layout_width="match_parent"
             android:layout_height="match_parent">
 
@@ -124,7 +126,6 @@
                 android:id="@+id/imageView3"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
-                android:contentDescription="@string/dinner_card"
                 android:scaleType="centerCrop"
                 android:src="@drawable/dinner"
                 app:layout_constraintBottom_toBottomOf="parent"
