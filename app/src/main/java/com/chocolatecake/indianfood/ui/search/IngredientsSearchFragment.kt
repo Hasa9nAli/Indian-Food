@@ -47,15 +47,16 @@ class IngredientsSearchFragment : BaseFragment<FragmentIngredientsSearchBinding>
 
     private fun setChipOnClickListener() {
         binding.chipsgroup.chipGroup.setOnClickListener() { view ->
-            val chipText = (view.parent as Chip).text.toString()
-            binding.searchView.setQuery(chipText, false)
+            recipeName = (view.parent as Chip).text.toString()
+            getRecipes(recipeName)
+            binding.searchView.setQuery(recipeName, false)
         }
     }
 
     private fun checkIfRecipeOrIngredientToSearch() {
         when (3.toString()) {
             RECIPE_TAB_INDEX -> {
-                searchIngredient(ingredientsList)
+                getRecipes(recipeName)
             }
             INSTRUCTIONS_TAB_INDEX -> {
                 getInstructions()
