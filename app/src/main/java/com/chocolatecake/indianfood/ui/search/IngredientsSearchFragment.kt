@@ -12,8 +12,6 @@ import com.chocolatecake.indianfood.interactor.*
 import com.chocolatecake.indianfood.model.Recipe
 import com.chocolatecake.indianfood.ui.RecipeDetailsFragment
 import com.chocolatecake.indianfood.ui.base.BaseFragment
-import com.chocolatecake.indianfood.util.Constants.INSTRUCTIONS_TAB_INDEX
-import com.chocolatecake.indianfood.util.Constants.RECIPE_TAB_INDEX
 import com.chocolatecake.indianfood.util.navigateTo
 import com.google.android.material.chip.Chip
 
@@ -100,7 +98,6 @@ class IngredientsSearchFragment : BaseFragment<FragmentIngredientsSearchBinding>
     }
 
 
-
     private fun getInstructions( ingredients: MutableList<String>) {
         try {
             val ingredients = findRecipesContainsSpecifiedIngredient.invoke(ingredients.distinct())
@@ -156,12 +153,6 @@ class IngredientsSearchFragment : BaseFragment<FragmentIngredientsSearchBinding>
     }
 
 
-     private fun onClickRecipe(recipe: Recipe) {
-        requireActivity().navigateTo(RecipeDetailsFragment.newInstance(recipe))
-    }
-
-
-
     private fun onChoiceChip(){
         binding.chipsgroup.chipGroup.setOnCheckedStateChangeListener {
             group , checkedId ->
@@ -175,6 +166,7 @@ class IngredientsSearchFragment : BaseFragment<FragmentIngredientsSearchBinding>
         }
 
     }
+
 
     private fun onChoiceChips(){
         binding.chipsgroup.chipGroup.setOnCheckedStateChangeListener {
@@ -195,7 +187,6 @@ class IngredientsSearchFragment : BaseFragment<FragmentIngredientsSearchBinding>
         }
 
     }
-
 
 
     private fun createChips(items: List<String> ) {
@@ -219,8 +210,13 @@ class IngredientsSearchFragment : BaseFragment<FragmentIngredientsSearchBinding>
             binding.chipsgroup.chipGroup.addView(chip)
     }
 
+    private fun onClickRecipe(recipe: Recipe) {
+        requireActivity().navigateTo(RecipeDetailsFragment.newInstance(recipe))
+    }
 
     companion object {
+        private const val RECIPE_TAB_INDEX = "1"
+        private const val INSTRUCTIONS_TAB_INDEX = "3"
         fun newInstance(index: Int) =
             RecipeDetailsFragment().apply {
                 arguments = Bundle().apply {
