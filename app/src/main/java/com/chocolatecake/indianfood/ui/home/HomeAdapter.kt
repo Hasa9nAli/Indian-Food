@@ -7,8 +7,8 @@ import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
 import com.chocolatecake.indianfood.R
 import com.chocolatecake.indianfood.databinding.ItemRandomRecipeBinding
+import com.chocolatecake.indianfood.databinding.ItemSectionBinding
 import com.chocolatecake.indianfood.databinding.LayoutRecipesBinding
-import com.chocolatecake.indianfood.databinding.LayoutTextInHomeBinding
 import com.chocolatecake.indianfood.model.HomeItem
 import com.chocolatecake.indianfood.model.Recipe
 import com.chocolatecake.indianfood.util.HomeItemType
@@ -32,7 +32,7 @@ class HomeAdapter(
 
             ITEM_TYPE_SECTION -> {
                 val view = LayoutInflater.from(parent.context)
-                    .inflate(R.layout.layout_text_in_home, parent, false)
+                    .inflate(R.layout.item_section, parent, false)
                 SectionViewHolder(view)
             }
 
@@ -90,7 +90,7 @@ class HomeAdapter(
     }
 
     class SectionViewHolder(itemView: View) : BasicViewHolder(itemView) {
-        val binding = LayoutTextInHomeBinding.bind(itemView)
+        val binding = ItemSectionBinding.bind(itemView)
     }
 
     override fun getItemViewType(position: Int): Int {
