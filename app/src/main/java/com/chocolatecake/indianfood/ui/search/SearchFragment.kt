@@ -5,7 +5,7 @@ import android.view.View
 import android.view.ViewGroup
 import android.widget.SearchView
 import android.widget.Toast
-import com.chocolatecake.indianfood.dataSource.CsvDataSource
+import com.chocolatecake.indianfood.dataSource.IndianFoodCsvDataSource
 import com.chocolatecake.indianfood.dataSource.utils.CsvParser
 import com.chocolatecake.indianfood.databinding.FragmentIngredientsSearchBinding
 import com.chocolatecake.indianfood.interactor.*
@@ -52,7 +52,7 @@ class SearchFragment : BaseFragment<FragmentIngredientsSearchBinding>() {
 
     private fun setupDatasource() {
         csvParser = CsvParser()
-        dataSource = CsvDataSource(csvParser, requireContext())
+        dataSource = IndianFoodCsvDataSource(csvParser, requireContext())
         findRecipesContainsSpecifiedIngredient = FindRecipesContainsSpecifiedIngredientInteractor(dataSource)
         findRecipesByName = FindRecipesByNameInteractor(dataSource)
         getRandomMeals = GetRandomMealsIntractor(dataSource)
