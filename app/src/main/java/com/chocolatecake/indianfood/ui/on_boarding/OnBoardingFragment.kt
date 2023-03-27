@@ -1,4 +1,4 @@
-package com.chocolatecake.indianfood.ui
+package com.chocolatecake.indianfood.ui.on_boarding
 
 import android.view.LayoutInflater
 import android.view.View
@@ -9,6 +9,8 @@ import com.chocolatecake.indianfood.dataSource.IndianFoodCsvDataSource
 import com.chocolatecake.indianfood.dataSource.utils.CsvParser
 import com.chocolatecake.indianfood.databinding.FragmentOnBoardingBinding
 import com.chocolatecake.indianfood.interactor.GetOnBoardingDataInteractor
+import com.chocolatecake.indianfood.ui.base.BaseFragment
+import com.chocolatecake.indianfood.ui.home.HomeFragment
 import com.chocolatecake.indianfood.util.navigateExclusive
 import com.google.android.material.bottomnavigation.BottomNavigationView
 

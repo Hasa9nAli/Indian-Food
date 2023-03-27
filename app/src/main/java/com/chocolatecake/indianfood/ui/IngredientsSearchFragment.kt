@@ -11,6 +11,7 @@ import com.chocolatecake.indianfood.dataSource.utils.CsvParser
 import com.chocolatecake.indianfood.databinding.FragmentIngredientsSearchBinding
 import com.chocolatecake.indianfood.interactor.FindRecipesContainsSpecifiedIngredientInteractor
 import com.chocolatecake.indianfood.interactor.IndianFoodDataSource
+import com.chocolatecake.indianfood.ui.base.BaseFragment
 
 class IngredientsSearchFragment : BaseFragment<FragmentIngredientsSearchBinding>() {
 

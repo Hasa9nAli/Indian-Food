@@ -3,6 +3,11 @@ package com.chocolatecake.indianfood.ui
 import android.view.LayoutInflater
 import com.chocolatecake.indianfood.R
 import com.chocolatecake.indianfood.databinding.ActivityMainBinding
+import com.chocolatecake.indianfood.ui.about.AboutIndianFoodFragment
+import com.chocolatecake.indianfood.ui.base.BaseActivity
+import com.chocolatecake.indianfood.ui.categories.CategoriesFragment
+import com.chocolatecake.indianfood.ui.home.HomeFragment
+import com.chocolatecake.indianfood.ui.on_boarding.OnBoardingFragment
 import com.chocolatecake.indianfood.util.Constants.MAIN_ACTIVITY
 import com.chocolatecake.indianfood.util.navigateExclusive
 
@@ -19,7 +24,7 @@ class MainActivity : BaseActivity<ActivityMainBinding>() {
     private lateinit var searchFragment: IngredientsSearchFragment
     private lateinit var categoriesFragment: CategoriesFragment
     private lateinit var ingredientsSearchFragment: IngredientsSearchFragment
-    private lateinit var aboutMealsFragment: AboutMealsFragment
+    private lateinit var aboutIndianFoodFragment: AboutIndianFoodFragment
 
     override fun setUp() {
         onBoardingFragment = OnBoardingFragment()
@@ -27,7 +32,7 @@ class MainActivity : BaseActivity<ActivityMainBinding>() {
         searchFragment = IngredientsSearchFragment()
         categoriesFragment = CategoriesFragment()
         ingredientsSearchFragment = IngredientsSearchFragment()
-        aboutMealsFragment = AboutMealsFragment()
+        aboutIndianFoodFragment = AboutIndianFoodFragment()
         setOnBoardingFragment()
     }
 
@@ -61,7 +66,7 @@ class MainActivity : BaseActivity<ActivityMainBinding>() {
             }
 
             R.id.action_about -> {
-                aboutMealsFragment
+                aboutIndianFoodFragment
             }
 
             else -> {

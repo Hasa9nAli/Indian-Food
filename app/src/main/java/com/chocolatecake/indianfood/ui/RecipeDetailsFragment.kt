@@ -9,6 +9,7 @@ import com.bumptech.glide.Glide
 import com.chocolatecake.indianfood.R
 import com.chocolatecake.indianfood.databinding.FragmentRecipeDetailsBinding
 import com.chocolatecake.indianfood.model.Recipe
+import com.chocolatecake.indianfood.ui.base.BaseFragment
 import com.google.android.material.tabs.TabLayout
 import com.google.android.material.tabs.TabLayout.OnTabSelectedListener
 

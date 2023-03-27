@@ -1,4 +1,4 @@
-package com.chocolatecake.indianfood.ui
+package com.chocolatecake.indianfood.ui.show_more
 
 import android.os.Bundle
 import android.view.LayoutInflater
@@ -9,6 +9,7 @@ import com.chocolatecake.indianfood.databinding.FragmentShowMoreBinding
 import com.chocolatecake.indianfood.interactor.GetHealthyRecipesInteractor
 import com.chocolatecake.indianfood.interactor.GetQuickRecipesInteractor
 import com.chocolatecake.indianfood.model.Recipe
+import com.chocolatecake.indianfood.ui.base.BaseFragment
 
 class ShowMoreFragment : BaseFragment<FragmentShowMoreBinding>() {
     override val inflater: (LayoutInflater, ViewGroup?, Boolean) -> FragmentShowMoreBinding =

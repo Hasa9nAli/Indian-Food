@@ -1,4 +1,4 @@
-package com.chocolatecake.indianfood.ui
+package com.chocolatecake.indianfood.ui.home
 
 import android.view.LayoutInflater
 import android.view.ViewGroup
@@ -12,6 +12,9 @@ import com.chocolatecake.indianfood.interactor.GetRandomMealIntractor
 import com.chocolatecake.indianfood.interactor.IndianFoodDataSource
 import com.chocolatecake.indianfood.model.HomeItem
 import com.chocolatecake.indianfood.model.Recipe
+import com.chocolatecake.indianfood.ui.RecipeDetailsFragment
+import com.chocolatecake.indianfood.ui.base.BaseFragment
+import com.chocolatecake.indianfood.ui.show_more.ShowMoreFragment
 import com.chocolatecake.indianfood.util.HomeItemType
 import com.chocolatecake.indianfood.util.navigateTo
 

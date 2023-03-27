@@ -4,6 +4,7 @@ import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.ViewGroup
 import com.chocolatecake.indianfood.databinding.FragmentInstructionsBinding
+import com.chocolatecake.indianfood.ui.base.BaseFragment
 
 class InstructionsFragment : BaseFragment<FragmentInstructionsBinding>() {
 
