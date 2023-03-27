@@ -8,8 +8,6 @@
     android:layout_columnWeight="1"
     app:cardCornerRadius="8dp"
     android:layout_margin="4dp"
-
-
     >
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
