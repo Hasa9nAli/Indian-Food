@@ -4,52 +4,29 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:layout_marginStart="@dimen/normalSpace"
-    android:layout_marginTop="@dimen/normalSpace"
-    android:layout_marginEnd="@dimen/normalSpace">
+    android:padding="16dp"
+    android:background="#fcfcfc">
 
-    <androidx.appcompat.widget.Toolbar
-        android:id="@+id/search_toolbar"
-        android:layout_width="match_parent"
-        android:layout_height="56dp"
-        app:layout_constraintEnd_toEndOf="parent"
+    <EditText
+        android:id="@+id/searchView"
+        android:layout_width="350dp"
+        android:layout_height="52dp"
+        android:layout_marginTop="8dp"
+        android:paddingStart="16dp"
+        android:background="@drawable/shape_search"
+        app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent">
-
-        <LinearLayout
-            android:id="@+id/searchLinear"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:orientation="horizontal">
-
-            <SearchView
-                android:id="@+id/search_view"
-                android:layout_width="match_parent"
-                android:layout_height="48dp"
-                android:clipToOutline="false"
-                android:background="@drawable/shape_search"
-                android:queryHint="Search..."
-                app:iconifiedByDefault="false" />
-
-        </LinearLayout>
-    </androidx.appcompat.widget.Toolbar>
+        app:layout_constraintEnd_toEndOf="parent"
+        android:hint="search" />
 
     <com.google.android.material.chip.ChipGroup
         android:id="@+id/chipsgroup"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        app:layout_constraintTop_toBottomOf="@id/search_toolbar"
-        app:layout_constraintBottom_toTopOf="@id/ingredientsSearchRecyclerView"/>
-
-    <include
-        android:id="@+id/noDataFound"
-        layout="@layout/no_data_found"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="@dimen/normalSpace"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/chipsgroup"
-        android:visibility="gone"/>
+        android:layout_marginTop="16dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/searchView" />
 
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/ingredientsSearchRecyclerView"
@@ -64,6 +41,17 @@
         app:layout_constraintTop_toBottomOf="@id/chipsgroup"
         tools:listitem="@layout/card_search_item" />
 
-
+    <include
+        android:id="@+id/noDataFound"
+        layout="@layout/no_data_found"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/normalSpace"
+        android:layout_marginEnd="379dp"
+        android:visibility="gone"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/chipsgroup" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
