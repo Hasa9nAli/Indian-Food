@@ -8,6 +8,7 @@ import com.chocolatecake.indianfood.ui.base.BaseActivity
 import com.chocolatecake.indianfood.ui.categories.CategoriesFragment
 import com.chocolatecake.indianfood.ui.home.HomeFragment
 import com.chocolatecake.indianfood.ui.on_boarding.OnBoardingFragment
+import com.chocolatecake.indianfood.ui.search_ingredients.IngredientsSearchFragment
 import com.chocolatecake.indianfood.ui.search_recipes.RecipesSearchFragment
 import com.chocolatecake.indianfood.util.Constants.MAIN_ACTIVITY
 import com.chocolatecake.indianfood.util.navigateExclusive

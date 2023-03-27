@@ -34,8 +34,8 @@ class RecipesSearchFragment : BaseFragment<FragmentRecipesSearchBinding>() {
     override fun setUp() {
         setupDatasource()
         setSearchOnClickListener()
-        checkIfRecipeOrIngredient()
-
+        setRandomMeals()
+        getRecipes(recipeName)
     }
 
     override fun addCallBacks() {
@@ -65,13 +65,6 @@ class RecipesSearchFragment : BaseFragment<FragmentRecipesSearchBinding>() {
             }
         })
     }
-
-    private fun checkIfRecipeOrIngredient() {
-        setRandomMeals()
-        getRecipes(recipeName)
-    }
-
-
 
 
 
