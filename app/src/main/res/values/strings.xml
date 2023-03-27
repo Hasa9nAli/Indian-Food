@@ -75,5 +75,19 @@
     <string name="the_famous_indian_dishes">The Famous Indian dishes</string>
     <string name="the_recipe_doesnt_exist">The recipe doesn\'t exist</string>
     <string name="blank" />
-
+    <string name="breakfast_card">Breakfast Card</string>
+    <string name="lunch_card">Lunch Card</string>
+    <string name="dinner_card">Dinner Card</string>
+    <string name="back_buton">Back Button</string>
+    <string name="home">Home</string>
+    <string name="search">search</string>
+    <string name="categories">categories</string>
+    <string name="about">about</string>
+    <string name="ingredients_label">%1$s Ingredients</string>
+    <string name="minutes_label">%1$s Min</string>
+    <string name="instant_time">Instantly</string>
+    <string name="total_time_label">%1$s min</string>
+    <string name="descriptionNoDataFound">Please try again with different keywords or use our filters to refine your search.</string>
+    <string name="no_matching_recipes">No matching recipes</string>
+    <string name="descriptionDataNotFound">Please try again with different keywords or use our filters to refine your search.</string>
 </resources>

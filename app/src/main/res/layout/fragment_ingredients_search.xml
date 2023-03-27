@@ -8,122 +8,62 @@
     android:layout_marginTop="@dimen/normalSpace"
     android:layout_marginEnd="@dimen/normalSpace">
 
-
-    <LinearLayout
-        android:id="@+id/linear"
+    <androidx.appcompat.widget.Toolbar
+        android:id="@+id/search_toolbar"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:orientation="horizontal"
+        android:layout_height="56dp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent">
 
-        <ImageView
-            android:layout_width="wrap_content"
+        <LinearLayout
+            android:id="@+id/searchLinear"
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:src="@drawable/arrow"/>
+            android:orientation="horizontal">
 
-        <EditText
-            android:layout_width="350dp"
-            android:layout_height="52dp"
-            android:background="@drawable/search_shape"/>
+            <SearchView
+                android:id="@+id/search_view"
+                android:layout_width="match_parent"
+                android:layout_height="48dp"
+                android:clipToOutline="false"
+                android:background="@drawable/shape_search"
+                android:queryHint="Search..."
+                app:iconifiedByDefault="false" />
 
-    </LinearLayout>
+        </LinearLayout>
+    </androidx.appcompat.widget.Toolbar>
 
-    <EditText
-        android:id="@+id/search_input"
-        android:layout_width="0dp"
+    <com.google.android.material.chip.ChipGroup
+        android:id="@+id/chipsgroup"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        app:layout_constraintTop_toBottomOf="@id/search_toolbar"
+        app:layout_constraintBottom_toTopOf="@id/ingredientsSearchRecyclerView"/>
+
+    <include
+        android:id="@+id/noDataFound"
+        layout="@layout/no_data_found"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/normalSpace"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/chipsgroup"
+        android:visibility="gone"/>
+
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/ingredientsSearchRecyclerView"
+        android:layout_width="match_parent"
         android:layout_height="0dp"
-        android:layout_marginStart="8dp"
-        android:layout_marginEnd="16dp"
-        android:background="@drawable/search_background"
-        android:drawableStart="@drawable/clock"
-        android:drawablePadding="8dp"
-        android:hint="search"
-        android:imeOptions="actionSearch"
-        android:padding="8dp"
-        android:singleLine="true"
-        android:textColor="#000000"
-        android:textColorHint="#575757"
-        app:layout_constraintBottom_toBottomOf="@+id/imageView2"
+        android:clipToPadding="false"
+        android:orientation="vertical"
+        android:paddingBottom="64dp"
+        app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toEndOf="@+id/imageView2"
-        app:layout_constraintTop_toBottomOf="@+id/linear" />
-<!--    <androidx.appcompat.widget.Toolbar-->
-<!--        android:id="@+id/search_toolbar"-->
-<!--        android:layout_width="match_parent"-->
-<!--        android:layout_height="56dp"-->
-<!--        app:layout_constraintEnd_toEndOf="parent"-->
-<!--        app:layout_constraintStart_toStartOf="parent"-->
-<!--        app:layout_constraintTop_toTopOf="parent">-->
-
-<!--        <LinearLayout-->
-<!--            android:id="@+id/searchLinear"-->
-<!--            android:layout_width="match_parent"-->
-<!--            android:layout_height="wrap_content"-->
-<!--            android:orientation="horizontal">-->
-
-<!--&lt;!&ndash;            <ImageButton&ndash;&gt;-->
-<!--&lt;!&ndash;                android:id="@+id/back_button"&ndash;&gt;-->
-<!--&lt;!&ndash;                android:layout_width="24dp"&ndash;&gt;-->
-<!--&lt;!&ndash;                android:layout_height="24dp"&ndash;&gt;-->
-<!--&lt;!&ndash;                android:layout_gravity="center"&ndash;&gt;-->
-<!--&lt;!&ndash;                android:background="?attr/selectableItemBackgroundBorderless"&ndash;&gt;-->
-<!--&lt;!&ndash;                android:contentDescription="@string/blank"&ndash;&gt;-->
-<!--&lt;!&ndash;                android:layout_marginEnd="@dimen/smallMargin"&ndash;&gt;-->
-<!--&lt;!&ndash;                android:src="@drawable/left_arrow" />&ndash;&gt;-->
-
-<!--            <SearchView-->
-<!--                android:id="@+id/search_view"-->
-<!--                android:layout_width="match_parent"-->
-<!--                android:layout_height="48dp"-->
-<!--                android:clipToOutline="false"-->
-<!--                android:background="@drawable/shape_search"-->
-<!--                android:queryHint="Search..."-->
-<!--                app:iconifiedByDefault="false" />-->
-
-<!--        </LinearLayout>-->
-<!--    </androidx.appcompat.widget.Toolbar>-->
-
-<!--    <include-->
-<!--        android:id="@+id/noDataFound"-->
-<!--        layout="@layout/no_data_found"-->
-<!--        android:layout_width="match_parent"-->
-<!--        android:layout_height="wrap_content"-->
-<!--        android:layout_marginTop="@dimen/largeSpace"-->
-<!--        app:layout_constraintBottom_toBottomOf="parent"-->
-<!--        app:layout_constraintTop_toTopOf="parent"-->
-<!--        android:visibility="gone"/>-->
-
-<!--    <androidx.recyclerview.widget.RecyclerView-->
-<!--        android:id="@+id/searchRecyclerView"-->
-<!--        android:layout_width="match_parent"-->
-<!--        android:layout_height="0dp"-->
-<!--        android:clipToPadding="false"-->
-<!--        android:orientation="vertical"-->
-<!--        android:paddingBottom="64dp"-->
-<!--        app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"-->
-<!--        app:layout_constraintEnd_toEndOf="parent"-->
-<!--        app:layout_constraintStart_toStartOf="parent"-->
-<!--        app:layout_constraintTop_toBottomOf="@id/chipsgroup"-->
-<!--        tools:listitem="@layout/card_search_item" />-->
-
-<!--<include-->
-<!--    android:id="@+id/chipsgroup"-->
-<!--    android:layout_width="match_parent"-->
-<!--    android:layout_height="wrap_content"-->
-<!--    layout="@layout/chips_recipe"-->
-<!--    app:layout_constraintTop_toBottomOf="@id/search_toolbar"-->
-<!--    app:layout_constraintBottom_toTopOf="@id/searchRecyclerView"/>-->
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/chipsgroup"
+        tools:listitem="@layout/card_search_item" />
 
 
-<!--    <include-->
-<!--        android:id="@+id/chipsgroup"-->
-<!--        android:layout_width="match_parent"-->
-<!--        android:layout_height="wrap_content"-->
-<!--        layout="@layout/chips_ingredients"-->
-<!--        android:visibility="gone"-->
-<!--        app:layout_constraintTop_toBottomOf="@id/search_toolbar"-->
-<!--        app:layout_constraintBottom_toTopOf="@id/searchRecyclerView"/>-->
-<!--    -->
+
 </androidx.constraintlayout.widget.ConstraintLayout>
