@@ -18,7 +18,7 @@ class CategoryRecipesFragment : BaseFragment<FragmentCategoryRecipesBinding>() {
         get() = FragmentCategoryRecipesBinding::inflate
 
     override fun setUp() {
-        binding.textViewAppBarTitle.text = getMealType()
+        binding.appBar.textViewAppBarTitle.text = getMealType()
         setUpRecipesRecyclerView(
             CategoryRecipesAdapter(
                 getMealRecipes(getMealType())
@@ -27,30 +27,33 @@ class CategoryRecipesFragment : BaseFragment<FragmentCategoryRecipesBinding>() {
     }
 
     private fun getMealRecipes(mealType: String) = when (mealType) {
-        GetBreakfastRecipesInteractor.BREAKFAST ->
+        GetBreakfastRecipesInteractor.BREAKFAST -> {
             GetBreakfastRecipesInteractor(
                 IndianFoodCsvDataSource(
                     CsvParser(), requireContext()
                 )
             ).invoke()
+        }
 
-        GetLunchRecipesInteractor.LUNCH ->
+        GetLunchRecipesInteractor.LUNCH -> {
             GetLunchRecipesInteractor(
                 IndianFoodCsvDataSource(
                     CsvParser(), requireContext()
                 )
-                ).invoke()
+            ).invoke()
+        }
 
-            GetDinnerRecipesInteractor.DINNER ->
-                GetDinnerRecipesInteractor(
-                    IndianFoodCsvDataSource(
-                        CsvParser(), requireContext()
-                    )
-                ).invoke()
+        GetDinnerRecipesInteractor.DINNER -> {
+            GetDinnerRecipesInteractor(
+                IndianFoodCsvDataSource(
+                    CsvParser(), requireContext()
+                )
+            ).invoke()
+        }
 
-            else -> {
-                throw NoSuchElementException()
-            }
+        else -> {
+            throw NoSuchElementException()
+        }
     }
 
     private fun getMealType() = requireArguments().getString(MEAL_TYPE)!!
@@ -66,13 +69,9 @@ class CategoryRecipesFragment : BaseFragment<FragmentCategoryRecipesBinding>() {
     }
 
     private fun navigateBackToCategoryFragment() {
-        binding.imgBack.setOnClickListener {
-            onBackButtonClicked()
+        binding.appBar.buttonBack.setOnClickListener {
+            requireActivity().navigateBack()
         }
-    }
-
-    private fun onBackButtonClicked() {
-        requireActivity().navigateBack()
     }
 
     companion object {

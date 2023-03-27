@@ -36,10 +36,15 @@ private fun changeNavigation(activity: FragmentActivity, state: NavigationState,
             transaction.addToBackStack("fragment")
         }
 
-        NavigationState.REMOVE -> fragmentManager.popBackStack()
-        NavigationState.REPLACE -> transaction.replace(R.id.main_fragment_container, to!!)
+        NavigationState.REMOVE -> {
+            fragmentManager.popBackStack()
+        }
+
+        NavigationState.REPLACE -> {
+            transaction.replace(R.id.main_fragment_container, to!!)
+        }
     }
-    transaction.addToBackStack(null).commit()
+    transaction.commit()
 }
 
 

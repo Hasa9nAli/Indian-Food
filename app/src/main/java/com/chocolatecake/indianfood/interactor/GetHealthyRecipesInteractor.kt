@@ -12,7 +12,6 @@ class GetHealthyRecipesInteractor(
         const val HEALTHY = "Healthy"
     }
 
-
     operator fun invoke(limit: Int? = null): List<Recipe> {
 
         var recipesCount: Int
@@ -22,6 +21,7 @@ class GetHealthyRecipesInteractor(
             .apply { recipesCount = size }
             .ifEmpty { throw IllegalStateException("Something went wrong") }
             .filter { it.name.contains(HEALTHY, ignoreCase = true) }
+            .shuffled()
             .take(limit ?: recipesCount)
     }
 }

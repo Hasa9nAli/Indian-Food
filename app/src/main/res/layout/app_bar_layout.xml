@@ -1,0 +1,27 @@
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/appBar"
+    android:layout_width="match_parent"
+    android:layout_height="@dimen/app_bar_height"
+    android:orientation="horizontal"
+    android:paddingHorizontal="@dimen/margin_medium"
+    android:paddingVertical="14dp">
+
+    <ImageButton
+        android:id="@+id/button_back"
+        android:layout_width="@dimen/margin_xxlarge"
+        android:layout_height="@dimen/margin_xxlarge"
+        android:layout_centerVertical="true"
+        android:layout_marginVertical="@dimen/smallMargin"
+        android:background="@android:color/transparent"
+        android:contentDescription="@string/back_buton"
+        android:src="@drawable/left_arrow" />
+
+    <TextView
+        android:id="@+id/text_view_app_bar_title"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_centerInParent="true"
+        android:text="@string/breakfast"
+        android:textSize="@dimen/txt_size_large" />
+
+</RelativeLayout>

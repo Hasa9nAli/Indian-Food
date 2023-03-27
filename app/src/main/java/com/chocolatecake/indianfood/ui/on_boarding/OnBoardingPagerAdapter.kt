@@ -4,7 +4,7 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.viewpager.widget.PagerAdapter
-import com.chocolatecake.indianfood.databinding.ItemOnboardingSliderBinding
+import com.chocolatecake.indianfood.databinding.ItemOnboardingBinding
 import com.chocolatecake.indianfood.model.OnBoardingItem
 
 class OnBoardingPagerAdapter(
@@ -25,12 +25,14 @@ class OnBoardingPagerAdapter(
 
     override fun instantiateItem(container: ViewGroup, position: Int): Any {
         val layoutInflater = LayoutInflater.from(container.context)
-        val binding = ItemOnboardingSliderBinding.inflate(layoutInflater, container, false)
-
+        val binding = ItemOnboardingBinding.inflate(layoutInflater, container, false)
         val onBoardingData = onBoardingDataList[position]
-        binding.imageSlider.setImageResource(onBoardingData.imageResource)
-        binding.head.text = onBoardingData.titleText
-        binding.desc.text = onBoardingData.descriptionText
+
+        binding.apply {
+            imageViewOnboarding.setImageResource(onBoardingData.imageResource)
+            textViewHeadline.text = onBoardingData.titleText
+            textViewDescription.text = onBoardingData.descriptionText
+        }
         container.addView(binding.root)
         return binding.root
     }

@@ -11,7 +11,6 @@ import com.chocolatecake.indianfood.databinding.FragmentOnBoardingBinding
 import com.chocolatecake.indianfood.interactor.GetOnBoardingDataInteractor
 import com.chocolatecake.indianfood.ui.base.BaseFragment
 import com.chocolatecake.indianfood.ui.home.HomeFragment
-import com.chocolatecake.indianfood.util.navigateExclusive
 import com.google.android.material.bottomnavigation.BottomNavigationView
 
 class OnBoardingFragment : BaseFragment<FragmentOnBoardingBinding>() {
@@ -37,7 +36,7 @@ class OnBoardingFragment : BaseFragment<FragmentOnBoardingBinding>() {
                 )
             ).invoke()
         onBoardingPagerAdapter = OnBoardingPagerAdapter(onBoardingData)
-        binding.onBoardingViewPager.adapter = onBoardingPagerAdapter
+        binding.viewPagerOnboarding.adapter = onBoardingPagerAdapter
     }
 
     private fun setupNextButton() {
@@ -45,7 +44,7 @@ class OnBoardingFragment : BaseFragment<FragmentOnBoardingBinding>() {
             val currentItemIndex = getCurrentItemIndex()
             val lastItemIndex = getLastItemIndex()
             if (currentItemIndex < lastItemIndex) {
-                binding.onBoardingViewPager.setCurrentItem(currentItemIndex + 1, true)
+                binding.viewPagerOnboarding.setCurrentItem(currentItemIndex + 1, true)
             } else {
                 replaceFragment(HomeFragment())
             }
@@ -65,9 +64,11 @@ class OnBoardingFragment : BaseFragment<FragmentOnBoardingBinding>() {
     }
 
     private fun replaceFragment(fragment: Fragment) {
-        requireActivity().navigateExclusive(fragment)
+        parentFragmentManager.beginTransaction()
+            .replace(R.id.main_fragment_container, fragment)
+            .commit()
     }
 
-    private fun getLastItemIndex() = binding.onBoardingViewPager.adapter?.count?.minus(1) ?: -1
-    private fun getCurrentItemIndex() = binding.onBoardingViewPager.currentItem
+    private fun getLastItemIndex() = binding.viewPagerOnboarding.adapter?.count?.minus(1) ?: -1
+    private fun getCurrentItemIndex() = binding.viewPagerOnboarding.currentItem
 }

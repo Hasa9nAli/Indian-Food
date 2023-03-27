@@ -10,6 +10,7 @@ import com.chocolatecake.indianfood.interactor.GetHealthyRecipesInteractor
 import com.chocolatecake.indianfood.interactor.GetQuickRecipesInteractor
 import com.chocolatecake.indianfood.model.Recipe
 import com.chocolatecake.indianfood.ui.base.BaseFragment
+import com.chocolatecake.indianfood.util.navigateBack
 
 class ShowMoreFragment : BaseFragment<FragmentShowMoreBinding>() {
     override val inflater: (LayoutInflater, ViewGroup?, Boolean) -> FragmentShowMoreBinding =
@@ -17,7 +18,7 @@ class ShowMoreFragment : BaseFragment<FragmentShowMoreBinding>() {
 
     override fun setUp() {
         setUpAdapter()
-        binding.title.text = getCategoryType()
+        binding.appBar.textViewAppBarTitle.text = getCategoryType()
     }
 
     private fun setUpAdapter() {
@@ -44,10 +45,8 @@ class ShowMoreFragment : BaseFragment<FragmentShowMoreBinding>() {
     private fun getCategoryType() = arguments?.getString(RECIPES_CATEGORY)!!
 
     override fun addCallBacks() {
-        binding.apply {
-            arrowBack.setOnClickListener {
-                parentFragmentManager.popBackStack()
-            }
+        binding.appBar.buttonBack.setOnClickListener {
+            requireActivity().navigateBack()
         }
     }
 
