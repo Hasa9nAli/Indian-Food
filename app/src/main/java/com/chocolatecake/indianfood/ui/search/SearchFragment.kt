@@ -23,7 +23,8 @@ class SearchFragment : BaseFragment<FragmentIngredientsSearchBinding>() {
     private lateinit var csvParser: CsvParser
     private var ingredientsList = mutableListOf("")
     private var recipeName  = "no data"
-    var tap = 3
+
+    var tap = 3 // replace this with arguments to test without nav bottom bar
 
 
     override val inflater: (LayoutInflater, ViewGroup?, Boolean) -> FragmentIngredientsSearchBinding
@@ -38,7 +39,7 @@ class SearchFragment : BaseFragment<FragmentIngredientsSearchBinding>() {
     }
 
     override fun addCallBacks() {
-        when (tap.toString()) {
+        when (arguments.toString()) {
             RECIPE_TAB_INDEX -> {
                 onChoiceChip()
             }
@@ -59,7 +60,7 @@ class SearchFragment : BaseFragment<FragmentIngredientsSearchBinding>() {
     }
 
     private fun checkIfRecipeOrIngredient() {
-        when (tap.toString()) {
+        when (arguments.toString()) {
             RECIPE_TAB_INDEX -> {
                 setRandomMeals()
                 getRecipes(recipeName)
@@ -75,7 +76,7 @@ class SearchFragment : BaseFragment<FragmentIngredientsSearchBinding>() {
         binding.searchView.setOnQueryTextListener(object : SearchView.OnQueryTextListener {
             override fun onQueryTextSubmit( query: String?): Boolean {
 
-                when (tap.toString()) {
+                when (arguments.toString()) {
                     RECIPE_TAB_INDEX -> {
                         recipeName = query!!
                         getRecipes(query)
@@ -104,16 +105,21 @@ class SearchFragment : BaseFragment<FragmentIngredientsSearchBinding>() {
 
             if (ingredients.isNotEmpty()) {
                 setUpAdapter(ingredients)
-                binding.searchRecyclerView.visibility = View.VISIBLE
-                binding.noDataFound.error.visibility = View.GONE
+                visibilityAndGoneView(searchRecyclerVisibility = View.VISIBLE ,
+                    noDataFoundVisibility = View.GONE )  // not tested
+//                binding.searchRecyclerView.visibility = View.VISIBLE
+//                binding.noDataFound.error.visibility = View.GONE
             } else {
-                binding.noDataFound.error.visibility = View.VISIBLE
-                binding.searchRecyclerView.visibility = View.GONE
+                visibilityAndGoneView(searchRecyclerVisibility = View.GONE ,
+                    noDataFoundVisibility = View.VISIBLE )  // not tested
+//                binding.noDataFound.error.visibility = View.VISIBLE
+//                binding.searchRecyclerView.visibility = View.GONE
             }
         } catch (e: IllegalAccessException) {
             showToast(message = e.message.toString())
         }
     }
+
 
     private fun getRecipes(searchText: String) {
         try {
@@ -121,15 +127,24 @@ class SearchFragment : BaseFragment<FragmentIngredientsSearchBinding>() {
 
             if (recipes.isNotEmpty() ) {
                 setUpAdapter(recipes)
-                binding.searchRecyclerView.visibility = View.VISIBLE
-                binding.noDataFound.error.visibility = View.GONE
+                visibilityAndGoneView(searchRecyclerVisibility = View.VISIBLE ,
+                    noDataFoundVisibility = View.GONE )  // not tested
+//                binding.searchRecyclerView.visibility = View.VISIBLE
+//                binding.noDataFound.error.visibility = View.GONE
             } else {
-                binding.noDataFound.error.visibility = View.VISIBLE
-                binding.searchRecyclerView.visibility = View.GONE
+                visibilityAndGoneView(searchRecyclerVisibility = View.GONE ,
+                    noDataFoundVisibility = View.VISIBLE )  // not tested
+//                binding.noDataFound.error.visibility = View.VISIBLE
+//                binding.searchRecyclerView.visibility = View.GONE
             }
         } catch (e: IllegalAccessException) {
             showToast(message = e.message.toString())
         }
+    }
+
+    private fun visibilityAndGoneView( searchRecyclerVisibility : Int , noDataFoundVisibility : Int ){
+        binding.searchRecyclerView.visibility = searchRecyclerVisibility
+        binding.noDataFound.error.visibility = noDataFoundVisibility
     }
 
 
