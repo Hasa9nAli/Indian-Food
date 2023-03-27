@@ -3,39 +3,39 @@ package com.chocolatecake.indianfood.ui
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.ViewGroup
-import com.chocolatecake.indianfood.dataSource.CsvDataSource
+import com.chocolatecake.indianfood.dataSource.IndianFoodCsvDataSource
 import com.chocolatecake.indianfood.dataSource.utils.CsvParser
 import com.chocolatecake.indianfood.databinding.FragmentShowMoreBinding
 import com.chocolatecake.indianfood.interactor.GetHealthyRecipesInteractor
 import com.chocolatecake.indianfood.interactor.GetQuickRecipesInteractor
+import com.chocolatecake.indianfood.model.Recipe
 
 class ShowMoreFragment : BaseFragment<FragmentShowMoreBinding>() {
     override val inflater: (LayoutInflater, ViewGroup?, Boolean) -> FragmentShowMoreBinding =
         FragmentShowMoreBinding::inflate
 
-
     override fun setUp() {
-        setUpAdapter(getCategoryType())
+        setUpAdapter()
         binding.title.text = getCategoryType()
     }
 
-    private fun setUpAdapter(categoryType: String) {
-        val csvData = CsvDataSource(CsvParser(), requireContext())
-        binding.mealsGrid.adapter = when (categoryType) {
-            GetHealthyRecipesInteractor.HEALTHY_TYPE -> ShowMoreAdapter(
-                GetHealthyRecipesInteractor(
-                    csvData
-                ).invoke()
-            )
+    private fun setUpAdapter() {
+        binding.mealsGrid.adapter =
+            ShowMoreAdapter(getAppropriateCategoryRecipes(getCategoryType()))
+    }
 
-            GetQuickRecipesInteractor.QUICK_RECIPES_TYPE -> ShowMoreAdapter(
-                GetQuickRecipesInteractor(
-                    csvData
-                ).invoke()
-            )
+    private fun getAppropriateCategoryRecipes(categoryType: String): List<Recipe> {
+        val csvData = IndianFoodCsvDataSource(CsvParser(), requireContext())
+
+        return when (categoryType) {
+            GetHealthyRecipesInteractor.HEALTHY_TYPE ->
+                GetHealthyRecipesInteractor(csvData).invoke()
+
+            GetQuickRecipesInteractor.QUICK_RECIPES_TYPE ->
+                GetQuickRecipesInteractor(csvData).invoke()
 
             else -> {
-                throw IllegalArgumentException()
+                throw IllegalArgumentException("Unknown category type")
             }
         }
     }
@@ -60,5 +60,4 @@ class ShowMoreFragment : BaseFragment<FragmentShowMoreBinding>() {
                 }
             }
     }
-
 }
