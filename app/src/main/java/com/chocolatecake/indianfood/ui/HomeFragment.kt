@@ -2,7 +2,7 @@ package com.chocolatecake.indianfood.ui
 
 import android.view.LayoutInflater
 import android.view.ViewGroup
-import com.chocolatecake.indianfood.dataSource.CsvDataSource
+import com.chocolatecake.indianfood.dataSource.IndianFoodCsvDataSource
 import com.chocolatecake.indianfood.dataSource.utils.CsvParser
 import com.chocolatecake.indianfood.databinding.FragmentHomeBinding
 import com.chocolatecake.indianfood.interactor.GetBreakfastRecipesInteractor
@@ -39,7 +39,7 @@ class HomeFragment : BaseFragment<FragmentHomeBinding>() {
 
     private fun setupDatasource() {
         csvParser = CsvParser()
-        dataSource = CsvDataSource(csvParser, requireContext())
+        dataSource = IndianFoodCsvDataSource(csvParser, requireContext())
         getQuickRecipes = GetQuickRecipesInteractor(dataSource)
         getRandomRecipes = GetRandomMealIntractor(dataSource)
         getHealthyRecipes = GetHealthyRecipesInteractor(dataSource)
@@ -52,10 +52,10 @@ class HomeFragment : BaseFragment<FragmentHomeBinding>() {
 
         itemsList.add(HomeItem(getRandomRecipes.invoke(), HomeItemType.TYPE_RANDOM_RECIPES))
 
-        itemsList.add(HomeItem(QUICK_RECIPES, HomeItemType.TYPE_TEXT))
+        itemsList.add(HomeItem(QUICK_RECIPES, HomeItemType.TYPE_SECTION))
         itemsList.add(HomeItem(getQuickRecipes.invoke(10), HomeItemType.TYPE_RECIPE))
 
-        itemsList.add(HomeItem(HEALTHY_MEALS, HomeItemType.TYPE_TEXT))
+        itemsList.add(HomeItem(HEALTHY_MEALS, HomeItemType.TYPE_SECTION))
         itemsList.add(HomeItem(getHealthyRecipes.invoke(10), HomeItemType.TYPE_RECIPE))
 
         binding.recipiesRecyclerView.adapter = HomeAdapter(

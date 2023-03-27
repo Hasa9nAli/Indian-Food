@@ -6,7 +6,7 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import com.chocolatecake.indianfood.R
-import com.chocolatecake.indianfood.dataSource.CsvDataSource
+import com.chocolatecake.indianfood.dataSource.IndianFoodCsvDataSource
 import com.chocolatecake.indianfood.dataSource.utils.CsvParser
 import com.chocolatecake.indianfood.databinding.FragmentIngredientsSearchBinding
 import com.chocolatecake.indianfood.interactor.FindRecipesContainsSpecifiedIngredientInteractor
@@ -28,7 +28,7 @@ class IngredientsSearchFragment : BaseFragment<FragmentIngredientsSearchBinding>
     }
     private fun setupDatasource() {
         csvParser = CsvParser()
-        dataSource = CsvDataSource(csvParser, requireContext())
+        dataSource = IndianFoodCsvDataSource(csvParser, requireContext())
         searchRecipesByIngredient = FindRecipesContainsSpecifiedIngredientInteractor(dataSource)    }
 
     override fun onCreateView(

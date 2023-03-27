@@ -3,7 +3,7 @@ package com.chocolatecake.indianfood.ui
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.ViewGroup
-import com.chocolatecake.indianfood.dataSource.CsvDataSource
+import com.chocolatecake.indianfood.dataSource.IndianFoodCsvDataSource
 import com.chocolatecake.indianfood.dataSource.utils.CsvParser
 import com.chocolatecake.indianfood.databinding.FragmentCategoryRecipesBinding
 import com.chocolatecake.indianfood.interactor.GetBreakfastRecipesInteractor
@@ -28,21 +28,21 @@ class CategoryRecipesFragment : BaseFragment<FragmentCategoryRecipesBinding>() {
     private fun getMealRecipes(mealType: String) = when (mealType) {
         GetBreakfastRecipesInteractor.BREAKFAST ->
             GetBreakfastRecipesInteractor(
-                CsvDataSource(
+                IndianFoodCsvDataSource(
                     CsvParser(), requireContext()
                 )
             ).invoke()
 
         GetLunchRecipesInteractor.LUNCH ->
             GetLunchRecipesInteractor(
-                CsvDataSource(
-                        CsvParser(), requireContext()
-                    )
+                IndianFoodCsvDataSource(
+                    CsvParser(), requireContext()
+                )
                 ).invoke()
 
             GetDinnerRecipesInteractor.DINNER ->
                 GetDinnerRecipesInteractor(
-                    CsvDataSource(
+                    IndianFoodCsvDataSource(
                         CsvParser(), requireContext()
                     )
                 ).invoke()

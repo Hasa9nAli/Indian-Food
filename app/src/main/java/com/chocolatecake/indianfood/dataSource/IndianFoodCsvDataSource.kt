@@ -8,7 +8,7 @@ import com.chocolatecake.indianfood.model.OnBoardingItem
 import com.chocolatecake.indianfood.model.Recipe
 import java.io.InputStream
 
-class CsvDataSource(
+class IndianFoodCsvDataSource(
     private val parser: CsvParser,
     private val context: Context
 ) : IndianFoodDataSource {

@@ -29,11 +29,13 @@ class HomeAdapter(
                     .inflate(R.layout.item_random_recipe, parent, false)
                 RandomRecipeViewHolder(view)
             }
-            ITEM_TYPE_TEXT -> {
+
+            ITEM_TYPE_SECTION -> {
                 val view = LayoutInflater.from(parent.context)
                     .inflate(R.layout.layout_text_in_home, parent, false)
-                TextViewHolder(view)
+                SectionViewHolder(view)
             }
+
             ITEM_TYPE_RECIPES -> {
                 val view = LayoutInflater.from(parent.context)
                     .inflate(R.layout.layout_recipes, parent, false)
@@ -48,7 +50,7 @@ class HomeAdapter(
     override fun onBindViewHolder(holder: BasicViewHolder, position: Int) {
         when (holder) {
             is RandomRecipeViewHolder -> bindRandomRecipe(holder, position)
-            is TextViewHolder -> bindTitleSection(holder, position)
+            is SectionViewHolder -> bindSection(holder, position)
             is RecipesViewHolder -> bindRecipes(holder, position)
         }
     }
@@ -59,7 +61,7 @@ class HomeAdapter(
         holder.binding.recipiesRecyclerView.adapter = adapter
     }
 
-    private fun bindTitleSection(holder: TextViewHolder, position: Int) {
+    private fun bindSection(holder: SectionViewHolder, position: Int) {
         val currentSection = items[position].item as String
         holder.binding.apply {
             textTitle.text = currentSection
@@ -87,14 +89,14 @@ class HomeAdapter(
         val binding = LayoutRecipesBinding.bind(itemView)
     }
 
-    class TextViewHolder(itemView: View) : BasicViewHolder(itemView) {
+    class SectionViewHolder(itemView: View) : BasicViewHolder(itemView) {
         val binding = LayoutTextInHomeBinding.bind(itemView)
     }
 
     override fun getItemViewType(position: Int): Int {
         return when (items[position].type) {
             HomeItemType.TYPE_RANDOM_RECIPES -> ITEM_TYPE_RANDOM_RECIPES
-            HomeItemType.TYPE_TEXT -> ITEM_TYPE_TEXT
+            HomeItemType.TYPE_SECTION -> ITEM_TYPE_SECTION
             HomeItemType.TYPE_RECIPE -> ITEM_TYPE_RECIPES
         }
     }
@@ -102,7 +104,7 @@ class HomeAdapter(
 
     companion object {
         const val ITEM_TYPE_RANDOM_RECIPES = 1
-        const val ITEM_TYPE_TEXT = 2
+        const val ITEM_TYPE_SECTION = 2
         const val ITEM_TYPE_RECIPES = 3
     }
 }
