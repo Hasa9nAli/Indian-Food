@@ -8,6 +8,7 @@ import com.chocolatecake.indianfood.ui.base.BaseActivity
 import com.chocolatecake.indianfood.ui.categories.CategoriesFragment
 import com.chocolatecake.indianfood.ui.home.HomeFragment
 import com.chocolatecake.indianfood.ui.on_boarding.OnBoardingFragment
+import com.chocolatecake.indianfood.ui.search_recipes.RecipesSearchFragment
 import com.chocolatecake.indianfood.util.Constants.MAIN_ACTIVITY
 import com.chocolatecake.indianfood.util.navigateExclusive
 
@@ -21,7 +22,7 @@ class MainActivity : BaseActivity<ActivityMainBinding>() {
 
     private lateinit var onBoardingFragment: OnBoardingFragment
     private lateinit var homeFragment: HomeFragment
-    private lateinit var searchFragment: IngredientsSearchFragment
+    private lateinit var searchFragment: RecipesSearchFragment
     private lateinit var categoriesFragment: CategoriesFragment
     private lateinit var ingredientsSearchFragment: IngredientsSearchFragment
     private lateinit var aboutIndianFoodFragment: AboutIndianFoodFragment
@@ -29,7 +30,7 @@ class MainActivity : BaseActivity<ActivityMainBinding>() {
     override fun setUp() {
         onBoardingFragment = OnBoardingFragment()
         homeFragment = HomeFragment()
-        searchFragment = IngredientsSearchFragment()
+        searchFragment = RecipesSearchFragment()
         categoriesFragment = CategoriesFragment()
         ingredientsSearchFragment = IngredientsSearchFragment()
         aboutIndianFoodFragment = AboutIndianFoodFragment()

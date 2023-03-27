@@ -41,11 +41,11 @@
         android:layout_height="wrap_content"
         android:layout_marginTop="@dimen/largeSpace"
         app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/search_toolbar"
         android:visibility="gone"/>
 
     <androidx.recyclerview.widget.RecyclerView
-        android:id="@+id/ingredientsSearchRecyclerView"
+        android:id="@+id/recipeSearchRecyclerView"
         android:layout_width="match_parent"
         android:layout_height="0dp"
         android:clipToPadding="false"
@@ -60,8 +60,9 @@
     <com.google.android.material.chip.ChipGroup
         android:id="@+id/chipsgroup"
         android:layout_width="match_parent"
+        app:singleSelection="true"
         android:layout_height="wrap_content"
         app:layout_constraintTop_toBottomOf="@id/search_toolbar"
-        app:layout_constraintBottom_toTopOf="@id/ingredientsSearchRecyclerView"/>
+        app:layout_constraintBottom_toTopOf="@id/recipeSearchRecyclerView"/>
 
 </androidx.constraintlayout.widget.ConstraintLayout>
