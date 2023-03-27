@@ -34,14 +34,21 @@
         </LinearLayout>
     </androidx.appcompat.widget.Toolbar>
 
+    <com.google.android.material.chip.ChipGroup
+        android:id="@+id/chipsgroup"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        app:layout_constraintTop_toBottomOf="@id/search_toolbar"
+        app:layout_constraintBottom_toTopOf="@id/ingredientsSearchRecyclerView"/>
+
     <include
         android:id="@+id/noDataFound"
         layout="@layout/no_data_found"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginTop="@dimen/largeSpace"
+        android:layout_marginTop="@dimen/normalSpace"
         app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/chipsgroup"
         android:visibility="gone"/>
 
     <androidx.recyclerview.widget.RecyclerView
@@ -57,11 +64,6 @@
         app:layout_constraintTop_toBottomOf="@id/chipsgroup"
         tools:listitem="@layout/card_search_item" />
 
-    <com.google.android.material.chip.ChipGroup
-        android:id="@+id/chipsgroup"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        app:layout_constraintTop_toBottomOf="@id/search_toolbar"
-        app:layout_constraintBottom_toTopOf="@id/ingredientsSearchRecyclerView"/>
+
 
 </androidx.constraintlayout.widget.ConstraintLayout>

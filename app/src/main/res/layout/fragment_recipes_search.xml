@@ -39,9 +39,9 @@
         layout="@layout/no_data_found"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginTop="@dimen/largeSpace"
+        android:layout_marginTop="@dimen/normalSpace"
         app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/search_toolbar"
+        app:layout_constraintTop_toBottomOf="@id/chipsgroup"
         android:visibility="gone"/>
 
     <androidx.recyclerview.widget.RecyclerView

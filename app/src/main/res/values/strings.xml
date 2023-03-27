@@ -87,4 +87,7 @@
     <string name="minutes_label">%1$s Min</string>
     <string name="instant_time">Instantly</string>
     <string name="total_time_label">%1$s min</string>
+    <string name="descriptionNoDataFound">Please try again with different keywords or use our filters to refine your search.</string>
+    <string name="no_matching_recipes">No matching recipes</string>
+    <string name="descriptionDataNotFound">Please try again with different keywords or use our filters to refine your search.</string>
 </resources>
