@@ -22,28 +22,17 @@ class ShowMoreAdapter(private val recipes: List<Recipe>) :
 
     override fun onBindViewHolder(holder: ShowMoreViewHolder, position: Int) {
         val currentCardMeal = recipes[position]
-        setCardContent(holder, currentCardMeal)
-    }
-
-    private fun setCardContent(holder: ShowMoreViewHolder, currentCardMeal: Recipe) {
         holder.binding.apply {
             recipeName.text = currentCardMeal.name
-            setTotalTimeInMinutes(currentCardMeal, holder)
+            timeInMinute.text =
+                setValidTime(currentCardMeal.totalTimeInMinutes.toString(), root.context)
             Glide.with(recipeImage).load(currentCardMeal.imageUrl).into(recipeImage)
         }
     }
 
-    private fun setTotalTimeInMinutes(currentCardMeal: Recipe, holder: ShowMoreViewHolder) {
-        holder.binding.apply {
-            holder.binding.timeInMinute.text =
-                checkValidTime(currentCardMeal.totalTimeInMinutes.toString(), root.context)
-        }
-    }
-
-    private fun checkValidTime(time: String, context: Context): String =
+    private fun setValidTime(time: String, context: Context): String =
         if (time.trim() == "0") context.getString(R.string.instant_time)
         else context.getString(R.string.total_time_label, time)
-
 
     class ShowMoreViewHolder(view: View) : RecyclerView.ViewHolder(view) {
         val binding = ItemMealBinding.bind(view)
