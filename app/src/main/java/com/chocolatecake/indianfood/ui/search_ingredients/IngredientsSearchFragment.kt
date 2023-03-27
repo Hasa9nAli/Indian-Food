@@ -19,25 +19,18 @@ import com.google.android.material.chip.Chip
 class IngredientsSearchFragment : BaseFragment<FragmentIngredientsSearchBinding>() {
     private lateinit var dataSource: IndianFoodDataSource
     private lateinit var csvParser: CsvParser
+
     private lateinit var findRecipesContainsSpecifiedIngredient: FindRecipesContainsSpecifiedIngredientInteractor
     private var ingredientsList = mutableListOf("")
 
-
     override val inflater: (LayoutInflater, ViewGroup?, Boolean) -> FragmentIngredientsSearchBinding
         get() = FragmentIngredientsSearchBinding::inflate
-
 
     override fun setUp() {
         setupDatasource()
         setSearchOnClickListener()
         getInstructions(ingredientsList)
     }
-
-
-    override fun addCallBacks() {
-        onChoiceChips()
-    }
-
 
     private fun setupDatasource() {
         csvParser = CsvParser()
@@ -50,72 +43,16 @@ class IngredientsSearchFragment : BaseFragment<FragmentIngredientsSearchBinding>
     private fun setSearchOnClickListener() {
         binding.searchView.setOnQueryTextListener(object : SearchView.OnQueryTextListener {
             override fun onQueryTextSubmit( query: String?): Boolean {
-
-                        ingredientsList.add(query!!)
-                        getInstructions(mutableListOf(query))
-                        createChip(query)
-
+                ingredientsList.add(query!!)
+                getInstructions(mutableListOf(query))
+                createChip(query)
                 binding.searchView.clearFocus()
                 return false
-
             }
             override fun onQueryTextChange(p0: String?): Boolean {
                 return false
             }
         })
-    }
-
-
-    private fun getInstructions( ingredients: MutableList<String>) {
-        try {
-            val ingredients = findRecipesContainsSpecifiedIngredient.invoke(ingredients.distinct())
-
-            if (ingredients.isNotEmpty()) {
-                setUpAdapter(ingredients)
-                visibilityAndGoneView(searchRecyclerVisibility = View.VISIBLE ,
-                    noDataFoundVisibility = View.GONE )  // not tested
-            } else {
-                visibilityAndGoneView(searchRecyclerVisibility = View.GONE ,
-                    noDataFoundVisibility = View.VISIBLE )  // not tested
-            }
-        } catch (e: IllegalAccessException) {
-            showToast(message = e.message.toString())
-        }
-    }
-
-
-    private fun visibilityAndGoneView( searchRecyclerVisibility : Int , noDataFoundVisibility : Int ){
-        binding.ingredientsSearchRecyclerView  .visibility = searchRecyclerVisibility
-        binding.noDataFound.error.visibility = noDataFoundVisibility
-    }
-
-
-    private fun setUpAdapter(recipe: List<Recipe>) {
-        binding.ingredientsSearchRecyclerView .adapter = IngredientsSearchAdapter(recipe, onClickItem = ::onClickIngredient)
-    }
-
-    private fun onClickIngredient(recipe: Recipe) {
-        requireActivity().navigateTo(RecipeDetailsFragment.newInstance(recipe))
-    }
-
-
-    private fun onChoiceChips(){
-        binding.chipsgroup.setOnCheckedStateChangeListener {
-                group , checkedId ->
-            val  chip:Chip = group.findViewById(checkedId[checkedId.lastIndex])
-
-            chip.let {
-                ingredientsList.add(it.text.toString())
-                getInstructions(mutableListOf(it.text.toString()))
-                // getInstructions(ingredientsList)
-                showToast(message = it.text.toString())
-            }
-            chip.setOnCloseIconClickListener {
-                binding.chipsgroup.removeView(it)
-                ingredientsList.remove(it.toString())
-                getInstructions(ingredientsList)
-            }
-        }
     }
 
     private fun createChip(chipNext: String ) {
@@ -129,15 +66,83 @@ class IngredientsSearchFragment : BaseFragment<FragmentIngredientsSearchBinding>
     }
 
 
+    private fun getInstructions( ingredients: MutableList<String>) {
+        try {
+            val ingredients = findRecipesContainsSpecifiedIngredient.invoke(ingredients.distinct())
+
+            if (ingredients.isNotEmpty()){
+                setUpAdapter(ingredients)
+
+                visibilityAndGoneView(
+                    searchRecyclerVisibility = View.VISIBLE ,
+                    noDataFoundVisibility = View.GONE,
+                )
+            } else {
+                visibilityAndGoneView(
+                    searchRecyclerVisibility = View.GONE ,
+                    noDataFoundVisibility = View.VISIBLE,
+                )
+            }
+        } catch (e: IllegalAccessException) {
+            showToast(message = e.message.toString())
+        }
+    }
+
+    private fun setUpAdapter(recipe: List<Recipe>) {
+        binding.ingredientsSearchRecyclerView.adapter =
+            IngredientsSearchAdapter(
+            recipes = recipe, onClickItem = ::onClickIngredient
+        )
+    }
+
+    private fun onClickIngredient(recipe: Recipe) {
+        requireActivity().navigateTo(RecipeDetailsFragment.newInstance(recipe))
+    }
+
+    private fun visibilityAndGoneView(
+        searchRecyclerVisibility: Int,
+        noDataFoundVisibility: Int,
+    ){
+        binding.ingredientsSearchRecyclerView.visibility = searchRecyclerVisibility
+        binding.noDataFound.error.visibility = noDataFoundVisibility
+    }
+
+
+    override fun addCallBacks(){
+        onChoiceChips()
+    }
+
+    private fun onChoiceChips(){
+        binding.chipsgroup.setOnCheckedStateChangeListener {
+                group , checkedId ->
+
+            val  chip:Chip = group.findViewById(checkedId[checkedId.lastIndex])
+            chip.let {
+                ingredientsList.add(it.text.toString())
+                getInstructions(mutableListOf(it.text.toString()))
+                // getInstructions(ingredientsList)
+                showToast(message = it.text.toString())
+            }
+
+            chip.setOnCloseIconClickListener {
+                binding.chipsgroup.removeView(it)
+                ingredientsList.remove(it.toString())
+                getInstructions(ingredientsList)
+            }
+        }
+    }
+
+
     companion object {
         private const val INSTRUCTIONS_TAB_INDEX = "3"
 
-        fun newInstance(index: Int) =
+        fun newInstance(index: Int) {
             RecipeDetailsFragment().apply {
                 arguments = Bundle().apply {
                     putInt(INSTRUCTIONS_TAB_INDEX, index)
                 }
             }
+        }
     }
 
     private fun showToast(message: String) {
