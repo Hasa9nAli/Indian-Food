@@ -6,14 +6,20 @@ class GetQuickRecipesInteractor(
    private val dataSource: IndianFoodDataSource,
 ) {
 
-    operator fun invoke(): List<Recipe> {
+    operator fun invoke(limit: Int? = null): List<Recipe> {
+
+        var recipesCount: Int
+
         return dataSource
             .getAllRecipesData()
+            .apply { recipesCount = size }
             .ifEmpty { throw IllegalAccessException("Internal error occurred") }
             .sortedBy { it.totalTimeInMinutes }
+            .take(limit ?: recipesCount)
     }
-    companion object{
-        const val QUICK_RECIPES = "Quick recipes"
+
+    companion object {
+        const val QUICK_RECIPES_TYPE = "Quick recipes"
     }
 
 }

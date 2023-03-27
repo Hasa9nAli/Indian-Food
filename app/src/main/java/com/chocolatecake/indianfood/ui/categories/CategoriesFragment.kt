@@ -1,12 +1,14 @@
-package com.chocolatecake.indianfood.ui
+package com.chocolatecake.indianfood.ui.categories
 
 import android.view.LayoutInflater
 import android.view.ViewGroup
-import com.chocolatecake.indianfood.R
 import com.chocolatecake.indianfood.databinding.FragmentCategoriesBinding
 import com.chocolatecake.indianfood.interactor.GetBreakfastRecipesInteractor
 import com.chocolatecake.indianfood.interactor.GetDinnerRecipesInteractor
 import com.chocolatecake.indianfood.interactor.GetLunchRecipesInteractor
+import com.chocolatecake.indianfood.ui.base.BaseFragment
+import com.chocolatecake.indianfood.ui.categories_recipes.CategoryRecipesFragment
+import com.chocolatecake.indianfood.util.navigateTo
 
 
 class CategoriesFragment : BaseFragment<FragmentCategoriesBinding>() {
@@ -15,9 +17,7 @@ class CategoriesFragment : BaseFragment<FragmentCategoriesBinding>() {
         FragmentCategoriesBinding::inflate
 
     private fun navigateToCategoriesRecipes(mealType: String) {
-        val transaction = parentFragmentManager.beginTransaction()
-        transaction.add(R.id.fragment_container, CategoryRecipesFragment.newInstance(mealType))
-        transaction.commit()
+        requireActivity().navigateTo(CategoryRecipesFragment.newInstance(mealType))
     }
 
     override fun setUp() {

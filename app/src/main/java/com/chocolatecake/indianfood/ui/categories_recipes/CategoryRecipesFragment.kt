@@ -1,14 +1,16 @@
-package com.chocolatecake.indianfood.ui
+package com.chocolatecake.indianfood.ui.categories_recipes
 
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.ViewGroup
-import com.chocolatecake.indianfood.dataSource.CsvDataSource
+import com.chocolatecake.indianfood.dataSource.IndianFoodCsvDataSource
 import com.chocolatecake.indianfood.dataSource.utils.CsvParser
 import com.chocolatecake.indianfood.databinding.FragmentCategoryRecipesBinding
 import com.chocolatecake.indianfood.interactor.GetBreakfastRecipesInteractor
 import com.chocolatecake.indianfood.interactor.GetDinnerRecipesInteractor
 import com.chocolatecake.indianfood.interactor.GetLunchRecipesInteractor
+import com.chocolatecake.indianfood.ui.base.BaseFragment
+import com.chocolatecake.indianfood.util.navigateBack
 
 
 class CategoryRecipesFragment : BaseFragment<FragmentCategoryRecipesBinding>() {
@@ -16,40 +18,42 @@ class CategoryRecipesFragment : BaseFragment<FragmentCategoryRecipesBinding>() {
         get() = FragmentCategoryRecipesBinding::inflate
 
     override fun setUp() {
-        binding.textViewAppBarTitle.text = getMealType()
+        binding.appBar.textViewAppBarTitle.text = getMealType()
         setUpRecipesRecyclerView(
             CategoryRecipesAdapter(
-                requireContext(),
                 getMealRecipes(getMealType())
             )
         )
     }
 
     private fun getMealRecipes(mealType: String) = when (mealType) {
-        GetBreakfastRecipesInteractor.BREAKFAST ->
+        GetBreakfastRecipesInteractor.BREAKFAST -> {
             GetBreakfastRecipesInteractor(
-                CsvDataSource(
+                IndianFoodCsvDataSource(
                     CsvParser(), requireContext()
                 )
             ).invoke()
+        }
 
-        GetLunchRecipesInteractor.LUNCH ->
+        GetLunchRecipesInteractor.LUNCH -> {
             GetLunchRecipesInteractor(
-                CsvDataSource(
-                        CsvParser(), requireContext()
-                    )
-                ).invoke()
+                IndianFoodCsvDataSource(
+                    CsvParser(), requireContext()
+                )
+            ).invoke()
+        }
 
-            GetDinnerRecipesInteractor.DINNER ->
-                GetDinnerRecipesInteractor(
-                    CsvDataSource(
-                        CsvParser(), requireContext()
-                    )
-                ).invoke()
+        GetDinnerRecipesInteractor.DINNER -> {
+            GetDinnerRecipesInteractor(
+                IndianFoodCsvDataSource(
+                    CsvParser(), requireContext()
+                )
+            ).invoke()
+        }
 
-            else -> {
-                throw NoSuchElementException()
-            }
+        else -> {
+            throw NoSuchElementException()
+        }
     }
 
     private fun getMealType() = requireArguments().getString(MEAL_TYPE)!!
@@ -65,13 +69,9 @@ class CategoryRecipesFragment : BaseFragment<FragmentCategoryRecipesBinding>() {
     }
 
     private fun navigateBackToCategoryFragment() {
-        binding.imgBack.setOnClickListener {
-            onBackButtonClicked()
+        binding.appBar.buttonBack.setOnClickListener {
+            requireActivity().navigateBack()
         }
-    }
-
-    private fun onBackButtonClicked() {
-        parentFragmentManager.popBackStack()
     }
 
     companion object {

@@ -1,13 +1,16 @@
-package com.chocolatecake.indianfood.ui
+package com.chocolatecake.indianfood.ui.on_boarding
 
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
-import androidx.fragment.app.FragmentActivity
 import com.chocolatecake.indianfood.R
+import com.chocolatecake.indianfood.dataSource.IndianFoodCsvDataSource
+import com.chocolatecake.indianfood.dataSource.utils.CsvParser
 import com.chocolatecake.indianfood.databinding.FragmentOnBoardingBinding
-import com.chocolatecake.indianfood.util.createOnBoardingDataList
+import com.chocolatecake.indianfood.interactor.GetOnBoardingDataInteractor
+import com.chocolatecake.indianfood.ui.base.BaseFragment
+import com.chocolatecake.indianfood.ui.home.HomeFragment
 import com.google.android.material.bottomnavigation.BottomNavigationView
 
 class OnBoardingFragment : BaseFragment<FragmentOnBoardingBinding>() {
@@ -17,17 +20,23 @@ class OnBoardingFragment : BaseFragment<FragmentOnBoardingBinding>() {
         get() = FragmentOnBoardingBinding::inflate
 
     override fun setUp() {
-        setupOnBoardingViewPager()
+        setupOnBoardingViewPagerAdapter()
         setupNextButton()
     }
 
     override fun addCallBacks() {
     }
 
-    private fun setupOnBoardingViewPager() {
-        val onBoardingData = requireContext().createOnBoardingDataList()
+    private fun setupOnBoardingViewPagerAdapter() {
+        val onBoardingData =
+            GetOnBoardingDataInteractor(
+                IndianFoodCsvDataSource(
+                    CsvParser(),
+                    requireContext()
+                )
+            ).invoke()
         onBoardingPagerAdapter = OnBoardingPagerAdapter(onBoardingData)
-        binding.onBoardingViewPager.adapter = onBoardingPagerAdapter
+        binding.viewPagerOnboarding.adapter = onBoardingPagerAdapter
     }
 
     private fun setupNextButton() {
@@ -35,7 +44,7 @@ class OnBoardingFragment : BaseFragment<FragmentOnBoardingBinding>() {
             val currentItemIndex = getCurrentItemIndex()
             val lastItemIndex = getLastItemIndex()
             if (currentItemIndex < lastItemIndex) {
-                binding.onBoardingViewPager.setCurrentItem(currentItemIndex + 1, true)
+                binding.viewPagerOnboarding.setCurrentItem(currentItemIndex + 1, true)
             } else {
                 replaceFragment(HomeFragment())
             }
@@ -55,11 +64,11 @@ class OnBoardingFragment : BaseFragment<FragmentOnBoardingBinding>() {
     }
 
     private fun replaceFragment(fragment: Fragment) {
-        val transaction = (activity as FragmentActivity).supportFragmentManager.beginTransaction()
-        transaction.replace(R.id.main_fragment_container, fragment)
-        transaction.commit()
+        parentFragmentManager.beginTransaction()
+            .replace(R.id.main_fragment_container, fragment)
+            .commit()
     }
 
-    private fun getLastItemIndex() = binding.onBoardingViewPager.adapter?.count?.minus(1) ?: -1
-    private fun getCurrentItemIndex() = binding.onBoardingViewPager.currentItem
+    private fun getLastItemIndex() = binding.viewPagerOnboarding.adapter?.count?.minus(1) ?: -1
+    private fun getCurrentItemIndex() = binding.viewPagerOnboarding.currentItem
 }

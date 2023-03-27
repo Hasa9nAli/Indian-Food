@@ -3,6 +3,7 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
     android:layout_height="90dp"
+    app:cardElevation="0dp"
     android:layout_marginBottom="@dimen/smallMargin"
     app:cardCornerRadius="@dimen/card_Radius">
 
@@ -12,7 +13,7 @@
         android:background="@color/color_Card">
 
         <ImageView
-            android:id="@+id/img_recipe_card"
+            android:id="@+id/image_view_img_recipe"
             android:layout_width="99dp"
             android:layout_height="90dp"
             android:scaleType="centerCrop"
@@ -22,15 +23,20 @@
 
         <TextView
             android:id="@+id/txt_recipe_name"
-            android:layout_width="wrap_content"
+            android:layout_width="0dp"
             android:layout_height="wrap_content"
-            android:layout_marginStart="12dp"
+            android:layout_marginHorizontal="12dp"
+            android:layout_marginTop="12dp"
+            android:ellipsize="end"
             android:fontFamily="@font/roboto_medium"
+            android:singleLine="true"
             android:text="@string/masala_karela"
             android:textColor="@color/text_One"
             android:textSize="@dimen/size_Text"
-            app:layout_constraintStart_toEndOf="@+id/img_recipe_card"
-            app:layout_constraintTop_toTopOf="@+id/img_recipe_card" />
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toEndOf="@+id/image_view_img_recipe"
+            app:layout_constraintTop_toTopOf="@+id/image_view_img_recipe" />
+
 
         <TextView
             android:id="@+id/txt_total_time"
@@ -46,7 +52,7 @@
             android:textSize="@dimen/sizeText"
             app:drawableStartCompat="@drawable/clock"
             app:drawableTint="@color/icon_item_recipe_color"
-            app:layout_constraintBottom_toBottomOf="@+id/img_recipe_card"
+            app:layout_constraintBottom_toBottomOf="@+id/image_view_img_recipe"
             app:layout_constraintStart_toStartOf="@+id/txt_recipe_name"
             app:layout_constraintTop_toBottomOf="@+id/txt_recipe_name" />
 

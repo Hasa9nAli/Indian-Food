@@ -1,12 +1,14 @@
 package com.chocolatecake.indianfood.dataSource
 
 import android.content.Context
+import com.chocolatecake.indianfood.R
 import com.chocolatecake.indianfood.dataSource.utils.CsvParser
 import com.chocolatecake.indianfood.interactor.IndianFoodDataSource
+import com.chocolatecake.indianfood.model.OnBoardingItem
 import com.chocolatecake.indianfood.model.Recipe
 import java.io.InputStream
 
-class CsvDataSource(
+class IndianFoodCsvDataSource(
     private val parser: CsvParser,
     private val context: Context
 ) : IndianFoodDataSource {
@@ -20,7 +22,26 @@ class CsvDataSource(
             .map {
                 parser.parseLine(it)
             }
+    }
 
+    override fun getOnBoardingData(): List<OnBoardingItem> {
+        return listOf(
+            OnBoardingItem(
+                context.getString(R.string.onBoarding_title_1),
+                context.getString(R.string.onBoarding_desc_1),
+                R.drawable.chef
+            ),
+            OnBoardingItem(
+                context.getString(R.string.onBoarding_title_2),
+                context.getString(R.string.onBoarding_desc_2),
+                R.drawable.shawarma
+            ),
+            OnBoardingItem(
+                context.getString(R.string.onBoarding_title_3),
+                context.getString(R.string.onBoarding_desc_3),
+                R.drawable.recipe
+            )
+        )
     }
 
     private fun getCsvFile(): InputStream {

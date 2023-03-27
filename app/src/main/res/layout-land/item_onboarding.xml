@@ -6,20 +6,20 @@
     android:layout_height="wrap_content">
 
     <androidx.constraintlayout.widget.Guideline
-        android:id="@+id/image_slider_guideline"
+        android:id="@+id/guideline_on_boarding_image"
         android:layout_width="0dp"
         android:layout_height="0dp"
         android:orientation="horizontal"
         app:layout_constraintGuide_percent="0.68" />
 
     <ImageView
-        android:id="@+id/image_slider"
+        android:id="@+id/image_view_onboarding"
         style="@style/OnboardingScreenImageStyle"
         android:layout_width="0dp"
         android:layout_height="0dp"
         android:contentDescription="@string/onboarding_slide_image_one"
         android:src="@drawable/chef"
-        app:layout_constraintBottom_toTopOf="@+id/image_slider_guideline"
+        app:layout_constraintBottom_toTopOf="@+id/guideline_on_boarding_image"
         app:layout_constraintDimensionRatio="1:1"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
@@ -33,7 +33,7 @@
         app:layout_constraintGuide_percent="0.66" />
   
     <TextView
-        android:id="@+id/head"
+        android:id="@+id/text_view_headline"
         style="@style/OnboardingTitleTextStyle"
         android:layout_width="match_parent"
         android:layout_height="0dp"
@@ -49,7 +49,7 @@
         app:layout_constraintGuide_percent="0.80" />
 
     <TextView
-        android:id="@+id/desc"
+        android:id="@+id/text_view_description"
         style="@style/OnboardingDescTextStyle"
         android:layout_width="0dp"
         android:layout_height="0dp"

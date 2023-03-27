@@ -5,6 +5,7 @@ import android.util.Log
 import android.view.LayoutInflater
 import android.view.ViewGroup
 import com.chocolatecake.indianfood.databinding.FragmentIngredientsBinding
+import com.chocolatecake.indianfood.ui.base.BaseFragment
 
 class IngredientsFragment : BaseFragment<FragmentIngredientsBinding>() {
 

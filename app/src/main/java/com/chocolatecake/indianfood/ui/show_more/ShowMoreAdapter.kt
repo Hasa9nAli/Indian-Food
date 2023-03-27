@@ -1,53 +1,40 @@
-package com.chocolatecake.indianfood
+package com.chocolatecake.indianfood.ui.show_more
 
-import android.annotation.SuppressLint
+import android.content.Context
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
+import com.chocolatecake.indianfood.R
 import com.chocolatecake.indianfood.databinding.ItemMealBinding
-import com.chocolatecake.indianfood.databinding.ShowMoreBinding
 import com.chocolatecake.indianfood.model.Recipe
 
-class ShowMoreAdapter(val recipies: List<Recipe>) :
+class ShowMoreAdapter(private val recipes: List<Recipe>) :
     RecyclerView.Adapter<ShowMoreAdapter.ShowMoreViewHolder>() {
-
-    companion object{
-        const val UNIT_OF_TIME = "min"
-    }
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ShowMoreViewHolder {
         val view = LayoutInflater.from(parent.context).inflate(R.layout.item_meal, parent, false)
         return ShowMoreViewHolder(view)
     }
 
-    override fun getItemCount(): Int = recipies.size
-
+    override fun getItemCount(): Int = recipes.size
 
     override fun onBindViewHolder(holder: ShowMoreViewHolder, position: Int) {
-        val currentCardMeal = recipies[position]
-        setContentOfCard(holder, currentCardMeal)
-    }
-
-    private fun setContentOfCard(holder : ShowMoreViewHolder, currentCardMeal : Recipe) {
+        val currentCardMeal = recipes[position]
         holder.binding.apply {
             recipeName.text = currentCardMeal.name
-            setTotalTimeOfCard(currentCardMeal, holder)
+            timeInMinute.text =
+                setValidTime(currentCardMeal.totalTimeInMinutes.toString(), root.context)
             Glide.with(recipeImage).load(currentCardMeal.imageUrl).into(recipeImage)
         }
     }
-    private fun setTotalTimeOfCard(currentCardMeal : Recipe, holder : ShowMoreViewHolder){
-        holder.binding.timeInMinute.text =
-            checkValidTime(currentCardMeal.totalTimeInMinutes.toString())
-    }
 
-    private fun checkValidTime(time : String): String =
-        if(time.trim() == "0") "instant" else "$time $UNIT_OF_TIME"
-
+    private fun setValidTime(time: String, context: Context): String =
+        if (time.trim() == "0") context.getString(R.string.instant_time)
+        else context.getString(R.string.total_time_label, time)
 
     class ShowMoreViewHolder(view: View) : RecyclerView.ViewHolder(view) {
         val binding = ItemMealBinding.bind(view)
-
     }
 }
