@@ -58,6 +58,7 @@
                 android:clickable="false"
                 android:textColor="@color/color_Text"
                 android:textSize="12sp"
+                android:clickable="false"
                 app:chipCornerRadius="100dp"
                 app:chipIcon="@drawable/clock_circle"
                 app:textStartPadding="4dp" />
@@ -69,6 +70,7 @@
                 android:layout_height="wrap_content"
                 android:fontFamily="@font/roboto"
                 android:text="10 ingredients"
+                android:clickable="false"
                 android:textColor="@color/color_Text"
                 android:textSize="@dimen/small_text"
                 android:clickable="false"

@@ -21,16 +21,6 @@
         app:layout_constraintEnd_toEndOf="parent"
         android:hint="Search" />
 
-    <com.google.android.material.chip.ChipGroup
-        android:id="@+id/chip_group_recipes"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="16dp"
-        android:layout_marginHorizontal="@dimen/margin_medium"
-        app:singleSelection="true"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/searchView" />
 
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/recycler_view_recipes_result"
@@ -43,7 +33,7 @@
         app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/chip_group_recipes"
+        app:layout_constraintTop_toBottomOf="@id/searchView"
         tools:listitem="@layout/card_search_item" />
 
     <include
@@ -56,7 +46,7 @@
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/chip_group_recipes" />
+        app:layout_constraintTop_toBottomOf="@id/searchView" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
 

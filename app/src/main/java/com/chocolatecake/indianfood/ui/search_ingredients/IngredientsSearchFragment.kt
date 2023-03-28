@@ -56,7 +56,7 @@ class IngredientsSearchFragment : BaseFragment<FragmentIngredientsSearchBinding>
     private fun setupDatasource() {
         csvParser = CsvParser()
         dataSource = IndianFoodCsvDataSource(csvParser, requireContext())
-        ingredients = GetAllIngredientsInteractor(dataSource).invoke()
+        ingredients = GetAllIngredientsInteractor(dataSource).invoke().distinct()
         findRecipesContainsSpecifiedIngredient =
             FindRecipesContainsSpecifiedIngredientInteractor(dataSource)
     }
