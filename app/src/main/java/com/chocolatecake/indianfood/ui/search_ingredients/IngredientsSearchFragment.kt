@@ -72,7 +72,7 @@ class IngredientsSearchFragment : BaseFragment<FragmentIngredientsSearchBinding>
     private fun onClickCloseChip(chip: Chip, index: Int) {
         chip.setOnCloseIconClickListener {
             binding.chipGroupIngredients.removeView(chip)
-            searchIngredients.removeAt(index)
+            searchIngredients.remove(chip.text)
             setSearchResult(searchIngredients)
         }
     }
