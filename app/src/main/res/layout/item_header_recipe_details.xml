@@ -1,0 +1,140 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <androidx.constraintlayout.widget.Guideline
+        android:id="@+id/guideline_30_percent"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        app:layout_constraintGuide_begin="300dp" />
+
+    <ImageView
+        android:id="@+id/image_view_recipe"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:scaleType="centerCrop"
+        android:src="@drawable/recipe"
+        app:layout_constraintBottom_toTopOf="@id/guideline_30_percent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        />
+
+    <ImageButton
+        android:id="@+id/image_button_return_back"
+        android:layout_width="@dimen/back_button_size"
+        android:layout_height="@dimen/back_button_size"
+        android:layout_margin="@dimen/margin_medium"
+        android:background="@drawable/back_button_background"
+        android:contentDescription="@string/back_button"
+        android:padding="@dimen/padding_small"
+        android:src="@drawable/left_arrow"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <com.google.android.material.chip.ChipGroup
+        android:id="@+id/chipGroup"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/smallMargin"
+        app:chipSpacingHorizontal="8dp"
+        android:paddingStart="16dp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/image_view_recipe">
+
+        <com.google.android.material.chip.Chip
+            android:id="@+id/textViewTimeRequired"
+            style="@style/Widget.Material3.Chip.Assist"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:fontFamily="@font/roboto"
+            android:text="45 min"
+            android:textColor="@color/color_Text"
+            android:textSize="12sp"
+            app:chipCornerRadius="100dp"
+            app:chipIcon="@drawable/ic_clock"
+            app:textStartPadding="4dp" />
+
+        <com.google.android.material.chip.Chip
+            android:id="@+id/textViewNumberOfIngredients"
+            style="@style/Widget.Material3.Chip.Assist"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:fontFamily="@font/roboto"
+            android:text="10 ingredients"
+            android:textColor="@color/color_Text"
+            android:textSize="@dimen/small_text"
+            app:chipCornerRadius="100dp"
+            app:chipIcon="@drawable/ic_eggs"
+            app:textStartPadding="4dp" />
+
+    </com.google.android.material.chip.ChipGroup>
+
+    <TextView
+        android:id="@+id/text_view_recipe_name"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@drawable/recipe_title_tv_background"
+        android:paddingStart="@dimen/padding_medium"
+       android:layout_marginTop="8dp"
+        android:text="@string/masala_karela_recipe"
+        android:textSize="@dimen/text_title"
+        android:fontFamily="@font/roboto_medium"
+        android:textColor="@color/title_color"
+        app:layout_constraintTop_toBottomOf="@+id/chipGroup"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent" />
+
+    <TextView
+        android:id="@+id/text_view_native_country"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="@dimen/margin_medium_plus"
+        android:layout_marginTop="@dimen/margin_small"
+        android:text="@string/india"
+        android:textColor="@color/sub_title_color"
+        android:fontFamily="@font/roboto_regular"
+        android:textSize="@dimen/font_sub_title"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/text_view_recipe_name" />
+
+    <com.google.android.material.tabs.TabLayout
+        android:id="@+id/tab_layout_ingredients_instructions"
+        android:layout_width="match_parent"
+        android:layout_height="36dp"
+        android:layout_marginTop="24dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/text_view_native_country"
+        android:background="@drawable/tab_layout_background"
+        android:layout_marginHorizontal="32dp"
+        app:tabBackground="@drawable/tab_item_background"
+        app:tabIndicator="@android:color/transparent"
+        app:tabMode="fixed"
+        app:tabTextColor="@color/tab_selected_item_color"
+        app:tabSelectedTextColor="@color/white"
+        app:tabRippleColor="@color/white"
+        >
+
+        <com.google.android.material.tabs.TabItem
+            android:layout_width="0dp"
+            android:layout_height="34dp"
+            android:text="@string/ingredients"
+            android:background="@drawable/tab_item_background"
+            />
+
+        <com.google.android.material.tabs.TabItem
+            android:layout_width="0dp"
+            android:layout_height="34dp"
+            android:text="@string/instructions"
+            android:background="@drawable/tab_item_background"
+            />
+
+    </com.google.android.material.tabs.TabLayout>
+
+</androidx.constraintlayout.widget.ConstraintLayout>
