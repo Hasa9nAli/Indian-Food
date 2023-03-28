@@ -55,10 +55,15 @@ class HomeFragment : BaseFragment<FragmentHomeBinding>() {
 
         itemsList.add(HomeItem(getRandomRecipes.invoke(), HomeItemType.TYPE_RANDOM_RECIPES))
 
-        itemsList.add(HomeItem(QUICK_RECIPES, HomeItemType.TYPE_SECTION))
+        itemsList.add(HomeItem(GetHealthyRecipesInteractor.HEALTHY_TYPE, HomeItemType.TYPE_SECTION))
         itemsList.add(HomeItem(getQuickRecipes.invoke(10), HomeItemType.TYPE_RECIPE))
 
-        itemsList.add(HomeItem(HEALTHY_MEALS, HomeItemType.TYPE_SECTION))
+        itemsList.add(
+            HomeItem(
+                GetQuickRecipesInteractor.QUICK_RECIPES_TYPE,
+                HomeItemType.TYPE_SECTION
+            )
+        )
         itemsList.add(HomeItem(getHealthyRecipes.invoke(10), HomeItemType.TYPE_RECIPE))
 
         binding.recipiesRecyclerView.adapter = HomeAdapter(
