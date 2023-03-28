@@ -3,8 +3,6 @@ package com.chocolatecake.indianfood.ui
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.ViewGroup
-import androidx.fragment.app.Fragment
-import androidx.fragment.app.FragmentActivity
 import com.chocolatecake.indianfood.dataSource.utils.toDetailsItem
 import com.chocolatecake.indianfood.databinding.FragmentDetailsBinding
 import com.chocolatecake.indianfood.model.DetailsViews
@@ -20,38 +18,38 @@ class DetailsFragment : BaseFragment<FragmentDetailsBinding>(), TabLayout.OnTabS
         FragmentDetailsBinding::inflate
 
     private var recipe: Recipe? = null
+    private lateinit var recipeDetailsAdapter: RecipeDetailsAdapter
 
 
     override fun setUp() {
         recipe = arguments?.getParcelable(RECIPE_OBJECT_PASSING_CODE)
-
-    }
-
-    override fun addCallBacks() {
         val itemsList: MutableList<DetailsViews<Any>> = mutableListOf()
         itemsList.add(DetailsViews(recipe!!, RecipeViewType.TYPE_HEADER))
         itemsList.addAll(recipe!!.ingredients.map { it.toDetailsItem() })
-        binding.recipeDetailsRecycler.adapter = RecipeDetailsAdapter(itemsList,this)
+        recipeDetailsAdapter = RecipeDetailsAdapter(itemsList, this)
+        binding.recipeDetailsRecycler.adapter = recipeDetailsAdapter
     }
+
+    override fun addCallBacks() {
+        binding.appBar.buttonBack.setOnClickListener { parentFragmentManager.popBackStack() }
+    }
+
     override fun onTabSelected(tab: TabLayout.Tab?) {
+
         binding.apply {
             when (tab?.position) {
                 0 -> {
                     val itemsList: MutableList<DetailsViews<Any>> = mutableListOf()
                     itemsList.add(DetailsViews(recipe!!, RecipeViewType.TYPE_HEADER))
                     itemsList.addAll(recipe!!.ingredients.map { it.toDetailsItem() })
-                    val adapter = RecipeDetailsAdapter(itemsList,this@DetailsFragment)
-                    recipeDetailsRecycler.adapter = adapter
+                    recipeDetailsAdapter.setSelectedTabData(itemsList)
                 }
                 1 -> {
                     val itemsList: MutableList<DetailsViews<Any>> = mutableListOf()
                     itemsList.add(DetailsViews(recipe!!, RecipeViewType.TYPE_HEADER))
                     itemsList.addAll(recipe!!.instruction.map { it.toDetailsItem() })
-                    val adapter = RecipeDetailsAdapter(itemsList,this@DetailsFragment)
-                    recipeDetailsRecycler.adapter = adapter
-
+                    recipeDetailsAdapter.setSelectedTabData(itemsList)
                 }
-
             }
         }
     }
@@ -64,14 +62,6 @@ class DetailsFragment : BaseFragment<FragmentDetailsBinding>(), TabLayout.OnTabS
 
     }
 
-
-    private fun popBackStack(fragment: Fragment) {
-        val transaction = (activity as FragmentActivity).supportFragmentManager.beginTransaction()
-        transaction.remove(fragment)
-        transaction.commit()
-    }
-
-
     companion object {
         const val RECIPE_OBJECT_PASSING_CODE = "RECIPE"
 
@@ -82,9 +72,4 @@ class DetailsFragment : BaseFragment<FragmentDetailsBinding>(), TabLayout.OnTabS
                 }
             }
     }
-
-
 }
-
-
-

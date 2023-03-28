@@ -14,11 +14,16 @@ import com.chocolatecake.indianfood.util.RecipeViewType
 import com.google.android.material.tabs.TabLayout
 
 class RecipeDetailsAdapter(
-    private val items: List<DetailsViews<Any>>,
+    private var items: List<DetailsViews<Any>>,
     private var listner: TabLayout.OnTabSelectedListener
 ) :
     RecyclerView.Adapter<RecipeDetailsAdapter.BasicViewHolder>() {
     sealed class BasicViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView)
+
+    fun setSelectedTabData(newItems: List<DetailsViews<Any>>) {
+        items = newItems
+        notifyDataSetChanged()
+    }
 
     override fun onCreateViewHolder(
         parent: ViewGroup,
