@@ -6,6 +6,7 @@ import android.view.KeyEvent
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.view.inputmethod.EditorInfo
 import android.widget.AdapterView
 import android.widget.AdapterView.OnItemClickListener
 import android.widget.ArrayAdapter
@@ -51,6 +52,9 @@ class IngredientsSearchFragment : BaseFragment<FragmentIngredientsSearchBinding>
             adapter
         )
         binding.searchView.onItemClickListener = this
+        binding.searchView.setOnEditorActionListener { v, actionId, event ->
+            actionId == EditorInfo.IME_ACTION_SEARCH || event.action == KeyEvent.ACTION_DOWN && event.keyCode == KeyEvent.KEYCODE_ENTER
+        }
     }
 
     private fun setupDatasource() {
