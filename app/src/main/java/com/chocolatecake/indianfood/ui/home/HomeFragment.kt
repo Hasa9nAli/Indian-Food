@@ -12,7 +12,7 @@ import com.chocolatecake.indianfood.interactor.GetRandomMealIntractor
 import com.chocolatecake.indianfood.interactor.IndianFoodDataSource
 import com.chocolatecake.indianfood.model.HomeItem
 import com.chocolatecake.indianfood.model.Recipe
-import com.chocolatecake.indianfood.ui.RecipeDetailsFragment
+import com.chocolatecake.indianfood.ui.DetailsFragment
 import com.chocolatecake.indianfood.ui.base.BaseFragment
 import com.chocolatecake.indianfood.ui.show_more.ShowMoreFragment
 import com.chocolatecake.indianfood.util.HomeItemType
@@ -74,7 +74,7 @@ class HomeFragment : BaseFragment<FragmentHomeBinding>() {
     }
 
     private fun onClickRecipe(recipe: Recipe) {
-        val detailsFragment = RecipeDetailsFragment.newInstance(recipe)
+        val detailsFragment = DetailsFragment.newInstance(recipe)
         requireActivity().navigateTo(detailsFragment)
     }
 

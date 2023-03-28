@@ -32,7 +32,6 @@ class DetailsFragment : BaseFragment<FragmentDetailsBinding>(), TabLayout.OnTabS
         itemsList.add(DetailsViews(recipe!!, RecipeViewType.TYPE_HEADER))
         itemsList.addAll(recipe!!.ingredients.map { it.toDetailsItem() })
         binding.recipeDetailsRecycler.adapter = RecipeDetailsAdapter(itemsList,this)
-        popBackStack(this)
     }
     override fun onTabSelected(tab: TabLayout.Tab?) {
         binding.apply {
@@ -58,11 +57,11 @@ class DetailsFragment : BaseFragment<FragmentDetailsBinding>(), TabLayout.OnTabS
     }
 
     override fun onTabUnselected(tab: TabLayout.Tab?) {
-        TODO("Not yet implemented")
+
     }
 
     override fun onTabReselected(tab: TabLayout.Tab?) {
-        TODO("Not yet implemented")
+
     }
 
 
@@ -76,6 +75,12 @@ class DetailsFragment : BaseFragment<FragmentDetailsBinding>(), TabLayout.OnTabS
     companion object {
         const val RECIPE_OBJECT_PASSING_CODE = "RECIPE"
 
+        fun newInstance(recipe: Recipe) =
+            DetailsFragment().apply {
+                arguments = Bundle().apply {
+                    putParcelable(RECIPE_OBJECT_PASSING_CODE, recipe)
+                }
+            }
     }
 
 
