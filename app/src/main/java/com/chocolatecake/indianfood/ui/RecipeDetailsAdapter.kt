@@ -46,7 +46,6 @@ class RecipeDetailsAdapter(
 
     override fun getItemCount(): Int = items.size
 
-
     override fun onBindViewHolder(
         holder: BasicViewHolder,
         position: Int
@@ -54,7 +53,6 @@ class RecipeDetailsAdapter(
         when (holder) {
             is RecipeDetailsHeaderViewHolder -> bindHeader(holder, position)
             is IngredientsAndInstructionsDetailsViewHolder -> bindDetails(holder, position)
-            else -> {}
         }
     }
 
@@ -75,10 +73,8 @@ class RecipeDetailsAdapter(
         holder.binding.textViewIngredientInstruction.text = currentItem
     }
 
-
     class RecipeDetailsHeaderViewHolder(itemView: View) : BasicViewHolder(itemView) {
         val binding = ItemHeaderRecipeDetailsBinding.bind(itemView)
-
     }
 
     class IngredientsAndInstructionsDetailsViewHolder(itemView: View) : BasicViewHolder(itemView) {

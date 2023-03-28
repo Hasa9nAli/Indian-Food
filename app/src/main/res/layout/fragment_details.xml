@@ -7,13 +7,16 @@
     android:orientation="vertical">
 
     <include
+        android:layout_width="match_parent"
+        android:layout_height="56dp"
         android:id="@+id/appBar"
         layout="@layout/app_bar_layout" />
 
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/recipe_details_recycler"
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="1"
         android:clipToPadding="false"
         android:orientation="vertical"
         app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager" />

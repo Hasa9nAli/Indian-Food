@@ -34,7 +34,7 @@
         app:layout_constraintTop_toBottomOf="@id/image_view_recipe">
 
         <com.google.android.material.chip.Chip
-            android:id="@+id/textViewTimeRequired"
+            android:id="@+id/text_view_time_required"
             style="@style/Widget.Material3.Chip.Assist"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
@@ -47,7 +47,7 @@
             app:textStartPadding="4dp" />
 
         <com.google.android.material.chip.Chip
-            android:id="@+id/textViewNumberOfIngredients"
+            android:id="@+id/text_view_number_of_ingredients"
             style="@style/Widget.Material3.Chip.Assist"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
