@@ -9,7 +9,9 @@ import android.widget.Toast
 import com.chocolatecake.indianfood.dataSource.IndianFoodCsvDataSource
 import com.chocolatecake.indianfood.dataSource.utils.CsvParser
 import com.chocolatecake.indianfood.databinding.FragmentRecipesSearchBinding
-import com.chocolatecake.indianfood.interactor.*
+import com.chocolatecake.indianfood.interactor.FindRecipesByNameInteractor
+import com.chocolatecake.indianfood.interactor.GetRandomMealsIntractor
+import com.chocolatecake.indianfood.interactor.IndianFoodDataSource
 import com.chocolatecake.indianfood.model.Recipe
 import com.chocolatecake.indianfood.ui.RecipeDetailsFragment
 import com.chocolatecake.indianfood.ui.base.BaseFragment
@@ -77,7 +79,7 @@ class RecipesSearchFragment : BaseFragment<FragmentRecipesSearchBinding>() {
             chip.text = chipText
             chip.isClickable = true
             chip.isCheckable = true
-            binding.chipsgroup.addView(chip)
+            binding.chipGroupIngredients.addView(chip)
         }
     }
 
@@ -127,9 +129,8 @@ class RecipesSearchFragment : BaseFragment<FragmentRecipesSearchBinding>() {
     }
 
     private fun onChoiceChip(){
-        binding.chipsgroup.setOnCheckedStateChangeListener {
-                group , checkedId ->
-            val  chip:Chip = group.findViewById(checkedId[checkedId.lastIndex])
+        binding.chipGroupIngredients.setOnCheckedStateChangeListener { group, checkedId ->
+            val chip: Chip = group.findViewById(checkedId[checkedId.lastIndex])
 
             chip.let {
                 recipeName = it.text.toString()

@@ -10,9 +10,9 @@ import com.chocolatecake.indianfood.databinding.CardSearchItemBinding
 import com.chocolatecake.indianfood.model.Recipe
 
 class IngredientsSearchAdapter(
-    private val recipes: List<Recipe>,
-    private val onClickItem: (recipe: Recipe) -> Unit ,
-    ) : RecyclerView.Adapter<IngredientsSearchAdapter.RecipeViewHolder>() {
+    private var recipes: List<Recipe>,
+    private val onClickRecipe: (recipe: Recipe) -> Unit,
+) : RecyclerView.Adapter<IngredientsSearchAdapter.RecipeViewHolder>() {
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): RecipeViewHolder {
         return RecipeViewHolder(
@@ -20,6 +20,11 @@ class IngredientsSearchAdapter(
                 .from(parent.context)
                 .inflate(R.layout.card_search_item, parent, false)
         )
+    }
+
+    fun setData(newRecipes: List<Recipe>) {
+        recipes = newRecipes
+        notifyDataSetChanged()
     }
 
     override fun onBindViewHolder(holder: RecipeViewHolder, position: Int) {
@@ -33,7 +38,7 @@ class IngredientsSearchAdapter(
             Glide.with(root).load(recipe.imageUrl).into(recipeImage)
 
             recipeItem.setOnClickListener {
-                onClickItem(recipes[position])
+                onClickRecipe(recipes[position])
             }
         }
     }
