@@ -4,46 +4,55 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".ui.MainActivity">
+    android:background="?android:colorBackground">
 
-    <androidx.appcompat.widget.Toolbar
-        android:id="@+id/search_toolbar"
+    <com.google.android.material.textfield.MaterialAutoCompleteTextView
+        android:id="@+id/searchView"
+        android:layout_width="0dp"
+        android:layout_height="48dp"
+        android:layout_marginTop="8dp"
+        android:paddingStart="16dp"
+        android:layout_marginHorizontal="@dimen/margin_medium"
+        android:background="@drawable/shape_search"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        android:hint="@string/hint" />
+
+    <com.google.android.material.chip.ChipGroup
+        android:id="@+id/chip_group_ingredients"
         android:layout_width="match_parent"
-        android:layout_height="52dp"
-        android:layout_marginTop="48dp"
-        android:layout_marginEnd="16dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="16dp"
+        android:layout_marginHorizontal="@dimen/margin_medium"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent">
+        app:layout_constraintTop_toBottomOf="@id/searchView" />
 
-        <LinearLayout
-            android:id="@+id/searchLinear"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:orientation="horizontal">
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/recycler_view_ingredients_result"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:clipToPadding="false"
+        android:orientation="vertical"
+        android:paddingBottom="64dp"
+        android:layout_marginHorizontal="@dimen/margin_medium"
+        app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/chip_group_ingredients"
+        tools:listitem="@layout/card_search_item" />
 
-            <ImageButton
-                android:id="@+id/back_button"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_gravity="center"
-                android:background="?attr/selectableItemBackgroundBorderless"
-                android:contentDescription="@string/blank"
-                android:padding="8dp"
-                android:src="@drawable/left_arrow" />
-
-            <SearchView
-                android:id="@+id/search_view"
-                android:layout_width="match_parent"
-                android:layout_height="48dp"
-                android:background="@drawable/shape_search"
-                android:queryHint="Search..."
-                app:iconifiedByDefault="false" />
-
-
-        </LinearLayout>
-    </androidx.appcompat.widget.Toolbar>
-
-
+    <include
+        android:id="@+id/noDataFound"
+        layout="@layout/no_data_found"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:layout_marginTop="@dimen/normalSpace"
+        android:visibility="invisible"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/chip_group_ingredients" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
