@@ -26,9 +26,9 @@ class IngredientsSearchFragment : BaseFragment<FragmentIngredientsSearchBinding>
     private lateinit var csvParser: CsvParser
     private lateinit var ingredients: List<String>
     private var searchIngredients = mutableListOf<String>()
-    private lateinit var recipeAdapter: IngredientsSearchAdapter
-
+    private lateinit var ingredientsAdapter: IngredientsSearchAdapter
     private lateinit var findRecipesContainsSpecifiedIngredient: FindRecipesContainsSpecifiedIngredientInteractor
+
     override val inflater: (LayoutInflater, ViewGroup?, Boolean) -> FragmentIngredientsSearchBinding
         get() = FragmentIngredientsSearchBinding::inflate
 
@@ -87,7 +87,7 @@ class IngredientsSearchFragment : BaseFragment<FragmentIngredientsSearchBinding>
                 searchRecyclerVisibility = View.VISIBLE,
                 noDataFoundVisibility = View.GONE,
             )
-            recipeAdapter.setData(searchResult)
+            ingredientsAdapter.setData(searchResult)
         } else {
             setViewsVisibility(
                 searchRecyclerVisibility = View.GONE,
@@ -97,9 +97,8 @@ class IngredientsSearchFragment : BaseFragment<FragmentIngredientsSearchBinding>
     }
 
     private fun setUpAdapter(recipes: List<Recipe>) {
-        recipeAdapter = IngredientsSearchAdapter(recipes, ::onClickIngredient)
-        binding.recyclerViewRecipesResult.adapter =
-            recipeAdapter
+        ingredientsAdapter = IngredientsSearchAdapter(recipes, ::onClickIngredient)
+        binding.recyclerViewIngredientsResult.adapter = ingredientsAdapter
     }
 
     private fun onClickIngredient(recipe: Recipe) {
@@ -110,7 +109,7 @@ class IngredientsSearchFragment : BaseFragment<FragmentIngredientsSearchBinding>
         searchRecyclerVisibility: Int,
         noDataFoundVisibility: Int,
     ) {
-        binding.recyclerViewRecipesResult.visibility = searchRecyclerVisibility
+        binding.recyclerViewIngredientsResult.visibility = searchRecyclerVisibility
         binding.noDataFound.error.visibility = noDataFoundVisibility
     }
 

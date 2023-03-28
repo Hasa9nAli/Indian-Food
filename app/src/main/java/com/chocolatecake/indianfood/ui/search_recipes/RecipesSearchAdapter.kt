@@ -10,7 +10,7 @@ import com.chocolatecake.indianfood.databinding.CardSearchItemBinding
 import com.chocolatecake.indianfood.model.Recipe
 
 class RecipesSearchAdapter(
-    private val recipes: List<Recipe>,
+    private var recipes: List<Recipe>,
     private val onClickItem: (recipe: Recipe) -> Unit ,
     ) : RecyclerView.Adapter<RecipesSearchAdapter.RecipeViewHolder>() {
 
@@ -20,6 +20,11 @@ class RecipesSearchAdapter(
                 .from(parent.context)
                 .inflate(R.layout.card_search_item, parent, false)
         )
+    }
+
+    fun setData(newRecipes: List<Recipe>) {
+        recipes = newRecipes
+        notifyDataSetChanged()
     }
 
     override fun onBindViewHolder(holder: RecipeViewHolder, position: Int) {
