@@ -2,6 +2,7 @@ package com.chocolatecake.indianfood.ui.search_ingredients
 
 import android.R
 import android.os.Bundle
+import android.view.KeyEvent
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -31,6 +32,7 @@ class IngredientsSearchFragment : BaseFragment<FragmentIngredientsSearchBinding>
 
     override val inflater: (LayoutInflater, ViewGroup?, Boolean) -> FragmentIngredientsSearchBinding
         get() = FragmentIngredientsSearchBinding::inflate
+
 
     override fun setUp() {
         setupDatasource()

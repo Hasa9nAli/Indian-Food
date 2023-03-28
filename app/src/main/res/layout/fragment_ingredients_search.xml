@@ -6,7 +6,6 @@
     android:layout_height="match_parent"
     android:background="?android:colorBackground">
 
-
     <com.google.android.material.textfield.MaterialAutoCompleteTextView
         android:id="@+id/searchView"
         android:layout_width="0dp"

@@ -90,4 +90,5 @@
     <string name="descriptionNoDataFound">Please try again with different keywords or use our filters to refine your search.</string>
     <string name="no_matching_recipes">No matching recipes</string>
     <string name="descriptionDataNotFound">Please try again with different keywords or use our filters to refine your search.</string>
+    <string name="hint">Search</string>
 </resources>
