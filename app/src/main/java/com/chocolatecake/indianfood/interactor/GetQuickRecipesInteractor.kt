@@ -21,5 +21,4 @@ class GetQuickRecipesInteractor(
     companion object {
         const val QUICK_RECIPES_TYPE = "Quick recipes"
     }
-
 }

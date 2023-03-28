@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<resources>
+<resources xmlns:android="http://schemas.android.com/apk/res/android" xmlns:tools="http://schemas.android.com/tools">
 
     <style name="OnboardingTitleTextStyle">
         <item name="android:fontFamily">@font/roboto</item>
@@ -10,8 +10,8 @@
 
     <style name="OnboardingDescTextStyle">
         <item name="android:fontFamily">@font/roboto</item>
-        <item name="android:layout_marginStart">@dimen/margin_meduim</item>
-        <item name="android:layout_marginEnd">@dimen/margin_meduim</item>
+        <item name="android:layout_marginStart">@dimen/margin_medium</item>
+        <item name="android:layout_marginEnd">@dimen/margin_medium</item>
         <item name="android:textAlignment">center</item>
         <item name="android:textColor">@color/md_theme_dark_background</item>
         <item name="android:textSize">14sp</item>
@@ -39,5 +39,30 @@
         <item name="android:fontFamily">@font/roboto</item>
         <item name="android:textColor">@color/white</item>
         <item name="android:textSize">@dimen/txt_size_large</item>
+    </style>
+
+    <style name="ChipBadge">
+        <item name="android:background">@drawable/chip_background</item>
+        <item name="android:paddingHorizontal" tools:targetApi="o">8dp</item>
+        <item name="android:paddingVertical" tools:targetApi="o">4dp</item>
+        <item name="android:textColor">@color/chip_onBackground</item>
+    </style>
+
+    <style name="ChipCustomStyle" parent="Widget.MaterialComponents.Chip.Action">
+        <item name="checkedIconEnabled">false</item>
+        <item name="checkedIcon">@null</item>
+    </style>
+
+    <style name="CardTitle" parent="TextMid">
+        <item name="android:layout_marginHorizontal" tools:targetApi="o">8dp</item>
+        <item name="android:ellipsize">end</item>
+        <item name="android:maxLines">2</item>
+        <item name="android:layout_marginVertical" tools:targetApi="o">8dp</item>
+        <item name="android:textSize">14sp</item>
+        <item name="fontFamily">ro</item>
+    </style>
+
+    <style name="TextMid">
+        <item name="fontFamily">@font/roboto_medium</item>
     </style>
 </resources>

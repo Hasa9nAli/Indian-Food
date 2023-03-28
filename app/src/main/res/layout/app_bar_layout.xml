@@ -3,15 +3,13 @@
     android:layout_width="match_parent"
     android:layout_height="@dimen/app_bar_height"
     android:orientation="horizontal"
-    android:paddingHorizontal="@dimen/margin_medium"
-    android:paddingVertical="14dp">
+    >
 
     <ImageButton
         android:id="@+id/button_back"
-        android:layout_width="@dimen/margin_xxlarge"
-        android:layout_height="@dimen/margin_xxlarge"
+        android:layout_width="56dp"
+        android:layout_height="match_parent"
         android:layout_centerVertical="true"
-        android:layout_marginVertical="@dimen/smallMargin"
         android:background="@android:color/transparent"
         android:contentDescription="@string/back_buton"
         android:src="@drawable/left_arrow" />

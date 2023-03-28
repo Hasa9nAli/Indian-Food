@@ -75,6 +75,6 @@ class MainActivity : BaseActivity<ActivityMainBinding>() {
         }
 
     private fun setOnBoardingFragment() {
-        navigateExclusive(onBoardingFragment)
+        navigateExclusive(homeFragment)
     }
 }

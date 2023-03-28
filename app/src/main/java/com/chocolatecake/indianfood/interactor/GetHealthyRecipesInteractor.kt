@@ -8,8 +8,7 @@ class GetHealthyRecipesInteractor(
 ) {
 
     companion object {
-        const val HEALTHY_TYPE = "Healthy recipes"
-        const val HEALTHY = "Healthy"
+        const val HEALTHY_RECIPES_TYPE = "Healthy"
     }
 
     operator fun invoke(limit: Int? = null): List<Recipe> {
@@ -20,7 +19,7 @@ class GetHealthyRecipesInteractor(
             .getAllRecipesData()
             .apply { recipesCount = size }
             .ifEmpty { throw IllegalStateException("Something went wrong") }
-            .filter { it.name.contains(HEALTHY, ignoreCase = true) }
+            .filter { it.name.contains(HEALTHY_RECIPES_TYPE, ignoreCase = true) }
             .shuffled()
             .take(limit ?: recipesCount)
     }

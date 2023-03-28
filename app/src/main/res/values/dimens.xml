@@ -24,7 +24,6 @@
     <dimen name="margin_xxxlarge">110dp</dimen>
     <dimen name="height_onboarding_image">297dp</dimen>
     <dimen name="margin_large">32dp</dimen>
-    <dimen name="margin_meduim">20dp</dimen>
     <dimen name="onboarding_desc_height">60dp</dimen>
     <dimen name="margin_xxlarge">24dp</dimen>
     <dimen name="margin_onboarding_btn">50dp</dimen>
@@ -33,4 +32,5 @@
     <dimen name="txt_size_xsmall">14sp</dimen>
     <dimen name="smallMargin">8dp</dimen>
     <dimen name="app_bar_height">56dp</dimen>
+    <dimen name="midCornerRadius">8dp</dimen>
 </resources>

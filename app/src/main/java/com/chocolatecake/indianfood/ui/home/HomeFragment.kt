@@ -55,13 +55,23 @@ class HomeFragment : BaseFragment<FragmentHomeBinding>() {
 
         itemsList.add(HomeItem(getRandomRecipes.invoke(), HomeItemType.TYPE_RANDOM_RECIPES))
 
-        itemsList.add(HomeItem(QUICK_RECIPES, HomeItemType.TYPE_SECTION))
+        itemsList.add(
+            HomeItem(
+                GetQuickRecipesInteractor.QUICK_RECIPES_TYPE,
+                HomeItemType.TYPE_SECTION
+            )
+        )
         itemsList.add(HomeItem(getQuickRecipes.invoke(10), HomeItemType.TYPE_RECIPE))
 
-        itemsList.add(HomeItem(HEALTHY_MEALS, HomeItemType.TYPE_SECTION))
+        itemsList.add(
+            HomeItem(
+                GetHealthyRecipesInteractor.HEALTHY_RECIPES_TYPE,
+                HomeItemType.TYPE_SECTION
+            )
+        )
         itemsList.add(HomeItem(getHealthyRecipes.invoke(10), HomeItemType.TYPE_RECIPE))
 
-        binding.recipiesRecyclerView.adapter = HomeAdapter(
+        binding.recyclerViewRecipes.adapter = HomeAdapter(
             itemsList,
             ::onClickShowMore,
             ::onClickRecipe,
@@ -76,10 +86,5 @@ class HomeFragment : BaseFragment<FragmentHomeBinding>() {
     private fun onClickRecipe(recipe: Recipe) {
         val detailsFragment = RecipeDetailsFragment.newInstance(recipe)
         requireActivity().navigateTo(detailsFragment)
-    }
-
-    companion object {
-        const val HEALTHY_MEALS = "Healthy meals"
-        const val QUICK_RECIPES = "Quick recipes"
     }
 }

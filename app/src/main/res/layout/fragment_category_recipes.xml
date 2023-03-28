@@ -13,7 +13,7 @@
         layout="@layout/app_bar_layout" />
 
     <androidx.recyclerview.widget.RecyclerView
-        android:id="@+id/recycler_recipe"
+        android:id="@+id/recycler_view_category_recipes"
         android:layout_width="match_parent"
         android:layout_height="0dp"
         android:layout_marginTop="@dimen/margin_medium"
