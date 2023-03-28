@@ -68,6 +68,7 @@ class IngredientsSearchFragment : BaseFragment<FragmentIngredientsSearchBinding>
     private fun createChip(ingredient: String, index: Int) {
         val chip = Chip(requireContext())
         chip.text = ingredient
+        chip.chipCornerRadius= 32F
         chip.isChipIconVisible = false
         chip.isCloseIconVisible = true
         onClickCloseChip(chip, index)
