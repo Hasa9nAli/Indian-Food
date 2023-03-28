@@ -1,30 +1,33 @@
 
 package com.chocolatecake.indianfood.ui.search_recipes
+import android.R
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.widget.SearchView
+import android.widget.AdapterView
+import android.widget.ArrayAdapter
 import android.widget.Toast
 import com.chocolatecake.indianfood.dataSource.IndianFoodCsvDataSource
 import com.chocolatecake.indianfood.dataSource.utils.CsvParser
 import com.chocolatecake.indianfood.databinding.FragmentRecipesSearchBinding
-import com.chocolatecake.indianfood.interactor.FindRecipesByNameInteractor
-import com.chocolatecake.indianfood.interactor.GetRandomMealsIntractor
-import com.chocolatecake.indianfood.interactor.IndianFoodDataSource
+import com.chocolatecake.indianfood.interactor.*
 import com.chocolatecake.indianfood.model.Recipe
 import com.chocolatecake.indianfood.ui.RecipeDetailsFragment
 import com.chocolatecake.indianfood.ui.base.BaseFragment
 import com.chocolatecake.indianfood.util.navigateTo
 import com.google.android.material.chip.Chip
 
-class RecipesSearchFragment : BaseFragment<FragmentRecipesSearchBinding>() {
+
+class RecipesSearchFragment : BaseFragment<FragmentRecipesSearchBinding>() ,
+    AdapterView.OnItemClickListener {
     private lateinit var dataSource: IndianFoodDataSource
     private lateinit var csvParser: CsvParser
 
-    private lateinit var findRecipesByName: FindRecipesByNameInteractor
-    private lateinit var getRandomMeals : GetRandomMealsIntractor
-    private var recipeName  = "no data"
+    private lateinit var findRecipesByNameIngredient: FindRecipesByNameInteractor
+    private lateinit var recipes: List<String>
+    private var searchRecipes :String = ""
+    private lateinit var recipesAdapter: RecipesSearchAdapter
 
 
     override val inflater: (LayoutInflater, ViewGroup?, Boolean) -> FragmentRecipesSearchBinding
@@ -32,115 +35,76 @@ class RecipesSearchFragment : BaseFragment<FragmentRecipesSearchBinding>() {
 
     override fun setUp() {
         setupDatasource()
-        setSearchOnClickListener()
-        setRandomMeals()
-        getRecipes(recipeName)
+        setUpAdapter(findRecipesByNameIngredient.invoke(searchRecipes))
+        setUpAutoCompleteTextView()
+        setSearchResult(searchRecipes)
     }
 
     private fun setupDatasource() {
         csvParser = CsvParser()
         dataSource = IndianFoodCsvDataSource(csvParser, requireContext())
-        findRecipesByName = FindRecipesByNameInteractor(dataSource)
-        getRandomMeals = GetRandomMealsIntractor(dataSource)
+        recipes = FindRecipesNameInteractor(dataSource).invoke(searchName = searchRecipes)
+        findRecipesByNameIngredient = FindRecipesByNameInteractor(dataSource)
     }
 
-
-    private fun setSearchOnClickListener() {
-        binding.searchView.setOnQueryTextListener(object : SearchView.OnQueryTextListener {
-            override fun onQueryTextSubmit( query: String?): Boolean {
-                recipeName = query!!
-                getRecipes(query)
-                binding.searchView.clearFocus()
-                return false
-            }
-            override fun onQueryTextChange(p0: String?): Boolean {
-                return false
-            }
-        })
+    private fun setUpAdapter(recipes: List<Recipe>) {
+        recipesAdapter = RecipesSearchAdapter(recipes, ::onClickRecipe)
+        binding.recyclerViewRecipesResult.adapter = recipesAdapter
     }
 
-
-    private fun setRandomMeals(){
-        try {
-            val randomMeals = getRandomMeals.invoke().take(4)
-            if ( randomMeals.isNotEmpty()){
-                createChips(randomMeals)
-            } else {
-                binding.noDataFound.error.visibility = View.VISIBLE
-            }
-        } catch (e: IllegalAccessException) {
-            showToast(message = e.message.toString())
-        }
-    }
-
-    private fun createChips(items: List<String> ) {
-        for (chipText in items) {
-            val chip = Chip(context)
-            chip.text = chipText
-            chip.isClickable = true
-            chip.isCheckable = true
-            binding.chipGroupIngredients.addView(chip)
-        }
-    }
-
-
-    private fun getRecipes(searchText: String){
-        try {
-            val recipes = findRecipesByName.invoke(searchName = searchText)
-
-            if (recipes.isNotEmpty()){
-                setUpAdapter(recipes)
-
-                visibilityAndGoneView(
-                    searchRecyclerVisibility = View.VISIBLE ,
-                    noDataFoundVisibility = View.GONE,
-                )
-            } else {
-                visibilityAndGoneView(
-                    searchRecyclerVisibility = View.GONE ,
-                    noDataFoundVisibility = View.VISIBLE,
-                )
-            }
-        } catch (e: IllegalAccessException) {
-            showToast(message = e.message.toString())
-        }
-    }
-
-    private fun setUpAdapter(recipe: List<Recipe>){
-        binding.recipeSearchRecyclerView.adapter =
-            RecipesSearchAdapter(recipes = recipe, onClickItem = ::onClickRecipe)
-    }
-
-    private fun onClickRecipe(recipe: Recipe){
+    private fun onClickRecipe(recipe: Recipe) {
         requireActivity().navigateTo(RecipeDetailsFragment.newInstance(recipe))
     }
 
-    private fun visibilityAndGoneView(
+    private fun setUpAutoCompleteTextView() {
+        val adapter = ArrayAdapter(
+            requireContext(),
+            R.layout.simple_dropdown_item_1line,
+            recipes
+        )
+        binding.searchView.setAdapter(
+            adapter
+        )
+        binding.searchView.onItemClickListener = this
+    }
+
+    private fun setSearchResult(recipe: String) {
+        val searchResult = findRecipesByNameIngredient.invoke(recipe)
+        updateRecyclerViewState(searchResult)
+    }
+
+    private fun updateRecyclerViewState(searchResult: List<Recipe>) {
+        if (searchResult.isNotEmpty()) {
+            setViewsVisibility(
+                searchRecyclerVisibility = View.VISIBLE,
+                noDataFoundVisibility = View.GONE,
+            )
+            recipesAdapter.setData(searchResult)
+        } else {
+            setViewsVisibility(
+                searchRecyclerVisibility = View.GONE,
+                noDataFoundVisibility = View.VISIBLE,
+            )
+        }
+    }
+
+    private fun setViewsVisibility(
         searchRecyclerVisibility: Int,
         noDataFoundVisibility: Int,
-    ){
-        binding.recipeSearchRecyclerView.visibility = searchRecyclerVisibility
+    ) {
+        binding.recyclerViewRecipesResult.visibility = searchRecyclerVisibility
         binding.noDataFound.error.visibility = noDataFoundVisibility
     }
 
 
-    override fun addCallBacks(){
-        onChoiceChip()
+    override fun addCallBacks() {
     }
 
-    private fun onChoiceChip(){
-        binding.chipGroupIngredients.setOnCheckedStateChangeListener { group, checkedId ->
-            val chip: Chip = group.findViewById(checkedId[checkedId.lastIndex])
-
-            chip.let {
-                recipeName = it.text.toString()
-                showToast(message = it.text.toString())
-                getRecipes(recipeName)
-            }
-        }
-
+    override fun onItemClick(parent: AdapterView<*>?, view: View?, position: Int, id: Long) {
+        searchRecipes = parent!!.getItemAtPosition(position).toString()
+        binding.searchView.text.clear()
+        setSearchResult(searchRecipes)
     }
-
 
     companion object {
         private const val RECIPE_TAB_INDEX = "1"
@@ -160,4 +124,5 @@ class RecipesSearchFragment : BaseFragment<FragmentRecipesSearchBinding>() {
             Toast.LENGTH_SHORT
         ).show()
     }
+
 }
