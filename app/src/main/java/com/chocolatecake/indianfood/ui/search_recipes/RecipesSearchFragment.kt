@@ -70,11 +70,11 @@ class RecipesSearchFragment : BaseFragment<FragmentRecipesSearchBinding>() ,
 
     private fun setSearchResult(recipe: String) {
         val searchResult = findRecipesByNameIngredient.invoke(recipe)
-        updateRecyclerViewState(searchResult)
+        updateRecyclerViewState(searchResult , recipe)
     }
 
-    private fun updateRecyclerViewState(searchResult: List<Recipe>) {
-        if (searchResult.isNotEmpty()) {
+    private fun updateRecyclerViewState(searchResult: List<Recipe> , recipe: String) {
+        if (recipe.isNotEmpty()) {
             setViewsVisibility(
                 searchRecyclerVisibility = View.VISIBLE,
                 noDataFoundVisibility = View.GONE,
