@@ -5,9 +5,11 @@ import android.os.Bundle
 import android.text.Editable
 import android.text.TextWatcher
 import android.util.Log
+import android.view.KeyEvent
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.view.inputmethod.EditorInfo
 import android.widget.AdapterView
 import android.widget.ArrayAdapter
 import android.widget.Toast
@@ -74,6 +76,9 @@ class RecipesSearchFragment : BaseFragment<FragmentRecipesSearchBinding>() {
                 override fun afterTextChanged(s: Editable?) {}
             }
         )
+        binding.searchView.setOnEditorActionListener { v, actionId, event ->
+            actionId == EditorInfo.IME_ACTION_SEARCH || event.action == KeyEvent.ACTION_DOWN && event.keyCode == KeyEvent.KEYCODE_ENTER
+        }
     }
 
 
