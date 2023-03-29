@@ -9,8 +9,11 @@ import com.chocolatecake.indianfood.databinding.FragmentCategoryRecipesBinding
 import com.chocolatecake.indianfood.interactor.GetBreakfastRecipesInteractor
 import com.chocolatecake.indianfood.interactor.GetDinnerRecipesInteractor
 import com.chocolatecake.indianfood.interactor.GetLunchRecipesInteractor
+import com.chocolatecake.indianfood.model.Recipe
+import com.chocolatecake.indianfood.ui.DetailsFragment
 import com.chocolatecake.indianfood.ui.base.BaseFragment
 import com.chocolatecake.indianfood.util.navigateBack
+import com.chocolatecake.indianfood.util.navigateTo
 
 
 class CategoryRecipesFragment : BaseFragment<FragmentCategoryRecipesBinding>() {
@@ -21,9 +24,15 @@ class CategoryRecipesFragment : BaseFragment<FragmentCategoryRecipesBinding>() {
         binding.appBar.textViewAppBarTitle.text = getMealType()
         setUpRecipesRecyclerView(
             CategoryRecipesAdapter(
-                getMealRecipes(getMealType())
+                getMealRecipes(getMealType()),
+                ::onClickRecipe
             )
         )
+    }
+
+    private fun onClickRecipe(recipe: Recipe) {
+        val recipeDetailsFragment = DetailsFragment.newInstance(recipe)
+        requireActivity().navigateTo(recipeDetailsFragment)
     }
 
     private fun getMealRecipes(mealType: String) = when (mealType) {

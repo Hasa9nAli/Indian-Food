@@ -23,10 +23,9 @@ class IngredientsFragment : BaseFragment<FragmentIngredientsBinding>() {
     override fun addCallBacks() {
 
     }
-
+    
     companion object {
         const val TAG = "IngredientsFragment"
-
         const val INGREDIENTS = "ingredients"
 
         fun newInstance(ingredients: ArrayList<String>) =
