@@ -2,9 +2,14 @@
 package com.chocolatecake.indianfood.ui.search_recipes
 import android.R
 import android.os.Bundle
+import android.text.Editable
+import android.text.TextWatcher
+import android.util.Log
+import android.view.KeyEvent
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.view.inputmethod.EditorInfo
 import android.widget.AdapterView
 import android.widget.ArrayAdapter
 import android.widget.Toast
@@ -20,14 +25,12 @@ import com.chocolatecake.indianfood.ui.base.BaseFragment
 import com.chocolatecake.indianfood.util.navigateTo
 
 
-class RecipesSearchFragment : BaseFragment<FragmentRecipesSearchBinding>() ,
-    AdapterView.OnItemClickListener {
+class RecipesSearchFragment : BaseFragment<FragmentRecipesSearchBinding>() {
     private lateinit var dataSource: IndianFoodDataSource
     private lateinit var csvParser: CsvParser
 
     private lateinit var findRecipesByNameIngredient: FindRecipesByNameInteractor
-    private lateinit var recipes: List<String>
-    private var searchRecipes :String = ""
+    private var searchRecipes: String = "NOT_HAVE_DATA"
     private lateinit var recipesAdapter: RecipesSearchAdapter
 
 
@@ -44,7 +47,6 @@ class RecipesSearchFragment : BaseFragment<FragmentRecipesSearchBinding>() ,
     private fun setupDatasource() {
         csvParser = CsvParser()
         dataSource = IndianFoodCsvDataSource(csvParser, requireContext())
-        recipes = FindRecipesNameInteractor(dataSource).invoke(searchName = searchRecipes)
         findRecipesByNameIngredient = FindRecipesByNameInteractor(dataSource)
     }
 
@@ -58,24 +60,37 @@ class RecipesSearchFragment : BaseFragment<FragmentRecipesSearchBinding>() ,
     }
 
     private fun setUpAutoCompleteTextView() {
-        val adapter = ArrayAdapter(
-            requireContext(),
-            R.layout.simple_dropdown_item_1line,
-            recipes
+        binding.searchView.addTextChangedListener(
+            object : TextWatcher {
+                override fun beforeTextChanged(
+                    s: CharSequence?,
+                    start: Int,
+                    count: Int,
+                    after: Int
+                ) {
+                }
+
+                override fun onTextChanged(s: CharSequence?, start: Int, before: Int, count: Int) {
+                    setSearchResult(s.toString())
+                }
+
+                override fun afterTextChanged(s: Editable?) {}
+            }
         )
-        binding.searchView.setAdapter(
-            adapter
-        )
-        binding.searchView.onItemClickListener = this
+        binding.searchView.setOnEditorActionListener { v, actionId, event ->
+            actionId == EditorInfo.IME_ACTION_SEARCH || event.action == KeyEvent.ACTION_DOWN && event.keyCode == KeyEvent.KEYCODE_ENTER
+        }
+
     }
+
 
     private fun setSearchResult(recipe: String) {
         val searchResult = findRecipesByNameIngredient.invoke(recipe)
-        updateRecyclerViewState(searchResult , recipe)
+        updateRecyclerViewState(searchResult )
     }
 
-    private fun updateRecyclerViewState(searchResult: List<Recipe> , recipe: String) {
-        if (recipe.isNotEmpty()) {
+    private fun updateRecyclerViewState(searchResult: List<Recipe>) {
+        if (searchResult.isNotEmpty() || searchRecipes != "NOT_HAVE_DATA") {
             setViewsVisibility(
                 searchRecyclerVisibility = View.VISIBLE,
                 noDataFoundVisibility = View.GONE,
@@ -101,11 +116,6 @@ class RecipesSearchFragment : BaseFragment<FragmentRecipesSearchBinding>() ,
     override fun addCallBacks() {
     }
 
-    override fun onItemClick(parent: AdapterView<*>?, view: View?, position: Int, id: Long) {
-        searchRecipes = parent!!.getItemAtPosition(position).toString()
-        binding.searchView.text.clear()
-        setSearchResult(searchRecipes)
-    }
 
     companion object {
         private const val RECIPE_TAB_INDEX = "1"
