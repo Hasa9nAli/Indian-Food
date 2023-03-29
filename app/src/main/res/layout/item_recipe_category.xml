@@ -10,7 +10,7 @@
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:background="@color/color_Card">
+        android:background="@color/colorSecondary">
 
         <ImageView
             android:id="@+id/image_view_recipe"
@@ -32,7 +32,7 @@
             android:fontFamily="@font/roboto_medium"
             android:singleLine="true"
             android:text="@string/masala_karela"
-            android:textColor="@color/text_One"
+            android:textColor="@color/colorPrimary"
             android:textSize="@dimen/size_Text"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toEndOf="@+id/image_view_recipe"
@@ -49,10 +49,10 @@
             android:paddingHorizontal="10dp"
             android:paddingVertical="@dimen/margin_small"
             android:text="@string/_50_min"
-            android:textColor="@color/color_Text"
+            android:textColor="@color/colorSecondaryContainer"
             android:textSize="@dimen/sizeText"
             app:drawableStartCompat="@drawable/clock"
-            app:drawableTint="@color/icon_item_recipe_color"
+            app:drawableTint="@color/colorSecondaryContainer"
             app:layout_constraintBottom_toBottomOf="@+id/image_view_recipe"
             app:layout_constraintStart_toStartOf="@+id/text_view_recipe_name"
             app:layout_constraintTop_toBottomOf="@+id/text_view_recipe_name" />
@@ -68,10 +68,10 @@
             android:paddingHorizontal="10dp"
             android:paddingVertical="@dimen/margin_small"
             android:text="@string/_10_ingredients"
-            android:textColor="@color/color_Text"
+            android:textColor="@color/colorSecondaryContainer"
             android:textSize="@dimen/sizeText"
             app:drawableStartCompat="@drawable/ic_eggs"
-            app:drawableTint="@color/icon_item_recipe_color"
+            app:drawableTint="@color/colorSecondaryContainer"
             app:layout_constraintBottom_toBottomOf="@+id/text_view_total_time"
             app:layout_constraintStart_toEndOf="@+id/text_view_total_time"
             app:layout_constraintTop_toTopOf="@+id/text_view_total_time" />

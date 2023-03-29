@@ -1,19 +1,19 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources xmlns:android="http://schemas.android.com/apk/res/android" xmlns:tools="http://schemas.android.com/tools">
 
-    <style name="OnboardingTitleTextStyle">
+    <style name="onboarding_title_text">
         <item name="android:fontFamily">@font/roboto</item>
         <item name="android:textAlignment">center</item>
-        <item name="android:textColor">@color/md_theme_light_onBackground</item>
+        <item name="android:textColor">@color/colorOnSurfaceVariant</item>
         <item name="android:textSize">@dimen/txt_size_large</item>
     </style>
 
-    <style name="OnboardingDescTextStyle">
+    <style name="onboarding_desc_text">
         <item name="android:fontFamily">@font/roboto</item>
         <item name="android:layout_marginStart">@dimen/margin_medium</item>
         <item name="android:layout_marginEnd">@dimen/margin_medium</item>
         <item name="android:textAlignment">center</item>
-        <item name="android:textColor">@color/md_theme_dark_background</item>
+        <item name="android:textColor">@color/colorSecondaryContainer</item>
         <item name="android:textSize">14sp</item>
     </style>
 

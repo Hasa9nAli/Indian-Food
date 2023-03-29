@@ -26,7 +26,7 @@
 
     <TextView
         android:id="@+id/text_view_headline"
-        style="@style/OnboardingTitleTextStyle"
+        style="@style/onboarding_title_text"
         android:layout_width="match_parent"
         android:layout_height="0dp"
         android:text="@string/onBoarding_title_1"
@@ -35,7 +35,7 @@
 
     <TextView
         android:id="@+id/text_view_description"
-        style="@style/OnboardingDescTextStyle"
+        style="@style/onboarding_desc_text"
         android:layout_width="0dp"
         android:layout_height="0dp"
         android:layout_marginTop="16dp"

@@ -13,8 +13,8 @@
         style="@style/TextAppearance.Material3.TitleMedium"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Quick Recipes"
-        android:textColor="#1C1B1F" />
+        android:text="@string/quick_recipes"
+        android:textColor="@color/colorPrimary" />
 
     <TextView
         android:id="@+id/show_more"
@@ -23,7 +23,7 @@
         android:layout_height="wrap_content"
         android:layout_gravity="center"
         android:gravity="end"
-        android:text="Show more"
-        android:textColor="#8D6E63" />
+        android:text="@string/show_more"
+        android:textColor="@color/colorSecondaryContainer" />
 
 </LinearLayout>

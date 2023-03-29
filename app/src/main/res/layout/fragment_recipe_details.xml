@@ -175,16 +175,14 @@
             app:tabIndicator="@android:color/transparent"
             app:tabMode="fixed"
             app:tabTextColor="@color/tab_selected_item_color"
-            app:tabSelectedTextColor="@color/white"
-            app:tabRippleColor="@color/white"
-            >
+            app:tabRippleColor="@color/colorOnPrimary"
+            app:tabSelectedTextColor="@color/colorOnPrimary">
 
             <com.google.android.material.tabs.TabItem
                 android:layout_width="0dp"
                 android:layout_height="34dp"
                 android:text="@string/ingredients"
-                android:background="@drawable/tab_item_background"
-                />
+                android:background="@drawable/tab_item_background" />
 
             <com.google.android.material.tabs.TabItem
                 android:layout_width="0dp"

@@ -3,8 +3,10 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
+    android:layout_marginHorizontal="@dimen/normalSpace"
+    android:layout_marginTop="@dimen/normalSpace"
     android:layout_height="wrap_content"
-    android:layout_marginHorizontal="@dimen/midCornerRadius">
+    app:strokeWidth="0dp">
 
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
@@ -13,7 +15,7 @@
         <com.google.android.material.imageview.ShapeableImageView
             android:id="@+id/dishOfTheDayImage"
             android:layout_width="match_parent"
-            android:layout_height="201dp"
+            android:layout_height="220dp"
             android:scaleType="centerCrop"
             android:src="@drawable/dishday"
             app:layout_constraintEnd_toEndOf="parent"
@@ -53,7 +55,7 @@
             android:layout_marginBottom="4dp"
             android:ellipsize="end"
             android:maxLines="2"
-            android:textColor="#DEFFFFFF"
+            android:textColor="@color/colorOnPrimary"
             app:layout_constraintBottom_toTopOf="@id/text_view_recipe_cuisine"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="@id/text_view_recipe_cuisine"
@@ -66,7 +68,7 @@
             android:layout_height="wrap_content"
             android:layout_marginStart="@dimen/margin_medium"
             android:layout_marginBottom="@dimen/margin_medium"
-            android:textColor="#DEFFFFFF"
+            android:textColor="@color/colorSurface"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             tools:text="@string/cuisine" />

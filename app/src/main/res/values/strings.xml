@@ -90,4 +90,6 @@
     <string name="recipe_image">recipe_image</string>
     <string name="quick_recipes_category_title">Quick recipes</string>
     <string name="healthy_recipes_category_title">Healthy recipes</string>
+    <string name="show_more">Show more</string>
+    <string name="quick_recipes">Quick Recipes</string>
 </resources>

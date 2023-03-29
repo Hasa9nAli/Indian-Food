@@ -2,7 +2,7 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@color/md_theme_light_background">
+    android:background="@color/colorBackground">
 
     <androidx.constraintlayout.widget.Guideline
         android:id="@+id/top_guideline"
@@ -40,7 +40,7 @@
         android:layout_height="0dp"
         android:layout_marginEnd="@dimen/margin_medium"
         android:text="@string/next"
-        android:textColor="@color/md_theme_light_onBackground"
+        android:textColor="@color/colorOnBackground"
         android:textSize="@dimen/txt_size_meduim"
         app:layout_constraintBottom_toBottomOf="@+id/guideline_bottom"
         app:layout_constraintEnd_toEndOf="parent" />

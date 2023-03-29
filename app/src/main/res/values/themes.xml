@@ -2,25 +2,25 @@
     <!-- Base application theme. -->
     <style name="AppTheme" parent="Theme.Material3.Light.NoActionBar">
 
-        <item name="colorPrimary">@color/md_theme_light_primary</item>
+        <item name="colorPrimary">@color/colorPrimary</item>
 
-        <item name="colorOnSecondary">@color/md_theme_light_onSecondary</item>
+        <item name="colorOnSecondary">@color/colorOnSecondary</item>
 
-        <item name="colorSecondaryContainer">@color/md_theme_light_secondaryContainer</item>
+        <item name="colorSecondaryContainer">@color/colorOnSecondaryContainer</item>
 
-        <item name="colorOnSecondaryContainer">@color/md_theme_light_onSecondaryContainer</item>
+        <item name="colorOnSecondaryContainer">@color/colorOnSecondaryContainer</item>
 
-        <item name="android:colorBackground">@color/md_theme_light_background</item>
+        <item name="android:colorBackground">@color/colorBackground</item>
 
-        <item name="colorOnBackground">@color/md_theme_light_onBackground</item>
+        <item name="colorOnBackground">@color/colorOnBackground</item>
 
-        <item name="colorSurface">@color/md_theme_light_surface</item>
+        <item name="colorSurface">@color/colorSurface</item>
 
-        <item name="colorOnSurface">@color/md_theme_light_onSurface</item>
+        <item name="colorOnSurface">@color/colorOnSurface</item>
 
-        <item name="colorSurfaceVariant">@color/md_theme_light_surfaceVariant</item>
+        <item name="colorSurfaceVariant">@color/colorSurfaceVariant</item>
 
-        <item name="colorOnSurfaceVariant">@color/md_theme_light_onSurfaceVariant</item>
+        <item name="colorOnSurfaceVariant">@color/colorOnSurfaceVariant</item>
 
         <item name="android:statusBarColor">@color/white</item>
         <item name="android:windowLightStatusBar">true</item>
@@ -28,7 +28,7 @@
     </style>
 
     <style name="reduceImage">
-        <item name="cornerSize">28dp</item>
+        <item name="cornerSize">50%</item>
     </style>
 
     <style name="RoundedCorner">
