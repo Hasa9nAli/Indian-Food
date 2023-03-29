@@ -1,7 +1,7 @@
 <resources>
     <string name="app_name">Indian Food</string>
     <string name="largetitleDescription">Indian eating habits are diverse and influenced by cultural and geographical factors</string>
-    <string name="sectionOne">Butter Chicken: This is a classic North Indian dish, which is made with marinated chicken cooked in a creamy tomato-based sauce. </string>
+    <string name="sectionOne">Butter Chicken this is a classic North Indian dish, which is made with marinated chicken cooked in a creamy tomato-based sauce. </string>
     <string name="sectionTow">Biryani is a popular rice dish made with spices, meat or vegetables, and saffron. It is a specialty of the Hyderabad region in South India.</string>
     <string name="sectionThree">Indian food is known for its use of a variety of spices, Some of the commonly used spices include cumin, coriander and turmeric</string>
     <string name="sectionFour">India has a diverse range of regional cuisines, each with its unique flavors and dishes. The eating habits vary accordingly.</string>
@@ -72,7 +72,7 @@
     <string name="instructions">instructions</string>
     <string name="not_implemented_yet">Not implemented yet</string>
     <string name="min">min</string>
-    <string name="the_famous_indian_dishes">The Famous Indian dishes</string>
+    <string name="the_famous_indian_dishes">Indian eating habits</string>
     <string name="the_recipe_doesnt_exist">The recipe doesn\'t exist</string>
     <string name="blank" />
     <string name="breakfast_card">Breakfast Card</string>
@@ -91,4 +91,10 @@
     <string name="no_matching_recipes">No matching recipes</string>
     <string name="descriptionDataNotFound">Please try again with different keywords or use our filters to refine your search.</string>
     <string name="hint">Search</string>
+    <string name="text_view_section_pepper">Chilli Peppers used in Indian which is easy to distinguish, long, deep red colour and wrinkled texture.</string>
+    <string name="text_view_section_cinnamon">Cinnamon this spice is popular in chutneys and with meat or rice dishes.</string>
+    <string name="text_view_section_curry">Curry is an Indian gravy or sauce that is used in tandem with meat, tofu, or vegetables.</string>
+    <string name="text_view_section_turmeric">Turmeric the golden spice whose history in Indian cuisine is as timeless as its value in Ayurvedic medicine.</string>
+    <string name="text_view_section_saffron">Saffron is a spice derived from the flower of Crocus sativus, commonly known as the saffron crocus.</string>
+    <string name="text_view_indian_food_ingredients">Indian food ingredients</string>
 </resources>
