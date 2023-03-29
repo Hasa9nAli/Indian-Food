@@ -46,28 +46,3 @@ private fun changeNavigation(activity: FragmentActivity, state: NavigationState,
     }
     transaction.commit()
 }
-
-
-//// this used in fragment when click on item
-//override fun onClickItem(aragment: TypeA) {
-//    requireActivity().navigateTo(NameFragment.newInstance(arg))
-//}
-
-
-//this used when you have icon back
-//private fun arrowBack() {
-//    binding.arrowIcon.setOnClickListener {
-//        this.parentFragmentManager.popBackStack()
-//    }
-//}
-
-
-//
-//this used in fragment page to receive data
-//companion object {
-//    fun newInstance(argument: TypeOfArgument) = NameFragment().apply {
-//        arguments = Bundle().apply {
-//            putSerializable(Constants.KEY_ARGUMENT, argument)
-//        }
-//    }
-//}
