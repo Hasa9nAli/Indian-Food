@@ -79,6 +79,7 @@ class RecipesSearchFragment : BaseFragment<FragmentRecipesSearchBinding>() {
         binding.searchView.setOnEditorActionListener { v, actionId, event ->
             actionId == EditorInfo.IME_ACTION_SEARCH || event.action == KeyEvent.ACTION_DOWN && event.keyCode == KeyEvent.KEYCODE_ENTER
         }
+
     }
 
 
