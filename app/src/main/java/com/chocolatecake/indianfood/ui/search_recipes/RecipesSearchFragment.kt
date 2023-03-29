@@ -1,27 +1,22 @@
 
 package com.chocolatecake.indianfood.ui.search_recipes
-import android.R
 import android.os.Bundle
 import android.text.Editable
 import android.text.TextWatcher
-import android.util.Log
 import android.view.KeyEvent
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.view.inputmethod.EditorInfo
-import android.widget.AdapterView
-import android.widget.ArrayAdapter
 import android.widget.Toast
 import com.chocolatecake.indianfood.dataSource.IndianFoodCsvDataSource
 import com.chocolatecake.indianfood.dataSource.utils.CsvParser
 import com.chocolatecake.indianfood.databinding.FragmentRecipesSearchBinding
 import com.chocolatecake.indianfood.interactor.FindRecipesByNameInteractor
-import com.chocolatecake.indianfood.interactor.FindRecipesNameInteractor
 import com.chocolatecake.indianfood.interactor.IndianFoodDataSource
 import com.chocolatecake.indianfood.model.Recipe
-import com.chocolatecake.indianfood.ui.DetailsFragment
 import com.chocolatecake.indianfood.ui.base.BaseFragment
+import com.chocolatecake.indianfood.ui.recipe_details.DetailsFragment
 import com.chocolatecake.indianfood.util.navigateTo
 
 
