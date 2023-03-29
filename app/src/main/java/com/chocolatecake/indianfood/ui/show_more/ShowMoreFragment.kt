@@ -11,7 +11,9 @@ import com.chocolatecake.indianfood.interactor.GetHealthyRecipesInteractor
 import com.chocolatecake.indianfood.interactor.GetQuickRecipesInteractor
 import com.chocolatecake.indianfood.model.Recipe
 import com.chocolatecake.indianfood.ui.base.BaseFragment
+import com.chocolatecake.indianfood.ui.recipe_details.DetailsFragment
 import com.chocolatecake.indianfood.util.navigateBack
+import com.chocolatecake.indianfood.util.navigateTo
 
 class ShowMoreFragment : BaseFragment<FragmentShowMoreBinding>() {
     override val inflater: (LayoutInflater, ViewGroup?, Boolean) -> FragmentShowMoreBinding =
@@ -38,7 +40,11 @@ class ShowMoreFragment : BaseFragment<FragmentShowMoreBinding>() {
 
     private fun setUpAdapter() {
         binding.recyclerViewCategoryRecipes.adapter =
-            ShowMoreAdapter(geRecipesCategoryType(getCategoryType()))
+            ShowMoreAdapter(geRecipesCategoryType(getCategoryType()), ::onClickRecipe)
+    }
+
+    private fun onClickRecipe(recipe: Recipe) {
+        requireActivity().navigateTo(DetailsFragment.newInstance(recipe))
     }
 
     private fun geRecipesCategoryType(categoryType: String): List<Recipe> {
