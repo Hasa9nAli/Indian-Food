@@ -17,8 +17,8 @@ import com.chocolatecake.indianfood.interactor.FindRecipesContainsSpecifiedIngre
 import com.chocolatecake.indianfood.interactor.GetAllIngredientsInteractor
 import com.chocolatecake.indianfood.interactor.IndianFoodDataSource
 import com.chocolatecake.indianfood.model.Recipe
-import com.chocolatecake.indianfood.ui.DetailsFragment
 import com.chocolatecake.indianfood.ui.base.BaseFragment
+import com.chocolatecake.indianfood.ui.recipe_details.DetailsFragment
 import com.chocolatecake.indianfood.util.navigateTo
 import com.google.android.material.chip.Chip
 
