@@ -1,5 +1,6 @@
 package com.chocolatecake.indianfood.ui.recipe_details
 
+import android.annotation.SuppressLint
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -56,14 +57,15 @@ class RecipeDetailsAdapter(
         }
     }
 
+    @SuppressLint("SetTextI18n")
     private fun bindHeader(holder: RecipeDetailsHeaderViewHolder, position: Int) {
         val currentItem = items[position].item as Recipe
         holder.binding.apply {
             tabLayoutIngredientsInstructions.addOnTabSelectedListener(listner)
             textViewRecipeName.text = currentItem.name
             textViewNativeCountry.text = currentItem.cuisine
-            textViewTimeRequired.text = currentItem.totalTimeInMinutes.toString()
-            textViewNumberOfIngredients.text = currentItem.ingredients.size.toString()
+            textViewTimeRequired.text = "${currentItem.totalTimeInMinutes} min"
+            textViewNumberOfIngredients.text = "${currentItem.ingredients.size} ingredients"
             Glide.with(this.root.context).load(currentItem.imageUrl).into(imageViewRecipe)
         }
     }

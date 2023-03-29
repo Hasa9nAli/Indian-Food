@@ -2,13 +2,14 @@
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
+    android:layout_marginTop="@dimen/normalSpace"
     android:orientation="vertical">
 
     <TextView
         android:id="@+id/text_view_ingredient_instruction"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginVertical="@dimen/normalSpace"
+        android:layout_marginVertical="@dimen/smallMargin"
         android:text="red_chilli_powder"
         android:layout_marginStart="@dimen/largeSpace"
         android:textColor="@color/colorPrimary" />

@@ -65,6 +65,8 @@
     <!--    <color name="md_theme_dark_onSurfaceVariant">#CAC4D0</color>-->
 
 
+    <color name="bottom_icon_color">#5E1C1B1F</color>
+
     <color name="text_skip_color">#992D2D2D</color>
 
     <color name="button_background_color">#CCFFFFFF</color>
@@ -80,7 +82,9 @@
 
     <color name="tab_layout_background_color">#F6F6F6</color>
 
-    <color name="tab_item_background_color">#2D2D2D</color>
+    <color name="tab_item_background_color_on_selected">#F2F2F2</color>
+    <color name="tab_item_background_color_not_selected">#2D2D2D</color>
+
 
     <color name="tab_selected_item_color">#2D2D2D</color>
     <color name="color_Card">#99EADDFF</color>

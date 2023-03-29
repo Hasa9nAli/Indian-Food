@@ -16,7 +16,8 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:paddingHorizontal="12dp"
-        android:paddingTop="10dp"
+        android:clipToPadding="false"
+        android:paddingBottom="10dp"
         app:layoutManager="androidx.recyclerview.widget.GridLayoutManager"
         app:spanCount="2"
         tools:listitem="@layout/item_meal" />

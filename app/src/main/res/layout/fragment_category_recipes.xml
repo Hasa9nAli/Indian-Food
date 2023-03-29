@@ -16,9 +16,9 @@
         android:id="@+id/recycler_view_category_recipes"
         android:layout_width="match_parent"
         android:layout_height="0dp"
-        android:layout_marginTop="@dimen/margin_medium"
+        android:clipToPadding="false"
         android:layout_weight="1"
-        android:clipToPadding="true"
+        android:paddingTop="@dimen/normalSpace"
         android:paddingHorizontal="@dimen/margin_medium"
         app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
         tools:listitem="@layout/item_recipe_category" />
