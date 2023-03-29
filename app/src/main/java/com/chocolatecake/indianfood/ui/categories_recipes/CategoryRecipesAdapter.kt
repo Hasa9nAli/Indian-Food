@@ -26,21 +26,23 @@ class CategoryRecipesAdapter(
     }
 
     override fun onBindViewHolder(holder: CategoryRecipeViewHolder, position: Int) {
-        val recipe = recipeList[position]
+        val currentRecipe = recipeList[position]
         holder.binding.apply {
-            txtIngredint.text = root.context.getString(
-                R.string.ingredients_label, recipe.ingredients.size.toString()
+            textViewIngredientsCount.text = root.context.getString(
+                R.string.ingredients_label, currentRecipe.ingredients.size.toString()
             )
-            txtRecipeName.text = recipe.name
-            txtTotalTime.text =
-                root.context.getString(R.string.minutes_label, recipe.totalTimeInMinutes.toString())
-            Glide.with(root.context).load(recipe.imageUrl).into(imageViewImgRecipe)
-            root.setOnClickListener { onRecipeClick(recipe) }
+            textViewRecipeName.text = currentRecipe.name
+            textViewTotalTime.text =
+                root.context.getString(
+                    R.string.minutes_label,
+                    currentRecipe.totalTimeInMinutes.toString()
+                )
+            Glide.with(root.context).load(currentRecipe.imageUrl).into(imageViewRecipe)
+            root.setOnClickListener { onRecipeClick(currentRecipe) }
         }
     }
 
     class CategoryRecipeViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
         val binding = ItemRecipeCategoryBinding.bind(itemView)
     }
-
 }

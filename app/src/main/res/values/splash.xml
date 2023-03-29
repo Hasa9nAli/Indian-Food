@@ -2,7 +2,7 @@
 <resources>
     <style name="Theme.IndiansApp.SplashScreen" parent="Theme.SplashScreen">
         <item name="postSplashScreenTheme">@style/AppTheme</item>
-        <item name="windowSplashScreenBackground">@color/md_theme_light_background</item>
+        <item name="windowSplashScreenBackground">@color/colorBackground</item>
         <item name="windowSplashScreenAnimatedIcon">@drawable/app_logo_light</item>
     </style>
 </resources>

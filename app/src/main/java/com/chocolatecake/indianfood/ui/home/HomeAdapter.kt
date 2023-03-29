@@ -1,5 +1,6 @@
 package com.chocolatecake.indianfood.ui.home
 
+import android.content.Context
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -41,6 +42,7 @@ class HomeAdapter(
                     .inflate(R.layout.layout_recipes, parent, false)
                 RecipesViewHolder(view)
             }
+
             else -> throw Exception("UNKNOWN VIEW TYPE")
         }
     }
@@ -57,8 +59,8 @@ class HomeAdapter(
 
     private fun bindRecipes(holder: RecipesViewHolder, position: Int) {
         val currentRecipes = items[position].item as List<Recipe>
-        val adapter = RecipeAdapter(currentRecipes, onClickRecipe)
-        holder.binding.recipiesRecyclerView.adapter = adapter
+        val adapter = RecipesAdapter(currentRecipes, onClickRecipe)
+        holder.binding.recyclerViewRecipes.adapter = adapter
     }
 
     private fun bindSection(holder: SectionViewHolder, position: Int) {
@@ -72,14 +74,18 @@ class HomeAdapter(
     private fun bindRandomRecipe(holder: RandomRecipeViewHolder, position: Int) {
         val currentRandomRecipe = items[position].item as Recipe
         holder.binding.apply {
-            recipeCookingTime.text = currentRandomRecipe.totalTimeInMinutes.toString()
-            RecipeCuisine.text = currentRandomRecipe.cuisine
-            RecipeName.text = currentRandomRecipe.name
+            textViewRecipeCookingTime.text =
+                setValidTime(currentRandomRecipe.totalTimeInMinutes.toString(), root.context)
+            textViewRecipeCuisine.text = currentRandomRecipe.cuisine
+            textViewRecipeName.text = currentRandomRecipe.name
             Glide.with(this.root.context).load(currentRandomRecipe.imageUrl).into(dishOfTheDayImage)
             root.setOnClickListener { onClickRecipe(currentRandomRecipe) }
         }
     }
 
+    private fun setValidTime(time: String, context: Context): String =
+        if (time.trim() == "0") context.getString(R.string.instant_time)
+        else context.getString(R.string.total_time_label, time)
 
     class RandomRecipeViewHolder(itemView: View) : BasicViewHolder(itemView) {
         val binding = ItemRandomRecipeBinding.bind(itemView)

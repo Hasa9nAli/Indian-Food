@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@color/md_theme_light_background"
+    android:background="@color/colorBackground"
     android:orientation="vertical"
     tools:context=".ui.categories_recipes.CategoryRecipesFragment">
 
@@ -13,12 +13,12 @@
         layout="@layout/app_bar_layout" />
 
     <androidx.recyclerview.widget.RecyclerView
-        android:id="@+id/recycler_recipe"
+        android:id="@+id/recycler_view_category_recipes"
         android:layout_width="match_parent"
         android:layout_height="0dp"
-        android:layout_marginTop="@dimen/margin_medium"
+        android:clipToPadding="false"
         android:layout_weight="1"
-        android:clipToPadding="true"
+        android:paddingTop="@dimen/normalSpace"
         android:paddingHorizontal="@dimen/margin_medium"
         app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
         tools:listitem="@layout/item_recipe_category" />

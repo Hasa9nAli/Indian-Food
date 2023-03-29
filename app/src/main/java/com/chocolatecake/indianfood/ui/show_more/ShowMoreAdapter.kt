@@ -23,10 +23,10 @@ class ShowMoreAdapter(private val recipes: List<Recipe>) :
     override fun onBindViewHolder(holder: ShowMoreViewHolder, position: Int) {
         val currentCardMeal = recipes[position]
         holder.binding.apply {
-            recipeName.text = currentCardMeal.name
-            timeInMinute.text =
+            textViewRecipeName.text = currentCardMeal.name
+            textViewTimeInMinutes.text =
                 setValidTime(currentCardMeal.totalTimeInMinutes.toString(), root.context)
-            Glide.with(recipeImage).load(currentCardMeal.imageUrl).into(recipeImage)
+            Glide.with(imageViewRecipe).load(currentCardMeal.imageUrl).into(imageViewRecipe)
         }
     }
 

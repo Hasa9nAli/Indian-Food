@@ -74,7 +74,7 @@ class CategoryRecipesFragment : BaseFragment<FragmentCategoryRecipesBinding>() {
     private fun setUpRecipesRecyclerView(
         categoryRecipesAdapter: CategoryRecipesAdapter,
     ) {
-        binding.recyclerRecipe.adapter = categoryRecipesAdapter
+        binding.recyclerViewCategoryRecipes.adapter = categoryRecipesAdapter
     }
 
     private fun navigateBackToCategoryFragment() {

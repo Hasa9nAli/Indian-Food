@@ -97,4 +97,9 @@
     <string name="text_view_section_turmeric">Turmeric the golden spice whose history in Indian cuisine is as timeless as its value in Ayurvedic medicine.</string>
     <string name="text_view_section_saffron">Saffron is a spice derived from the flower of Crocus sativus, commonly known as the saffron crocus.</string>
     <string name="text_view_indian_food_ingredients">Indian food ingredients</string>
+    <string name="recipe_image">recipe_image</string>
+    <string name="quick_recipes_category_title">Quick recipes</string>
+    <string name="healthy_recipes_category_title">Healthy recipes</string>
+    <string name="show_more">Show more</string>
+    <string name="quick_recipes">Quick Recipes</string>
 </resources>

@@ -5,6 +5,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
+    android:background="@color/colorBackground"
     tools:context=".ui.MainActivity">
 
 
@@ -19,12 +20,11 @@
         android:id="@+id/main_bottom_navigation"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:background="@color/white"
-        android:visibility="gone"
-        app:itemActiveIndicatorStyle="@style/App.Custom.Indicator"
+        android:background="@color/bottom_nav_background_color"
         app:itemIconTint="@color/bottom_nav_icon_tint"
-        app:itemTextColor="@color/bottom_nav_text_color"
+        app:itemTextColor="@color/colorPrimary"
         app:labelVisibilityMode="selected"
+        android:visibility="gone"
         app:menu="@menu/bottom_navigation_menu" />
 
 </LinearLayout>

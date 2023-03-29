@@ -6,7 +6,7 @@ import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
 import com.chocolatecake.indianfood.R
-import com.chocolatecake.indianfood.databinding.CardSearchItemBinding
+import com.chocolatecake.indianfood.databinding.ItemRecipeCategoryBinding
 import com.chocolatecake.indianfood.model.Recipe
 
 class IngredientsSearchAdapter(
@@ -18,7 +18,7 @@ class IngredientsSearchAdapter(
         return RecipeViewHolder(
             LayoutInflater
                 .from(parent.context)
-                .inflate(R.layout.card_search_item, parent, false)
+                .inflate(R.layout.item_recipe_category, parent, false)
         )
     }
 
@@ -30,16 +30,11 @@ class IngredientsSearchAdapter(
     override fun onBindViewHolder(holder: RecipeViewHolder, position: Int) {
         val recipe = recipes[position]
         holder.binding.apply {
-            recipeName.text = recipe.name
-            recipeTime.text = "${recipe.totalTimeInMinutes} min"
-            recipeIngredientsCount.text = "${recipe.ingredients.size} ingredients"
-
-
-            Glide.with(root).load(recipe.imageUrl).into(recipeImage)
-
-            recipeItem.setOnClickListener {
-                onClickRecipe(recipes[position])
-            }
+            textViewRecipeName.text = recipe.name
+            textViewTotalTime.text = "${recipe.totalTimeInMinutes} min"
+            textViewIngredientsCount.text = "${recipe.ingredients.size} ingredients"
+            Glide.with(root).load(recipe.imageUrl).into(imageViewRecipe)
+            root.setOnClickListener { onClickRecipe(recipes[position]) }
         }
     }
 
@@ -47,6 +42,6 @@ class IngredientsSearchAdapter(
 
 
     class RecipeViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
-        val binding = CardSearchItemBinding.bind(itemView)
+        val binding = ItemRecipeCategoryBinding.bind(itemView)
     }
 }
