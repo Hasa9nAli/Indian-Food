@@ -1,0 +1,57 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical">
+
+    <TextView
+        android:id="@+id/titleTextView"
+        style="@style/TextAppearance.Material3.TitleMedium"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        android:layout_marginStart="@dimen/normalSpace"
+        android:layout_marginTop="@dimen/largeSpace"
+        android:textColor="@color/colorPrimary"
+        android:layout_marginEnd="@dimen/normalSpace"
+        android:layout_margin="@dimen/normalSpace"
+        android:gravity="start"
+        android:text="@string/the_famous_indian_dishes" />
+
+    <TextView
+        style="@style/TextAppearance.Material3.BodyMedium"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        android:textColor="@color/colorSecondaryContainer"
+
+        android:layout_marginBottom="@dimen/smallMargin"
+        android:layout_marginStart="@dimen/normalSpace"
+        android:layout_marginEnd="@dimen/normalSpace"
+        android:gravity="start"
+        android:text="@string/sectionOne" />
+
+    <TextView
+        style="@style/TextAppearance.Material3.BodyMedium"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        android:gravity="start"
+        android:textColor="@color/colorSecondaryContainer"
+        android:layout_marginBottom="@dimen/smallMargin"
+        android:layout_marginStart="@dimen/normalSpace"
+        android:layout_marginEnd="@dimen/normalSpace"
+        android:text="@string/sectionTow" />
+    <TextView
+        style="@style/TextAppearance.Material3.BodyMedium"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        android:textColor="@color/colorSecondaryContainer"
+        android:gravity="start"
+        android:layout_marginStart="@dimen/normalSpace"
+        android:layout_marginEnd="@dimen/normalSpace"
+        android:text="@string/sectionThree" />
+
+</LinearLayout>

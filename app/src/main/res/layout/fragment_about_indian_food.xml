@@ -1,0 +1,68 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:background="@color/colorBackground"
+    android:orientation="vertical"
+    android:scrollbars="none"
+    android:layout_height="match_parent">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:orientation="vertical">
+
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+
+            <com.google.android.material.imageview.ShapeableImageView
+                android:id="@+id/recipeImage"
+                android:layout_width="match_parent"
+                android:layout_height="200dp"
+                android:scaleX="1.4"
+                android:src="@drawable/india_food"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
+
+            <View
+                android:layout_width="0dp"
+                android:layout_height="0dp"
+                android:background="#80000000"
+                app:layout_constraintBottom_toBottomOf="@id/recipeImage"
+                app:layout_constraintEnd_toEndOf="@id/recipeImage"
+                app:layout_constraintStart_toStartOf="@id/recipeImage"
+                app:layout_constraintTop_toTopOf="@id/recipeImage" />
+
+            <TextView
+                style="@style/TextAppearance.Material3.TitleMedium"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:layout_margin="@dimen/normalSpace"
+                android:gravity="center"
+                android:padding="@dimen/normalSpace"
+                android:text="@string/largetitleDescription"
+                android:textColor="@color/white"
+                app:layout_constraintBottom_toBottomOf="@id/recipeImage"
+                app:layout_constraintEnd_toEndOf="@id/recipeImage"
+                app:layout_constraintStart_toStartOf="@id/recipeImage"
+                app:layout_constraintTop_toTopOf="@id/recipeImage" />
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
+
+        <include
+            layout="@layout/indian_eating_habits_section" />
+
+        <include
+            layout="@layout/content_about_meals"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_margin="@dimen/normalSpace" />
+    </LinearLayout>
+
+
+</ScrollView>

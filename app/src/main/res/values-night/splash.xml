@@ -2,9 +2,7 @@
 <resources>
     <style name="Theme.IndiansApp.SplashScreen" parent="Theme.SplashScreen">
         <item name="postSplashScreenTheme">@style/AppTheme</item>
-        <item name="windowSplashScreenBackground">@color/md_theme_dark_background</item>
-        <item name="windowSplashScreenAnimatedIcon">@drawable/food_app_logo_night</item>
-        <item name="android:height">100dp</item>
-        <item name="android:width">100dp</item>
+        <item name="windowSplashScreenBackground">@color/colorBackground</item>
+        <item name="windowSplashScreenAnimatedIcon">@drawable/app_logo_dark</item>
     </style>
 </resources>

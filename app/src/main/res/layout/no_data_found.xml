@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:id="@+id/error"
+    android:layout_height="match_parent"
+    android:layout_width="match_parent"
+    android:layout_gravity="center"
+    android:gravity="center"
+    android:padding="@dimen/margin_large"
+    android:orientation="vertical">
+
+    <ImageView
+        android:id="@+id/imageViewDataNotFound"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        app:layout_constraintDimensionRatio="1:1"
+        android:src="@drawable/no_data_found" />
+
+    <TextView
+        android:id="@+id/textViewTitleDataNotFound"
+        style="@style/TextAppearance.Material3.BodyLarge"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="32dp"
+        android:gravity="center"
+        android:text="@string/no_matching_recipes" />
+
+    <TextView
+        android:id="@+id/textViewDescriptionDataNotFound"
+        style="@style/TextAppearance.Material3.BodySmall"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/normalSpace"
+        android:gravity="center"
+        android:text="@string/descriptionDataNotFound"
+        app:layout_constraintTop_toBottomOf="@id/textViewTitleDataNotFound" />
+</LinearLayout>
