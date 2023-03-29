@@ -16,12 +16,13 @@ import android.widget.Toast
 import com.chocolatecake.indianfood.dataSource.IndianFoodCsvDataSource
 import com.chocolatecake.indianfood.dataSource.utils.CsvParser
 import com.chocolatecake.indianfood.databinding.FragmentRecipesSearchBinding
-import com.chocolatecake.indianfood.interactor.*
+import com.chocolatecake.indianfood.interactor.FindRecipesByNameInteractor
+import com.chocolatecake.indianfood.interactor.FindRecipesNameInteractor
+import com.chocolatecake.indianfood.interactor.IndianFoodDataSource
 import com.chocolatecake.indianfood.model.Recipe
-import com.chocolatecake.indianfood.ui.RecipeDetailsFragment
+import com.chocolatecake.indianfood.ui.DetailsFragment
 import com.chocolatecake.indianfood.ui.base.BaseFragment
 import com.chocolatecake.indianfood.util.navigateTo
-import com.google.android.material.chip.Chip
 
 
 class RecipesSearchFragment : BaseFragment<FragmentRecipesSearchBinding>() {
@@ -55,7 +56,7 @@ class RecipesSearchFragment : BaseFragment<FragmentRecipesSearchBinding>() {
     }
 
     private fun onClickRecipe(recipe: Recipe) {
-        requireActivity().navigateTo(RecipeDetailsFragment.newInstance(recipe))
+        requireActivity().navigateTo(DetailsFragment.newInstance(recipe))
     }
 
     private fun setUpAutoCompleteTextView() {
@@ -120,7 +121,7 @@ class RecipesSearchFragment : BaseFragment<FragmentRecipesSearchBinding>() {
         private const val RECIPE_TAB_INDEX = "1"
 
         fun newInstance(index: Int) =
-            RecipeDetailsFragment().apply {
+            DetailsFragment().apply {
                 arguments = Bundle().apply {
                     putInt(RECIPE_TAB_INDEX, index)
                 }

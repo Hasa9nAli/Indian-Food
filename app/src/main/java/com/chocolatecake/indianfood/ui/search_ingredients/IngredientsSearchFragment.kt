@@ -2,7 +2,6 @@ package com.chocolatecake.indianfood.ui.search_ingredients
 
 import android.R
 import android.os.Bundle
-import android.view.KeyEvent
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -17,7 +16,7 @@ import com.chocolatecake.indianfood.interactor.FindRecipesContainsSpecifiedIngre
 import com.chocolatecake.indianfood.interactor.GetAllIngredientsInteractor
 import com.chocolatecake.indianfood.interactor.IndianFoodDataSource
 import com.chocolatecake.indianfood.model.Recipe
-import com.chocolatecake.indianfood.ui.RecipeDetailsFragment
+import com.chocolatecake.indianfood.ui.DetailsFragment
 import com.chocolatecake.indianfood.ui.base.BaseFragment
 import com.chocolatecake.indianfood.util.navigateTo
 import com.google.android.material.chip.Chip
@@ -78,7 +77,7 @@ class IngredientsSearchFragment : BaseFragment<FragmentIngredientsSearchBinding>
     private fun onClickCloseChip(chip: Chip, index: Int) {
         chip.setOnCloseIconClickListener {
             binding.chipGroupIngredients.removeView(chip)
-            searchIngredients.removeAt(index)
+            searchIngredients.remove(chip.text)
             setSearchResult(searchIngredients)
         }
     }
@@ -109,7 +108,7 @@ class IngredientsSearchFragment : BaseFragment<FragmentIngredientsSearchBinding>
     }
 
     private fun onClickIngredient(recipe: Recipe) {
-        requireActivity().navigateTo(RecipeDetailsFragment.newInstance(recipe))
+        requireActivity().navigateTo(DetailsFragment.newInstance(recipe))
     }
 
     private fun setViewsVisibility(
@@ -127,7 +126,7 @@ class IngredientsSearchFragment : BaseFragment<FragmentIngredientsSearchBinding>
         private const val INSTRUCTIONS_TAB_INDEX = "3"
 
         fun newInstance(index: Int) {
-            RecipeDetailsFragment().apply {
+            DetailsFragment().apply {
                 arguments = Bundle().apply {
                     putInt(INSTRUCTIONS_TAB_INDEX, index)
                 }

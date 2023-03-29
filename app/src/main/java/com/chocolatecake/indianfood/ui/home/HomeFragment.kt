@@ -12,7 +12,7 @@ import com.chocolatecake.indianfood.interactor.GetRandomMealIntractor
 import com.chocolatecake.indianfood.interactor.IndianFoodDataSource
 import com.chocolatecake.indianfood.model.HomeItem
 import com.chocolatecake.indianfood.model.Recipe
-import com.chocolatecake.indianfood.ui.RecipeDetailsFragment
+import com.chocolatecake.indianfood.ui.DetailsFragment
 import com.chocolatecake.indianfood.ui.base.BaseFragment
 import com.chocolatecake.indianfood.ui.show_more.ShowMoreFragment
 import com.chocolatecake.indianfood.util.HomeItemType
@@ -55,10 +55,15 @@ class HomeFragment : BaseFragment<FragmentHomeBinding>() {
 
         itemsList.add(HomeItem(getRandomRecipes.invoke(), HomeItemType.TYPE_RANDOM_RECIPES))
 
-        itemsList.add(HomeItem(QUICK_RECIPES, HomeItemType.TYPE_SECTION))
+        itemsList.add(HomeItem(GetHealthyRecipesInteractor.HEALTHY_TYPE, HomeItemType.TYPE_SECTION))
         itemsList.add(HomeItem(getQuickRecipes.invoke(10), HomeItemType.TYPE_RECIPE))
 
-        itemsList.add(HomeItem(HEALTHY_MEALS, HomeItemType.TYPE_SECTION))
+        itemsList.add(
+            HomeItem(
+                GetQuickRecipesInteractor.QUICK_RECIPES_TYPE,
+                HomeItemType.TYPE_SECTION
+            )
+        )
         itemsList.add(HomeItem(getHealthyRecipes.invoke(10), HomeItemType.TYPE_RECIPE))
 
         binding.recipiesRecyclerView.adapter = HomeAdapter(
@@ -74,7 +79,7 @@ class HomeFragment : BaseFragment<FragmentHomeBinding>() {
     }
 
     private fun onClickRecipe(recipe: Recipe) {
-        val detailsFragment = RecipeDetailsFragment.newInstance(recipe)
+        val detailsFragment = DetailsFragment.newInstance(recipe)
         requireActivity().navigateTo(detailsFragment)
     }
 

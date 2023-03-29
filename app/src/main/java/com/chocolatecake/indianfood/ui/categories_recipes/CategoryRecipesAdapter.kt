@@ -9,7 +9,10 @@ import com.chocolatecake.indianfood.R
 import com.chocolatecake.indianfood.databinding.ItemRecipeCategoryBinding
 import com.chocolatecake.indianfood.model.Recipe
 
-class CategoryRecipesAdapter(private val recipeList: List<Recipe>) :
+class CategoryRecipesAdapter(
+    private val recipeList: List<Recipe>,
+    private val onRecipeClick: (Recipe) -> Unit
+) :
     RecyclerView.Adapter<CategoryRecipesAdapter.CategoryRecipeViewHolder>() {
 
     override fun onCreateViewHolder(parent: ViewGroup, p1: Int): CategoryRecipeViewHolder {
@@ -32,6 +35,7 @@ class CategoryRecipesAdapter(private val recipeList: List<Recipe>) :
             txtTotalTime.text =
                 root.context.getString(R.string.minutes_label, recipe.totalTimeInMinutes.toString())
             Glide.with(root.context).load(recipe.imageUrl).into(imageViewImgRecipe)
+            root.setOnClickListener { onRecipeClick(recipe) }
         }
     }
 
