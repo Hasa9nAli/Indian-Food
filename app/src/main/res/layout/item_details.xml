@@ -11,7 +11,7 @@
         android:layout_marginVertical="@dimen/normalSpace"
         android:text="red_chilli_powder"
         android:layout_marginStart="@dimen/largeSpace"
-        android:textColor="@color/md_theme_light_primary" />
+        android:textColor="@color/colorPrimary" />
 
     <View
         android:layout_width="match_parent"
