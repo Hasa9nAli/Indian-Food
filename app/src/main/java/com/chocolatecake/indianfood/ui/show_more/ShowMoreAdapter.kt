@@ -10,7 +10,10 @@ import com.chocolatecake.indianfood.R
 import com.chocolatecake.indianfood.databinding.ItemMealBinding
 import com.chocolatecake.indianfood.model.Recipe
 
-class ShowMoreAdapter(private val recipes: List<Recipe>) :
+class ShowMoreAdapter(
+    private val recipes: List<Recipe>,
+    private val onRecipeClick: (Recipe) -> Unit
+) :
     RecyclerView.Adapter<ShowMoreAdapter.ShowMoreViewHolder>() {
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ShowMoreViewHolder {
@@ -21,12 +24,13 @@ class ShowMoreAdapter(private val recipes: List<Recipe>) :
     override fun getItemCount(): Int = recipes.size
 
     override fun onBindViewHolder(holder: ShowMoreViewHolder, position: Int) {
-        val currentCardMeal = recipes[position]
+        val currentRecipe = recipes[position]
         holder.binding.apply {
-            textViewRecipeName.text = currentCardMeal.name
+            textViewRecipeName.text = currentRecipe.name
             textViewTimeInMinutes.text =
-                setValidTime(currentCardMeal.totalTimeInMinutes.toString(), root.context)
-            Glide.with(imageViewRecipe).load(currentCardMeal.imageUrl).into(imageViewRecipe)
+                setValidTime(currentRecipe.totalTimeInMinutes.toString(), root.context)
+            Glide.with(imageViewRecipe).load(currentRecipe.imageUrl).into(imageViewRecipe)
+            root.setOnClickListener { onRecipeClick(currentRecipe) }
         }
     }
 
