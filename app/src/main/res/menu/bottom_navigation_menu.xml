@@ -16,7 +16,7 @@
 
     <item
         android:id="@+id/action_categories"
-        android:icon="@drawable/ic_categories"
+        android:icon="@drawable/bx_category"
         android:title="@string/categories"
         />
     <item

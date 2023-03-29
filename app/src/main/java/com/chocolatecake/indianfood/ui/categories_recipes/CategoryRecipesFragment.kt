@@ -10,8 +10,8 @@ import com.chocolatecake.indianfood.interactor.GetBreakfastRecipesInteractor
 import com.chocolatecake.indianfood.interactor.GetDinnerRecipesInteractor
 import com.chocolatecake.indianfood.interactor.GetLunchRecipesInteractor
 import com.chocolatecake.indianfood.model.Recipe
-import com.chocolatecake.indianfood.ui.DetailsFragment
 import com.chocolatecake.indianfood.ui.base.BaseFragment
+import com.chocolatecake.indianfood.ui.recipe_details.DetailsFragment
 import com.chocolatecake.indianfood.util.navigateBack
 import com.chocolatecake.indianfood.util.navigateTo
 
