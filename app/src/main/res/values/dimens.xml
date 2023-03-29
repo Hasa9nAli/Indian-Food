@@ -33,4 +33,5 @@
     <dimen name="txt_size_xsmall">14sp</dimen>
     <dimen name="smallMargin">8dp</dimen>
     <dimen name="app_bar_height">56dp</dimen>
+    <dimen name="size_image_about_ingredient">64dp</dimen>
 </resources>
