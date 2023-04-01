@@ -24,7 +24,6 @@
         app:itemIconTint="@color/bottom_nav_icon_tint"
         app:itemTextColor="@color/colorPrimary"
         app:labelVisibilityMode="selected"
-        android:visibility="gone"
         app:menu="@menu/bottom_navigation_menu" />
 
 </LinearLayout>

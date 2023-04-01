@@ -2,6 +2,7 @@ package com.chocolatecake.indianfood.ui
 
 import android.view.LayoutInflater
 import com.chocolatecake.indianfood.R
+import com.chocolatecake.indianfood.dataSource.IndianFoodCsvDataSource
 import com.chocolatecake.indianfood.databinding.ActivityMainBinding
 import com.chocolatecake.indianfood.ui.about.AboutIndianFoodFragment
 import com.chocolatecake.indianfood.ui.base.BaseActivity
@@ -29,6 +30,7 @@ class MainActivity : BaseActivity<ActivityMainBinding>() {
     private lateinit var aboutIndianFoodFragment: AboutIndianFoodFragment
 
     override fun setUp() {
+        val dataSource = IndianFoodCsvDataSource(this)
         onBoardingFragment = OnBoardingFragment()
         homeFragment = HomeFragment()
         searchFragment = RecipesSearchFragment()
@@ -77,6 +79,6 @@ class MainActivity : BaseActivity<ActivityMainBinding>() {
         }
 
     private fun setOnBoardingFragment() {
-        navigateExclusive(onBoardingFragment)
+        navigateExclusive(homeFragment)
     }
 }

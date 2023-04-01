@@ -5,8 +5,10 @@ class FindRecipesByNameInteractor(private val dataSource: IndianFoodDataSource) 
     fun invoke(
         searchName: String
     ): List<Recipe>  = dataSource.getAllRecipesData()
-        .ifEmpty{ throw IllegalAccessException("Meal not found") }
+        .ifEmpty { throw IllegalAccessException("Meal not found") }
+        .asSequence()
         .filter { recipe ->
             recipe.name.contains(searchName, ignoreCase = true)
         }
+        .toList()
 }

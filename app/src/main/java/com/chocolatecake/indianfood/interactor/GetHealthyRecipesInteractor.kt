@@ -19,8 +19,10 @@ class GetHealthyRecipesInteractor(
             .getAllRecipesData()
             .apply { recipesCount = size }
             .ifEmpty { throw IllegalStateException("Something went wrong") }
+            .asSequence()
             .filter { it.name.contains(HEALTHY_RECIPES_TYPE, ignoreCase = true) }
             .shuffled()
             .take(limit ?: recipesCount)
+            .toList()
     }
 }
