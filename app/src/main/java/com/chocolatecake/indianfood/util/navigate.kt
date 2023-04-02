@@ -27,6 +27,7 @@ fun FragmentActivity.navigateBack() {
 private fun changeNavigation(activity: FragmentActivity, state: NavigationState, to: Fragment?) {
     val fragmentManager = activity.supportFragmentManager
     val transaction = fragmentManager.beginTransaction()
+
     when (state) {
         NavigationState.ADD -> {
             transaction.add(R.id.main_fragment_container, to!!)

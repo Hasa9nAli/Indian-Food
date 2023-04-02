@@ -7,6 +7,6 @@
     android:clipToPadding="false"
     android:orientation="vertical"
     android:paddingVertical="8dp"
-    android:background="?android:colorBackground"
+    android:background="@color/colorBackground"
     app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
     tools:listitem="@layout/item_random_recipe" />

@@ -3,13 +3,13 @@
 
     <item android:state_selected="true">
         <shape android:shape="rectangle">
-            <solid android:color="@color/tab_item_background_color_on_selected" />
+            <solid android:color="@color/tab_selected" />
             <corners android:radius="24dp" />
         </shape>
     </item>
     <item android:state_selected="false">
         <shape android:shape="rectangle">
-            <solid android:color="@color/tab_item_background_color_not_selected" />
+            <solid android:color="@color/tab_text_unselected" />
             <corners android:radius="24dp" />
         </shape>
     </item>

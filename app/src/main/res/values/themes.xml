@@ -23,6 +23,7 @@
         <item name="colorOnSurfaceVariant">@color/colorOnSurfaceVariant</item>
 
         <item name="android:statusBarColor">@color/white</item>
+
         <item name="android:windowLightStatusBar">true</item>
 
     </style>
@@ -36,4 +37,13 @@
         <item name="cornerSize">16dp</item>
     </style>
 
+    <style name="MyTimePickerDialogTheme" parent="ThemeOverlay.MaterialComponents.TimePicker">
+        <item name="android:timePickerStyle">@style/MyTimePickerStyle</item>
+    </style>
+
+    <style name="MyTimePickerStyle" parent="android:Widget.Material.TimePicker">
+        <item name="android:numbersTextColor">@color/my_color</item>
+    </style>
+
+    <color name="my_color">#FF00FF</color>
 </resources>
