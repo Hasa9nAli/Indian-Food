@@ -15,7 +15,7 @@
         android:theme="@style/Theme.IndiansApp.SplashScreen">
         <activity
             android:windowSoftInputMode="adjustPan"
-            android:configChanges="orientation|keyboardHidden|screenSize"
+            android:configChanges="orientation|uiMode|keyboardHidden|screenSize"
             android:name=".ui.MainActivity"
             android:exported="true">
             <intent-filter>

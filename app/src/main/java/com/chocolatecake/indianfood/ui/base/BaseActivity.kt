@@ -5,6 +5,7 @@ import android.view.LayoutInflater
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.splashscreen.SplashScreen.Companion.installSplashScreen
 import androidx.viewbinding.ViewBinding
+import com.chocolatecake.indianfood.R
 
 abstract class BaseActivity<VB: ViewBinding> : AppCompatActivity() {
 
@@ -16,6 +17,7 @@ abstract class BaseActivity<VB: ViewBinding> : AppCompatActivity() {
         get() = _binding as VB
 
     override fun onCreate(savedInstanceState: Bundle?) {
+        setTheme(R.style.AppTheme)
         installSplashScreen()
         super.onCreate(savedInstanceState)
         _binding = bindingInflater(layoutInflater)
