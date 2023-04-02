@@ -6,7 +6,6 @@ import android.view.ViewGroup
 import androidx.fragment.app.Fragment
 import com.chocolatecake.indianfood.R
 import com.chocolatecake.indianfood.dataSource.IndianFoodCsvDataSource
-import com.chocolatecake.indianfood.dataSource.utils.CsvParser
 import com.chocolatecake.indianfood.databinding.FragmentOnBoardingBinding
 import com.chocolatecake.indianfood.interactor.GetOnBoardingDataInteractor
 import com.chocolatecake.indianfood.ui.base.BaseFragment
@@ -29,12 +28,7 @@ class OnBoardingFragment : BaseFragment<FragmentOnBoardingBinding>() {
 
     private fun setupOnBoardingViewPagerAdapter() {
         val onBoardingData =
-            GetOnBoardingDataInteractor(
-                IndianFoodCsvDataSource(
-                    CsvParser(),
-                    requireContext()
-                )
-            ).invoke()
+            GetOnBoardingDataInteractor(IndianFoodCsvDataSource(requireContext())).invoke()
         onBoardingPagerAdapter = OnBoardingPagerAdapter(onBoardingData)
         binding.viewPagerOnboarding.adapter = onBoardingPagerAdapter
     }

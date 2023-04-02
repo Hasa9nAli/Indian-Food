@@ -11,7 +11,6 @@ import android.widget.AdapterView
 import android.widget.AdapterView.OnItemClickListener
 import android.widget.ArrayAdapter
 import com.chocolatecake.indianfood.dataSource.IndianFoodCsvDataSource
-import com.chocolatecake.indianfood.dataSource.utils.CsvParser
 import com.chocolatecake.indianfood.databinding.FragmentIngredientsSearchBinding
 import com.chocolatecake.indianfood.interactor.FindRecipesContainsSpecifiedIngredientInteractor
 import com.chocolatecake.indianfood.interactor.GetAllIngredientsInteractor
@@ -25,7 +24,6 @@ import com.google.android.material.chip.Chip
 class IngredientsSearchFragment : BaseFragment<FragmentIngredientsSearchBinding>(),
     OnItemClickListener {
     private lateinit var dataSource: IndianFoodDataSource
-    private lateinit var csvParser: CsvParser
     private lateinit var ingredients: List<String>
     private var searchIngredients = mutableListOf<String>()
     private lateinit var ingredientsAdapter: IngredientsSearchAdapter
@@ -58,8 +56,7 @@ class IngredientsSearchFragment : BaseFragment<FragmentIngredientsSearchBinding>
     }
 
     private fun setupDatasource() {
-        csvParser = CsvParser()
-        dataSource = IndianFoodCsvDataSource(csvParser, requireContext())
+        dataSource = IndianFoodCsvDataSource(requireContext())
         ingredients = GetAllIngredientsInteractor(dataSource).invoke().distinct()
         findRecipesContainsSpecifiedIngredient =
             FindRecipesContainsSpecifiedIngredientInteractor(dataSource)

@@ -42,7 +42,7 @@ class HomeFragment : BaseFragment<FragmentHomeBinding>() {
 
     private fun setupDatasource() {
         csvParser = CsvParser()
-        dataSource = IndianFoodCsvDataSource(csvParser, requireContext())
+        dataSource = IndianFoodCsvDataSource(requireContext())
         getQuickRecipes = GetQuickRecipesInteractor(dataSource)
         getRandomRecipes = GetRandomMealIntractor(dataSource)
         getHealthyRecipes = GetHealthyRecipesInteractor(dataSource)

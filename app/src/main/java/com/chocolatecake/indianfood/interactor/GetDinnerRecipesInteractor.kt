@@ -6,7 +6,9 @@ class GetDinnerRecipesInteractor(private val dataSource: IndianFoodDataSource) {
     fun invoke(): List<Recipe> {
         return dataSource.getAllRecipesData()
             .ifEmpty { throw IllegalStateException("Something went wrong") }
+            .asSequence()
             .filter { isDinnerRecipe(it) }
+            .toList()
     }
 
     private fun isDinnerRecipe(recipe: Recipe): Boolean {

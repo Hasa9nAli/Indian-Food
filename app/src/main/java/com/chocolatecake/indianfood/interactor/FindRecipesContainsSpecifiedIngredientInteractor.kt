@@ -9,7 +9,9 @@ class FindRecipesContainsSpecifiedIngredientInteractor(
     operator fun invoke(ingredientNames: List<String>): List<Recipe> {
         return dataSource.getAllRecipesData()
             .ifEmpty { throw IllegalStateException("Something went wrong!!") }
+            .asSequence()
             .filter { it.cleanedIngredients.containsAllIgnoreCase(ingredientNames) }
+            .toList()
     }
 
     private fun List<String>.containsAllIgnoreCase(ingredientNames: List<String>) =
