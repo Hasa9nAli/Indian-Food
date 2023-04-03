@@ -9,14 +9,14 @@
 
     <item
         android:id="@+id/action_search"
-        android:icon="@drawable/ic_search"
+        android:icon="@drawable/search_icon"
         android:title="@string/search"
 
         />
 
     <item
         android:id="@+id/action_categories"
-        android:icon="@drawable/bx_category"
+        android:icon="@drawable/categories_icon"
         android:title="@string/categories"
         />
     <item
