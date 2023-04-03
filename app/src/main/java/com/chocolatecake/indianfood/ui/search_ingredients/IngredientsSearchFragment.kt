@@ -24,7 +24,6 @@ import com.google.android.material.chip.Chip
 class IngredientsSearchFragment : BaseFragment<FragmentIngredientsSearchBinding>(),
     OnItemClickListener {
     private lateinit var dataSource: IndianFoodDataSource
-    private lateinit var ingredients: List<String>
     private var searchIngredients = mutableListOf<String>()
     private lateinit var ingredientsAdapter: IngredientsSearchAdapter
     private lateinit var findRecipesContainsSpecifiedIngredient: FindRecipesContainsSpecifiedIngredientInteractor
@@ -35,16 +34,15 @@ class IngredientsSearchFragment : BaseFragment<FragmentIngredientsSearchBinding>
 
     override fun setUp() {
         setupDatasource()
-        setUpAdapter(findRecipesContainsSpecifiedIngredient.invoke(emptyList()))
+        setUpAdapter(emptyList())
         setUpAutoCompleteTextView()
-        setSearchResult(searchIngredients)
     }
 
     private fun setUpAutoCompleteTextView() {
         val adapter = ArrayAdapter(
             requireContext(),
             R.layout.simple_dropdown_item_1line,
-            ingredients
+            GetAllIngredientsInteractor(dataSource).invoke().distinct()
         )
         binding.searchView.setAdapter(
             adapter
@@ -57,7 +55,6 @@ class IngredientsSearchFragment : BaseFragment<FragmentIngredientsSearchBinding>
 
     private fun setupDatasource() {
         dataSource = IndianFoodCsvDataSource(requireContext())
-        ingredients = GetAllIngredientsInteractor(dataSource).invoke().distinct()
         findRecipesContainsSpecifiedIngredient =
             FindRecipesContainsSpecifiedIngredientInteractor(dataSource)
     }
@@ -81,8 +78,9 @@ class IngredientsSearchFragment : BaseFragment<FragmentIngredientsSearchBinding>
     }
 
     private fun setSearchResult(ingredients: MutableList<String>) {
-        val searchResult = findRecipesContainsSpecifiedIngredient.invoke(ingredients)
-        updateRecyclerViewState(searchResult)
+        if (ingredients.isNotEmpty()) {
+            updateRecyclerViewState(findRecipesContainsSpecifiedIngredient.invoke(ingredients))
+        }
     }
 
     private fun updateRecyclerViewState(searchResult: List<Recipe>) {
