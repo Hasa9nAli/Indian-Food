@@ -9,9 +9,10 @@ import com.chocolatecake.indianfood.model.Recipe
 import java.io.InputStream
 
 class IndianFoodCsvDataSource(
-    private val parser: CsvParser,
     private val context: Context
 ) : IndianFoodDataSource {
+
+    private val parser: CsvParser = CsvParser()
 
     override fun getAllRecipesData(): List<Recipe> {
         return getCsvFile()

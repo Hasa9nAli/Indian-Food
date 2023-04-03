@@ -11,7 +11,6 @@ import android.widget.AdapterView
 import android.widget.AdapterView.OnItemClickListener
 import android.widget.ArrayAdapter
 import com.chocolatecake.indianfood.dataSource.IndianFoodCsvDataSource
-import com.chocolatecake.indianfood.dataSource.utils.CsvParser
 import com.chocolatecake.indianfood.databinding.FragmentIngredientsSearchBinding
 import com.chocolatecake.indianfood.interactor.FindRecipesContainsSpecifiedIngredientInteractor
 import com.chocolatecake.indianfood.interactor.GetAllIngredientsInteractor
@@ -25,8 +24,6 @@ import com.google.android.material.chip.Chip
 class IngredientsSearchFragment : BaseFragment<FragmentIngredientsSearchBinding>(),
     OnItemClickListener {
     private lateinit var dataSource: IndianFoodDataSource
-    private lateinit var csvParser: CsvParser
-    private lateinit var ingredients: List<String>
     private var searchIngredients = mutableListOf<String>()
     private lateinit var ingredientsAdapter: IngredientsSearchAdapter
     private lateinit var findRecipesContainsSpecifiedIngredient: FindRecipesContainsSpecifiedIngredientInteractor
@@ -37,16 +34,15 @@ class IngredientsSearchFragment : BaseFragment<FragmentIngredientsSearchBinding>
 
     override fun setUp() {
         setupDatasource()
-        setUpAdapter(findRecipesContainsSpecifiedIngredient.invoke(emptyList()))
+        setUpAdapter(emptyList())
         setUpAutoCompleteTextView()
-        setSearchResult(searchIngredients)
     }
 
     private fun setUpAutoCompleteTextView() {
         val adapter = ArrayAdapter(
             requireContext(),
             R.layout.simple_dropdown_item_1line,
-            ingredients
+            GetAllIngredientsInteractor(dataSource).invoke().distinct()
         )
         binding.searchView.setAdapter(
             adapter
@@ -58,9 +54,7 @@ class IngredientsSearchFragment : BaseFragment<FragmentIngredientsSearchBinding>
     }
 
     private fun setupDatasource() {
-        csvParser = CsvParser()
-        dataSource = IndianFoodCsvDataSource(csvParser, requireContext())
-        ingredients = GetAllIngredientsInteractor(dataSource).invoke().distinct()
+        dataSource = IndianFoodCsvDataSource(requireContext())
         findRecipesContainsSpecifiedIngredient =
             FindRecipesContainsSpecifiedIngredientInteractor(dataSource)
     }
@@ -84,8 +78,9 @@ class IngredientsSearchFragment : BaseFragment<FragmentIngredientsSearchBinding>
     }
 
     private fun setSearchResult(ingredients: MutableList<String>) {
-        val searchResult = findRecipesContainsSpecifiedIngredient.invoke(ingredients)
-        updateRecyclerViewState(searchResult)
+        if (ingredients.isNotEmpty()) {
+            updateRecyclerViewState(findRecipesContainsSpecifiedIngredient.invoke(ingredients))
+        }
     }
 
     private fun updateRecyclerViewState(searchResult: List<Recipe>) {

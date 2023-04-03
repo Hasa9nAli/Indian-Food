@@ -5,7 +5,6 @@ import android.view.LayoutInflater
 import android.view.ViewGroup
 import com.chocolatecake.indianfood.R
 import com.chocolatecake.indianfood.dataSource.IndianFoodCsvDataSource
-import com.chocolatecake.indianfood.dataSource.utils.CsvParser
 import com.chocolatecake.indianfood.databinding.FragmentShowMoreBinding
 import com.chocolatecake.indianfood.interactor.GetHealthyRecipesInteractor
 import com.chocolatecake.indianfood.interactor.GetQuickRecipesInteractor
@@ -48,7 +47,7 @@ class ShowMoreFragment : BaseFragment<FragmentShowMoreBinding>() {
     }
 
     private fun geRecipesCategoryType(categoryType: String): List<Recipe> {
-        val csvData = IndianFoodCsvDataSource(CsvParser(), requireContext())
+        val csvData = IndianFoodCsvDataSource(requireContext())
 
         return when (categoryType) {
             GetHealthyRecipesInteractor.HEALTHY_RECIPES_TYPE ->

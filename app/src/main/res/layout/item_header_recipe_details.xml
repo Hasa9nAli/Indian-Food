@@ -1,7 +1,9 @@
 <?xml version="1.0" encoding="utf-8"?>
 <androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
+    android:paddingBottom="@dimen/largeSpace"
     android:layout_height="wrap_content"
     android:background="@color/colorBackground">
 
@@ -10,28 +12,45 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:orientation="horizontal"
-        app:layout_constraintGuide_begin="300dp" />
+        app:layout_constraintGuide_begin="284dp" />
+
+    <androidx.constraintlayout.widget.Guideline
+        android:id="@+id/guideline_20_percent"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        app:layout_constraintGuide_begin="250dp" />
 
     <ImageView
         android:id="@+id/image_view_recipe"
         android:layout_width="0dp"
         android:layout_height="0dp"
         android:scaleType="centerCrop"
-        android:src="@drawable/recipe"
+        android:src="@drawable/ic_launcher_background"
         app:layout_constraintBottom_toTopOf="@id/guideline_30_percent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
+
+    <View
+        android:id="@+id/view_gradient"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:background="@drawable/details_background"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintBottom_toTopOf="@id/guideline_30_percent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/guideline_20_percent" />
 
     <com.google.android.material.chip.ChipGroup
         android:id="@+id/chipGroup"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="16dp"
-        android:layout_marginTop="@dimen/largeSpace"
         app:chipSpacingHorizontal="8dp"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/text_view_native_country">
+        app:layout_constraintTop_toTopOf="@+id/guideline_30_percent">
 
         <TextView
             android:id="@+id/text_view_time_required"
@@ -70,14 +89,14 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginStart="@dimen/normalSpace"
-        android:layout_marginTop="8dp"
+        android:layout_marginTop="@dimen/smallMargin"
         android:fontFamily="@font/roboto_medium"
         android:text="@string/masala_karela_recipe"
         android:textColor="@color/colorPrimary"
         android:textSize="@dimen/text_title"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/image_view_recipe" />
+        app:layout_constraintTop_toBottomOf="@+id/chipGroup" />
 
     <TextView
         android:id="@+id/text_view_native_country"
@@ -97,29 +116,32 @@
         android:layout_width="match_parent"
         android:layout_height="36dp"
         android:layout_marginHorizontal="32dp"
-        android:layout_marginTop="24dp"
-        android:background="@drawable/tab_layout_background"
+        android:layout_marginTop="16dp"
+        android:background="@drawable/tab_indicator"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/chipGroup"
-        app:tabBackground="@drawable/tab_item_background"
-        app:tabIndicator="@android:color/transparent"
+        app:layout_constraintTop_toBottomOf="@+id/text_view_native_country"
+        app:tabIndicator="@drawable/tab_indicator"
+        app:tabIndicatorAnimationMode="elastic"
+        app:tabIndicatorColor="@color/tab_selected"
+        app:tabIndicatorFullWidth="true"
+        app:tabIndicatorGravity="stretch"
         app:tabMode="fixed"
-        app:tabRippleColor="@color/white"
-        app:tabSelectedTextColor="@color/colorBackground"
-        app:tabTextColor="@color/tab_selected_item_color">
+        app:tabRippleColor="@color/tab_unselected"
+        app:tabSelectedTextColor="@color/tab_text_selected"
+        app:tabTextColor="@color/tab_text_unselected">
 
         <com.google.android.material.tabs.TabItem
             android:layout_width="0dp"
             android:layout_height="34dp"
-            android:background="@drawable/tab_item_background"
             android:text="@string/ingredients" />
 
         <com.google.android.material.tabs.TabItem
             android:layout_width="0dp"
             android:layout_height="34dp"
-            android:background="@drawable/tab_item_background"
-            android:text="@string/instructions" />
+            android:text="@string/instructions"
+            tools:layout_editor_absoluteX="205dp"
+            tools:layout_editor_absoluteY="353dp" />
 
     </com.google.android.material.tabs.TabLayout>
 

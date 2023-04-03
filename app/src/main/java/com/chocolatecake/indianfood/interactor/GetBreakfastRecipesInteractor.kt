@@ -7,7 +7,9 @@ class GetBreakfastRecipesInteractor(private val dataSource: IndianFoodDataSource
     fun invoke(): List<Recipe> {
         return dataSource.getAllRecipesData()
             .ifEmpty { throw IllegalStateException("Something went wrong") }
+            .asSequence()
             .filter { isBreakfastRecipe(it) }
+            .toList()
     }
 
     private fun isBreakfastRecipe(recipe: Recipe): Boolean {

@@ -45,24 +45,24 @@
 
     <color name="small_text_color">#1D192B</color>
 
-    <color name="tab_layout_background_color">#F6F6F6</color>
-
-    <color name="tab_item_background_color_on_selected">#AEAAAE</color>
-    <color name="tab_item_background_color_not_selected">#3D3D3D</color>
-
 
     <color name="icon_nav_bar">#5E555555</color>
 
 
-    <color name="tab_selected_item_color">#EBEBEB</color>
     <color name="color_Card">#99EADDFF</color>
     <color name="color_Text">#991C1B1F</color>
     <color name="text_One">#DE1C1B1F</color>
-    <color name="background">#FCFCFC</color>
     <color name="icon_item_recipe_color">#991C1B1F</color>
     <color name="black">#000</color>
 
     <color name="bottom_nav_text_color">#DE1C1B1F</color>
     <color name="bottom_icon_color">#5E5E5E</color>
     <color name="bottom_nav_background_color">#2E2E2E</color>
+
+    <color name="tab_text_selected">#DE1C1B1F</color>
+    <color name="tab_text_unselected">#DEF3F3F3</color>
+    <color name="tab_unselected">#3D3D3D</color>
+    <color name="tab_selected">@color/colorSurface</color>
+
+
 </resources>

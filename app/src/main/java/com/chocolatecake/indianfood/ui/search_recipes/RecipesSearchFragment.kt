@@ -8,9 +8,7 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.view.inputmethod.EditorInfo
-import android.widget.Toast
 import com.chocolatecake.indianfood.dataSource.IndianFoodCsvDataSource
-import com.chocolatecake.indianfood.dataSource.utils.CsvParser
 import com.chocolatecake.indianfood.databinding.FragmentRecipesSearchBinding
 import com.chocolatecake.indianfood.interactor.FindRecipesByNameInteractor
 import com.chocolatecake.indianfood.interactor.IndianFoodDataSource
@@ -22,8 +20,6 @@ import com.chocolatecake.indianfood.util.navigateTo
 
 class RecipesSearchFragment : BaseFragment<FragmentRecipesSearchBinding>() {
     private lateinit var dataSource: IndianFoodDataSource
-    private lateinit var csvParser: CsvParser
-
     private lateinit var findRecipesByNameIngredient: FindRecipesByNameInteractor
     private var searchRecipes: String = "NOT_HAVE_DATA"
     private lateinit var recipesAdapter: RecipesSearchAdapter
@@ -34,14 +30,12 @@ class RecipesSearchFragment : BaseFragment<FragmentRecipesSearchBinding>() {
 
     override fun setUp() {
         setupDatasource()
-        setUpAdapter(findRecipesByNameIngredient.invoke(searchRecipes))
+        setUpAdapter(emptyList())
         setUpAutoCompleteTextView()
-        setSearchResult(searchRecipes)
     }
 
     private fun setupDatasource() {
-        csvParser = CsvParser()
-        dataSource = IndianFoodCsvDataSource(csvParser, requireContext())
+        dataSource = IndianFoodCsvDataSource(requireContext())
         findRecipesByNameIngredient = FindRecipesByNameInteractor(dataSource)
     }
 
@@ -80,8 +74,9 @@ class RecipesSearchFragment : BaseFragment<FragmentRecipesSearchBinding>() {
 
 
     private fun setSearchResult(recipe: String) {
-        val searchResult = findRecipesByNameIngredient.invoke(recipe)
-        updateRecyclerViewState(searchResult )
+        if (recipe.isNotBlank()) {
+            updateRecyclerViewState(findRecipesByNameIngredient.invoke(recipe))
+        }
     }
 
     private fun updateRecyclerViewState(searchResult: List<Recipe>) {
@@ -122,13 +117,4 @@ class RecipesSearchFragment : BaseFragment<FragmentRecipesSearchBinding>() {
                 }
             }
     }
-
-    private fun showToast(message: String){
-        Toast.makeText(
-            context,
-            message,
-            Toast.LENGTH_SHORT
-        ).show()
-    }
-
 }

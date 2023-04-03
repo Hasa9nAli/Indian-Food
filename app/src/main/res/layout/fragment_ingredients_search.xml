@@ -3,28 +3,53 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="?android:colorBackground">
+    android:background="@color/colorBackground">
+
+    <View
+        android:id="@+id/background_search"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:background="@drawable/backgrounf_search"
+        app:layout_constraintBottom_toBottomOf="@id/chip_group_ingredients"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <com.google.android.material.divider.MaterialDivider
+        android:id="@+id/divider"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:alpha="0.1"
+        android:elevation="2dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/background_search" />
+
 
     <com.google.android.material.textfield.MaterialAutoCompleteTextView
         android:id="@+id/searchView"
         android:layout_width="0dp"
         android:layout_height="48dp"
-        android:layout_marginTop="8dp"
-        android:paddingStart="16dp"
-        android:maxLines="1"
         android:layout_marginHorizontal="@dimen/margin_medium"
+        android:layout_marginTop="@dimen/normalSpace"
         android:background="@drawable/shape_search"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
+        android:drawableStart="@drawable/search_icon"
+        android:drawablePadding="@dimen/normalSpace"
+        android:ellipsize="end"
+        android:hint="@string/hint"
+        android:maxLines="1"
+        android:paddingStart="@dimen/normalSpace"
+        android:singleLine="true"
         app:layout_constraintEnd_toEndOf="parent"
-        android:hint="@string/hint" />
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
 
     <com.google.android.material.chip.ChipGroup
         android:id="@+id/chip_group_ingredients"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginTop="16dp"
         android:layout_marginHorizontal="@dimen/margin_medium"
+        android:layout_marginTop="@dimen/margin_medium"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@id/searchView" />
@@ -35,13 +60,14 @@
         android:layout_height="0dp"
         android:clipToPadding="false"
         android:orientation="vertical"
-        android:paddingBottom="64dp"
-        android:layout_marginHorizontal="@dimen/margin_medium"
+        android:paddingHorizontal="@dimen/margin_medium"
+        android:paddingTop="@dimen/normalSpace"
+        android:paddingBottom="@dimen/smallMargin"
         app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
+        app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/chip_group_ingredients"
-        />
+        app:layout_constraintTop_toBottomOf="@id/divider" />
 
     <include
         android:id="@+id/noDataFound"

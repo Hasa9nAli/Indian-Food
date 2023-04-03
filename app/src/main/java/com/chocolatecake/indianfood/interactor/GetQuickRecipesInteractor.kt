@@ -14,8 +14,10 @@ class GetQuickRecipesInteractor(
             .getAllRecipesData()
             .apply { recipesCount = size }
             .ifEmpty { throw IllegalAccessException("Internal error occurred") }
+            .asSequence()
             .sortedBy { it.totalTimeInMinutes }
             .take(limit ?: recipesCount)
+            .toList()
     }
 
     companion object {

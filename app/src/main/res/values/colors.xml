@@ -19,7 +19,7 @@
 
     <color name="colorOnSecondaryContainer">#2D2D2D</color>
 
-    <color name="colorBackground">#FFFCFD</color>
+    <color name="colorBackground">#FCFCFC</color>
 
     <color name="colorOnBackground">#1C1B1F</color>
 
@@ -80,17 +80,9 @@
 
     <color name="small_text_color">#1D192B</color>
 
-    <color name="tab_layout_background_color">#F6F6F6</color>
-
-    <color name="tab_item_background_color_on_selected">#F2F2F2</color>
-    <color name="tab_item_background_color_not_selected">#2D2D2D</color>
-
-
-    <color name="tab_selected_item_color">#2D2D2D</color>
     <color name="color_Card">#99EADDFF</color>
     <color name="color_Text">#991C1B1F</color>
     <color name="text_One">#DE1C1B1F</color>
-    <color name="background">#FCFCFC</color>
 
     <color name="icon_nav_bar">#FCFCFC</color>
     <color name="icon_item_recipe_color">#991C1B1F</color>
@@ -98,4 +90,11 @@
 
     <color name="bottom_nav_text_color">#DE1C1B1F</color>
     <color name="bottom_nav_background_color">#F6F6F6</color>
+
+    <color name="tab_text_selected">#DEFFFFFF</color>
+    <color name="tab_text_unselected">#DE1C1B1F</color>
+    <color name="tab_unselected">#F2F2F2</color>
+    <color name="tab_selected">#2D2D2D</color>
+
+
 </resources>
