@@ -30,9 +30,8 @@ class RecipesSearchFragment : BaseFragment<FragmentRecipesSearchBinding>() {
 
     override fun setUp() {
         setupDatasource()
-        setUpAdapter(findRecipesByNameIngredient.invoke(searchRecipes))
+        setUpAdapter(emptyList())
         setUpAutoCompleteTextView()
-        setSearchResult(searchRecipes)
     }
 
     private fun setupDatasource() {
@@ -75,8 +74,9 @@ class RecipesSearchFragment : BaseFragment<FragmentRecipesSearchBinding>() {
 
 
     private fun setSearchResult(recipe: String) {
-        val searchResult = findRecipesByNameIngredient.invoke(recipe)
-        updateRecyclerViewState(searchResult )
+        if (recipe.isNotBlank()) {
+            updateRecyclerViewState(findRecipesByNameIngredient.invoke(recipe))
+        }
     }
 
     private fun updateRecyclerViewState(searchResult: List<Recipe>) {
